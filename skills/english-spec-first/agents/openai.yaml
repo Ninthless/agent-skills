@@ -1,0 +1,4 @@
+interface:
+  display_name: "English Spec First"
+  short_description: "Standardize requests into English specs"
+  default_prompt: "Use $english-spec-first to rewrite my request as a standard English specification before solving it."

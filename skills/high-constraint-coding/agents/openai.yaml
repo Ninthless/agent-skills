@@ -1,0 +1,4 @@
+interface:
+  display_name: "High-Constraint Coding"
+  short_description: "Strict quality gates for code changes"
+  default_prompt: "Use $high-constraint-coding to implement a minimal, verified code change with explicit assumptions and quality gates."

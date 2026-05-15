@@ -1,0 +1,7 @@
+interface:
+  display_name: "No Code Comments"
+  short_description: "Generate and edit code without comments"
+  default_prompt: "Use $no-code-comments for this coding task and assume the code should contain no comments unless I explicitly request them."
+
+policy:
+  allow_implicit_invocation: true
