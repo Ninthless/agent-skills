@@ -110,6 +110,8 @@ After creating the commit:
 
 If the branch has no upstream yet, set it during push if appropriate.
 
+**PowerShell 5 note:** `&&` is not a valid statement separator. Use `;` to chain commands instead of `&&`. For example: `git add README.md; git commit -m "..."; git push origin main`
+
 ### 8. Report the checkpoint clearly
 
 After commit and push, always summarize:

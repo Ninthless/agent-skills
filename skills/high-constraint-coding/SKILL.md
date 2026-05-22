@@ -52,15 +52,20 @@ If multiple interpretations would lead to materially different implementations, 
 
 ### 2. Read before writing
 
+**This step is mandatory. Do not skip it even for small changes.**
+
 Inspect the real implementation path before proposing changes.
 
 - find the entry point, call chain, and affected data flow
 - identify any shared helper, normalization rule, or contract that multiple call sites depend on
 - check adjacent tests, types, interfaces, schemas, or configuration
 - notice existing patterns and follow them unless they are the problem
+- read the actual file content, not a remembered or guessed version
 
 Do not start from a guessed implementation shape.
 If the visible bug is downstream from a shared semantic seam, fix the seam rather than only patching the leaf caller.
+
+**If you have already tried a fix twice and it is still failing:** stop patching. Diagnose the root cause from the evidence you have. Explain what went wrong and propose a fundamentally different approach before writing more code.
 
 ### 3. Choose the narrowest solution
 
