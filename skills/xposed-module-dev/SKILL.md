@@ -1,6 +1,6 @@
 ---
 name: xposed-module-dev
-description: Build, review, debug, or explain Android Xposed/LSPosed modules correctly. Use this skill whenever the user wants to create an Xposed module, LSPosed module, Zygisk/LSPosed hook, hook Android apps or system_server, migrate legacy XposedBridge code to modern libxposed APIs, fix module activation/scope/resource files, or write Gradle/Manifest/module metadata for an Xposed module, even if they only say "hook this app", "写一个模块", "LSPosed插件", or "Xposed开发".
+description: Builds, reviews, and debugs Android Xposed/LSPosed modules. Invoke when the user wants to create a hook, write an Xposed module, migrate legacy XposedBridge to modern libxposed, or fix module activation, scope, or metadata issues.
 ---
 
 # Xposed Module Development

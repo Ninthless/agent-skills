@@ -1,4 +1,7 @@
 interface:
   display_name: "Git Checkpoint Push"
-  short_description: "检测 GitHub 规范并在阶段性工作完成后安全提交推送"
+  short_description: "Safe Git/GitHub checkpoint commit and push"
   default_prompt: "Use $git-checkpoint-push to create a professional Git/GitHub checkpoint commit and push it safely when a completed milestone is ready."
+
+policy:
+  allow_implicit_invocation: false

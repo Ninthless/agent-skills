@@ -1,6 +1,6 @@
 ---
 name: english-spec-first
-description: Rewrite rough, ambiguous, multilingual, or Chinese-first user requests into a compact standard English specification before planning or solving. Use this skill whenever the user wants stronger requirement normalization, asks you to think in English first, provides messy notes that need to become a clean spec, or when precise execution depends on converting the request into a structured English brief before reasoning.
+description: Rewrites rough, multilingual, or ambiguous requests into a compact English spec before planning or solving. Invoke when the user asks to "think in English first", provides messy notes, or when precise execution needs a structured English brief.
 ---
 
 # English Spec First

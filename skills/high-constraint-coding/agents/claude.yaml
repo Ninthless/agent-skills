@@ -1,0 +1,7 @@
+interface:
+  display_name: "High-Constraint Coding"
+  short_description: "Minimal-diff, verified, production-quality code changes"
+  default_prompt: "Apply the high-constraint-coding skill: before writing any code, read the relevant files and bound the task. Make the smallest correct change that satisfies the request. Do not rewrite unrelated code, introduce speculative abstractions, or skip verification. Verify with tests, build, or lint before reporting success. Report what changed, how it was verified, and any residual risk."
+
+policy:
+  allow_implicit_invocation: true

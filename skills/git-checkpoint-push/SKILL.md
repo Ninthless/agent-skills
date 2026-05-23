@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: Create professional Git/GitHub checkpoint commits and push them when the user wants milestone-based progress saved to a remote repository. Use this skill whenever the user asks to commit and push after each completed point, says to push regularly during implementation, wants "规范的 git commit 信息", asks to save progress to git while coding, or wants work pushed once a coherent task slice is done. Also use it when a remote repository exists and the user has already established that periodic checkpoint pushes are desired.
+description: Creates professional Git/GitHub checkpoint commits and pushes them safely. Invoke when the user asks to commit and push, wants milestone-based saves, asks for "规范的 git commit 信息", or wants work pushed after a coherent task slice is done.
 ---
 
 # Git Checkpoint Push

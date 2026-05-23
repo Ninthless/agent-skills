@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: High-constraint workflow for writing, editing, debugging, reviewing, or refactoring production code with explicit assumptions, minimal diffs, strong validation, and clear risk control. Use this skill aggressively for almost any non-trivial coding task where the user wants code that is correct, readable, simple, maintainable, easy to modify, easy to extend locally, or safely verified. Trigger it whenever the user asks for bug fixes, refactors, reviews, minimal changes, no unnecessary rewrites, no over-engineering, no clever code, strong verification, fewer AI mistakes, safer changes, or production-quality implementation, even if they do not mention this skill or any methodology by name. This skill should also trigger when the user implies these goals in Chinese or casual phrasing such as “高质量代码”, “简约可维护”, “好理解好修改”, “最小改动”, “别乱重构”, “稳一点改”, “先看清楚再改”, “改完跑测试”, or similar requests for disciplined code.
+description: Disciplined coding workflow with minimal diffs, explicit assumptions, and strong verification. Invoke for bug fixes, refactors, reviews, or any coding task where correctness, maintainability, and safety matter. Triggers on "最小改动", "高质量代码", "别乱重构", "先看清楚再改", or similar.
 ---
 
 # High Constraint Coding

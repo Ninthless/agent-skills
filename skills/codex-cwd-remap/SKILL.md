@@ -1,6 +1,6 @@
 ---
 name: codex-cwd-remap
-description: Repair Codex App conversations after a project folder is moved, renamed, deleted, or replaced. Use when Codex shows "current working directory missing", "this conversation's working directory no longer exists", or the user wants to remap local Codex SQLite thread cwd records from an old project path to a new project path, optionally creating a Windows junction from the old path to the new path.
+description: Repairs Codex App conversations after a project folder is moved, renamed, or deleted. Invoke when Codex shows "working directory missing" or the user wants to remap Codex SQLite thread cwd records from an old path to a new path.
 ---
 
 # Codex CWD Remap

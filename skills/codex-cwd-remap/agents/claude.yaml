@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex CWD Remap"
+  short_description: "Repair Codex threads after a project path move or rename"
+  default_prompt: "Apply the codex-cwd-remap skill: confirm the old and new project paths, verify the new path exists, run the bundled remap-codex-cwd.ps1 script in dry-run mode first, then apply only after the dry run shows the expected rows. Back up the SQLite database before applying. Report old and new counts after the update."
+
+policy:
+  allow_implicit_invocation: false

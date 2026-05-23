@@ -1,0 +1,7 @@
+interface:
+  display_name: "No Code Comments"
+  short_description: "Default companion for comment-free code output"
+  default_prompt: "Apply the no-code-comments skill: keep all generated and edited code free of inline comments, block comments, docstrings, JSDoc, XML comments, and TODO/FIXME placeholders. Put explanations in the chat response instead. Exceptions: tooling directive comments, mandatory legal headers, or when the user explicitly requests comments."
+
+policy:
+  allow_implicit_invocation: true

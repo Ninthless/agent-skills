@@ -1,7 +1,7 @@
 interface:
   display_name: "No Code Comments"
-  short_description: "Generate and edit code without comments"
-  default_prompt: "Use $no-code-comments for this coding task and assume the code should contain no comments unless I explicitly request them."
+  short_description: "Default companion for comment-free code output"
+  default_prompt: "Use $no-code-comments whenever this task writes, edits, refactors, scaffolds, regenerates, or shows code. Keep code comment-free unless I explicitly request comments or tooling requires a directive."
 
 policy:
   allow_implicit_invocation: true
