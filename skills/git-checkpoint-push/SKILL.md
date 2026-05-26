@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: Creates professional Git/GitHub checkpoint commits and pushes them safely. Invoke when the user asks to commit and push, wants milestone-based saves, asks for "规范的 git commit 信息", or wants work pushed after a coherent task slice is done.
+description: Creates professional Git/GitHub checkpoint commits and pushes them safely. Invoke when the user asks to commit and push, wants milestone-based saves, asks for Conventional Commit messages or "规范的 git commit 信息", or wants work pushed after a coherent task slice is done.
 ---
 
 # Git Checkpoint Push
@@ -85,44 +85,71 @@ Rules:
 - Review staged changes before committing when the checkpoint includes generated files, dependency lockfiles, workflow files, permissions, or security-sensitive paths.
 - Recheck `git status --short` after staging so you know exactly what will be committed.
 
-### 6. Write professional commit messages
+### 6. Write Conventional Commit messages
 
-Use concise, production-style commit messages. Prefer Conventional Commit style when it fits.
+Use the Conventional Commits format for checkpoint commits:
 
-Format:
+```text
+<type>[optional scope]: <description>
 
-`type(scope): summary`
+[optional body]
 
-Good types:
+[optional footer(s)]
+```
 
-- `feat`
-- `fix`
-- `refactor`
-- `chore`
-- `docs`
-- `build`
-- `perf`
-- `test`
-- `ci`
-- `security`
+Analyze the actual staged diff to determine:
+
+- type: what kind of change this checkpoint contains
+- scope: the area, package, app, module, workflow, or GitHub configuration affected
+- description: a present-tense, imperative summary under 72 characters
+- body/footer: include only when the change needs context, verification notes, issue references, or breaking-change details
+
+Commit types:
+
+| Type       | Purpose                        |
+| ---------- | ------------------------------ |
+| `feat`     | New feature                    |
+| `fix`      | Bug fix                        |
+| `docs`     | Documentation only             |
+| `style`    | Formatting/style with no logic |
+| `refactor` | Code refactor with no feature/fix |
+| `perf`     | Performance improvement        |
+| `test`     | Add or update tests            |
+| `build`    | Build system or dependencies   |
+| `ci`       | CI configuration or workflows  |
+| `chore`    | Maintenance or miscellaneous work |
+| `revert`   | Revert a previous commit       |
+| `security` | Security hardening or secret removal when project convention accepts it |
+
+Breaking changes may be represented with an exclamation mark or a footer:
+
+```text
+feat!: remove deprecated endpoint
+```
+
+```text
+feat(config): allow config to extend other configs
+
+BREAKING CHANGE: `extends` key behavior changed.
+```
 
 Guidelines:
 
-- Use present-tense, action-oriented summaries.
+- Keep one coherent checkpoint per commit.
+- Use present tense: `add`, not `added`.
+- Use imperative mood: `fix login redirect`, not `fixes login redirect`.
 - Keep the first line focused on the checkpoint, not the whole project.
 - Keep the first line concise enough to scan well in GitHub history.
-- Do not mention temporary struggle, conversation context, or "AI".
-- Do not stuff multiple unrelated points into one commit message.
-- Use the body only when the change needs context, verification notes, breaking-change details, or issue references.
 - Reference issues with GitHub closing keywords only when the completed checkpoint genuinely resolves the issue.
+- Do not mention temporary struggle, conversation context, or `AI`.
+- Do not stuff multiple unrelated points into one commit message.
 
 Examples:
 
 - `feat(api): add workspace and auth demo endpoints`
-- `feat(api): align data layer with document architecture`
-- `feat(api): seed academic domain and query workspace from mysql`
-- `fix(web): correct login portal layout and workspace header structure`
+- `fix(web): correct login portal layout`
 - `refactor(web): rebuild frontend as Ant Design workspace`
+- `test(auth): cover refresh token reuse detection`
 - `ci(github): add required workflow permissions`
 - `security(auth): remove token from persisted config`
 
