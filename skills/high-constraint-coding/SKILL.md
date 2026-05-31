@@ -62,6 +62,8 @@ Inspect the real implementation path before proposing changes.
 - notice existing patterns and follow them unless they are the problem
 - read the actual file content, not a remembered or guessed version
 
+**Before writing a single line of code, state in one sentence what the current code does in the relevant area.** If you cannot produce that sentence confidently, keep reading. A vague or hedged description means the understanding is not yet sufficient to make a safe change.
+
 Do not start from a guessed implementation shape.
 If the visible bug is downstream from a shared semantic seam, fix the seam rather than only patching the leaf caller.
 
@@ -91,6 +93,20 @@ Code should be easy for a competent engineer to read in one pass.
 - keep functions focused enough that their job is obvious
 
 If a shorter version is harder to read, choose the slightly longer version.
+
+### 3c. Mirror the local style
+
+Before writing, identify 3–5 concrete style patterns in the surrounding code and carry them into your change. Look for:
+
+- naming conventions: casing, prefixes, verb vs noun choices, abbreviation habits
+- control flow preferences: early return vs nested if, guard clauses vs else branches
+- error handling shape: exceptions vs result types vs sentinel values
+- function length and decomposition granularity
+- how the codebase expresses intent: inline logic vs named helpers, explicit vs implicit
+
+A change that is correct but stylistically foreign reads as AI-written. A change that blends in reads as human-written. The goal is the latter.
+
+If the surrounding style is inconsistent, follow the pattern used in the most recently touched or most closely adjacent code.
 
 ### 3b. Preserve local extensibility
 
@@ -173,16 +189,11 @@ Do not over-explain implementation details unless the user asks.
 
 Do not:
 
-- infer missing requirements when the risk of being wrong is meaningful
-- add new dependencies without clear necessity
-- add configuration toggles for hypothetical future use
-- introduce reusable frameworks for one-off logic
+- infer missing requirements when the risk of being wrong is meaningful — ask instead
+- introduce dependencies, configuration toggles, or reusable frameworks for one-off logic
 - claim a fix without testing or a credible reproduction path
-- treat the first passing test as proof when the edited code fans out to multiple callers or contracts
-- bury uncertainty behind confident language
-- leave partially implemented ideas in the patch
-- compress code until intent becomes implicit rather than obvious
-- confuse minimal diff with minimal understandable solution
+- bury uncertainty behind confident language or leave partially implemented ideas in the patch
+- confuse minimal diff with minimal understandable solution — the goal is the latter
 
 ## Review Mode
 
