@@ -1,6 +1,6 @@
 ---
 name: no-code-comments
-description: Keeps generated and edited code comment-free. Invoke for any task that writes, edits, refactors, scaffolds, regenerates, or shows code.
+description: Removes comments from generated and edited code. Use when writing, creating, generating, implementing, building, scaffolding, fixing, editing, modifying, refactoring, or rewriting any code, script, component, config, or file. Keeps all code output comment-free by default unless the user explicitly asks for comments.
 ---
 
 # No Code Comments
