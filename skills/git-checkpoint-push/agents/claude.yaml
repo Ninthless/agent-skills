@@ -4,4 +4,4 @@ interface:
   default_prompt: "Apply the git-checkpoint-push skill: inspect git status, current branch, and remote before acting. Stage only the files that belong to this checkpoint. Write a professional Conventional Commit message. Do not push directly to protected branches. Report the commit hash, branch, push result, and any remaining uncommitted changes."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: Creates professional Git/GitHub checkpoint commits and pushes them safely. Invoke when the user asks to commit and push, wants milestone-based saves, asks for Conventional Commit messages or "规范的 git commit 信息", or wants work pushed after a coherent task slice is done.
+description: 'Use when the user asks to save work with git, create a checkpoint commit, write a Conventional Commit message, stage relevant files, push to GitHub or a remote, checkpoint after a milestone, 提交代码, 推送到 GitHub, 保存进度, or produce "规范的 git commit 信息". Safely handles git status, branch, remote, staging, commit, push, and PR handoff.'
 ---
 
 # Git Checkpoint Push

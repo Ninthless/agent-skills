@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $xposed-module-dev to build, review, or debug this Android Xposed/LSPosed module correctly."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

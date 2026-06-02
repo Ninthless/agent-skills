@@ -4,4 +4,4 @@ interface:
   default_prompt: "Apply the xposed-module-dev skill: first identify whether the project uses the modern libxposed API or the legacy XposedBridge API. Do not mix the two. For new modules prefer modern libxposed. Produce or verify the required registration files, entry class, hook code, and build configuration. Include build, install, enable, and logcat verification steps."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

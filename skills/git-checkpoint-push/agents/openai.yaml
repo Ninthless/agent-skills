@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $git-checkpoint-push to create a professional Git/GitHub checkpoint commit and push it safely when a completed milestone is ready."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

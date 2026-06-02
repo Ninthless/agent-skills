@@ -1,10 +1,13 @@
 ---
 name: codex-cwd-remap
-description: Repairs Codex App conversations after a project folder is moved, renamed, or deleted. Invoke when Codex shows "working directory missing" or the user wants to remap Codex SQLite thread cwd records from an old path to a new path.
-compatibility: Requires Windows and PowerShell. The bundled script uses PowerShell cmdlets and Windows junction points.
+description: 'Use when Codex App or Codex CLI cannot open a thread because the working directory was moved, renamed, deleted, replaced, or shows "working directory missing", "cwd missing", 工作目录不存在, 项目路径变了, Codex 打不开旧会话. Repairs old path to new path remap, Codex SQLite state, threads.cwd records, and Windows junction fallback.'
 ---
 
 # Codex CWD Remap
+
+## Compatibility
+
+Requires Windows and PowerShell. The bundled script uses PowerShell cmdlets and Windows junction points.
 
 ## Workflow
 

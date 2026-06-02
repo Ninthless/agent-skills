@@ -1,6 +1,6 @@
 ---
 name: no-code-comments
-description: Removes comments from generated and edited code. Use when writing, creating, generating, implementing, building, scaffolding, fixing, editing, modifying, refactoring, or rewriting any code, script, component, config, or file. Keeps all code output comment-free by default unless the user explicitly asks for comments.
+description: 'Use whenever generating, writing, editing, fixing, refactoring, scaffolding, rewriting, patching, or showing code, scripts, configs, tests, components, APIs, migrations, Dockerfiles, workflows, or snippets; triggers include 写代码, 生成代码, 修改代码, 修复代码, 重构, 不要注释. Keeps code comment-free by default: no inline comments, block comments, docstrings, JSDoc, TODO/FIXME, or explanatory annotations unless explicitly requested or required by tooling.'
 ---
 
 # No Code Comments

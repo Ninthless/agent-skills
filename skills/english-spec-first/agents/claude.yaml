@@ -4,4 +4,4 @@ interface:
   default_prompt: "Apply the english-spec-first skill: before planning or solving, rewrite the user's request as a compact English specification using Goal / Inputs / Constraints / Output / Process Notes structure. Check the spec for missing requirements and hidden assumptions. Use the spec as the working contract, then respond in the user's language."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

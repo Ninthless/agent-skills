@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $english-spec-first to rewrite my request as a standard English specification, then solve from that spec."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

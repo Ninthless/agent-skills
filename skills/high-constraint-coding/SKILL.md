@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: Disciplined coding workflow with minimal diffs, explicit assumptions, and strong verification. Invoke for bug fixes, refactors, reviews, or any coding task where correctness, maintainability, and safety matter. Triggers on "最小改动", "高质量代码", "别乱重构", "先看清楚再改", or similar.
+description: 'Use for any serious coding task, bug fix, refactor, code review, production change, minimal diff request, high-quality implementation, regression-sensitive edit, or request that says "最小改动", "高质量代码", "别乱重构", "先看清楚再改", "先读代码", "不要乱改", or "保证正确". Enforces read-before-write, small scoped diffs, explicit assumptions, local style, tests, build, lint, and verification.'
 ---
 
 # High Constraint Coding

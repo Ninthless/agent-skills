@@ -1,6 +1,6 @@
 ---
 name: english-spec-first
-description: Rewrites rough, multilingual, or ambiguous requests into a compact English spec before planning or solving. Invoke when the user asks to "think in English first", provides messy notes, or when precise execution needs a structured English brief.
+description: 'Use when a request is rough, multilingual, mixed Chinese-English, ambiguous, emotional, scattered, or needs precise execution; triggers include think in English first, standard English spec, request normalization, 先用英文, 先整理需求, 把需求变专业. First rewrite the user request into a compact English specification before planning, coding, writing, analysis, implementation, or decision making.'
 ---
 
 # English Spec First
