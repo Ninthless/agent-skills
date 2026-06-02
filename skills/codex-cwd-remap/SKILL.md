@@ -1,9 +1,18 @@
 ---
 name: codex-cwd-remap
 description: 'Use when Codex App or Codex CLI cannot open a thread because the working directory was moved, renamed, deleted, replaced, or shows "working directory missing", "cwd missing", 工作目录不存在, 项目路径变了, Codex 打不开旧会话. Repairs old path to new path remap, Codex SQLite state, threads.cwd records, and Windows junction fallback.'
+when_to_use: 'Use when a Codex App or Codex CLI conversation cannot open because its project working directory changed, disappeared, or still points to an old path. Also use for Windows cwd remapping, Codex SQLite threads.cwd repair, and junction fallback workflows.'
 ---
 
 # Codex CWD Remap
+
+## Triggers
+
+- Codex says the working directory is missing.
+- A Codex thread still points to an old project path.
+- The project folder was moved, renamed, deleted, or replaced.
+- The user wants to remap Codex cwd from an old path to a new path.
+- The user says `工作目录不存在`, `项目路径变了`, `Codex 打不开旧会话`, or `修复 Codex 路径`.
 
 ## Compatibility
 

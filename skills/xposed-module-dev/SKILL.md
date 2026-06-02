@@ -1,9 +1,18 @@
 ---
 name: xposed-module-dev
 description: 'Use for Android Xposed, LSPosed, libxposed, XposedBridge, hook development, module skeletons, module activation, scope.list, module.prop, xposed_init, IXposedHookLoadPackage, XposedHelpers, XC_MethodHook, migration from legacy to modern API, LSPosed not showing modules, logcat debugging, 写 Xposed 模块, LSPosed 模块, hook 安卓 App, 模块不显示, and Android hook review.'
+when_to_use: 'Use when the user wants to build, review, migrate, or debug Android Xposed or LSPosed modules. Also use for libxposed, legacy XposedBridge, hook code, module activation failures, scope or metadata files, and logcat troubleshooting.'
 ---
 
 # Xposed Module Development
+
+## Triggers
+
+- The user wants to build, review, migrate, or debug an Android Xposed or LSPosed module.
+- The task mentions libxposed, XposedBridge, hooks, scope.list, module.prop, xposed_init, or logcat.
+- The user needs help with module activation, module not showing in LSPosed, scope problems, or metadata files.
+- The user asks to migrate from legacy XposedBridge to modern libxposed.
+- The user says `写 Xposed 模块`, `LSPosed 模块`, `hook 安卓 App`, `模块不显示`, `作用域`, or `迁移到 libxposed`.
 
 Use this skill to help users develop correct Android Xposed/LSPosed modules. Prefer current LSPosed/libxposed patterns for new modules, but recognize and support legacy XposedBridge projects when the repository already uses them or the user explicitly targets old API compatibility.
 

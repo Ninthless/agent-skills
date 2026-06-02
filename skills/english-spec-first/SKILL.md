@@ -1,9 +1,18 @@
 ---
 name: english-spec-first
 description: 'Use when a request is rough, multilingual, mixed Chinese-English, ambiguous, emotional, scattered, or needs precise execution; triggers include think in English first, standard English spec, request normalization, 先用英文, 先整理需求, 把需求变专业. First rewrite the user request into a compact English specification before planning, coding, writing, analysis, implementation, or decision making.'
+when_to_use: 'Use when the user wants a messy, multilingual, vague, or rough request normalized before execution. Also use when the user asks to think in English first, turn an idea into a professional English spec, or clarify requirements before planning.'
 ---
 
 # English Spec First
+
+## Triggers
+
+- The user asks to think in English first before solving.
+- The request is rough, scattered, multilingual, or ambiguous.
+- The user wants a professional English specification from messy notes.
+- The task needs requirements clarified before planning or execution.
+- The user says `先用英文`, `先整理需求`, `把需求变专业`, `整理成英文需求`, or `中英混合`.
 
 ## Overview
 
