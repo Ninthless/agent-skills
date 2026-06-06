@@ -1,10 +1,13 @@
 ---
 name: no-code-comments
-description: 'Use whenever generating, writing, editing, fixing, refactoring, scaffolding, rewriting, patching, or showing code, scripts, configs, tests, components, APIs, migrations, Dockerfiles, workflows, or snippets; triggers include 写代码, 生成代码, 修改代码, 修复代码, 重构, 不要注释. Keeps code comment-free by default: no inline comments, block comments, docstrings, JSDoc, TODO/FIXME, or explanatory annotations unless explicitly requested or required by tooling.'
-when_to_use: 'Use whenever the task will create, modify, refactor, patch, scaffold, regenerate, or display code-like content. Also use when the user asks for clean code, production-ready code, no comments, no docstrings, no JSDoc, or no TODO/FIXME notes.'
+description: 'Keep generated or edited code comment-free. Use when writing, fixing, refactoring, patching, scaffolding, showing code, 不要注释, 无注释, or 干净代码.'
 ---
 
 # No Code Comments
+
+## Copyright
+
+Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
 
 ## Triggers
 

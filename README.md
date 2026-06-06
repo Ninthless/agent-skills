@@ -6,7 +6,6 @@ Small agent skills I use to keep repeated workflows consistent.
 
 | Skill | Purpose |
 | --- | --- |
-| `codex-cwd-remap` | Repair Codex App conversations after a project folder is moved, renamed, deleted, or replaced. |
 | `english-spec-first` | Normalize rough or multilingual requests into a compact English specification before execution. |
 | `git-checkpoint-push` | Create clean git checkpoint commits and push completed work to a remote. |
 | `high-constraint-coding` | Keep coding tasks disciplined: small diffs, clear assumptions, and practical verification. |
@@ -72,4 +71,10 @@ On macOS / Linux, replace `$env:USERPROFILE` with `$HOME` and use `cp -r`.
 
 These skills are personal workflow helpers. They are intentionally plain and focused on repeatable behavior rather than presentation.
 
-`codex-cwd-remap` requires Windows and PowerShell. All other skills are platform-independent.
+All current skills are platform-independent unless a skill states otherwise.
+
+## License
+
+Copyright (c) 2026 Ninthless. All rights reserved.
+
+These skills are proprietary personal workflow materials. They may not be copied, modified, redistributed, republished, sublicensed, or used to create derivative works without prior written permission.

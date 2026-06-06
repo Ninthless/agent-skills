@@ -1,10 +1,13 @@
 ---
 name: high-constraint-coding
-description: 'Use for any serious coding task, bug fix, refactor, code review, production change, minimal diff request, high-quality implementation, regression-sensitive edit, or request that says "最小改动", "高质量代码", "别乱重构", "先看清楚再改", "先读代码", "不要乱改", or "保证正确". Enforces read-before-write, small scoped diffs, explicit assumptions, local style, tests, build, lint, and verification.'
-when_to_use: 'Use for bug fixes, refactors, reviews, production edits, regression-sensitive changes, minimal-diff requests, or any coding task where correctness, maintainability, local style, assumptions, and verification matter more than speed.'
+description: 'Make careful, minimal, verified code changes. Use for bug fixes, refactors, reviews, production edits, 最小改动, 高质量代码, 别乱重构, or 先看清楚再改.'
 ---
 
 # High Constraint Coding
+
+## Copyright
+
+Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
 
 ## Triggers
 

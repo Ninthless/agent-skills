@@ -1,7 +1,0 @@
-interface:
-  display_name: "Codex CWD Remap"
-  short_description: "Repair Codex threads after a project path move or rename"
-  default_prompt: "Use $codex-cwd-remap to remap Codex thread cwd records from the old project path to the new one."
-
-policy:
-  allow_implicit_invocation: true
