@@ -1,0 +1,38 @@
+{
+  "skill_name": "high-constraint-coding",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "修一下订单取消的 bug：用户取消后库存偶尔没恢复。别大改，先看清楚现有流程，只改必要的地方，并跑相关测试。",
+      "expected_output": "A disciplined coding workflow that reads the relevant order and inventory code path before editing, makes a narrow fix, and verifies with targeted tests.",
+      "files": [],
+      "expectations": [
+        "The response inspects the relevant implementation path before proposing edits.",
+        "The fix is scoped to the cancellation and inventory restoration behavior.",
+        "The response runs or clearly identifies targeted verification."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review this PR for regressions. It changes auth token refresh and session invalidation. I care more about correctness than style.",
+      "expected_output": "A review-style response that leads with concrete correctness findings, regression risks, missing tests, and file or line references when available.",
+      "files": [],
+      "expectations": [
+        "Findings are prioritized before summary.",
+        "The review focuses on correctness, security, regression risk, and missing tests.",
+        "The response avoids broad style commentary unless it affects behavior."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Refactor this payment service, but keep behavior identical. Don't introduce a framework or rewrite the module; just make the duplicated validation easier to maintain.",
+      "expected_output": "A minimal refactor workflow that preserves behavior, avoids speculative abstraction, mirrors local style, and verifies with tests or equivalent checks.",
+      "files": [],
+      "expectations": [
+        "The response states behavior preservation as a hard constraint.",
+        "The implementation avoids broad rewrites and one-off over-abstractions.",
+        "The response includes practical verification evidence or an explicit test gap."
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: no-code-comments
-description: 'Keep generated or edited code comment-free. Use when writing, fixing, refactoring, patching, scaffolding, showing code, 不要注释, 无注释, or 干净代码.'
+description: 'Use this skill whenever the task will write, edit, refactor, scaffold, patch, regenerate, or show code-like content and the user has not explicitly requested comments. Keep generated source, configs, tests, scripts, snippets, migrations, workflows, and Dockerfiles comment-free by default; trigger for clean code, production-ready code, 不要注释, 无注释, 干净代码.'
 ---
 
 # No Code Comments

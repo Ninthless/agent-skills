@@ -1,0 +1,39 @@
+{
+  "skill_name": "git-checkpoint-push",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这个功能已经跑通了，帮我提交并推到 GitHub。记得不要把我本地没关系的改动也带上。",
+      "expected_output": "A safe checkpoint workflow that inspects status, branch, remote, relevant changes, verifies when practical, stages only related files, commits with a Conventional Commit message, and pushes safely.",
+      "files": [],
+      "expectations": [
+        "The workflow inspects git status, current branch, remote, and sync state before staging.",
+        "The response avoids staging unrelated work.",
+        "The commit message follows Conventional Commit style.",
+        "The push result and any remaining changes are reported."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "给这次改动做一个 checkpoint commit 就行，先不要 push。改动是修复登录后跳转到空白页的问题。",
+      "expected_output": "A local-only checkpoint commit workflow that does not push because the user explicitly asked not to push.",
+      "files": [],
+      "expectations": [
+        "The workflow creates or proposes a coherent local commit only.",
+        "The response does not push to a remote.",
+        "The commit message reflects a login redirect bug fix."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "保存进度：我刚把 skill 的触发描述都调完了。你看一下 git 状态，帮我弄个规范 commit，如果有远端就推上去。",
+      "expected_output": "A checkpoint workflow that checks repository state, validates the completed milestone, commits only the skill description changes, and pushes only when a remote is available and safe.",
+      "files": [],
+      "expectations": [
+        "The workflow treats this as a completed documentation/skill metadata checkpoint.",
+        "The response checks whether a remote exists before pushing.",
+        "The response does not claim a push if no remote or safe upstream is available."
+      ]
+    }
+  ]
+}

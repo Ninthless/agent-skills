@@ -1,6 +1,6 @@
 ---
 name: english-spec-first
-description: 'Turn rough or mixed-language requests into a compact English spec before work starts. Use for think in English first, messy notes, unclear requirements, 先用英文, or 需求整理.'
+description: 'Use this skill when a request needs to be normalized into a concise English working spec before action: rough or mixed-language requirements, messy notes, ambiguous product/coding tasks, professionalizing a prompt, or phrases like think in English first, 先用英文, 需求整理. Trigger even if the user does not name the skill but asks to clarify scope before planning or execution.'
 ---
 
 # English Spec First

@@ -4,3 +4,5 @@ Thumbs.db
 *.log
 *.zip
 *.skill
+.skill-trigger-results/
+.claude/commands/

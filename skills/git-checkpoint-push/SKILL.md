@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: 'Create safe Git/GitHub checkpoint commits and push them. Use for commit, push, save progress, stage files, Conventional Commit, 提交代码, 推送, or 保存进度.'
+description: 'Use this skill when the user wants to save work in git or GitHub: commit, stage, push, checkpoint, create a Conventional Commit message, prepare a PR handoff, or phrases like 提交代码, 推送, 保存进度. Trigger after a completed milestone when the user explicitly asks for commit/push/checkpoint handling; inspect status/remotes and avoid unrelated changes.'
 ---
 
 # Git Checkpoint Push

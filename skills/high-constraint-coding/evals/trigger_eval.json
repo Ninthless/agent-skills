@@ -1,0 +1,82 @@
+[
+  {
+    "query": "修一下订单取消后库存偶尔没恢复的问题。先看清楚现有流程，只改必要的地方，并跑相关测试。",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this PR for correctness. It touches refresh tokens, session invalidation, and logout behavior. Findings first, style later.",
+    "should_trigger": true
+  },
+  {
+    "query": "Refactor the payment service to remove duplicated validation, but behavior must stay identical and I don't want a broad rewrite.",
+    "should_trigger": true
+  },
+  {
+    "query": "这个 bug 在线上影响比较大：用户保存设置后偶尔丢字段。请先读代码路径，别猜，最小改动修。",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement this API change carefully. It updates a shared contract used by mobile and web, so update tests and call out any compatibility risk.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我改这个复杂查询的性能问题，但不要为了性能牺牲可读性，先找到真实瓶颈再动手。",
+    "should_trigger": true
+  },
+  {
+    "query": "先看清楚再改：我们迁移了 config schema，现在老配置读不出来。保持兼容，不要乱重构。",
+    "should_trigger": true
+  },
+  {
+    "query": "Patch the flaky retry logic in the worker. I need a small, verified fix and a note about what remains unproven.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a quick toy todo app in one HTML file for a demo.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain the difference between unit tests and integration tests.",
+    "should_trigger": false
+  },
+  {
+    "query": "Format this JSON file alphabetically.",
+    "should_trigger": false
+  },
+  {
+    "query": "Generate a throwaway script to rename a bunch of screenshots in my Downloads folder.",
+    "should_trigger": false
+  },
+  {
+    "query": "Brainstorm five possible architectures for a chat app, no code yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is dependency injection in Java? Give a beginner-friendly explanation.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a SQL query that counts users by country from this simple table.",
+    "should_trigger": false
+  },
+  {
+    "query": "Make the button blue and bigger in this CSS snippet; no need to inspect the whole app.",
+    "should_trigger": false
+  },
+  {
+    "query": "Convert this JavaScript function to TypeScript syntax only.",
+    "should_trigger": false
+  },
+  {
+    "query": "List common causes of race conditions in web apps.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a regex for matching US phone numbers.",
+    "should_trigger": false
+  },
+  {
+    "query": "Tell me what this stack trace means at a high level; don't change code yet.",
+    "should_trigger": false
+  }
+]

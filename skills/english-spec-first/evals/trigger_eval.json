@@ -1,0 +1,82 @@
+[
+  {
+    "query": "先别急着写代码，我这需求有点乱：客服后台要能建工单、分配处理人、看 SLA，后面也许接飞书。你先帮我整理成一个英文 spec。",
+    "should_trigger": true
+  },
+  {
+    "query": "Think in English first and turn this into a tight working brief: migrate billing cron jobs to queue workers, retries matter, Stripe webhooks already exist, refund handling is unclear.",
+    "should_trigger": true
+  },
+  {
+    "query": "把下面这些中英混合笔记变成专业英文需求：Chrome 插件、LinkedIn 页面、查 CRM、MVP、别做太复杂。",
+    "should_trigger": true
+  },
+  {
+    "query": "我想做一个 dashboard，但现在只有散乱想法：老板看转化率、销售看 pipeline、运营看渠道成本。先帮我把需求边界理清楚。",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you normalize this messy product request into an English spec before planning? The team wants SSO, audit logs, role permissions, and maybe Okta later.",
+    "should_trigger": true
+  },
+  {
+    "query": "需求整理一下：一个给仓库用的扫码入库小程序，员工扫 SKU，主管能导出日报，网络差的时候也要能用。",
+    "should_trigger": true
+  },
+  {
+    "query": "Please rewrite my rough prompt into a precise English implementation brief, then use that brief to answer. It's about replacing our legacy webhook retry logic.",
+    "should_trigger": true
+  },
+  {
+    "query": "我写得很乱：用户注册、邀请团队、权限、账单订阅、试用期。你先变成标准英文需求，不要漏掉约束。",
+    "should_trigger": true
+  },
+  {
+    "query": "把这段中文翻译成英文：请在明天下午三点前发我会议纪要。",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what a software requirements specification is and give me a short definition.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a Python script that reads input.csv and prints the number of rows.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize this already finished English PRD in three bullets for Slack.",
+    "should_trigger": false
+  },
+  {
+    "query": "I already have a final spec. Implement the API endpoint exactly as written in docs/auth.md.",
+    "should_trigger": false
+  },
+  {
+    "query": "Proofread this English paragraph and fix grammar only, don't change the meaning.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is the difference between a product spec and a technical design document?",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate the variable names in this code from Chinese to English.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a README section from these installation steps; the scope is already clear.",
+    "should_trigger": false
+  },
+  {
+    "query": "Review my implementation plan for missing risks, but don't rewrite it into a spec.",
+    "should_trigger": false
+  },
+  {
+    "query": "Generate a user story template with Goal, Inputs, Constraints, Output headings.",
+    "should_trigger": false
+  },
+  {
+    "query": "我只是想让你直接回答这个 React 报错，别整理需求：Cannot read properties of undefined reading map。",
+    "should_trigger": false
+  }
+]

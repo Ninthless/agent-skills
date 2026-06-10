@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Make careful, minimal, verified code changes. Use for bug fixes, refactors, reviews, production edits, 最小改动, 高质量代码, 别乱重构, or 先看清楚再改.'
+description: 'Use this skill for careful, minimal, verified coding work: bug fixes, refactors, reviews, production edits, regression-sensitive logic, shared contracts, tests, or requests to read code first, avoid broad rewrites, guarantee correctness, 最小改动, 高质量代码, 别乱重构, 先看清楚再改. Trigger whenever correctness and controlled scope matter more than speed.'
 ---
 
 # High Constraint Coding

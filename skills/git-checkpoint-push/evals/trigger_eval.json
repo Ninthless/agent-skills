@@ -1,0 +1,82 @@
+[
+  {
+    "query": "这个登录修复已经验证过了，帮我提交并推到 GitHub。注意只提交这次相关文件，别把我本地实验文件带上。",
+    "should_trigger": true
+  },
+  {
+    "query": "保存进度，给当前改动做一个 checkpoint commit。先看 git status，然后用规范 commit 信息。",
+    "should_trigger": true
+  },
+  {
+    "query": "Please stage the files for the completed dashboard cleanup, write a Conventional Commit, and push the current branch if it has a safe upstream.",
+    "should_trigger": true
+  },
+  {
+    "query": "我刚改完 skill description，帮我提交代码并推送。远端如果不安全就先告诉我。",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a local commit only, no push. The change fixes invoice totals rounding in the export job.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我看看这次 worktree 里哪些是相关改动，然后做一个干净的 git checkpoint。",
+    "should_trigger": true
+  },
+  {
+    "query": "We finished the migration docs. Commit them with a professional message and prepare the PR handoff text.",
+    "should_trigger": true
+  },
+  {
+    "query": "提交代码：刚才新增了 trigger eval 和 gitattributes，检查一下不要漏文件。",
+    "should_trigger": true
+  },
+  {
+    "query": "What does git rebase do? Explain it with a simple diagram.",
+    "should_trigger": false
+  },
+  {
+    "query": "Show me the current git status, but don't commit or change anything.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a Conventional Commit message for this imaginary feature: add dark mode. Don't touch the repo.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I configure GitHub branch protection rules for required reviews?",
+    "should_trigger": false
+  },
+  {
+    "query": "Review this diff for bugs before I decide whether to commit it.",
+    "should_trigger": false
+  },
+  {
+    "query": "Undo my last local commit and keep the files staged.",
+    "should_trigger": false
+  },
+  {
+    "query": "Please create a .gitignore for Node, Python, and macOS temp files.",
+    "should_trigger": false
+  },
+  {
+    "query": "Tell me whether origin/main is ahead of my branch. Do not push.",
+    "should_trigger": false
+  },
+  {
+    "query": "Generate release notes from these commit messages I pasted below.",
+    "should_trigger": false
+  },
+  {
+    "query": "Set up GitHub Actions to run tests on pull requests.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you explain what a pull request is to a non-engineer?",
+    "should_trigger": false
+  },
+  {
+    "query": "Compare these two commit message styles and tell me which is clearer.",
+    "should_trigger": false
+  }
+]

@@ -1,6 +1,6 @@
 ---
 name: xposed-module-dev
-description: 'Build, review, migrate, or debug Android Xposed/LSPosed modules. Use for libxposed, XposedBridge, hooks, scope, module.prop, logcat, or 写 Xposed 模块.'
+description: 'Use this skill for Android Xposed or LSPosed module work: creating, reviewing, migrating, or debugging modules; libxposed versus legacy XposedBridge decisions; hooks, scope.list, module.prop, xposed_init, LSPosed activation, logcat crashes, or 写 Xposed 模块. Trigger for app hooks, system_server hooks, module-not-showing issues, and legacy-to-modern migration questions.'
 ---
 
 # Xposed Module Development
