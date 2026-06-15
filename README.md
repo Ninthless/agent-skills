@@ -7,9 +7,11 @@ Small agent skills I use to keep repeated workflows consistent.
 | Skill | Purpose |
 | --- | --- |
 | `english-spec-first` | Normalize rough or multilingual requests into a compact English specification before execution. |
+| `freelance-order-triage` | Judge freelance coding orders, scope risks, quote posture, revisions, and acceptance before implementation. |
 | `git-checkpoint-push` | Create clean git checkpoint commits and push completed work to a remote. |
 | `high-constraint-coding` | Keep coding tasks disciplined: small diffs, clear assumptions, and practical verification. |
 | `no-code-comments` | Keep generated and edited code free of comments by default. |
+| `vibecoding-domain-scout` | Research unfamiliar domains, then map workflows, constraints, MVP scope, risks, and build-ready briefs. |
 | `xposed-module-dev` | Build, review, and debug Android Xposed / LSPosed modules. |
 
 ## Layout
