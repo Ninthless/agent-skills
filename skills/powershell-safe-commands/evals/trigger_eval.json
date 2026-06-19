@@ -24,15 +24,15 @@
     "should_trigger": true
   },
   {
-    "query": "PowerShell 5 不支持 &&，而且外层 shell 会吃变量。帮我把这串命令改成安全可执行版本。",
-    "should_trigger": true
-  },
-  {
     "query": "在 Windows 上用 Codex 修改配置文件，里面有 $env:API_URL 和正则捕获，别让 shell 提前插值。",
     "should_trigger": true
   },
   {
     "query": "刚才你说改用 Python 做同一个最小编辑，把这个处理方式固化一下：遇到 $_、@{u}、$1 就不要硬怼 PowerShell。",
+    "should_trigger": true
+  },
+  {
+    "query": "用户把多行 Python 写进 rtk python -c @'...'@，里面又 p.write_text(r\"...$ErrorActionPreference...$_...\")，结果 SyntaxError: unterminated string literal。帮他改成安全写法。",
     "should_trigger": true
   },
   {
@@ -68,15 +68,15 @@
     "should_trigger": false
   },
   {
-    "query": "我想学 PowerShell 管道和对象模型，给我一个入门路线。",
-    "should_trigger": false
-  },
-  {
     "query": "在 macOS zsh 里运行 grep，正则里有 $，帮我解释为什么匹配不到。",
     "should_trigger": false
   },
   {
     "query": "帮我创建一个 skill，主题是 Windows 命令可靠执行，重点是 Codex 经常写错 PowerShell escaping。",
     "should_trigger": true
+  },
+  {
+    "query": "帮我把这段 shell 输出整理成故障排查摘要，不要执行任何命令。",
+    "should_trigger": false
   }
 ]

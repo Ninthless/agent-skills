@@ -18,6 +18,12 @@
       "prompt": "帮我批量编辑配置文件，替换内容里有 $env:API_URL、$1 和 $_，上次 one-liner 把变量吃掉了。",
       "expected_output": "Uses a small Python or script-file edit path and verifies the intended literals survived.",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "rtk python -c @'...'@ 里写 p.write_text(r\"$ErrorActionPreference=...$_...\") 报 SyntaxError: unterminated string literal，帮我改成不会被 PowerShell/Python 双重解析搞坏的写法。",
+      "expected_output": "Avoids multiline python -c and writes a temporary .py or .ps1 script file before executing it.",
+      "files": []
     }
   ]
 }

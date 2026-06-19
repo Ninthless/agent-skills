@@ -26,7 +26,7 @@ Use this skill to avoid the common Windows failure mode where an outer PowerShel
 Stop at the first safe option that works:
 
 1. Call the target executable directly, without wrapping it in `powershell -Command`.
-2. For file edits or structured transforms, write a tiny Python script and run it directly.
+2. For file edits or structured transforms, write a tiny Python script file and run it directly; avoid stuffing multiline scripts into `python -c`.
 3. For reusable JavaScript transforms, use Node directly.
 4. If PowerShell is actually needed, put the script in a temporary `.ps1` file and run that file.
 5. Only for tiny commands, use inline PowerShell with single quotes around the nested command string.
@@ -81,6 +81,10 @@ Safest for agents when the logic grows:
 ~~~powershell
 powershell -File .\work\filter-files.ps1
 ~~~
+
+### Python `-c` is not a multiline transport
+
+Do not combine PowerShell here-strings, Python `-c`, and embedded multiline raw strings. That creates three parsers before the file is even written. If the Python code is more than one expression, save it as `work/<name>.py` and run `python work/<name>.py`.
 
 ### File edits
 
