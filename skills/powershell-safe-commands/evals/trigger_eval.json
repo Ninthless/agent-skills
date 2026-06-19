@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Codex 在 Windows 上跑这个命令又把 $_ 吃掉了：Get-ChildItem | Where-Object { $_.Name -match \"log\" }，帮我重跑但别再用脆弱 one-liner。",
+    "should_trigger": true
+  },
+  {
+    "query": "启动命令里的 $ 被 PowerShell 外层吃了，换成安全写法重跑。这个任务还要遵守 rtk 前缀。",
+    "should_trigger": true
+  },
+  {
+    "query": "我需要你改 package.json 的 scripts，之前 powershell -Command 里 regex replacement 把 $1 展开没了，直接用最稳的方式编辑。",
+    "should_trigger": true
+  },
+  {
+    "query": "git rev-parse --abbrev-ref --symbolic-full-name @{u} 在 PowerShell 里变成 hashtable 报错了，帮我查 upstream。",
+    "should_trigger": true
+  },
+  {
+    "query": "这个 Windows Codex 环境里别再套 powershell -Command \"...$_...\"，帮我把筛选文件名的命令改成可运行的。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我写一个 one-liner 批量替换 ts 文件里的 import 路径，不过上次 PowerShell 引号和 $matches 全炸了。",
+    "should_trigger": true
+  },
+  {
+    "query": "PowerShell 5 不支持 &&，而且外层 shell 会吃变量。帮我把这串命令改成安全可执行版本。",
+    "should_trigger": true
+  },
+  {
+    "query": "在 Windows 上用 Codex 修改配置文件，里面有 $env:API_URL 和正则捕获，别让 shell 提前插值。",
+    "should_trigger": true
+  },
+  {
+    "query": "刚才你说改用 Python 做同一个最小编辑，把这个处理方式固化一下：遇到 $_、@{u}、$1 就不要硬怼 PowerShell。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我运行 npm test，如果失败就看日志。",
+    "should_trigger": false
+  },
+  {
+    "query": "解释一下 PowerShell 的 $_ 是什么，只要概念说明，不需要运行命令。",
+    "should_trigger": false
+  },
+  {
+    "query": "写一个 Bash 脚本把当前目录下的图片压缩，目标环境是 Ubuntu。",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我设计一个 GitHub Actions workflow 跑 pytest，项目是 Linux runner。",
+    "should_trigger": false
+  },
+  {
+    "query": "这个 Python 函数里 $ 符号是业务字段名，帮我重构解析逻辑。",
+    "should_trigger": false
+  },
+  {
+    "query": "请联网查 PowerShell 最新版本发布说明。",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我 review 这段 C# 代码的异常处理，不涉及命令行。",
+    "should_trigger": false
+  },
+  {
+    "query": "把 README 里的命令格式排版得好看一点，不需要执行。",
+    "should_trigger": false
+  },
+  {
+    "query": "我想学 PowerShell 管道和对象模型，给我一个入门路线。",
+    "should_trigger": false
+  },
+  {
+    "query": "在 macOS zsh 里运行 grep，正则里有 $，帮我解释为什么匹配不到。",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我创建一个 skill，主题是 Windows 命令可靠执行，重点是 Codex 经常写错 PowerShell escaping。",
+    "should_trigger": true
+  }
+]

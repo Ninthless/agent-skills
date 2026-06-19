@@ -11,6 +11,7 @@ Small agent skills I use to keep repeated workflows consistent.
 | `git-checkpoint-push` | Create clean git checkpoint commits and push completed work to a remote. |
 | `high-constraint-coding` | Keep coding tasks disciplined: small diffs, clear assumptions, and practical verification. |
 | `no-code-comments` | Keep generated and edited code free of comments by default. |
+| `powershell-safe-commands` | Avoid Windows PowerShell quoting, interpolation, and nested shell command failures. |
 | `vibecoding-domain-scout` | Research unfamiliar domains, then map workflows, constraints, MVP scope, risks, and build-ready briefs. |
 | `xposed-module-dev` | Build, review, and debug Android Xposed / LSPosed modules. |
 

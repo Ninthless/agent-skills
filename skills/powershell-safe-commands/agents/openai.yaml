@@ -1,0 +1,7 @@
+interface:
+  display_name: "PowerShell Safe Commands"
+  short_description: "Avoid Windows PowerShell quoting and wrapper-shell failures"
+  default_prompt: "Use $powershell-safe-commands before running or generating PowerShell commands that contain $, $_, @{u}, regex, nested quotes, or file edits."
+
+policy:
+  allow_implicit_invocation: true
