@@ -20,7 +20,7 @@
     "should_trigger": true
   },
   {
-    "query": "帮我写一个 one-liner 批量替换 ts 文件里的 import 路径，不过上次 PowerShell 引号和 $matches 全炸了。",
+    "query": "PowerShell 报 ExpectedValueExpression：Write-Output ('USERPROFILE=' + C:\\Users\\ninth)，看起来环境变量被替换成未加引号路径了，帮我改安全写法。",
     "should_trigger": true
   },
   {

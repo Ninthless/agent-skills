@@ -12,8 +12,8 @@ Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied,
 ## Triggers
 
 - The task will run shell commands in PowerShell, Windows Terminal, Codex CLI, or an agent shell whose outer shell may be PowerShell.
-- A command contains `$`, `$_`, `$env:`, `${...}`, `$(...)`, `@{...}`, backticks, regex replacements, script blocks, here-strings, nested quotes, or pipes into `ForEach-Object` / `Where-Object`.
-- The user reports that PowerShell ate a token, a one-liner failed, `$_` disappeared, `@{u}` became a hashtable, quoting broke, or an edit had to be redone in Python.
+- A command contains `$`, `$_`, `$env:`, `${...}`, `$(...)`, `@{...}`, unquoted Windows paths like `C:\Users\name`, backticks, regex replacements, script blocks, here-strings, nested quotes, or pipes into `ForEach-Object` / `Where-Object`.
+- The user reports that PowerShell ate a token, a one-liner failed, `$_` disappeared, `@{u}` became a hashtable, `C:\Users\...` caused `ExpectedValueExpression`, quoting broke, or an edit had to be redone in Python.
 - The agent is about to use `powershell -Command`, `pwsh -Command`, `cmd /c`, `bash -lc`, or another wrapper around a command string.
 - The task edits files from the shell, especially with inline PowerShell replacement commands.
 
@@ -37,7 +37,7 @@ Prefer option 1 or 2. They are boring and survive nested shells.
 ## Hard Rules
 
 - Do not retry a failed quoting-heavy PowerShell one-liner by adding more backslashes at random.
-- Do not use inline PowerShell for edits that include `$`, `$_`, regex captures, or nested quotes.
+- Do not use inline PowerShell for edits that include `$`, `$_`, regex captures, unquoted Windows paths in expressions, or nested quotes.
 - Do not wrap a command in `powershell -Command` when the current shell is already PowerShell unless there is a concrete reason.
 - Quote git revision syntax such as `@{u}` in PowerShell: `git rev-parse --abbrev-ref --symbolic-full-name '@{u}'`.
 - In Windows PowerShell 5, use `;` instead of `&&`.
@@ -85,6 +85,10 @@ powershell -File .\work\filter-files.ps1
 ### Python `-c` is not a multiline transport
 
 Do not combine PowerShell here-strings, Python `-c`, and embedded multiline raw strings. That creates three parsers before the file is even written. If the Python code is more than one expression, save it as `work/<name>.py` and run `python work/<name>.py`.
+
+### Environment paths are values, not syntax
+
+Do not generate PowerShell like `Write-Output ('USERPROFILE=' + C:\Users\name)`. `C:\Users\name` is not a string literal, so PowerShell parses it as broken syntax. Keep the lookup inside PowerShell: `Write-Output "USERPROFILE=$env:USERPROFILE"`, or use `[Environment]::GetFolderPath(...)` for known folders. If a path value is already known, quote it as a string.
 
 ### File edits
 

@@ -24,6 +24,12 @@
       "prompt": "rtk python -c @'...'@ 里写 p.write_text(r\"$ErrorActionPreference=...$_...\") 报 SyntaxError: unterminated string literal，帮我改成不会被 PowerShell/Python 双重解析搞坏的写法。",
       "expected_output": "Avoids multiline python -c and writes a temporary .py or .ps1 script file before executing it.",
       "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Write-Output ('USERPROFILE=' + C:\\Users\\ninth) 在 PowerShell 里报 ExpectedValueExpression，帮我改成不会把路径当语法解析的写法。",
+      "expected_output": "Explains that the path must be quoted or read through $env:USERPROFILE, then uses a safe command such as Write-Output \"USERPROFILE=$env:USERPROFILE\".",
+      "files": []
     }
   ]
 }
