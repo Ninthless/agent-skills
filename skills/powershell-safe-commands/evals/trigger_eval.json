@@ -78,5 +78,21 @@
   {
     "query": "帮我把这段 shell 输出整理成故障排查摘要，不要执行任何命令。",
     "should_trigger": false
+  },
+  {
+    "query": "PowerShell 里要对带方括号和单引号的绝对路径做精确文件操作，请用 LiteralPath 避免解析错误。",
+    "should_trigger": true
+  },
+  {
+    "query": "Replace version=v1 with version=v2 in a config, but the PowerShell regex replacement contains $1 and keeps expanding incorrectly.",
+    "should_trigger": true
+  },
+  {
+    "query": "Run git status in this Windows repository. It is a direct command with no PowerShell variables or quoting.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what a PowerShell here-string is with a short conceptual example, but do not execute or repair a command.",
+    "should_trigger": false
   }
 ]

@@ -78,5 +78,21 @@
   {
     "query": "Please output commented sample code for a tutorial blog post.",
     "should_trigger": false
+  },
+  {
+    "query": "Add a GitHub Actions YAML workflow for lint and tests. Keep generated files clean.",
+    "should_trigger": true
+  },
+  {
+    "query": "Show me the SQL migration that adds a unique index and rolls it back safely.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this repository and describe maintainability risks, but do not propose patches or show code.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a teaching example with detailed inline comments explaining every line.",
+    "should_trigger": false
   }
 ]

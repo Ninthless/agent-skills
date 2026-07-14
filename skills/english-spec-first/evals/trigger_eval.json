@@ -78,5 +78,21 @@
   {
     "query": "我只是想让你直接回答这个 React 报错，别整理需求：Cannot read properties of undefined reading map。",
     "should_trigger": false
+  },
+  {
+    "query": "I dictated a rough mix of Chinese and English requirements for an internal approval tool. Turn it into a concise English build spec before deciding the architecture.",
+    "should_trigger": true
+  },
+  {
+    "query": "这份需求有很多口语和遗漏，你先明确假设、边界和验收标准，再整理成英文 implementation brief。",
+    "should_trigger": true
+  },
+  {
+    "query": "The requirements in docs/spec.md are final and unambiguous. Implement them directly without rewriting the spec.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this single validation error message in clearer English; no planning or scope changes are needed.",
+    "should_trigger": false
   }
 ]

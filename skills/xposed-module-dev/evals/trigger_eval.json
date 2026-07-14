@@ -78,5 +78,21 @@
   {
     "query": "Explain the Android package name rules for manifest namespaces.",
     "should_trigger": false
+  },
+  {
+    "query": "My LSPosed module installs but does not appear in the module list; inspect module.prop, scope.list, and the APK metadata.",
+    "should_trigger": true
+  },
+  {
+    "query": "Migrate this legacy XposedBridge hook to modern libxposed and preserve the system_server scope.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a Magisk Zygisk native module that injects into an app, with no Xposed or LSPosed dependency.",
+    "should_trigger": false
+  },
+  {
+    "query": "Patch this APK's smali method directly and rebuild the package; do not use runtime hooks.",
+    "should_trigger": false
   }
 ]

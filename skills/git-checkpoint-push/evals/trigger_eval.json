@@ -78,5 +78,21 @@
   {
     "query": "Compare these two commit message styles and tell me which is clearer.",
     "should_trigger": false
+  },
+  {
+    "query": "把这次改动拆成三个独立 commit，每个验证通过后都推送到 origin。",
+    "should_trigger": true
+  },
+  {
+    "query": "Stage only the documentation changes and create a Conventional Commit, but do not push it yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Show git status and list commits that are not on origin yet. Do not stage, commit, or push anything.",
+    "should_trigger": false
+  },
+  {
+    "query": "The feature is complete, but leave the worktree uncommitted because I want to review it first.",
+    "should_trigger": false
   }
 ]

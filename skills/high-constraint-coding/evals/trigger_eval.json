@@ -78,5 +78,21 @@
   {
     "query": "Tell me what this stack trace means at a high level; don't change code yet.",
     "should_trigger": false
+  },
+  {
+    "query": "Fix the shared permission normalizer with the smallest possible diff and run regression tests for both API consumers.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this production data migration for rollback and data-loss risks, with exact file and line findings.",
+    "should_trigger": true
+  },
+  {
+    "query": "Brainstorm three possible architectures for a greenfield prototype; there is no repository or code to inspect yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "What npm command installs the latest TypeScript package? Just give me the command.",
+    "should_trigger": false
   }
 ]
