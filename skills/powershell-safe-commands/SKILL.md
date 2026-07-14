@@ -1,6 +1,6 @@
 ---
 name: powershell-safe-commands
-description: 'Use this skill whenever an agent will run or generate PowerShell commands on Windows, especially in Codex/CLI tasks involving $, $_, $env:, @{u}, $(...), nested powershell -Command, one-liners, file edits, regex replacements, quoting/escaping, shell wrapper bugs, or user complaints like $ 被吃了, PowerShell 外层吃了, one-liner 翻车, 改用 Python, Codex 把 $_ 吃掉. Trigger before writing commands, editing files from shell, or rerunning failed PowerShell commands; prefer direct executables, Python, or temporary scripts over fragile nested one-liners.'
+description: 'Author or repair PowerShell commands safely on Windows when shell parsing can change meaning. Use for $, $_, $env:, @{u}, $(...), nested powershell -Command, here-strings, regex replacements, quoted paths, file edits from shell, generated one-liners, or failures such as $ 被吃了, PowerShell 外层吃了, unterminated strings, and ExpectedValueExpression. Trigger before rerunning a command affected by interpolation, quoting, or wrapper layers, and prefer direct executables, Python, or temporary scripts when safer. Do not use for simple direct commands with no PowerShell-specific syntax, conceptual explanations only, or non-Windows shells.'
 ---
 
 # PowerShell Safe Commands

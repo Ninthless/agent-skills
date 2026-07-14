@@ -1,6 +1,6 @@
 ---
 name: freelance-order-triage
-description: "Judge freelance coding orders before quoting or implementation. Use for client briefs, commercial jobs, student requests, small feature requests, bugfixes, rescue work, vague scope, AI-generated project cleanup, take-or-decline decisions, clarifying questions, scope boundaries, quote posture, revisions, and acceptance checklists."
+description: 'Evaluate incoming freelance or client coding work before acceptance, quoting, or implementation. Use when deciding whether to take, clarify, reshape, stage, price, or decline a commercial job, student request, small change, bugfix order, rescue project, or AI-generated code cleanup. Trigger for client-facing questions, hidden-scope analysis, quote posture, revision limits, milestones, and acceptance criteria. Do not use for ordinary coding or debugging merely because it involves a bugfix or existing project unless the request is framed as an order, client engagement, or delivery decision.'
 ---
 
 # Freelance Order Triage

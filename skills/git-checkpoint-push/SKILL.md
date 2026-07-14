@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: 'Use this skill when the user wants to save work in git or GitHub: commit, stage, push, checkpoint, create a Conventional Commit message, prepare a PR handoff, or phrases like 提交代码, 推送, 保存进度. Trigger after a completed milestone when the user explicitly asks for commit/push/checkpoint handling; inspect status/remotes and avoid unrelated changes.'
+description: 'Safely stage, commit, checkpoint, or push completed work with targeted files and Conventional Commit messages. Use only when the user explicitly asks to save work in git or GitHub, 提交代码, 推送, 保存进度, create a commit message, push after milestones, or prepare a GitHub PR handoff. Inspect status, remotes, upstream divergence, verification, and unrelated changes before writing history. Do not trigger for read-only git status, diff, log, or review requests, and do not commit or push ordinary coding milestones unless the user has requested checkpoint handling.'
 ---
 
 # Git Checkpoint Push

@@ -1,6 +1,6 @@
 ---
 name: xposed-module-dev
-description: 'Use this skill for Android Xposed or LSPosed module work: creating, reviewing, migrating, or debugging modules; libxposed versus legacy XposedBridge decisions; hooks, scope.list, module.prop, xposed_init, LSPosed activation, logcat crashes, or 写 Xposed 模块. Trigger for app hooks, system_server hooks, module-not-showing issues, and legacy-to-modern migration questions.'
+description: 'Create, review, migrate, or debug Android Xposed and LSPosed modules. Use for libxposed versus legacy XposedBridge decisions, method or resource hooks, app and system_server hooks, scope.list, module.prop, xposed_init, LSPosed activation, module-not-showing issues, hook-related logcat crashes, and 写 Xposed 模块. Trigger when the task depends on Xposed-compatible runtime hooking or module packaging. Do not use for ordinary Android, Gradle, Magisk, root, APK, or Java/Kotlin work that does not involve Xposed or LSPosed.'
 ---
 
 # Xposed Module Development

@@ -1,6 +1,6 @@
 ---
 name: vibecoding-domain-scout
-description: "Research unfamiliar industries, workflows, rules, and platform constraints before vibe coding. Use for vague app/product/tool ideas, new domains, unknown business processes, current industry research, MVP scoping, hidden requirements, validation criteria, risk discovery, and build-ready briefs."
+description: 'Research unfamiliar, current, regulated, or platform-dependent domains before product scoping or coding. Use when an app, product, or tool idea depends on industry workflows, business rules, policies, standards, compliance, real-world operations, or expert terminology the user or agent may not know. Trigger for domain maps, hidden requirements, workflow discovery, MVP cuts, risk and validation criteria, and build-ready briefs grounded in current sources. Do not use for routine apps in familiar domains, pure UI implementation, generic market summaries, or clear technical tasks that do not require domain discovery.'
 ---
 
 # Vibecoding Domain Scout

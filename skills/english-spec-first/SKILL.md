@@ -1,6 +1,6 @@
 ---
 name: english-spec-first
-description: 'Use this skill when a request needs to be normalized into a concise English working spec before action: rough or mixed-language requirements, messy notes, ambiguous product/coding tasks, professionalizing a prompt, or phrases like think in English first, 先用英文, 需求整理. Trigger even if the user does not name the skill but asks to clarify scope before planning or execution.'
+description: 'Normalize rough, mixed-language, or materially ambiguous requirements into a concise English working spec before planning or implementation. Use when the user asks to think in English first, 先用英文, 整理需求, professionalize a prompt, clarify scope, or turn messy product or coding notes into an actionable brief. Do not use for simple translation or proofreading, summarizing an already-final specification, reviewing a plan without rewriting it, or directly implementing a request whose scope is already clear.'
 ---
 
 # English Spec First
