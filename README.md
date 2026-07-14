@@ -6,6 +6,7 @@ Small agent skills I use to keep repeated workflows consistent.
 
 | Skill | Purpose |
 | --- | --- |
+| `build-user-facing-ui` | Build polished, usable, context-appropriate user interfaces with complete states and rendered verification. |
 | `english-spec-first` | Normalize rough or multilingual requests into a compact English specification before execution. |
 | `freelance-order-triage` | Judge freelance coding orders, scope risks, quote posture, revisions, and acceptance before implementation. |
 | `git-checkpoint-push` | Create clean git checkpoint commits and push completed work to a remote. |

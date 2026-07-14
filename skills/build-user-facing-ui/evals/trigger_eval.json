@@ -1,0 +1,98 @@
+[
+  {
+    "query": "Build a polished SaaS dashboard for support agents who triage tickets all day.",
+    "should_trigger": true
+  },
+  {
+    "query": "把这个酒店官网重新设计一下，要有质感，但不要套模板。",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement this Figma settings screen in our existing React design system and verify it on mobile.",
+    "should_trigger": true
+  },
+  {
+    "query": "这个后台太像 AI 生成的了，帮我重新做得专业、清楚、适合高频操作。",
+    "should_trigger": true
+  },
+  {
+    "query": "Create the product page, variant selector, cart drawer, and checkout entry for this store.",
+    "should_trigger": true
+  },
+  {
+    "query": "Design a browser game HUD and pause menu that do not cover the playfield.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the responsive layout: long labels overlap the toolbar and the modal is unusable on phones.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this landing page for visual hierarchy, accessibility, and whether it actually fits the brand.",
+    "should_trigger": true
+  },
+  {
+    "query": "做一个移动端习惯追踪 App 的首页、记录流程、空状态和错误状态。",
+    "should_trigger": true
+  },
+  {
+    "query": "Restyle this desktop editor UI, but keep the canvas dominant and reuse the existing toolbar components.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make this form easier to use with keyboard navigation, clear validation, and a good loading state.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a distinctive portfolio that shows the actual work instead of generic feature cards.",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement a REST endpoint that returns customer orders as JSON.",
+    "should_trigger": false
+  },
+  {
+    "query": "Design the Postgres schema for products, variants, and inventory.",
+    "should_trigger": false
+  },
+  {
+    "query": "Generate a standalone logo for my coffee brand with a transparent background.",
+    "should_trigger": false
+  },
+  {
+    "query": "Remove the background from this product photo and improve its lighting.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain how CSS Grid differs from Flexbox. No code changes needed.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a CLI that converts CSV files to JSON.",
+    "should_trigger": false
+  },
+  {
+    "query": "Refactor the payment service to remove duplicated validation logic.",
+    "should_trigger": false
+  },
+  {
+    "query": "Add an index to speed up this database query.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize these user interviews into five product insights.",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate these button labels from English to Japanese without changing the interface.",
+    "should_trigger": false
+  },
+  {
+    "query": "Run the backend unit tests and explain the failing stack trace.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a database migration for adding a nullable avatar_url column.",
+    "should_trigger": false
+  }
+]
