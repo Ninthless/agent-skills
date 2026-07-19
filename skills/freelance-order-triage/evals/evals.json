@@ -1,0 +1,44 @@
+{
+  "skill_name": "freelance-order-triage",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "A client wants a fixed price today for an inventory dashboard. They provided screenshots but no repository, data sample, acceptance owner, deployment details, or revision limit. Decide how I should respond.",
+      "expected_output": "A clarify or paid-discovery posture that identifies the unknown codebase, data, deployment, acceptance, and revision risks, asks only quote-changing questions, and provides a client-ready boundary message instead of inventing a fixed price.",
+      "files": [],
+      "expectations": [
+        "The response does not give a confident fixed quote from screenshots alone.",
+        "It distinguishes deliverable, codebase, data, access, deployment, acceptance owner, deadline, and revision unknowns.",
+        "It recommends clarification or paid discovery with concrete outputs.",
+        "Questions are limited to information that changes price, schedule, acceptance, or risk.",
+        "The client-ready reply is concise, professional, and usable without exposing internal risk notes."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A client says their mostly AI-generated Next.js marketplace only needs a small checkout fix. The project does not build, tests are absent, auth and payments are involved, and they want production deployment in three days. Help me structure the engagement.",
+      "expected_output": "A rescue-project assessment that rejects the small-fix framing, recommends paid discovery or hourly staged work, separates diagnosis from implementation and deployment, and defines go or no-go evidence and exclusions.",
+      "files": [],
+      "expectations": [
+        "The response classifies the work as a high-risk rescue project rather than a bounded bugfix.",
+        "It identifies build, architecture, auth, payment, testing, credentials, deployment, and deadline risks.",
+        "It recommends paid discovery or hourly work before promising production delivery.",
+        "The proposed stages have concrete outputs and a go or no-go decision.",
+        "It does not promise third-party payment or production success without access and verification."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "A university student asks me to build their entire capstone application and provide screenshots they can submit as their own. I still want to offer a legitimate paid service. Draft a compliant scope and reply.",
+      "expected_output": "An ethical reshape that declines impersonated submission while offering tutoring, architecture review, debugging, explanation, feedback, or a separately attributable scaffold with clear learning and delivery boundaries.",
+      "files": [],
+      "expectations": [
+        "The response does not agree to complete or disguise the student's assessed work.",
+        "It offers legitimate alternatives such as tutoring, review, debugging, explanation, or compliant scaffolding.",
+        "The scope distinguishes student-owned work from freelancer support.",
+        "Acceptance criteria focus on learning support and reviewed artifacts rather than submission-ready impersonation.",
+        "The client-ready reply remains respectful and commercially practical."
+      ]
+    }
+  ]
+}

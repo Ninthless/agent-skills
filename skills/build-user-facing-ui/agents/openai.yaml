@@ -1,7 +1,7 @@
 interface:
   display_name: "Build User-Facing UI"
   short_description: "Build distinctive, usable, evidence-checked interfaces"
-  default_prompt: "Use $build-user-facing-ui to design, implement, and verify a context-appropriate interface with complete states, platform fit, accessibility, trust, performance evidence, and no fixed visual formula."
+  default_prompt: "Use $build-user-facing-ui to choose the right process mode, derive a product-specific art direction, implement complete platform-appropriate states, and visually verify a polished interface without an AI-default style."
 
 policy:
   allow_implicit_invocation: true

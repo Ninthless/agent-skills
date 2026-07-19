@@ -169,6 +169,45 @@
         "Sensitive balances and transactions are protected in notifications, previews, screenshots, and logs.",
         "The final claims name which platform runtimes and behaviors were actually exercised."
       ]
+    },
+    {
+      "id": 14,
+      "prompt": "Create a greenfield website and catalog for an independent type foundry. No visual reference is supplied. It should feel specific to type design and let visitors inspect families, weights, specimens, licensing, and language coverage without looking like a generic creative-agency template.",
+      "expected_output": "A concept-mode workflow that gathers and triangulates relevant references, derives a type-foundry-specific visual thesis, defines three signature decisions, and implements an inspection-led catalog with coherent typography, licensing content, states, and responsive verification.",
+      "files": [],
+      "expectations": [
+        "The response uses concept mode and gathers direct, adjacent-domain, and non-UI references before coding when tools allow.",
+        "The visual thesis connects the foundry's content and product objects to observable composition, typography, color, geometry, imagery, and motion choices.",
+        "At least three signature decisions are traceable to type specimens, language coverage, licensing, or font-family inspection.",
+        "The result avoids a generic agency hero, repeated feature cards, and a palette-only claim of distinctiveness.",
+        "Rendered review includes silhouette, type hierarchy, realistic specimens, long language names, licensing states, and mobile inspection."
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Build an airport self-service check-in kiosk for unfamiliar travelers. It must handle language selection, passport scanning, seat selection, baggage, payment, printing, timeouts, peripheral failure, accessibility, and clearing personal data for the next traveler.",
+      "expected_output": "A kiosk-specific shared-device flow with large direct controls, short task steps, visible progress, privacy-safe session handling, peripheral and timeout recovery, accessible language selection, and verification using the intended touch and hardware model.",
+      "files": [],
+      "expectations": [
+        "The response treats the product as a public shared device rather than a desktop web form.",
+        "It handles passport reader, payment, printer, network, timeout, and abandoned-session failures without exposing the previous traveler's data.",
+        "Language and accessibility choices are reachable before the main task and touch targets fit the kiosk context.",
+        "The interface avoids hover, hidden gestures, edge-bound controls, and dense text-heavy composition.",
+        "Verification covers the primary check-in task, one peripheral failure, session clearing, and the actual or simulated kiosk input model."
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Design a living-room fitness experience that runs on TV and uses a watch as a glanceable heart-rate and control surface. Preserve workout state across both devices and make remote, directional focus, viewing distance, haptics, interruptions, and connection loss work naturally.",
+      "expected_output": "A cross-surface TV and wearable experience that adapts hierarchy, input, viewing distance, focus, glanceability, haptics, and handoff per device while preserving one coherent workout state and recovery model.",
+      "files": [],
+      "expectations": [
+        "The TV interface uses large distance-readable content, visible directional focus, remote-friendly navigation, and limited text entry.",
+        "The watch shows one immediate state or short action rather than a reduced TV or phone layout.",
+        "Workout, pause, heart-rate, connection, interruption, and recovery state remain synchronized and understandable.",
+        "Sensitive health information and ambient visibility are considered.",
+        "Verification uses the target remote, directional focus, wearable scaling, haptics or equivalents, and a connection-loss path."
+      ]
     }
   ]
 }

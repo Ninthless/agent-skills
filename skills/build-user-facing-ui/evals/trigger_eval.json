@@ -68,6 +68,22 @@
     "should_trigger": true
   },
   {
+    "query": "Design and implement an accessible airport check-in kiosk with touch input, session timeout, passport scanning, printing, and privacy-safe reset.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a ten-foot TV interface with directional focus, remote navigation, safe areas, and readable playback controls.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a watch companion UI that adapts the phone workflow for glanceability, haptics, text scaling, and handoff.",
+    "should_trigger": true
+  },
+  {
+    "query": "Improve the labels, empty states, validation, and recovery copy inside this checkout flow and update the rendered UI.",
+    "should_trigger": true
+  },
+  {
     "query": "Implement a REST endpoint that returns customer orders as JSON.",
     "should_trigger": false
   },
@@ -129,6 +145,14 @@
   },
   {
     "query": "Optimize the server fleet's energy use without changing the user-facing product.",
+    "should_trigger": false
+  },
+  {
+    "query": "Design the physical metal enclosure and ventilation system for an airport kiosk; no screen interface is involved.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a voiceover script for a television advertisement without designing an interactive interface.",
     "should_trigger": false
   }
 ]

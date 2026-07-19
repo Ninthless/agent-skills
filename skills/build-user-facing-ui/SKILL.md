@@ -1,6 +1,6 @@
 ---
 name: build-user-facing-ui
-description: 'Build, redesign, implement, review, or fix the visual and interaction quality of user-facing interfaces. Use when a task changes how a website, landing page, dashboard, admin or CRM tool, commerce or subscription flow, content product, mobile or desktop app, game, editor, or form looks or behaves. Trigger for responsive UI, accessibility, design systems, platform adaptation, consent or cancellation UX, user-facing performance and layout stability, Figma or screenshot implementation, and requests for polished, distinctive, usable, or production-ready UI. Apply context fit, hierarchy, complete states, coherent visuals, trust, measurable evidence, real assets, and rendered verification rather than one fixed style. Do not use for backend/API/database/CLI work, standalone image or logo creation, copy-only translation, privacy-policy prose, backend performance, or headless frontend data logic with no UI impact.'
+description: 'Build, redesign, implement, review, or fix user-facing UI across websites, dashboards, commerce, mobile, desktop or Electron apps, games, editors, kiosks, TV, wearables, automotive, and spatial interfaces. Trigger when work changes visual hierarchy, layout, responsiveness, interaction states, accessibility, platform adaptation, design systems, consent or cancellation UX, user-facing performance, content design, or screenshot and Figma implementation, including requests for polished, distinctive, usable, or production-ready UI. Derive the visual language from users, tasks, content, brand, and platform; implement complete states, trust, real assets, and rendered verification without a fixed AI-default style. Do not use for backend, API, database, or CLI work, standalone image or logo creation, copy-only translation, privacy-policy prose, backend performance, or headless frontend logic with no UI impact.'
 ---
 
 # Build User-Facing UI
@@ -19,9 +19,12 @@ Treat visual quality as a product outcome. A technically valid page that is gene
 
 - Always read [quality-model.md](./references/quality-model.md) before making material design decisions.
 - Read [interface-archetypes.md](./references/interface-archetypes.md) when creating a new surface, redesigning a product, or deciding density and composition.
+- Read [visual-art-direction.md](./references/visual-art-direction.md) for greenfield work, redesigns, brand-sensitive surfaces, or any request where visual quality and distinctiveness are central.
+- Read [content-design.md](./references/content-design.md) when labels, instructions, forms, empty states, errors, localization, or information scent materially affect the interface.
 - Read [interaction-accessibility.md](./references/interaction-accessibility.md) for forms, navigation, controls, stateful workflows, responsive behavior, localization, or accessibility-sensitive work.
 - Read [accessibility-hard-gates.md](./references/accessibility-hard-gates.md) when exact accessibility requirements matter or before declaring a substantial interface complete.
 - Read [platform-guidelines.md](./references/platform-guidelines.md) for native mobile, desktop, Electron, Tauri, or platform-adapted application work.
+- Read [specialized-surfaces.md](./references/specialized-surfaces.md) for messaging, maps, kiosks, TV, wearables, automotive, spatial, voice, or shared-device interfaces.
 - Read [trust-privacy-ethics.md](./references/trust-privacy-ethics.md) for purchases, subscriptions, consent, personal data, permissions, cancellation, deletion, or high-impact decisions.
 - Read [rendered-verification.md](./references/rendered-verification.md) before verifying any non-trivial rendered interface.
 - Read [evidence-performance.md](./references/evidence-performance.md) when performance, usability, accessibility, or user-validation claims require measurable support.
@@ -44,6 +47,17 @@ Resolve tradeoffs in this order:
 Visual originality never justifies making the primary task harder. Familiarity never justifies producing an anonymous template.
 
 ## Core Workflow
+
+### 0. Choose The Process Mode
+
+Use the lightest mode that still covers the risk:
+
+- **Patch mode**: local visual or interaction correction inside an established design system. Preserve the current visual language and verify the affected states.
+- **Product mode**: a new screen, workflow, or feature inside an existing product. Reuse the system, define the screen archetype, and complete the end-to-end states.
+- **Concept mode**: a greenfield interface, major redesign, or brand-defining surface. Gather references, establish an art direction and screen plan, then implement the complete experience.
+- **High-risk overlay**: add exact accessibility, trust, privacy, performance, and evidence requirements for health, finance, public service, identity, purchases, subscriptions, or other consequential flows.
+
+Do not make patch work carry concept-mode ceremony. Do not let concept work skip visual exploration because the first plausible layout compiles.
 
 ### 1. Understand The Interface Before Designing
 
@@ -70,6 +84,8 @@ Before implementation, write a compact internal design contract covering:
 - Information hierarchy and navigation model
 - Visual direction in one sentence
 - Typography roles, palette roles, spacing rhythm, geometry, imagery, and motion tone
+- Three signature decisions that make the interface recognizably belong to this product
+- Model-default choices that would make this product look interchangeable and must be rejected
 - Existing components and tokens to reuse
 - Required responsive variants and interaction states
 - Verification viewports and workflows
@@ -79,7 +95,9 @@ Before implementation, write a compact internal design contract covering:
 
 Do not use vague direction such as "modern" or "clean" as the design contract. Translate it into observable choices that fit the product.
 
-For substantial greenfield interfaces or redesigns with no accepted visual reference, create a complete visual concept or screen plan before coding when suitable design or image tools are available. Cover the primary screen, downstream sections, and critical states rather than producing only a hero fragment. Skip this step for small changes and established design-system work where the visual contract is already clear.
+In concept mode without an accepted visual reference, gather a small reference set before coding when browsing or image tools are available. Include direct product references, an adjacent-domain reference, and a non-UI reference such as editorial, architecture, industrial design, wayfinding, or physical materials when useful. Extract principles for composition, type, color, imagery, density, and motion; do not copy a complete interface or let trend popularity replace product fit.
+
+Create a complete visual concept or screen plan before implementation. Cover the primary screen, downstream regions, and critical states rather than producing only a hero fragment.
 
 ### 3. Set The Acceptance And Evidence Contract
 
@@ -114,10 +132,12 @@ Create a coherent system from the product context.
 
 - Give the interface one clear visual point of view.
 - Make typography, color, spacing, shape, imagery, iconography, and motion support the same hierarchy.
+- Establish the large-scale silhouette and region proportions before polishing components.
 - Match density to work: operational tools favor scanning and repeated action; brand and editorial surfaces can use stronger composition and imagery; games must protect the playfield; native apps should respect platform conventions.
 - Prefer a few strong decisions over many decorative effects.
 - Use contrast, scale, alignment, grouping, and whitespace to communicate importance before adding ornament.
 - Make repeated elements consistent and differences intentional.
+- Make at least three visible choices traceable to the product's subject, content, workflow, brand, or platform rather than to a generic UI trend.
 - Record the layout, density, typography, palette, geometry, surfaces, imagery, motion, and platform strategy when comparing alternatives or unrelated products.
 
 Do not ban or require a color, radius, layout, or style category globally. A monochrome interface, bright palette, dense table, large hero, glass effect, or playful motion can all be correct when the context supports them.
@@ -136,6 +156,8 @@ Reject defaults that appear because they are statistically common rather than pr
 - Do not add explanatory UI copy that exists only to describe the interface or advertise features already visible on screen.
 
 Treat this list as a diagnostic, not a replacement style. User direction and a coherent product-specific concept override aesthetic defaults.
+
+If the same layout, typography, surfaces, and decoration could be reused for an unrelated product by changing only the copy and accent color, the art direction is not specific enough. Rework the composition or visual system, not only the palette.
 
 When producing several unrelated products, use `scripts/compare_visual_fingerprints.py` as an early convergence check, then inspect screenshots directly. Do not create arbitrary difference that weakens platform fit, accessibility, or task performance.
 
@@ -170,6 +192,7 @@ For non-trivial UI work:
 - Exercise the primary workflow and at least one failure or empty state.
 - Inspect text wrapping, content density, assets, focus, keyboard flow, pointer or touch behavior, loading, layout shift, and console errors.
 - Capture screenshots and judge the composition directly.
+- Inspect the screen at normal size, thumbnail scale, and in grayscale when hierarchy is uncertain. Check the overall silhouette before polishing isolated controls.
 - Compare against supplied references or the stated design contract and keep fixing visible mismatches.
 - Run automated accessibility, interaction, or visual checks when the repository supports them, then perform manual checks that automation cannot cover.
 - Measure performance against the declared budgets under named conditions; do not turn one lab run into a field-performance claim.
@@ -194,7 +217,7 @@ Support findings with screenshots, viewport details, interaction steps, DOM or a
 
 ## Scale The Process
 
-For a tiny change, apply the same principles locally without producing a full design exercise. For a new product surface or redesign, complete the full workflow and reference set.
+Use patch mode for tiny changes, product mode for normal feature work, and concept mode for greenfield or redesign work. Apply only the conditional references required by the surface and risk.
 
 Do not let process documentation become the deliverable. The final result should be a working, visually verified interface.
 

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Vibecoding Domain Scout"
+  short_description: "Research unfamiliar domains before building"
+  default_prompt: "Apply the vibecoding-domain-scout skill to research this unfamiliar or current domain from primary sources, map real users and workflows, expose rules and failure modes, cut a realistic MVP, and produce a sourced build-ready brief with explicit assumptions and validation needs."
+
+policy:
+  allow_implicit_invocation: true
