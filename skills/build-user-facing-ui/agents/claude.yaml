@@ -1,7 +1,7 @@
 interface:
   display_name: "Build User-Facing UI"
-  short_description: "Build polished, usable interfaces for any product"
-  default_prompt: "Apply the build-user-facing-ui skill: understand the real user and task, choose a product-appropriate interface archetype and visual language, implement the complete interaction with responsive and accessible states, and verify the rendered result in the target runtime. Do not impose a generic AI aesthetic or a fixed visual style."
+  short_description: "Build distinctive, usable, evidence-checked interfaces"
+  default_prompt: "Apply the build-user-facing-ui skill: understand the real user and task, choose a product-appropriate archetype and visual language, implement complete responsive and accessible states with platform fit and honest choices, then verify the rendered result, performance, and evidence in the target runtime without imposing a fixed style."
 
 policy:
   allow_implicit_invocation: true

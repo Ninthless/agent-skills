@@ -115,6 +115,8 @@ Avoid:
 - Persistent explanations and onboarding panels after they stop being useful
 - Ignoring system back behavior, safe areas, or input methods
 
+Use [platform-guidelines.md](./platform-guidelines.md) to adapt windowing, shortcuts, system services, scaling, and lifecycle behavior for each target platform.
+
 ## Creative Tools And Editors
 
 Examples: drawing, video, audio, slide, document, 3D, layout, and code editors.
@@ -134,6 +136,8 @@ Avoid:
 - Text-heavy controls where standard icons are well understood
 - Toolbars that resize as labels or state change
 - Hiding essential editing state
+
+For desktop editors, apply the target operating system's window, menu, shortcut, file, drag-and-drop, scaling, and unsaved-work conventions from [platform-guidelines.md](./platform-guidelines.md).
 
 ## Games And Immersive Experiences
 

@@ -48,6 +48,26 @@
     "should_trigger": true
   },
   {
+    "query": "Audit and fix this public form for WCAG 2.2 focus visibility, target size, zoom reflow, and accessible authentication.",
+    "should_trigger": true
+  },
+  {
+    "query": "Remove the dark patterns from this consent banner and make subscription cancellation clear and reversible.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the user-facing layout shift and slow interaction on this product page, then measure Core Web Vitals.",
+    "should_trigger": true
+  },
+  {
+    "query": "Adapt this Electron editor UI for Windows and macOS window controls, menus, shortcuts, scaling, and file workflows.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make the iOS and Android versions share a brand but follow native navigation, back, permissions, and dynamic text behavior.",
+    "should_trigger": true
+  },
+  {
     "query": "Implement a REST endpoint that returns customer orders as JSON.",
     "should_trigger": false
   },
@@ -93,6 +113,22 @@
   },
   {
     "query": "Create a database migration for adding a nullable avatar_url column.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite our privacy policy in plain English without changing any product interface.",
+    "should_trigger": false
+  },
+  {
+    "query": "Reduce p95 latency in the image-processing backend service.",
+    "should_trigger": false
+  },
+  {
+    "query": "Perform a penetration test of the authentication API and report security vulnerabilities.",
+    "should_trigger": false
+  },
+  {
+    "query": "Optimize the server fleet's energy use without changing the user-facing product.",
     "should_trigger": false
   }
 ]

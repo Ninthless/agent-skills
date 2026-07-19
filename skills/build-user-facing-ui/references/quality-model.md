@@ -87,6 +87,29 @@ Attractiveness matters because it affects perceived usability, trust, attention,
 - Assets are appropriately sized and loaded.
 - Animation and visual complexity do not undermine responsiveness, battery, or clarity.
 
+### 11. Trust And Agency
+
+- Material prices, terms, consequences, and data uses are visible before commitment.
+- Accept, reject, cancel, revoke, delete, and recover paths are honest and proportionate.
+- The interface does not fabricate urgency, scarcity, authority, social proof, or certainty.
+- Defaults protect users when decisions are costly, public, sensitive, or hard to reverse.
+- High-impact recommendations expose source, freshness, confidence, limitations, and escalation where applicable.
+
+### 12. Evidence Integrity
+
+- Completion claims are supported by rendered screenshots and actual task outcomes.
+- Accessibility combines automated checks with manual input, focus, zoom, and semantic verification.
+- Performance claims name the budget, measurement mode, conditions, and result.
+- User-validation claims name the participants, task, result, and limitations.
+- Unknown or untested conditions remain explicit instead of being converted into confidence.
+
+### 13. Distinctiveness Without Formula
+
+- The visual language follows the product's content, audience, platform, and brand.
+- Unrelated products differ in several structural or expressive dimensions when context supports it.
+- Products in one family preserve useful shared patterns.
+- Difference comes from a product-specific design thesis rather than arbitrary decoration or palette swapping.
+
 ## Hard Gates And Flexible Choices
 
 Hard gates are observable failures:
@@ -98,7 +121,10 @@ Hard gates are observable failures:
 - The layout fails at a target viewport
 - Required content or media is absent
 - The interface violates an established product contract
+- A material choice is deceptive, obscured, or needlessly difficult to reverse
+- A declared accessibility or performance budget fails
 - The result was never rendered or exercised
+- A completion or validation claim exceeds the recorded evidence
 
 Flexible choices depend on context:
 
@@ -121,6 +147,9 @@ Do not turn flexible choices into universal bans. Judge whether the choice suppo
 - [GOV.UK design principles](https://www.gov.uk/guidance/government-design-principles): start with user needs, do less, design with data, make complexity simple, and iterate.
 - [Apple design principles](https://developer.apple.com/design/human-interface-guidelines/design-principles): hierarchy, consistency, and platform-appropriate experience.
 - [Core Web Vitals](https://web.dev/articles/vitals): loading performance, responsiveness, and layout stability.
+- [FTC report on dark patterns](https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers): deceptive choice architecture, hidden terms, difficult cancellation, and manipulative privacy choices.
+- [Windows App Design](https://learn.microsoft.com/windows/apps/design/): platform-appropriate navigation, commands, windowing, input, and accessibility.
+- [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/): platform conventions, hierarchy, interaction, and adaptable experiences.
 - [The aesthetic-usability effect](https://www.nngroup.com/articles/aesthetic-usability-effect/): attractive products are often perceived as easier to use, without aesthetics replacing usability.
 - [AI-generated UI accessibility research](https://dl.acm.org/doi/10.1145/3715336.3735691): basic compliance can coexist with homogenized design patterns and weak specialization.
 

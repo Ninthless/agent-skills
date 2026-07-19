@@ -138,7 +138,7 @@ Minimum manual pass for a web interface:
 5. Check that color is not the only information channel.
 6. Test one error and one empty or unavailable state.
 
-Use current platform accessibility guidance when building native or specialized interfaces.
+Apply the exact conditional requirements in [accessibility-hard-gates.md](./accessibility-hard-gates.md) before declaring a substantial interface complete. Use current platform accessibility guidance when building native or specialized interfaces.
 
 ## Sources
 

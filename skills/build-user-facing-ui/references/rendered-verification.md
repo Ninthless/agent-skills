@@ -9,6 +9,7 @@ Source inspection, typechecking, and a successful build cannot prove visual qual
 - Visual Inspection Checklist
 - Interaction Proof
 - Accessibility And Performance
+- Evidence Artifact
 - Reference And Screenshot Fidelity
 - Failure Conditions
 - Sources
@@ -115,10 +116,23 @@ Use tests that resemble real user behavior. Prefer roles, names, and visible out
 ## Accessibility And Performance
 
 - Run the repository's accessibility tooling when available.
-- Complete a manual keyboard and focus pass.
+- Complete the manual keyboard, focus, target-size, non-color, and zoom or scaling gates in [accessibility-hard-gates.md](./accessibility-hard-gates.md).
 - Inspect console errors and failed network or asset requests.
-- Check loading performance, responsiveness, and layout stability when the public experience or task requires it.
+- For web surfaces, measure LCP, INP, and CLS against the declared budgets. Use 2500 milliseconds, 200 milliseconds, and 0.1 as defaults when the project has no stricter public-web budgets.
+- For native surfaces, declare and measure scenario-specific budgets rather than inventing universal thresholds.
 - Avoid adding new dependencies solely for one verification unless the task risk justifies them.
+
+## Evidence Artifact
+
+For substantial work, record the acceptance result in a UI evidence manifest or an equivalent project-native artifact.
+
+- Link screenshots to required viewports and meaningful states.
+- Record a passing primary workflow and one passing empty, error, unavailable, permission, or recovery path.
+- Record console and asset failures, accessibility gates, trust-sensitive conditions, performance measurements, and user-evidence limits.
+- Run `python scripts/validate_ui_evidence.py <manifest>` when using the bundled schema.
+- Use [evidence-performance.md](./evidence-performance.md) to keep performance and user-validation claims proportional to the collected evidence.
+
+The manifest supplements project tests and direct visual inspection. It does not replace them.
 
 ## Reference And Screenshot Fidelity
 
@@ -142,7 +156,10 @@ Do not call the UI complete when:
 - The primary interaction was not exercised
 - Placeholder content concealed a layout problem
 - Console, asset, overlap, focus, or accessibility failures remain unexplained
+- A declared performance budget fails without an accepted exception
+- Trust-sensitive actions hide terms or obstruct rejection, cancellation, revocation, or recovery
 - The result visibly contradicts the reference or design contract
+- Completion, accessibility, performance, or user-validation claims exceed the evidence collected
 
 If runtime verification is blocked, report the exact blocker and the remaining risk.
 

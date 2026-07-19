@@ -78,6 +78,97 @@
         "The response does not solve the problem by applying a fixed palette, radius, or fashionable layout.",
         "The improved result is compared through rendered screenshots and interaction checks."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Build a professional Electron desktop editor for arranging podcast clips. It needs a timeline, media library, inspector, keyboard shortcuts, file import, autosave, and Windows and macOS support.",
+      "expected_output": "A command-rich desktop creative tool that keeps the timeline and artifact dominant, adapts menus, shortcuts, window behavior, files, scaling, and lifecycle to Windows and macOS, and verifies the real Electron runtime.",
+      "files": [],
+      "expectations": [
+        "The response treats the product as desktop software rather than a responsive website inside a window.",
+        "The timeline, selection state, inspector, media, transport controls, and save or recovery state support repeated expert work.",
+        "Windows and macOS menu placement, shortcut modifiers, window chrome, file dialogs, drag and drop, and lifecycle behavior are addressed separately.",
+        "Verification covers resizing, display scaling, keyboard use, unsaved-work recovery, and at least one platform-specific behavior.",
+        "The visual language supports the artifact and workflow without imposing a generic SaaS card layout."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Implement a public-service application form for disability transport support. It must meet WCAG 2.2 AA and work under zoom, keyboard navigation, repeated information entry, authentication, and error recovery.",
+      "expected_output": "A plain, trustworthy public-service workflow with executable WCAG 2.2 gates, preserved user input, accessible authentication, clear progress and recovery, and evidence from manual and automated checks.",
+      "files": [],
+      "expectations": [
+        "The response applies measurable focus, target-size, dragging, redundant-entry, accessible-authentication, contrast, and reflow requirements conditionally.",
+        "The primary task is completable with keyboard and visible, unobscured focus.",
+        "Long content, 200 percent text, 320 CSS pixel reflow, errors, timeouts, and saved progress are considered.",
+        "Automated accessibility results are paired with manual task, focus, semantic, and zoom checks.",
+        "The response does not claim full accessibility from source inspection or an automated zero alone."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Redesign our mobile subscription checkout. Show a seven-day trial, annual renewal, optional analytics consent, account deletion, and cancellation without dark patterns or hidden terms.",
+      "expected_output": "A transparent subscription flow that exposes the trial and renewal terms before commitment, keeps optional consent unselected and reversible, provides clear cancellation and deletion, and verifies both acceptance and rejection paths.",
+      "files": [],
+      "expectations": [
+        "Trial end, renewal price, billing cadence, material terms, and the payment consequence are visible before signup.",
+        "Accept and reject choices have comparable clarity and optional consent is reversible.",
+        "Cancellation and deletion are discoverable, bounded, confirmed, and not intentionally harder than signup.",
+        "The response rejects fabricated urgency, preselection, confirm-shaming, hidden fees, and repeated retention screens.",
+        "Rendered evidence covers purchase or signup, rejection, cancellation, and completion states as applicable."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Fix this public product page: hero images load slowly, interactions lag, and the layout jumps. Set measurable performance acceptance criteria and prove the improvement.",
+      "expected_output": "A measured performance improvement using declared conditions and Core Web Vitals budgets, with optimized assets and stable layout plus honest separation between lab and field evidence.",
+      "files": [],
+      "expectations": [
+        "The response uses default budgets of LCP at most 2500 ms, INP at most 200 ms, and CLS at most 0.1 unless the project is stricter.",
+        "Measurement conditions, route, build, device, browser, and lab or field mode are stated.",
+        "The implementation addresses actual media loading, interaction work, and dimension stability rather than cosmetic scoring tricks.",
+        "The response does not claim field performance from Lighthouse or a single local run.",
+        "The interface is still visually and interactively verified after performance changes."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Create UI concepts for an emergency dispatch console, an independent ceramics store, and a children's music-learning app. They should all be excellent, but they must not look like one template with different colors.",
+      "expected_output": "Three product-specific design contracts and visual fingerprints whose archetype, layout, density, typography, palette, geometry, surfaces, imagery, and motion follow their different users and tasks.",
+      "files": [],
+      "expectations": [
+        "Each product starts from its own user, task, risk, content, platform, and archetype.",
+        "The concepts differ across several structural and expressive fingerprint fields, not only palette.",
+        "Shared accessibility and semantic interaction quality remain consistent where appropriate.",
+        "A fingerprint comparison is used as a convergence heuristic and screenshots are inspected directly.",
+        "Differences do not sacrifice emergency throughput, product inspection, or child-appropriate learning interaction."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Design a healthcare appointment and lab-results app. We have no access to representative patients yet, but stakeholders want us to say it is intuitive, accessible, and user validated.",
+      "expected_output": "A risk-aware healthcare interface and an evidence-bounded report that refuses unsupported validation claims, records the absence of representative users, and separates implementation, automated, manual, and future user evidence.",
+      "files": [],
+      "expectations": [
+        "The response does not claim intuitive, accessible, or user validated without matching evidence.",
+        "Results expose source, freshness, uncertainty, privacy, escalation, and correction where they affect decisions.",
+        "The design protects sensitive content and covers permissions, notifications, errors, and recovery.",
+        "The evidence artifact marks user research as not run and states concrete limitations.",
+        "A representative-user and accessibility validation plan is identified without pretending it has already happened."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Build the same personal finance experience for iOS and Android. Keep the brand coherent but make navigation, back behavior, permissions, typography scaling, and system integration feel native on each platform.",
+      "expected_output": "A shared product system with platform-specific iOS and Android behavior, complete financial states, accessible scaling, sensitive-data protection, and real runtime verification on both platforms.",
+      "files": [],
+      "expectations": [
+        "The response shares product semantics and tokens without forcing identical navigation or chrome.",
+        "iOS navigation and gestures and Android system or predictive back behavior are handled intentionally.",
+        "Permissions, notifications, safe areas, keyboard behavior, font scaling, and lifecycle recovery are verified per platform.",
+        "Sensitive balances and transactions are protected in notifications, previews, screenshots, and logs.",
+        "The final claims name which platform runtimes and behaviors were actually exercised."
+      ]
     }
   ]
 }
