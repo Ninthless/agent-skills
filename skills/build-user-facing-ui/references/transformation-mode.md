@@ -1,6 +1,6 @@
 # Transformation Mode
 
-Use Transformation mode when the user asks to refactor, rebuild, overhaul, replace, or completely redo an existing UI or frontend. The goal is to produce the interface that would be designed if the product were rebuilt today with this skill, while preserving valid product behavior unless the user also requests an experience redesign.
+Use Transformation mode when the user asks to refactor, rebuild, overhaul, replace, or completely redo an existing UI or frontend. Treat the work as greenfield reconstruction followed by migration. Extract valid product behavior from the old interface, but do not visually derive the destination from its layout, component tree, CSS, tokens, or design system unless the user explicitly asks to preserve something.
 
 ## Contents
 
@@ -9,8 +9,12 @@ Use Transformation mode when the user asks to refactor, rebuild, overhaul, repla
 - Instruction Priority
 - Transformation Contract
 - Inventory The Existing Surface
+- Greenfield Reconstruction Protocol
+- Visual Quarantine
+- Blank-Canvas Destination Design
 - Preserve Product Contracts
 - Replace The UI System
+- Layout Replacement Requirements
 - Rebuild The Complete Experience
 - Migration Strategy
 - Prove The Transformation Magnitude
@@ -66,6 +70,7 @@ Transformation mode overrides these normal defaults:
 - Reuse existing UI primitives before creating alternatives
 - Keep the current page shell, navigation presentation, or component composition
 - Make the smallest visual change
+- Mirror the local UI style or minimize the UI diff
 
 Transformation mode does not override:
 
@@ -76,14 +81,14 @@ Transformation mode does not override:
 - Existing functionality that the user expects to keep
 - Explicit user constraints, approved references, or brand requirements
 
-Treat the old UI as evidence about features, data, states, and pain points. Do not treat it as the design reference unless the user asks to preserve part of it.
+Treat the old UI as evidence about features, data, states, and pain points. Do not treat it as a visual or structural reference unless the user asks to preserve part of it. For a broad rebuild, replacing the complete visible system is the narrowest correct implementation even when the code diff is large.
 
 ## Transformation Contract
 
 Before implementation, state an internal transformation contract covering:
 
 - Redesign level and the surfaces included
-- Product capabilities and contracts to preserve
+- Neutral product specification: capabilities, content, data, routes, states, permissions, workflows, and platform contracts
 - UI foundations and legacy patterns to replace
 - New art direction and three signature decisions
 - New navigation, shell, layout, component, typography, color, geometry, imagery, and motion strategy
@@ -91,7 +96,7 @@ Before implementation, state an internal transformation contract covering:
 - Migration order and legacy cleanup boundary
 - Proof required to show that the result is structurally different and complete
 
-Do not begin by tweaking the existing CSS. Establish the replacement system and destination architecture first.
+Do not begin by tweaking the existing CSS, editing legacy components, or styling the existing DOM. Establish the replacement system and destination architecture first.
 
 ## Inventory The Existing Surface
 
@@ -107,7 +112,48 @@ Build a user-facing inventory before editing:
 - Desktop, mobile, tablet, native, window-size, theme, and input variants
 - Shared components, tokens, icons, assets, and layout primitives
 
-Mark each item as `replace`, `redesign`, `preserve behavior`, `remove`, or `out of scope`. Do not silently leave low-visibility screens on the old system.
+For each item, record its capability, inputs, outputs, states, dependencies, and preservation requirement. Mark its visible implementation as `replace`, `redesign`, `remove`, `explicitly preserve`, or `out of scope`. Do not silently leave low-visibility screens on the old system.
+
+Translate the inventory into product language before designing. Prefer statements such as "compare active accounts, filter by risk, and open account detail" over legacy layout language such as "three metric cards above a table inside the dashboard shell."
+
+## Greenfield Reconstruction Protocol
+
+Follow this sequence for Level 3 and Level 4 work:
+
+1. Audit the old product for capabilities, data, workflows, states, permissions, routes, shortcuts, and platform behavior.
+2. Convert that audit into a neutral product specification with no legacy layout or component prescriptions.
+3. Quarantine the old visual system and stop using it as a design reference.
+4. Gather product, domain, platform, adjacent-domain, and non-UI references as if the interface did not yet exist.
+5. Design a blank-canvas destination architecture, art direction, navigation model, screen map, page templates, and UI foundations.
+6. Implement the destination system independently, then map preserved product contracts into it.
+7. Verify every workflow and state, remove superseded UI, and report any intentionally retained legacy surface.
+
+Do not reverse steps 5 and 6. Starting from legacy components and gradually making them look different usually preserves the old composition and fails Transformation mode.
+
+## Visual Quarantine
+
+After the neutral product specification and migration inventory exist:
+
+- Stop consulting old screenshots for composition, hierarchy, spacing, typography, geometry, color, or component ideas.
+- Do not use legacy component names, DOM structure, CSS selectors, token names, or page-template names in the destination design plan.
+- Keep the legacy inventory only as a functional coverage checklist and later migration map.
+- Reopen legacy screens during migration only to verify a capability, state, contract, or cleanup target after the destination design is fixed.
+- Preserve brand assets, platform conventions, or specific UI elements only when the user, law, contract, or product identity requires them; document each exception.
+
+If the destination concept can only be explained by saying how the old layout will be restyled, quarantine has failed. Rewrite the concept from product goals and content.
+
+## Blank-Canvas Destination Design
+
+Design the replacement as if no user-facing components exist yet.
+
+- Base the concept on the product's users, jobs, content, risk, frequency, platform, brand, and external references.
+- Explore at least two materially different macro-structures for Level 3 or 4 work. Vary navigation model, information grouping, screen boundaries, workspace silhouette, density, and primary-region composition rather than only decoration.
+- Choose the structure that best supports the primary workflows and platform, then define the complete screen map and responsive variants.
+- Define new shell, navigation, page templates, region layout, hierarchy, density, typography, geometry, surfaces, imagery, iconography, motion, and state presentation before adapting old functionality.
+- Name destination components by product role or interaction responsibility, not by the legacy component they replace.
+- Do not begin implementation until the destination can be described without reference to the old UI's layout.
+
+The destination may share familiar platform patterns when they are correct. Familiarity is not a reason to preserve this product's old composition.
 
 ## Preserve Product Contracts
 
@@ -123,6 +169,8 @@ Unless the user requests Level 4, preserve:
 
 The implementation may reorganize frontend components and internal UI state when required by the new system. Avoid unrelated backend, database, or service refactors.
 
+Level 3 may regroup navigation, change page or panel boundaries, combine or separate presentations, and alter information grouping while preserving feature meaning, reachability, permissions, outcomes, and important deep links. Level 4 additionally authorizes changes to user jobs, workflow semantics, feature grouping logic, and product behavior.
+
 ## Replace The UI System
 
 Level 3 authorizes replacement of:
@@ -137,7 +185,27 @@ Level 3 authorizes replacement of:
 - Motion, transitions, feedback, and loading presentation
 - Responsive composition and desktop window layouts
 
-Reuse an old primitive only when it already supports the new art direction and interaction contract. Do not reuse it solely to reduce the diff.
+Reuse an old primitive only after the destination design is fixed and only when its rendered behavior already matches that design without pulling legacy composition or styling into the new system. Do not reuse it solely to reduce the diff.
+
+## Layout Replacement Requirements
+
+For Level 3, explicitly redesign all of these unless the user names an exception:
+
+- Global application shell or window workspace
+- Navigation composition and wayfinding
+- Page, screen, or workspace templates
+- Primary and secondary region layout
+- Information grouping and component composition
+- Hierarchy, density, and responsive restructuring
+
+The final result must materially diverge across several structural dimensions, not merely expressive ones. Normally change at least four of the six dimensions above, including either the shell or navigation and the primary-region layout. If a dimension remains similar because the product or platform strongly requires it, state the reason and make the other structural decisions independently.
+
+The following fail Level 3:
+
+- Keeping the same DOM or component tree and applying new CSS
+- Keeping the same sidebar, topbar, card grid, table, and page-template arrangement with new tokens
+- Adding a replacement shell while legacy pages remain structurally unchanged inside it
+- Changing component-library imports without changing information grouping or region composition
 
 ## Rebuild The Complete Experience
 
@@ -152,13 +220,13 @@ Do not create a new landing wrapper while leaving the actual application unchang
 
 ## Migration Strategy
 
-1. Define the destination art direction and foundations.
-2. Build the new shell, navigation, tokens, and shared primitives.
-3. Migrate one complete primary workflow and verify the system.
+1. Freeze the blank-canvas destination architecture and art direction.
+2. Build the new shell, navigation, page templates, tokens, and shared primitives without importing legacy visual structure.
+3. Map one complete primary workflow from the neutral product specification into the new system and verify it.
 4. Migrate remaining surfaces by workflow or ownership boundary.
 5. Exercise responsive, platform, empty, error, permission, and destructive states.
-6. Remove obsolete styles, components, and assets after no consumers remain.
-7. Verify the complete inventory and search for legacy visual islands.
+6. Remove obsolete styles, components, assets, wrappers, and tokens after no consumers remain.
+7. Verify the complete inventory and search for legacy visual or structural islands.
 
 Use an incremental implementation sequence when the repository requires it, but the delivered result must still satisfy the complete transformation scope.
 
@@ -169,13 +237,15 @@ The transformation should be visible without inspecting CSS values.
 Verify that:
 
 - The page silhouette and region proportions reflect the new design contract
-- Navigation and screen shells use the new system
+- Navigation, screen shells, page templates, region layouts, and information grouping use the new system
 - Typography, color, geometry, surfaces, imagery, and motion form a different coherent grammar
 - Shared components have been rebuilt or intentionally retained for documented reasons
 - At least three product-specific signature decisions appear across the interface
 - All requested surfaces use the new system
 - Thumbnail comparison shows structural change, not only palette change
 - Functional workflows and states still work
+
+Record a compact old-versus-new structural comparison for shell, navigation, screen boundaries, region composition, grouping, hierarchy, density, and responsive behavior. Similarity needs a product or platform reason, not implementation convenience.
 
 Do not impose arbitrary pixel-difference percentages. Judge whether the composition and system changed at a structural level.
 
@@ -184,6 +254,7 @@ Do not impose arbitrary pixel-difference percentages. Judge whether the composit
 These do not count as a full UI rebuild by themselves:
 
 - Changing only colors, fonts, radii, shadows, or spacing
+- Keeping the same DOM, component hierarchy, or page templates and replacing only CSS
 - Wrapping old pages in a new sidebar or marketing shell
 - Replacing one component library while preserving the same generic composition
 - Redesigning only the dashboard while leaving settings, forms, dialogs, and states unchanged
@@ -203,5 +274,6 @@ Transformation mode is complete only when:
 - No accidental legacy visual islands remain
 - Obsolete UI code created redundant by the transformation is removed
 - The rendered result is structurally and visually different
+- The shell, navigation or workspace composition, primary-region layout, and several other structural dimensions differ from the legacy interface unless explicitly preserved
 - Product capabilities and preserved contracts still work
 - Remaining out-of-scope or intentionally retained UI is reported explicitly

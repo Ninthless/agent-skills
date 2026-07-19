@@ -212,29 +212,48 @@
     {
       "id": 17,
       "prompt": "使用 build-user-facing-ui 完全重构这个现有 React 企业后台的所有 UI。不要做小修小补，我希望像从零按照这个 Skill 重新设计并实现一样。保留现有业务能力、接口和权限逻辑，但旧设计系统、页面布局和组件视觉都不需要保留。",
-      "expected_output": "A Level 3 Transformation-mode rebuild that inventories every user-facing surface, treats the old UI only as functional evidence, establishes a new product-specific art direction and design system, migrates the complete application, preserves business and API contracts, removes obsolete UI, and proves structural rather than cosmetic change.",
+      "expected_output": "A Level 3 greenfield reconstruction followed by migration: extract a neutral product specification, visually quarantine the old UI, explore blank-canvas destination structures, rebuild the complete interface and layout system, migrate preserved business contracts, remove obsolete UI, and prove structural rather than cosmetic change.",
       "files": [],
       "expectations": [
         "The response explicitly selects Transformation mode rather than Patch, Product, or ordinary Concept mode.",
         "It inventories shells, routes, screens, shared components, forms, dialogs, menus, settings, authentication, permissions, responsive variants, and empty, error, loading, success, and recovery states.",
-        "Existing tokens, component styling, layout shells, and navigation presentation are replaceable and are not preserved merely to minimize the diff.",
-        "The new system defines a distinct art direction, page silhouette, navigation, tokens, typography, color, geometry, surfaces, iconography, motion, and at least three product-specific signature decisions.",
+        "It converts legacy routes, workflows, data, actions, states, permissions, and platform behavior into a neutral product specification without carrying legacy layout prescriptions into the destination design.",
+        "It visually quarantines legacy screenshots, DOM structure, CSS, components, tokens, page templates, and navigation composition after capability extraction and does not use them as design references.",
+        "It explores at least two materially different macro-structures before choosing a blank-canvas destination architecture and art direction.",
+        "The new system independently defines shell, navigation, page templates, primary-region layout, information grouping, hierarchy, density, tokens, typography, color, geometry, surfaces, iconography, motion, and at least three product-specific signature decisions.",
         "Business rules, APIs, data contracts, permissions, and valid functionality remain intact unless the user separately requests an experience redesign.",
-        "The result migrates all in-scope surfaces, removes obsolete UI after migration, and cannot pass by changing only colors, fonts, radii, shadows, or a wrapper shell."
+        "The implementation begins with destination foundations rather than edits to old CSS or legacy components, then migrates all in-scope surfaces and removes obsolete UI.",
+        "The result materially changes at least four structural dimensions, including the shell or navigation and the primary-region layout; the same DOM with new CSS, a wrapper shell, or a component-library swap cannot pass."
       ]
     },
     {
       "id": 18,
       "prompt": "Completely refactor every user-facing screen in this Electron video editor. Rebuild it as if the desktop UI were designed from scratch with this skill. Keep project files, editing behavior, keyboard shortcuts, export logic, and autosave contracts, but replace the browser-like layout, old component library, window chrome treatment, panels, dialogs, menus, states, and visual system.",
-      "expected_output": "A desktop-specific Level 3 Transformation that preserves the editor's product contracts while replacing the complete UI system, window and command presentation, workspace composition, panels, dialogs, menus, states, and art direction across Windows and macOS.",
+      "expected_output": "A desktop-specific Level 3 greenfield reconstruction that extracts and preserves editor contracts, visually quarantines the browser-like legacy UI, designs a new workspace from a blank canvas, and migrates the complete window, command, panel, dialog, menu, state, and visual system across Windows and macOS.",
       "files": [],
       "expectations": [
-        "The response uses Transformation mode and treats the old Electron UI as a feature and state inventory rather than a design reference.",
+        "The response uses Transformation mode, extracts a neutral feature and state specification, then visually quarantines the old Electron UI rather than using it as a design reference.",
         "It preserves project, editing, shortcut, export, autosave, recovery, and file contracts while avoiding unrelated backend rewrites.",
-        "The canvas or timeline remains the primary artifact but the shell, panels, inspectors, transport, menus, dialogs, geometry, tokens, typography, and motion are rebuilt as one new system.",
+        "It explores materially different desktop workspace compositions before fixing the destination and does not begin from old DOM, CSS, panel components, or window layout.",
+        "The canvas or timeline remains the primary artifact, but the shell, navigation or command model, workspace templates, region layout, panel grouping, inspectors, transport, menus, dialogs, hierarchy, density, geometry, tokens, typography, and motion are rebuilt as one new system.",
         "Windows and macOS windowing, menu, shortcut, scaling, file, drag-and-drop, focus, and lifecycle conventions are adapted rather than cloned.",
         "The migration covers compact, maximized, selection, export, error, empty, unsaved, and recovery states without legacy visual islands.",
-        "Rendered comparison demonstrates a different workspace silhouette and component grammar, not a reskin of the old browser-page composition."
+        "Rendered comparison demonstrates a different workspace silhouette, region composition, information grouping, density, and component grammar; the same component tree with new styling cannot pass."
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "The existing analytics product uses a fixed left sidebar, a topbar, four metric cards, and a large table on nearly every route. Completely refactor all user-facing UI. Keep the features, APIs, permissions, routes, and data behavior, but design the replacement as if the old interface had never existed. I want a substantially different layout, not a reskin.",
+      "expected_output": "A Level 3 Transformation that extracts the dashboard's capabilities into a neutral product specification, quarantines the sidebar-topbar-card-table composition, selects a product-specific blank-canvas destination from multiple macro-layout options, migrates all routes and states, and proves that the legacy structural template was not preserved.",
+      "files": [],
+      "expectations": [
+        "The response explicitly selects Transformation mode and treats complete visual replacement as the correct scope rather than excessive change.",
+        "The legacy sidebar, topbar, metric cards, and table are recorded only as carriers of capabilities and data, then excluded from the destination design vocabulary.",
+        "The response explores at least two structurally different navigation, grouping, screen-boundary, density, and primary-region concepts before choosing one.",
+        "The chosen system independently redesigns the global shell, navigation composition, page templates, primary-region layout, information grouping, hierarchy, density, and responsive behavior.",
+        "At least four structural dimensions materially differ, including the shell or navigation and primary-region layout, unless an explicit product or platform constraint justifies an exception.",
+        "Keeping the same DOM or component tree with new CSS, wrapping the old pages in a new shell, swapping the component library, or preserving the sidebar-topbar-card-table template fails the evaluation.",
+        "Features, APIs, permissions, routes, deep links, data behavior, and reachable states remain valid after migration, and obsolete UI is removed."
       ]
     }
   ]

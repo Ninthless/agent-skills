@@ -1,6 +1,6 @@
 ---
 name: build-user-facing-ui
-description: 'Build, redesign, fully refactor, implement, review, or fix user-facing UI for web, dashboards, commerce, mobile, desktop or Electron apps, games, editors, kiosks, TV, wearables, automotive, and spatial interfaces. Use for visual hierarchy, layout, responsive behavior, interaction states, accessibility, platform adaptation, design systems, consent or cancellation UX, user-facing performance, content design, Figma or screenshot implementation, and requests for polished, distinctive, usable UI. Also trigger for 重构界面, 重构前端, 重构所有 UI, 彻底重做 UI, rebuild the entire UI, and full visual overhaul. When a UI refactor is broad, rebuild the complete interface from a new product-specific art direction while preserving valid functionality; do not default to cosmetic changes or a fixed AI style. Do not use for backend, API, database, or CLI work, standalone image or logo creation, copy-only translation, privacy-policy prose, backend performance, or headless logic with no UI impact.'
+description: 'Build, redesign, fully refactor, implement, review, or fix user-facing UI for web, dashboards, commerce, mobile, desktop/Electron, games, editors, kiosks, TV, wearables, and spatial interfaces. Use for hierarchy, layout, responsiveness, interactions, accessibility, platform adaptation, design systems, trust UX, performance, content design, Figma or screenshot implementation, and polished, distinctive, usable UI. Trigger for 重构界面, 重构前端, 重构所有 UI, 彻底重做 UI, rebuild the entire UI, and visual overhaul. For broad UI refactors, perform greenfield reconstruction followed by migration: extract product contracts, quarantine the old visual system, and design a new product-specific shell, navigation, layouts, tokens, components, and responsive system from a blank canvas. Do not visually derive the replacement from the old UI unless explicitly asked to preserve part of it. Exclude backend/API/database/CLI work, standalone image or logo creation, translation-only work, policy prose, backend performance, and headless logic.'
 ---
 
 # Build User-Facing UI
@@ -56,12 +56,12 @@ Use the lightest mode that still covers the risk:
 - **Patch mode**: local visual or interaction correction inside an established design system. Preserve the current visual language and verify the affected states.
 - **Product mode**: a new screen, workflow, or feature inside an existing product. Reuse the system, define the screen archetype, and complete the end-to-end states.
 - **Concept mode**: a greenfield interface, major redesign, or brand-defining surface. Gather references, establish an art direction and screen plan, then implement the complete experience.
-- **Transformation mode**: a broad refactor or rebuild of an existing UI. Treat the current product as functional input, inventory every user-facing surface, derive a new art direction and design system, and migrate the complete interface rather than polishing the old one.
+- **Transformation mode**: a broad refactor or rebuild of an existing UI. Extract a neutral product specification from the current product, quarantine its visual structure, design the destination as greenfield work, then migrate every user-facing surface to the replacement system.
 - **High-risk overlay**: add exact accessibility, trust, privacy, performance, and evidence requirements for health, finance, public service, identity, purchases, subscriptions, or other consequential flows.
 
 Do not make patch work carry concept-mode ceremony. Do not let concept work skip visual exploration because the first plausible layout compiles.
 
-When UI language such as `重构`, `重做`, `重新设计`, `rebuild`, `overhaul`, or `refactor the UI` is broad and the user does not limit it to one component or ask to preserve the current design system, choose Transformation mode. This explicit transformation request overrides the normal preserve-and-reuse defaults. A scoped component refactor or an instruction to keep the current system remains Patch or Product mode.
+When UI language such as `重构`, `重做`, `重新设计`, `rebuild`, `overhaul`, or `refactor the UI` is broad and the user does not limit it to one component or ask to preserve the current design system, choose Transformation mode. This explicit transformation request overrides normal preserve-and-reuse defaults. Treat a complete visual replacement as the narrowest correct implementation of that request even when it requires a large diff. A scoped component refactor or an instruction to keep the current system remains Patch or Product mode.
 
 ### 1. Understand The Interface Before Designing
 
@@ -72,7 +72,8 @@ Identify:
 - Primary user and the job they need to complete
 - Usage frequency, urgency, risk, and expected expertise
 - Product type and interface archetype
-- Existing framework, components, tokens, patterns, and assets
+- Existing framework, runtime, build tooling, routes, data flow, state contracts, assets, and platform integration
+- Existing components, tokens, layout patterns, navigation, and styling only when they are valid design inputs; in Transformation mode inspect them for capability extraction, migration, and removal rather than visual direction
 - Required content, real data shapes, actions, navigation, and states
 - Target devices, viewport classes, input methods, and localization needs
 - Brand references, screenshots, Figma files, or explicit visual direction
@@ -90,8 +91,8 @@ Before implementation, write a compact internal design contract covering:
 - Typography roles, palette roles, spacing rhythm, geometry, imagery, and motion tone
 - Three signature decisions that make the interface recognizably belong to this product
 - Model-default choices that would make this product look interchangeable and must be rejected
-- Existing components and tokens to reuse
-- In Transformation mode, existing UI foundations to replace, contracts to preserve, and obsolete UI to remove after migration
+- Existing components and tokens to reuse outside Transformation mode
+- In Transformation mode, the neutral product contracts extracted from the old UI, the complete visual foundations to replace, and obsolete UI to remove after migration
 - Required responsive variants and interaction states
 - Verification viewports and workflows
 - Trust-sensitive decisions, material terms, and reversibility
@@ -100,7 +101,7 @@ Before implementation, write a compact internal design contract covering:
 
 Do not use vague direction such as "modern" or "clean" as the design contract. Translate it into observable choices that fit the product.
 
-In concept mode without an accepted visual reference, gather a small reference set before coding when browsing or image tools are available. Include direct product references, an adjacent-domain reference, and a non-UI reference such as editorial, architecture, industrial design, wayfinding, or physical materials when useful. Extract principles for composition, type, color, imagery, density, and motion; do not copy a complete interface or let trend popularity replace product fit.
+In concept or Transformation mode without an accepted visual reference, gather a small reference set before coding when browsing or image tools are available. In Transformation mode, gather it only after extracting the neutral product specification and visually quarantining the old UI. Include direct product references, an adjacent-domain reference, and a non-UI reference such as editorial, architecture, industrial design, wayfinding, or physical materials when useful. Extract principles for composition, type, color, imagery, density, and motion; do not copy a complete interface or let trend popularity replace product fit.
 
 Create a complete visual concept or screen plan before implementation. Cover the primary screen, downstream regions, and critical states rather than producing only a hero fragment.
 
@@ -166,10 +167,13 @@ If the same layout, typography, surfaces, and decoration could be reused for an 
 
 When producing several unrelated products, use `scripts/compare_visual_fingerprints.py` as an early convergence check, then inspect screenshots directly. Do not create arbitrary difference that weakens platform fit, accessibility, or task performance.
 
-### 7. Implement Through The Existing System
+### 7. Implement Within Product Contracts
 
-- Follow the repository's framework, component, routing, styling, state, icon, and asset conventions.
-- Reuse existing primitives and design tokens before creating alternatives outside Transformation mode. In Transformation mode, establish new foundations when the old system would constrain the requested result.
+- Preserve the repository's framework, runtime, build tooling, routing and deep-link contracts, data and state behavior, and platform integrations unless the requested design cannot be implemented without a scoped change.
+- Outside Transformation mode, follow established component, styling, layout, icon, and asset conventions and reuse existing primitives and design tokens before creating alternatives.
+- In Transformation mode, do not preserve component, styling, layout, navigation-composition, or icon conventions merely because they exist. Build replacement foundations that serve the destination design.
+- In Transformation mode, do not begin by editing old CSS, restyling the existing DOM, or wrapping old screens in a new shell. Build the destination shell and layout primitives independently, then migrate product contracts into them.
+- Level 3 may regroup navigation, change screen boundaries, and reorganize information presentation when all valid capabilities remain reachable and behaviorally intact. Reserve changes to user jobs, business logic, feature meaning, or task-flow semantics for Level 4.
 - Keep component ownership clear. Repeated structures should share a component or style primitive; meaningful differences should be explicit variants.
 - Use semantic controls that match their behavior: buttons for commands, links for navigation, checkboxes or toggles for binary settings, segmented controls or tabs for modes, and inputs appropriate to the data.
 - Prefer familiar icons for common actions. Label unfamiliar icons with accessible names and visible tooltips where appropriate.
