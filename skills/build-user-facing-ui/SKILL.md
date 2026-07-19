@@ -1,6 +1,6 @@
 ---
 name: build-user-facing-ui
-description: 'Build, redesign, implement, review, or fix user-facing UI across websites, dashboards, commerce, mobile, desktop or Electron apps, games, editors, kiosks, TV, wearables, automotive, and spatial interfaces. Trigger when work changes visual hierarchy, layout, responsiveness, interaction states, accessibility, platform adaptation, design systems, consent or cancellation UX, user-facing performance, content design, or screenshot and Figma implementation, including requests for polished, distinctive, usable, or production-ready UI. Derive the visual language from users, tasks, content, brand, and platform; implement complete states, trust, real assets, and rendered verification without a fixed AI-default style. Do not use for backend, API, database, or CLI work, standalone image or logo creation, copy-only translation, privacy-policy prose, backend performance, or headless frontend logic with no UI impact.'
+description: 'Build, redesign, fully refactor, implement, review, or fix user-facing UI for web, dashboards, commerce, mobile, desktop or Electron apps, games, editors, kiosks, TV, wearables, automotive, and spatial interfaces. Use for visual hierarchy, layout, responsive behavior, interaction states, accessibility, platform adaptation, design systems, consent or cancellation UX, user-facing performance, content design, Figma or screenshot implementation, and requests for polished, distinctive, usable UI. Also trigger for 重构界面, 重构前端, 重构所有 UI, 彻底重做 UI, rebuild the entire UI, and full visual overhaul. When a UI refactor is broad, rebuild the complete interface from a new product-specific art direction while preserving valid functionality; do not default to cosmetic changes or a fixed AI style. Do not use for backend, API, database, or CLI work, standalone image or logo creation, copy-only translation, privacy-policy prose, backend performance, or headless logic with no UI impact.'
 ---
 
 # Build User-Facing UI
@@ -20,6 +20,7 @@ Treat visual quality as a product outcome. A technically valid page that is gene
 - Always read [quality-model.md](./references/quality-model.md) before making material design decisions.
 - Read [interface-archetypes.md](./references/interface-archetypes.md) when creating a new surface, redesigning a product, or deciding density and composition.
 - Read [visual-art-direction.md](./references/visual-art-direction.md) for greenfield work, redesigns, brand-sensitive surfaces, or any request where visual quality and distinctiveness are central.
+- Read [transformation-mode.md](./references/transformation-mode.md) whenever the user asks to refactor, rebuild, overhaul, replace, or completely redo an existing UI or frontend.
 - Read [content-design.md](./references/content-design.md) when labels, instructions, forms, empty states, errors, localization, or information scent materially affect the interface.
 - Read [interaction-accessibility.md](./references/interaction-accessibility.md) for forms, navigation, controls, stateful workflows, responsive behavior, localization, or accessibility-sensitive work.
 - Read [accessibility-hard-gates.md](./references/accessibility-hard-gates.md) when exact accessibility requirements matter or before declaring a substantial interface complete.
@@ -55,9 +56,12 @@ Use the lightest mode that still covers the risk:
 - **Patch mode**: local visual or interaction correction inside an established design system. Preserve the current visual language and verify the affected states.
 - **Product mode**: a new screen, workflow, or feature inside an existing product. Reuse the system, define the screen archetype, and complete the end-to-end states.
 - **Concept mode**: a greenfield interface, major redesign, or brand-defining surface. Gather references, establish an art direction and screen plan, then implement the complete experience.
+- **Transformation mode**: a broad refactor or rebuild of an existing UI. Treat the current product as functional input, inventory every user-facing surface, derive a new art direction and design system, and migrate the complete interface rather than polishing the old one.
 - **High-risk overlay**: add exact accessibility, trust, privacy, performance, and evidence requirements for health, finance, public service, identity, purchases, subscriptions, or other consequential flows.
 
 Do not make patch work carry concept-mode ceremony. Do not let concept work skip visual exploration because the first plausible layout compiles.
+
+When UI language such as `重构`, `重做`, `重新设计`, `rebuild`, `overhaul`, or `refactor the UI` is broad and the user does not limit it to one component or ask to preserve the current design system, choose Transformation mode. This explicit transformation request overrides the normal preserve-and-reuse defaults. A scoped component refactor or an instruction to keep the current system remains Patch or Product mode.
 
 ### 1. Understand The Interface Before Designing
 
@@ -73,7 +77,7 @@ Identify:
 - Target devices, viewport classes, input methods, and localization needs
 - Brand references, screenshots, Figma files, or explicit visual direction
 
-Preserve an established design system unless the user explicitly requests a redesign or the existing system is the problem. If the business domain or workflow is unclear enough to change the product shape, use a domain-research skill before inventing UI.
+Preserve an established design system unless the user explicitly requests a redesign, refactor, rebuild, or the existing system is the problem. In Transformation mode, preserve product capabilities and valid contracts, not the old UI system. If the business domain or workflow is unclear enough to change the product shape, use a domain-research skill before inventing UI.
 
 ### 2. State The Design Contract
 
@@ -87,6 +91,7 @@ Before implementation, write a compact internal design contract covering:
 - Three signature decisions that make the interface recognizably belong to this product
 - Model-default choices that would make this product look interchangeable and must be rejected
 - Existing components and tokens to reuse
+- In Transformation mode, existing UI foundations to replace, contracts to preserve, and obsolete UI to remove after migration
 - Required responsive variants and interaction states
 - Verification viewports and workflows
 - Trust-sensitive decisions, material terms, and reversibility
@@ -164,13 +169,14 @@ When producing several unrelated products, use `scripts/compare_visual_fingerpri
 ### 7. Implement Through The Existing System
 
 - Follow the repository's framework, component, routing, styling, state, icon, and asset conventions.
-- Reuse existing primitives and design tokens before creating alternatives.
+- Reuse existing primitives and design tokens before creating alternatives outside Transformation mode. In Transformation mode, establish new foundations when the old system would constrain the requested result.
 - Keep component ownership clear. Repeated structures should share a component or style primitive; meaningful differences should be explicit variants.
 - Use semantic controls that match their behavior: buttons for commands, links for navigation, checkboxes or toggles for binary settings, segmented controls or tabs for modes, and inputs appropriate to the data.
 - Prefer familiar icons for common actions. Label unfamiliar icons with accessible names and visible tooltips where appropriate.
 - Keep data, state transitions, validation, and user feedback explicit.
 - Match windowing, menus, navigation, shortcuts, permissions, safe areas, scaling, and system services to each target platform. A cross-platform app may share product identity without forcing identical chrome and behavior.
 - Avoid one giant screen component, copied markup, magic visual values, and layout fixes that only work at one viewport.
+- In Transformation mode, remove superseded UI components, styles, and tokens after their consumers have migrated. Do not keep a half-old, half-new interface for convenience.
 
 ### 8. Protect Content And Layout
 
@@ -217,7 +223,7 @@ Support findings with screenshots, viewport details, interaction steps, DOM or a
 
 ## Scale The Process
 
-Use patch mode for tiny changes, product mode for normal feature work, and concept mode for greenfield or redesign work. Apply only the conditional references required by the surface and risk.
+Use patch mode for tiny changes, product mode for normal feature work, concept mode for greenfield work, and Transformation mode for broad refactors of an existing interface. Apply only the conditional references required by the surface and risk.
 
 Do not let process documentation become the deliverable. The final result should be a working, visually verified interface.
 
@@ -230,6 +236,7 @@ A user-facing interface is complete only when:
 - Required states and recovery paths exist
 - The design fits the product, audience, platform, and content
 - Repeated elements form a coherent system
+- In Transformation mode, the requested surface inventory has migrated to the new system without accidental legacy islands
 - Realistic content remains readable across target sizes
 - Keyboard, pointer, touch, and accessibility needs are handled as applicable
 - Material choices are truthful, reversible, and proportionate to risk

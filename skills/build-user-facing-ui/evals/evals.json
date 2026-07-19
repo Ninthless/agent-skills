@@ -208,6 +208,34 @@
         "Sensitive health information and ambient visibility are considered.",
         "Verification uses the target remote, directional focus, wearable scaling, haptics or equivalents, and a connection-loss path."
       ]
+    },
+    {
+      "id": 17,
+      "prompt": "使用 build-user-facing-ui 完全重构这个现有 React 企业后台的所有 UI。不要做小修小补，我希望像从零按照这个 Skill 重新设计并实现一样。保留现有业务能力、接口和权限逻辑，但旧设计系统、页面布局和组件视觉都不需要保留。",
+      "expected_output": "A Level 3 Transformation-mode rebuild that inventories every user-facing surface, treats the old UI only as functional evidence, establishes a new product-specific art direction and design system, migrates the complete application, preserves business and API contracts, removes obsolete UI, and proves structural rather than cosmetic change.",
+      "files": [],
+      "expectations": [
+        "The response explicitly selects Transformation mode rather than Patch, Product, or ordinary Concept mode.",
+        "It inventories shells, routes, screens, shared components, forms, dialogs, menus, settings, authentication, permissions, responsive variants, and empty, error, loading, success, and recovery states.",
+        "Existing tokens, component styling, layout shells, and navigation presentation are replaceable and are not preserved merely to minimize the diff.",
+        "The new system defines a distinct art direction, page silhouette, navigation, tokens, typography, color, geometry, surfaces, iconography, motion, and at least three product-specific signature decisions.",
+        "Business rules, APIs, data contracts, permissions, and valid functionality remain intact unless the user separately requests an experience redesign.",
+        "The result migrates all in-scope surfaces, removes obsolete UI after migration, and cannot pass by changing only colors, fonts, radii, shadows, or a wrapper shell."
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Completely refactor every user-facing screen in this Electron video editor. Rebuild it as if the desktop UI were designed from scratch with this skill. Keep project files, editing behavior, keyboard shortcuts, export logic, and autosave contracts, but replace the browser-like layout, old component library, window chrome treatment, panels, dialogs, menus, states, and visual system.",
+      "expected_output": "A desktop-specific Level 3 Transformation that preserves the editor's product contracts while replacing the complete UI system, window and command presentation, workspace composition, panels, dialogs, menus, states, and art direction across Windows and macOS.",
+      "files": [],
+      "expectations": [
+        "The response uses Transformation mode and treats the old Electron UI as a feature and state inventory rather than a design reference.",
+        "It preserves project, editing, shortcut, export, autosave, recovery, and file contracts while avoiding unrelated backend rewrites.",
+        "The canvas or timeline remains the primary artifact but the shell, panels, inspectors, transport, menus, dialogs, geometry, tokens, typography, and motion are rebuilt as one new system.",
+        "Windows and macOS windowing, menu, shortcut, scaling, file, drag-and-drop, focus, and lifecycle conventions are adapted rather than cloned.",
+        "The migration covers compact, maximized, selection, export, error, empty, unsaved, and recovery states without legacy visual islands.",
+        "Rendered comparison demonstrates a different workspace silhouette and component grammar, not a reskin of the old browser-page composition."
+      ]
     }
   ]
 }

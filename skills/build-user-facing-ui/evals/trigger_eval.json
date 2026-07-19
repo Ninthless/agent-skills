@@ -84,6 +84,22 @@
     "should_trigger": true
   },
   {
+    "query": "使用这个 skill 完全重构这个项目的所有 UI，像从零重新设计一样，不要只换颜色和圆角。",
+    "should_trigger": true
+  },
+  {
+    "query": "重构这个前端，保留业务逻辑和接口，但重新做所有页面、组件、导航和视觉系统。",
+    "should_trigger": true
+  },
+  {
+    "query": "Give this existing application a full visual overhaul and rebuild every user-facing screen from a new design system.",
+    "should_trigger": true
+  },
+  {
+    "query": "Completely refactor the Electron UI across every window, menu, panel, dialog, state, and platform variant.",
+    "should_trigger": true
+  },
+  {
     "query": "Implement a REST endpoint that returns customer orders as JSON.",
     "should_trigger": false
   },
@@ -153,6 +169,10 @@
   },
   {
     "query": "Write a voiceover script for a television advertisement without designing an interactive interface.",
+    "should_trigger": false
+  },
+  {
+    "query": "Refactor the internal React component architecture to remove duplicated hooks without changing any rendered UI or interaction.",
     "should_trigger": false
   }
 ]

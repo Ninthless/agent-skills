@@ -1,7 +1,7 @@
 interface:
   display_name: "Build User-Facing UI"
   short_description: "Build distinctive, usable, evidence-checked interfaces"
-  default_prompt: "Use $build-user-facing-ui to choose the right process mode, derive a product-specific art direction, implement complete platform-appropriate states, and visually verify a polished interface without an AI-default style."
+  default_prompt: "Use $build-user-facing-ui to choose the right process mode; when I ask to refactor the UI broadly, use Transformation mode to rebuild the complete interface from a new product-specific art direction while preserving valid functionality and verifying every migrated surface."
 
 policy:
   allow_implicit_invocation: true
