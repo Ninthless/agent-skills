@@ -33,6 +33,71 @@
         "The implementation avoids broad rewrites and one-off over-abstractions.",
         "The response includes practical verification evidence or an explicit test gap."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add notification preferences to this existing Go API and React app. Users only need email and push toggles and a save action; digest scheduling and administrator controls are not requested. Make the implementation feel native to this repository, not like a generated full-stack template, and verify it properly.",
+      "expected_output": "A project-native, end-to-end feature slice that derives conventions from analogous maintained modules, maps the input-to-storage-to-UI contract, implements only the requested preference behavior, and verifies the complete save and recovery paths.",
+      "files": [],
+      "expectations": [
+        "The response inspects analogous API, persistence, frontend state, and test patterns before choosing an implementation shape.",
+        "Input validation, defaults, stored values, returned values, UI state, and error recovery use one coherent contract.",
+        "The implementation does not add digest cadence, administrator states, generic preference engines, or unused extension hooks for imagined future requirements.",
+        "All new files use one evidence-backed naming, dependency wiring, error handling, and testing convention without cleaning unrelated legacy inconsistencies.",
+        "Verification covers saving each valid combination, a failure path, and persistence or reload behavior at the strongest practical level."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Fix a Python job configuration bug carefully. The HTTP request schema requires a non-empty region, but the worker service also defaults a missing region to us-east-1. The service may have non-HTTP callers. Decide what is actually correct from the repository instead of blindly deleting or retaining defenses, keep the change small, and add tests.",
+      "expected_output": "An evidence-led invariant decision that traces every caller, chooses one authoritative validation or defaulting boundary, preserves a fallback only if a real alternate caller needs it, and verifies both the primary and alternate call paths.",
+      "files": [],
+      "expectations": [
+        "The response traces HTTP and non-HTTP callers before deciding whether the service fallback is reachable and intentional.",
+        "It does not assume that duplicated-looking defense is automatically redundant or automatically necessary.",
+        "The final contract has one explainable owner for requiredness and defaulting, with no contradictory semantics across layers.",
+        "The patch remains limited to the invariant and affected tests rather than refactoring the worker architecture.",
+        "Verification demonstrates the required request behavior and any legitimate alternate caller behavior."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Add archive support to an existing order service and database. Before coding, determine whether this needs a boolean, a status enum, an index, restore behavior, API changes, events, or UI state. Implement only the behavior the requirements and real consumers justify, keep migrations compatible, and avoid half-finished design.",
+      "expected_output": "A bounded archive feature whose state model, storage, indexes, transitions, API surface, consumers, migration, and tests are derived from actual requirements and query behavior rather than generated CRUD symmetry.",
+      "files": [],
+      "expectations": [
+        "The response builds a lifecycle and consumer map before choosing fields, enums, indexes, events, or endpoints.",
+        "Every introduced state and index has a demonstrated write path, read path, transition, query need, or explicit domain requirement.",
+        "Unrequested restore, administrator, event, or UI behavior is not invented merely to make the model appear complete.",
+        "The migration and public contracts remain compatible or the compatibility impact is stated explicitly.",
+        "Tests cover the supported archive behavior and relevant query semantics without claiming unsupported adjacent functionality."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Review this new feature for quality and tell me whether it was written by AI. It spans an API handler, input model, domain service, database migration, frontend screen, and tests. Search for contradictions, unfinished design, and convention drift, but be precise about what the evidence can and cannot prove.",
+      "expected_output": "A findings-first cross-layer review that reports correctness and maintainability problems with concrete evidence while refusing to infer human or AI authorship from style, commit size, or absence of public code matches.",
+      "files": [],
+      "expectations": [
+        "Findings trace input rules, defaults, domain decisions, persistence state, external behavior, tests, and documentation as one contract.",
+        "The review identifies unreachable defense, dormant artifacts, incomplete lifecycles, mixed conventions, or unsupported claims only when the code provides evidence.",
+        "Code-search matches are treated as possible duplication evidence, while no match is explicitly not treated as proof of original or human authorship.",
+        "Commit size or one-shot history may be noted as process context but is not presented as proof that AI was used.",
+        "The response separates actionable engineering findings from provenance uncertainty and does not promise an AI-free verdict."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Implement a user feedback submission feature in an existing layered application. Requirements cover submitting a category and message and showing the user's recent entries; no moderation workflow is specified. Existing modules disagree on dependency wiring and pagination style. Produce a small, complete, project-native slice with tests and no speculative scaffolding.",
+      "expected_output": "A coherent feedback slice that selects conventions from analogous maintained features, aligns validation and defaulting across layers, introduces only states and storage required by the requested workflow, and verifies submission, retrieval, ownership, and failure behavior.",
+      "files": [],
+      "expectations": [
+        "The response inspects analogous completed features before choosing dependency wiring, mapping, query, pagination, and test conventions.",
+        "Category requiredness or defaulting has one authoritative rule and no unreachable duplicate fallback.",
+        "Moderation statuses, indexes, administrator endpoints, or UI are omitted unless an existing contract or explicit requirement justifies them.",
+        "The new slice is internally consistent even if unrelated legacy modules use mixed styles, and unrelated cleanup stays out of scope.",
+        "Tests cover valid submission, invalid input, ownership boundaries, recent-entry ordering or limits, persistence, and an applicable failure path."
+      ]
     }
   ]
 }

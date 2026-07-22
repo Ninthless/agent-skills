@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
   short_description: "Minimal-diff, verified, production-quality code changes"
-  default_prompt: "Apply the high-constraint-coding skill: before writing any code, read the relevant files and bound the task. Make the smallest correct change that satisfies the request. Do not rewrite unrelated code, introduce speculative abstractions, or skip verification. Verify with tests, build, or lint before reporting success. Report what changed, how it was verified, and any residual risk."
+  default_prompt: "Apply the high-constraint-coding skill: inspect the complete behavior slice and analogous modules before writing, then make the smallest complete project-native change. Keep inputs, validation, defaults, state, persistence, outputs, consumers, and tests coherent; reject speculative layers, unreachable defense, dormant schema, and mixed conventions. Verify with proportionate tests and report evidence and residual risk without making authorship claims."
 
 policy:
   allow_implicit_invocation: true

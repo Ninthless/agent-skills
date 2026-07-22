@@ -94,5 +94,29 @@
   {
     "query": "What npm command installs the latest TypeScript package? Just give me the command.",
     "should_trigger": false
+  },
+  {
+    "query": "这次要高质量代码，不要 AI 味。先读同类模块，把接口、校验、数据库、前端状态和测试做成一个完整且符合项目习惯的功能。",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement this feature as project-native production code. Every new field, state, abstraction, and fallback must have a real requirement or caller, and the vertical slice needs targeted tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "先检查全链路契约是否一致：输入校验、默认值、领域逻辑、持久化、输出和调用方不能互相矛盾，也不要加未来可能用的空架子。",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this cross-layer implementation for contradictory invariants, unfinished state lifecycles, convention drift, and unsupported documentation claims. Findings first and do not speculate about authorship.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you explain why people sometimes say code has an AI style? No repository or code review is involved.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this short paragraph so it sounds less like AI writing; there is no code involved.",
+    "should_trigger": false
   }
 ]
