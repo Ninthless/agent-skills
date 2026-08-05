@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Minimal-diff, verified, production-quality code changes"
-  default_prompt: "Apply the high-constraint-coding skill: inspect the complete behavior slice and analogous modules before writing, then make the smallest complete project-native change. Keep inputs, validation, defaults, state, persistence, outputs, consumers, and tests coherent; reject speculative layers, unreachable defense, dormant schema, and mixed conventions. Verify with proportionate tests and report evidence and residual risk without making authorship claims."
+  short_description: "Minimal verified source-code changes and reviews"
+  default_prompt: "Use $high-constraint-coding only for correctness-sensitive source review or code changes. Internally pass the readiness gate before editing and expose it only when user confirmation is needed. Keep the smallest complete project-native slice coherent and verified. Let write-api-docs, english-spec-first, and git-checkpoint-push lead API documentation, requirement normalization, and Git checkpoint tasks unless implementation-source correctness is also requested."
 
 policy:
   allow_implicit_invocation: true

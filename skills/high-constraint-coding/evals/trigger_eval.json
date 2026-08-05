@@ -1,122 +1,34 @@
 [
   {
-    "query": "修一下订单取消后库存偶尔没恢复的问题。先看清楚现有流程，只改必要的地方，并跑相关测试。",
-    "should_trigger": true
+    "id": "source-fix",
+    "query": "Fix this production source bug carefully and run regression tests.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "Review this PR for correctness. It touches refresh tokens, session invalidation, and logout behavior. Findings first, style later.",
-    "should_trigger": true
+    "id": "api-doc-review",
+    "query": "Review this OpenAPI document for integration omissions.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "Refactor the payment service to remove duplicated validation, but behavior must stay identical and I don't want a broad rewrite.",
-    "should_trigger": true
+    "id": "normalize",
+    "query": "Normalize these rough requirements into an English spec.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "这个 bug 在线上影响比较大：用户保存设置后偶尔丢字段。请先读代码路径，别猜，最小改动修。",
-    "should_trigger": true
-  },
-  {
-    "query": "Implement this API change carefully. It updates a shared contract used by mobile and web, so update tests and call out any compatibility risk.",
-    "should_trigger": true
-  },
-  {
-    "query": "帮我改这个复杂查询的性能问题，但不要为了性能牺牲可读性，先找到真实瓶颈再动手。",
-    "should_trigger": true
-  },
-  {
-    "query": "先看清楚再改：我们迁移了 config schema，现在老配置读不出来。保持兼容，不要乱重构。",
-    "should_trigger": true
-  },
-  {
-    "query": "Patch the flaky retry logic in the worker. I need a small, verified fix and a note about what remains unproven.",
-    "should_trigger": true
-  },
-  {
-    "query": "Create a quick toy todo app in one HTML file for a demo.",
-    "should_trigger": false
-  },
-  {
-    "query": "Explain the difference between unit tests and integration tests.",
-    "should_trigger": false
-  },
-  {
-    "query": "Format this JSON file alphabetically.",
-    "should_trigger": false
-  },
-  {
-    "query": "Generate a throwaway script to rename a bunch of screenshots in my Downloads folder.",
-    "should_trigger": false
-  },
-  {
-    "query": "Brainstorm five possible architectures for a chat app, no code yet.",
-    "should_trigger": false
-  },
-  {
-    "query": "What is dependency injection in Java? Give a beginner-friendly explanation.",
-    "should_trigger": false
-  },
-  {
-    "query": "Write a SQL query that counts users by country from this simple table.",
-    "should_trigger": false
-  },
-  {
-    "query": "Make the button blue and bigger in this CSS snippet; no need to inspect the whole app.",
-    "should_trigger": false
-  },
-  {
-    "query": "Convert this JavaScript function to TypeScript syntax only.",
-    "should_trigger": false
-  },
-  {
-    "query": "List common causes of race conditions in web apps.",
-    "should_trigger": false
-  },
-  {
-    "query": "Write a regex for matching US phone numbers.",
-    "should_trigger": false
-  },
-  {
-    "query": "Tell me what this stack trace means at a high level; don't change code yet.",
-    "should_trigger": false
-  },
-  {
-    "query": "Fix the shared permission normalizer with the smallest possible diff and run regression tests for both API consumers.",
-    "should_trigger": true
-  },
-  {
-    "query": "Review this production data migration for rollback and data-loss risks, with exact file and line findings.",
-    "should_trigger": true
-  },
-  {
-    "query": "Brainstorm three possible architectures for a greenfield prototype; there is no repository or code to inspect yet.",
-    "should_trigger": false
-  },
-  {
-    "query": "What npm command installs the latest TypeScript package? Just give me the command.",
-    "should_trigger": false
-  },
-  {
-    "query": "这次要高质量代码，不要 AI 味。先读同类模块，把接口、校验、数据库、前端状态和测试做成一个完整且符合项目习惯的功能。",
-    "should_trigger": true
-  },
-  {
-    "query": "Implement this feature as project-native production code. Every new field, state, abstraction, and fallback must have a real requirement or caller, and the vertical slice needs targeted tests.",
-    "should_trigger": true
-  },
-  {
-    "query": "先检查全链路契约是否一致：输入校验、默认值、领域逻辑、持久化、输出和调用方不能互相矛盾，也不要加未来可能用的空架子。",
-    "should_trigger": true
-  },
-  {
-    "query": "Review this cross-layer implementation for contradictory invariants, unfinished state lifecycles, convention drift, and unsupported documentation claims. Findings first and do not speculate about authorship.",
-    "should_trigger": true
-  },
-  {
-    "query": "Can you explain why people sometimes say code has an AI style? No repository or code review is involved.",
-    "should_trigger": false
-  },
-  {
-    "query": "Rewrite this short paragraph so it sounds less like AI writing; there is no code involved.",
-    "should_trigger": false
+    "id": "git-checkpoint",
+    "query": "Draft a commit message from the current diff and push after approval.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   }
 ]

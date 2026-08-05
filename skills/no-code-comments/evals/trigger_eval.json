@@ -1,98 +1,50 @@
 [
   {
-    "query": "帮我写一个 Python 脚本读取 input.csv，按 department 分组统计平均薪资，输出 summary.json。",
-    "should_trigger": true
+    "id": "explicit",
+    "query": "Write this function with no comments.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "Create a React login form component with email, password, loading state, and submit handler. Keep it production-ready.",
-    "should_trigger": true
+    "id": "repo-convention",
+    "query": "This repository enforces comment-free implementation code; patch the service.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "Refactor this Java service to reduce duplication without changing behavior.",
-    "should_trigger": true
+    "id": "ordinary-code",
+    "query": "Implement a normal helper in this repository.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "生成一个 GitHub Actions workflow，push 和 PR 时跑 npm test。",
-    "should_trigger": true
+    "id": "public-docs",
+    "query": "No comments except required public API JSDoc for exported functions.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "Patch the Dockerfile so the app runs as a non-root user.",
-    "should_trigger": true
+    "id": "directive-boundary",
+    "query": "Keep this patch comment-free except for the required eslint-disable directive.",
+    "should_trigger": true,
+    "expectations": [
+      "The preference triggers while the required directive remains allowed."
+    ]
   },
   {
-    "query": "写一个最小 FastAPI endpoint，POST /events，接收 JSON 并返回 ok。",
-    "should_trigger": true
-  },
-  {
-    "query": "Update this Prisma migration to add a nullable externalId column.",
-    "should_trigger": true
-  },
-  {
-    "query": "给我一个干净的 TypeScript helper，把数组按 key 分组。",
-    "should_trigger": true
-  },
-  {
-    "query": "Explain this Python function in plain English. Do not rewrite the code.",
-    "should_trigger": false
-  },
-  {
-    "query": "Review this code for possible bugs, but don't edit it or output a patched version.",
-    "should_trigger": false
-  },
-  {
-    "query": "Teach me how comments work in JavaScript with examples that include comments.",
-    "should_trigger": false
-  },
-  {
-    "query": "Add detailed docstrings to every public function in this module.",
-    "should_trigger": false
-  },
-  {
-    "query": "Write onboarding code with teaching comments for a junior developer.",
-    "should_trigger": false
-  },
-  {
-    "query": "What are the tradeoffs between inline comments and self-documenting code?",
-    "should_trigger": false
-  },
-  {
-    "query": "Summarize this diff in a paragraph; no code output needed.",
-    "should_trigger": false
-  },
-  {
-    "query": "Generate API documentation text for these endpoints.",
-    "should_trigger": false
-  },
-  {
-    "query": "Show me where comments would be useful in this legacy code, but don't change it.",
-    "should_trigger": false
-  },
-  {
-    "query": "Explain what a Dockerfile is to a beginner.",
-    "should_trigger": false
-  },
-  {
-    "query": "Compare two possible implementations conceptually; don't write code yet.",
-    "should_trigger": false
-  },
-  {
-    "query": "Please output commented sample code for a tutorial blog post.",
-    "should_trigger": false
-  },
-  {
-    "query": "Add a GitHub Actions YAML workflow for lint and tests. Keep generated files clean.",
-    "should_trigger": true
-  },
-  {
-    "query": "Show me the SQL migration that adds a unique index and rolls it back safely.",
-    "should_trigger": true
-  },
-  {
-    "query": "Review this repository and describe maintainability risks, but do not propose patches or show code.",
-    "should_trigger": false
-  },
-  {
-    "query": "Create a teaching example with detailed inline comments explaining every line.",
-    "should_trigger": false
+    "id": "generated-boundary",
+    "query": "Regenerate this file without explanatory comments but preserve the mandatory generated marker.",
+    "should_trigger": true,
+    "expectations": [
+      "The preference triggers while the generated marker remains allowed."
+    ]
   }
 ]

@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Apply a careful, minimal, verified workflow to correctness-sensitive coding work and produce project-native, intentional code. Use for bug fixes, refactors, reviews, production edits, shared contracts, vertical feature slices, tests, migrations, or regression-prone behavior, and requests such as 最小改动, 高质量代码, 不要 AI 味, 像人工写的, 别乱重构, 先看清楚再改, read the code first, or guarantee correctness. Trigger when work requires controlled scope, cross-layer contract coherence, feature completeness, consistent local conventions, explainable design choices, and evidence before claiming success. Do not use for pure conceptual questions, status reporting, or non-code planning with no source review or code change.'
+description: 'Apply a careful, minimal, verified workflow to correctness-sensitive source-code review and code changes. Use for production bug fixes, refactors, shared contracts implemented in source, migrations, regression-sensitive features, and reviews that require tracing callers, state, persistence, outputs, and tests. Do not trigger for API documentation creation or review, requirement normalization, Git checkpoint/message/push work, pure conceptual questions, or planning with no source review or code change; those specialized skills lead unless correctness work on implementation source is also requested.'
 ---
 
 # High Constraint Coding
@@ -16,6 +16,7 @@ Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied,
 - The user wants minimal diffs, explicit assumptions, and practical verification.
 - The user says `最小改动`, `高质量代码`, `不要 AI 味`, `像人工写的`, `别乱重构`, `先看清楚再改`, `先读代码`, `不要乱改`, or `保证正确`.
 - The request implies careful engineering rather than quick speculative changes.
+- API documentation review, requirement normalization, and Git checkpoint work are led by their specialized skills unless the request also includes correctness-sensitive source review or code changes.
 
 ## Overview
 
@@ -84,7 +85,7 @@ Inspect the real implementation path before proposing changes.
 - inspect relevant history or blame when it clarifies why a convention or invariant exists; never manufacture commit history to imitate human development
 - read the actual file content, not a remembered or guessed version
 
-**Before writing a single line of code, state in one sentence what the current code does in the relevant area.** If you cannot produce that sentence confidently, keep reading. A vague or hedged description means the understanding is not yet sufficient to make a safe change.
+**Before writing, pass an internal readiness gate:** be able to state precisely what the current code does, which callers and contracts are affected, and what evidence supports the change. Keep reading if that statement would be vague. Share it with the user only when confirmation is needed for a material assumption or ambiguity.
 
 Do not start from a guessed implementation shape.
 If the visible bug is downstream from a shared semantic seam, fix the seam rather than only patching the leaf caller.

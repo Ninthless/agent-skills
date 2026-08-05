@@ -1,7 +1,7 @@
 interface:
   display_name: "No Code Comments"
-  short_description: "Default companion for comment-free code output"
-  default_prompt: "Apply the no-code-comments skill: keep all generated and edited code free of inline comments, block comments, docstrings, JSDoc, XML comments, and TODO/FIXME placeholders. Put explanations in the chat response instead. Exceptions: tooling directive comments, mandatory legal headers, or when the user explicitly requests comments."
+  short_description: "Avoid low-value comments when preferred"
+  default_prompt: "Use $no-code-comments only for an explicit comment-free preference, an established repository convention, or as a low-priority companion. User requirements, platform safety, enforced repository rules, and public API documentation contracts take priority. Allow required directives, generated markers, legal headers, useful public docstrings/JSDoc/XML docs, and schema-native description or summary fields. Preserve unrelated existing comments."
 
 policy:
   allow_implicit_invocation: true
