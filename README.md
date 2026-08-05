@@ -6,15 +6,14 @@ Small agent skills I use to keep repeated workflows consistent.
 
 | Skill | Purpose |
 | --- | --- |
-| `build-user-facing-ui` | Build distinctive, usable, context-appropriate interfaces with complete states, platform fit, hard gates, and rendered evidence. |
 | `english-spec-first` | Normalize rough or multilingual requests into a compact English specification before execution. |
 | `freelance-order-triage` | Judge freelance coding orders, scope risks, quote posture, revisions, and acceptance before implementation. |
-| `git-checkpoint-push` | Create clean git checkpoint commits and push completed work to a remote. |
+| `git-checkpoint-push` | Draft real-diff messages or perform only explicitly authorized stage, commit, and push actions. |
 | `high-constraint-coding` | Keep coding tasks disciplined: small diffs, clear assumptions, and practical verification. |
-| `no-code-comments` | Keep generated and edited code free of comments by default. |
+| `no-code-comments` | Prefer self-explanatory code and suppress low-value comments when explicitly requested or established by the repository. |
 | `powershell-safe-commands` | Avoid Windows PowerShell quoting, interpolation, and nested shell command failures. |
-| `vibecoding-domain-scout` | Research unfamiliar domains, then map workflows, constraints, MVP scope, risks, and build-ready briefs. |
-| `xposed-module-dev` | Build, review, and debug Android Xposed / LSPosed modules. |
+| `vibecoding-domain-scout` | Research unfamiliar domains for research-only, product-discovery, or build-handoff outputs. |
+| `write-api-docs` | Create machine-readable API contracts and concise frontend/backend integration docs. |
 
 ## Layout
 
@@ -31,6 +30,10 @@ skills/
 Only `SKILL.md` is required. Other folders are included when the skill needs extra references, helper scripts, evaluation files, or agent-specific configuration.
 
 The `agents/` directory contains per-platform YAML files (`claude.yaml`, `openai.yaml`) with display names, short descriptions, default prompts, and invocation policy. These are non-standard extensions on top of the [Agent Skills open standard](https://agentskills.io).
+
+## Evaluation contract
+
+Evaluation data follows [`eval.schema.json`](./eval.schema.json). Run `python scripts/validate_evals.py` from the repository root to validate JSON parsing, skill names, unique IDs, non-empty expectations, trigger decisions, and declared real fixtures. Isolated Git fixtures are contracts only and must never push to a real remote.
 
 ## Install
 

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-skills/eval.schema.json",
+  "title": "Agent Skill Evaluation Contract",
+  "$defs": {
+    "expectations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "fixture": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["real", "virtual", "isolated_repo"] },
+        "contract": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "behaviorCase": {
+      "type": "object",
+      "required": ["id", "prompt", "expected_output", "files", "expectations"],
+      "properties": {
+        "id": { "type": ["string", "integer"] },
+        "prompt": { "type": "string", "minLength": 1 },
+        "expected_output": { "type": "string", "minLength": 1 },
+        "files": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "fixture": { "$ref": "#/$defs/fixture" },
+        "expectations": { "$ref": "#/$defs/expectations" },
+        "forbidden_behaviors": { "$ref": "#/$defs/expectations" },
+        "expected_side_effects": { "type": "array", "items": { "type": "string" } },
+        "verification": { "type": ["string", "array", "object"] },
+        "platform_requirements": { "type": ["string", "array", "object"] }
+      },
+      "additionalProperties": true
+    },
+    "triggerCase": {
+      "type": "object",
+      "required": ["id", "query", "should_trigger", "expectations"],
+      "properties": {
+        "id": { "type": ["string", "integer"] },
+        "query": { "type": "string", "minLength": 1 },
+        "should_trigger": { "type": "boolean" },
+        "expectations": { "$ref": "#/$defs/expectations" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["skill_name", "evals"],
+      "properties": {
+        "skill_name": { "type": "string", "minLength": 1 },
+        "evals": { "type": "array", "items": { "$ref": "#/$defs/behaviorCase" } }
+      }
+    },
+    {
+      "type": "array",
+      "items": { "$ref": "#/$defs/triggerCase" }
+    }
+  ]
+}
