@@ -2,42 +2,48 @@
   "skill_name": "vibecoding-domain-scout",
   "evals": [
     {
-      "id": 1,
-      "prompt": "I want to build software for veterinary clinics, but I do not understand appointment types, triage, inpatient care, prescriptions, inventory, consent, discharge, and follow-up. Research the domain and define a realistic first product.",
-      "expected_output": "A sourced domain map covering clinic roles, end-to-end workflows, inputs, decisions, safety and data risks, hidden requirements, high-leverage questions, and a narrow MVP that a real clinic user can complete end to end.",
+      "id": "research-only",
+      "prompt": "Research current veterinary prescription and consent workflows. I only want sourced domain findings, no product scope or build prompt.",
+      "expected_output": "A research-only sourced domain map without an MVP or AI Build Brief.",
       "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
       "expectations": [
-        "The response checks current primary or authoritative veterinary sources before stating domain rules.",
-        "It maps clients, animals, reception, clinicians, technicians, pharmacy or inventory, and approval roles as applicable.",
-        "It distinguishes verified facts, inferences, assumptions, and items requiring veterinary validation.",
-        "The MVP follows one complete high-value workflow instead of defaulting to a broad dashboard and every possible module.",
-        "The final build brief includes data objects, states, rules, recovery, acceptance criteria, and explicit non-goals."
+        "Uses current authoritative sources.",
+        "Separates facts, inferences, assumptions, and validation needs.",
+        "Does not include an MVP or AI Build Brief."
+      ],
+      "forbidden_behaviors": [
+        "Adds an MVP",
+        "Adds an AI Build Brief"
       ]
     },
     {
-      "id": 2,
-      "prompt": "Before planning an EU employee-screening product, research the current AI Act and related hiring constraints. Identify which facts are current law, what product decisions they affect, and what requires legal or domain validation.",
-      "expected_output": "A current, source-backed regulated-domain brief that separates legal facts from product inference, maps affected actors and decisions, identifies high-risk data and workflow constraints, and cuts an MVP without pretending to replace legal review.",
+      "id": "product-discovery",
+      "prompt": "Research freight exception workflows and define a realistic product scope.",
+      "expected_output": "A sourced product-discovery output with an MVP only where useful and no AI Build Brief.",
       "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
       "expectations": [
-        "The response browses current EU institutional, regulator, or other primary sources.",
-        "It distinguishes effective obligations, future dates, interpretation, and uncertainty.",
-        "It connects each relevant rule to concrete product, data, transparency, oversight, logging, or validation decisions.",
-        "It names where professional legal and employment-domain validation is required.",
-        "It does not present a generic market summary or start coding before the domain and risk map are clear."
+        "Maps workflow and risks.",
+        "Uses an evidence-based MVP when useful.",
+        "Does not produce an AI Build Brief."
       ]
     },
     {
-      "id": 3,
-      "prompt": "Research the real workflow for an international freight-forwarding exception tool covering booking, documents, customs handoff, milestones, charges, demurrage risk, communication, and dispute evidence. Then define version one.",
-      "expected_output": "A sourced operations map that identifies actors, documents, event sequence, exception decisions, data sources, timing and charge risks, audit needs, failure paths, and a focused version-one workflow with build-ready acceptance criteria.",
+      "id": "build-handoff",
+      "prompt": "Research the domain and prepare a coding-agent handoff.",
+      "expected_output": "A sourced build handoff including an AI Build Brief.",
       "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
       "expectations": [
-        "The response researches authoritative carrier, customs, standards, or industry sources instead of relying on generic logistics memory.",
-        "It maps shipper, forwarder, carrier, customs broker, consignee, and operational ownership where applicable.",
-        "It identifies documents, milestones, timing windows, charges, evidence, and communication dependencies.",
-        "The MVP selects one exception workflow with explicit inputs, decisions, outcomes, and recovery rather than attempting a full forwarding platform.",
-        "The build brief labels assumptions and items that require validation with an experienced operator."
+        "Includes validation needs and a focused scope.",
+        "Only this mode produces the AI Build Brief."
       ]
     }
   ]

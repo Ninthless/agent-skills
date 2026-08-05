@@ -1,7 +1,7 @@
 interface:
   display_name: "English Spec First"
-  short_description: "Normalize requests into a structured English spec first"
-  default_prompt: "Apply the english-spec-first skill: before planning or solving, rewrite the user's request as a compact English specification using Goal / Inputs / Constraints / Output / Process Notes structure. Check the spec for missing requirements and hidden assumptions. Use the spec as the working contract, then respond in the user's language."
+  short_description: "Normalize requirements visibly or internally"
+  default_prompt: "Use $english-spec-first in display-spec mode only when the user asks to see an English spec. If the user only asks to think in English first, normalize internally and deliver the result without showing an intermediate spec. Show only a minimal working contract when a material ambiguity requires confirmation, including when the user says not to display the intermediate spec."
 
 policy:
   allow_implicit_invocation: true

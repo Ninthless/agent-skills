@@ -2,36 +2,37 @@
   "skill_name": "english-spec-first",
   "evals": [
     {
-      "id": 1,
-      "prompt": "先别写代码。我这需求有点乱：要做一个内部工单系统，用户可以提交问题，管理员能分配处理人，还要有 SLA 提醒，后面可能接企业微信。你先帮我整理成专业英文需求。",
-      "expected_output": "A compact English working spec with goal, inputs, constraints, output, and process notes, preserving the uncertainty around future WeCom integration.",
+      "id": "display-spec",
+      "prompt": "Turn these messy bilingual notes into a professional English specification before planning.",
+      "expected_output": "A compact visible English working contract followed by the requested planning output.",
       "files": [],
+      "fixture": { "type": "virtual" },
       "expectations": [
-        "The response starts by normalizing the rough Chinese request into an English specification.",
-        "The specification separates current requirements from future integration assumptions.",
-        "The response does not begin implementation before the spec is established."
+        "The English specification is visible because the user explicitly requested it.",
+        "The specification separates requirements, assumptions, and unresolved decisions."
       ]
     },
     {
-      "id": 2,
-      "prompt": "Think in English first: I need a clean plan for migrating our old billing cron to a queue worker. Current notes: don't break invoices, retry failed payments, Stripe webhook already exists, unclear how refunds are handled.",
-      "expected_output": "A concise English spec that captures the migration goal, known inputs, constraints, missing refund requirements, and expected planning output.",
+      "id": "internal-no-display",
+      "prompt": "Think in English first, but do not show me the intermediate spec. Give me the implementation plan directly in Chinese.",
+      "expected_output": "A Chinese implementation plan with no displayed intermediate English specification.",
       "files": [],
+      "fixture": { "type": "virtual" },
       "expectations": [
-        "The output includes a Standard English Spec or equivalent working brief.",
-        "The spec explicitly flags refund handling as unknown instead of inventing behavior.",
-        "The following execution is based on the normalized spec."
-      ]
+        "The response does not display an English spec or normalization section.",
+        "The final plan is delivered directly in Chinese."
+      ],
+      "forbidden_behaviors": ["Displays the internal English normalization when no blocking ambiguity exists."]
     },
     {
-      "id": 3,
-      "prompt": "把这个想法整理成英文 spec：一个 Chrome 插件，帮销售看 LinkedIn 页面时自动查 CRM 里有没有这个人，别太复杂，先只做 MVP。",
-      "expected_output": "An English MVP-focused specification for a Chrome extension that checks CRM records from LinkedIn pages without expanding scope beyond the request.",
+      "id": "minimal-contract-for-blocker",
+      "prompt": "Think in English first and do not show the spec. Build the data migration, but I have not said whether existing rows may be deleted.",
+      "expected_output": "A minimal visible working contract limited to the destructive ambiguity and a focused confirmation question.",
       "files": [],
+      "fixture": { "type": "virtual" },
       "expectations": [
-        "The spec keeps the MVP boundary clear.",
-        "The spec preserves named products such as Chrome, LinkedIn, and CRM.",
-        "The response avoids adding unnecessary product requirements."
+        "Only the material destructive ambiguity is surfaced.",
+        "The response asks for confirmation before choosing deletion behavior."
       ]
     }
   ]

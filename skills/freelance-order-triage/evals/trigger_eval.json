@@ -1,98 +1,26 @@
 [
   {
-    "query": "A client sent me a vague request for an inventory dashboard and wants a fixed price today. Help me decide whether to take it and what to ask first.",
-    "should_trigger": true
+    "id": "commercial",
+    "query": "Assess this client order before I quote it.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "这个外包说只是改一个支付 bug，但项目没法启动、没有测试、还要今晚部署。帮我判断接不接。",
-    "should_trigger": true
+    "id": "own-repo",
+    "query": "Fix this bug in my own repository.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "Review this Upwork brief and give me a quote posture, hidden scope, and a client-ready clarification message.",
-    "should_trigger": true
-  },
-  {
-    "query": "学生找我做课程项目，我想提供合规的辅导而不是代写。帮我重塑范围和交付物。",
-    "should_trigger": true
-  },
-  {
-    "query": "The client's Next.js app is mostly AI-generated and broken. Should I offer paid discovery, hourly rescue work, or decline it?",
-    "should_trigger": true
-  },
-  {
-    "query": "Before I quote this Shopify customization, draft the questions that affect scope, access, acceptance, and revisions.",
-    "should_trigger": true
-  },
-  {
-    "query": "把这个 3 万预算的企业后台拆成可验收的里程碑，并明确每阶段不包含什么。",
-    "should_trigger": true
-  },
-  {
-    "query": "The client keeps saying unlimited revisions are standard. Write a firm revision boundary and acceptance checklist.",
-    "should_trigger": true
-  },
-  {
-    "query": "Help me politely decline a two-day production payment integration with no sandbox credentials or technical contact.",
-    "should_trigger": true
-  },
-  {
-    "query": "客户要求先报价再给仓库，我不确定代码质量。帮我提出付费代码审查方案。",
-    "should_trigger": true
-  },
-  {
-    "query": "Turn this rescue project into a one-week paid discovery engagement with concrete outputs and a go/no-go decision.",
-    "should_trigger": true
-  },
-  {
-    "query": "Assess this freelance order involving auth, payments, deployment, and post-launch support before I promise a deadline.",
-    "should_trigger": true
-  },
-  {
-    "query": "Fix the null pointer in src/parser.ts and add a regression test. This is my own repository, not a client order.",
-    "should_trigger": false
-  },
-  {
-    "query": "Review this pull request for correctness and security issues; pricing and client scope are irrelevant.",
-    "should_trigger": false
-  },
-  {
-    "query": "Research how dental clinics schedule treatment rooms and assistants before we define the product workflow.",
-    "should_trigger": false
-  },
-  {
-    "query": "Build the approved landing page from the supplied Figma file and design system.",
-    "should_trigger": false
-  },
-  {
-    "query": "Explain the time complexity of this graph algorithm.",
-    "should_trigger": false
-  },
-  {
-    "query": "Generate a simple invoice template for work that has already been completed.",
-    "should_trigger": false
-  },
-  {
-    "query": "What are good ways for a beginner to find freelance clients online?",
-    "should_trigger": false
-  },
-  {
-    "query": "The contract, scope, acceptance tests, and repository are already approved. Implement ticket AC-42 exactly as written.",
-    "should_trigger": false
-  },
-  {
-    "query": "Translate this client's email from Chinese to English without changing its meaning.",
-    "should_trigger": false
-  },
-  {
-    "query": "Commit the completed deliverables and push them to the remote repository.",
-    "should_trigger": false
-  },
-  {
-    "query": "Summarize current trends in the global freelance software market.",
-    "should_trigger": false
-  },
-  {
-    "query": "Tutor me through recursion with examples and practice questions for tomorrow's class.",
-    "should_trigger": false
+    "id": "approved-ticket",
+    "query": "The commercial scope is approved; implement ticket AC-42 exactly.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   }
 ]

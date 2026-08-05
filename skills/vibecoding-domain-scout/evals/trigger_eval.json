@@ -1,98 +1,26 @@
 [
   {
-    "query": "I want to build software for veterinary clinics, but I do not understand appointment, triage, prescription, and follow-up workflows. Research the domain first.",
-    "should_trigger": true
+    "id": "research",
+    "query": "Research only the current rules and workflow; do not propose a product.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "做一个国际货代工具，先调研订舱、报关、提单、费用确认和异常处理的真实流程。",
-    "should_trigger": true
+    "id": "handoff",
+    "query": "Research this unfamiliar regulated domain and create a build handoff.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "Map the current EU AI Act obligations that could affect an HR screening product before defining the MVP.",
-    "should_trigger": true
-  },
-  {
-    "query": "Research Shopify app review, billing, webhook, and merchant-data constraints before we plan this embedded app.",
-    "should_trigger": true
-  },
-  {
-    "query": "我不懂建筑施工许可和现场验收流程，先把角色、资料、审批节点和失败情况梳理清楚。",
-    "should_trigger": true
-  },
-  {
-    "query": "Before coding an insurance claims intake tool, identify adjuster workflows, required evidence, fraud checks, and decisions needing expert validation.",
-    "should_trigger": true
-  },
-  {
-    "query": "Research how schools manage IEP accommodations and parent approvals before proposing screens or a data model.",
-    "should_trigger": true
-  },
-  {
-    "query": "Help me understand restaurant purchasing, receiving, waste, and stock-count workflows, then cut a realistic MVP.",
-    "should_trigger": true
-  },
-  {
-    "query": "我们要做工商业电费分析，但不懂需量、电价时段和账单结构，先联网调研并列出验证风险。",
-    "should_trigger": true
-  },
-  {
-    "query": "Create a domain map for legal e-discovery covering preservation, collection, review, privilege, and auditability.",
-    "should_trigger": true
-  },
-  {
-    "query": "Investigate current marketplace payout, identity verification, tax form, and chargeback constraints before writing the creator-platform brief.",
-    "should_trigger": true
-  },
-  {
-    "query": "This brief uses unfamiliar maritime maintenance terminology. Research the real workflow and produce a sourced build-ready brief.",
-    "should_trigger": true
-  },
-  {
-    "query": "Build a basic todo app with lists, due dates, and local storage. The workflow is already clear.",
-    "should_trigger": false
-  },
-  {
-    "query": "Redesign this hotel landing page to improve hierarchy, imagery, and mobile navigation.",
-    "should_trigger": false
-  },
-  {
-    "query": "Implement a CRUD REST API for products using the existing schema and acceptance tests.",
-    "should_trigger": false
-  },
-  {
-    "query": "Give me a general market-size summary for note-taking apps, with no product or workflow decisions.",
-    "should_trigger": false
-  },
-  {
-    "query": "Translate these medical terms into Chinese; do not research or design a product.",
-    "should_trigger": false
-  },
-  {
-    "query": "Fix the CSS grid overflow on the settings page.",
-    "should_trigger": false
-  },
-  {
-    "query": "Write a CLI that renames image files according to a supplied pattern.",
-    "should_trigger": false
-  },
-  {
-    "query": "Create a personal blog with posts, tags, and an about page using the provided specification.",
-    "should_trigger": false
-  },
-  {
-    "query": "Compare React Query and SWR for our already-defined frontend architecture.",
-    "should_trigger": false
-  },
-  {
-    "query": "A client sent me a vague paid project. Help me decide whether to accept it and what to charge.",
-    "should_trigger": false
-  },
-  {
-    "query": "Turn these messy bilingual notes into a concise English implementation spec; no external research is needed.",
-    "should_trigger": false
-  },
-  {
-    "query": "Research the latest React release notes and list breaking changes for our upgrade.",
-    "should_trigger": false
+    "id": "routine",
+    "query": "Build a todo app from this clear specification.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   }
 ]

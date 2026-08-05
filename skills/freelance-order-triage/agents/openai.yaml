@@ -1,4 +1,7 @@
 interface:
   display_name: "Freelance Order Triage"
   short_description: "Judge freelance orders before quoting"
-  default_prompt: "Use $freelance-order-triage to judge this client, student, or small request, then draft the questions, scope boundary, quote posture, and acceptance checklist."
+  default_prompt: "Use $freelance-order-triage to choose a take, clarify, discovery, staged, hourly, reshape, or decline posture from the evidence. Always provide the posture, decisive basis, and a client-ready reply; use compact, standard, full, or only the additional modules needed. Accept clear low-risk work directly instead of manufacturing discovery."
+
+policy:
+  allow_implicit_invocation: true
