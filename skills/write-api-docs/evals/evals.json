@@ -1,0 +1,117 @@
+{
+  "skill_name": "write-api-docs",
+  "evals": [
+    {
+      "id": "mixed-status",
+      "prompt": "Create docs for one API set: GET /users is implemented, POST /users is proposed, and DELETE /users/{id} conflicts between requirements and source.",
+      "expected_output": "A coordinated API package with authority and status per operation.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Does not choose one global mode.",
+        "Marks GET implemented, POST proposed, and DELETE conflicting with evidence.",
+        "Defaults to machine contract plus Markdown."
+      ]
+    },
+    {
+      "id": "review-only",
+      "prompt": "Review the API documentation for integration defects. Do not rewrite or edit files.",
+      "expected_output": "Findings, Open Questions, and recommendations only.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Leads with actionable findings.",
+        "Does not output rewritten artifacts.",
+        "Does not write files."
+      ],
+      "forbidden_behaviors": [
+        "Rewrites the contract",
+        "Edits documentation files"
+      ]
+    },
+    {
+      "id": "single-format",
+      "prompt": "Create this REST contract as OpenAPI YAML only; do not add Markdown.",
+      "expected_output": "One OpenAPI artifact only.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Honors the explicit single-format request.",
+        "Does not add Markdown integration documentation."
+      ]
+    },
+    {
+      "id": "reconcile-default",
+      "prompt": "Reconcile frontend and backend API evidence; do not perform a full rewrite.",
+      "expected_output": "A difference list and only defensible fragments.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Lists differences and owners.",
+        "Does not silently choose a side.",
+        "Does not perform a complete rewrite without authorization."
+      ]
+    },
+    {
+      "id": "webhook",
+      "prompt": "Document the provider-initiated HTTP payment webhook.",
+      "expected_output": "An OpenAPI webhook contract with evidenced delivery behavior.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses top-level webhooks where supported.",
+        "Does not model the webhook as a callback or message channel."
+      ]
+    },
+    {
+      "id": "callback",
+      "prompt": "Document the callback URL supplied in POST /exports and invoked when processing completes.",
+      "expected_output": "An operation-bound OpenAPI callback contract.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses callbacks bound to the initiating operation.",
+        "Does not model it as a provider-configured webhook."
+      ]
+    },
+    {
+      "id": "message",
+      "prompt": "Document the Kafka order.created topic and consumer acknowledgement behavior.",
+      "expected_output": "An AsyncAPI message/channel contract.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses AsyncAPI channel and message semantics.",
+        "Does not force the message into an OpenAPI path."
+      ]
+    }
+  ]
+}

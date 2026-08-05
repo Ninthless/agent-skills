@@ -1,0 +1,34 @@
+[
+  {
+    "id": "docs",
+    "query": "Generate OpenAPI and integration documentation from these routes.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
+  },
+  {
+    "id": "review",
+    "query": "Review this API contract for client-breaking omissions.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
+  },
+  {
+    "id": "implemented-webhook-no-docs",
+    "query": "Implement webhook signature verification and retry logic, but do not write documentation.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
+  },
+  {
+    "id": "ordinary-code",
+    "query": "Review this controller for performance only.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
+  }
+]
