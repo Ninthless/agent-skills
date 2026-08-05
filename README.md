@@ -1,19 +1,25 @@
 # Agent Skills
 
-Small agent skills I use to keep repeated workflows consistent.
+A proprietary collection of ten focused Agent Skills for repeatable analysis, execution, action, and companion workflows.
 
 ## Skills
 
-| Skill | Purpose |
-| --- | --- |
-| `english-spec-first` | Normalize rough or multilingual requests into a compact English specification before execution. |
-| `freelance-order-triage` | Judge freelance coding orders, scope risks, quote posture, revisions, and acceptance before implementation. |
-| `git-checkpoint-push` | Draft real-diff messages or perform only explicitly authorized stage, commit, and push actions. |
-| `high-constraint-coding` | Keep coding tasks disciplined: small diffs, clear assumptions, and practical verification. |
-| `no-code-comments` | Prefer self-explanatory code and suppress low-value comments when explicitly requested or established by the repository. |
-| `powershell-safe-commands` | Avoid Windows PowerShell quoting, interpolation, and nested shell command failures. |
-| `vibecoding-domain-scout` | Research unfamiliar domains for research-only, product-discovery, or build-handoff outputs. |
-| `write-api-docs` | Create machine-readable API contracts and concise frontend/backend integration docs. |
+- `bug-diagnosis`: investigate unknown software defects and produce evidence-backed root causes before repair.
+- `freelance-order-triage`: decide how to accept, clarify, stage, quote, reshape, or decline commercial coding work.
+- `git-checkpoint-push`: perform only explicitly authorized Git checkpoint actions against the real repository state.
+- `high-constraint-coding`: implement and review correctness-sensitive source changes with minimal verified scope.
+- `no-code-comments`: enforce comment-free code-like output as an explicit or repository-established companion policy.
+- `powershell-safe-commands`: protect commands from PowerShell-specific parsing, quoting, interpolation, and encoding hazards.
+- `requirement-analysis`: turn rough or conflicting material into a bounded, testable implementation contract.
+- `technical-solution-research`: research current libraries, frameworks, protocols, standards, versions, and solution choices.
+- `vibecoding-domain-scout`: research unfamiliar industry workflows, business rules, policy, compliance, and expert terminology.
+- `write-api-docs`: create, reconcile, or review evidence-backed API contracts and integration documentation.
+
+## Format and extensions
+
+Each `skills/<name>/SKILL.md` follows the Agent Skills open standard and carries the portable name, description, and instructions. `agents/openai.yaml` and `agents/claude.yaml` provide platform-specific interface prompts and invocation policy. `skills-manifest.json` is a repository-local extension for routing mode, role, implicit invocation, side effects, and handoff metadata; it is not part of the open standard and does not duplicate skill descriptions.
+
+See `docs/skill-routing.md` for final-artifact ownership, companions, zero-skill behavior, sequences, and authorization boundaries.
 
 ## Layout
 
@@ -21,64 +27,33 @@ Small agent skills I use to keep repeated workflows consistent.
 skills/
   <skill-name>/
     SKILL.md
-    references/
-    scripts/
-    evals/
     agents/
+    evals/
+    references/
+evals/
+docs/
+scripts/
 ```
 
-Only `SKILL.md` is required. Other folders are included when the skill needs extra references, helper scripts, evaluation files, or agent-specific configuration.
+## Validation
 
-The `agents/` directory contains per-platform YAML files (`claude.yaml`, `openai.yaml`) with display names, short descriptions, default prompts, and invocation policy. These are non-standard extensions on top of the [Agent Skills open standard](https://agentskills.io).
+Run the complete local contract from the repository root:
 
-## Evaluation contract
+```powershell
+python scripts/validate_all.py
+```
 
-Evaluation data follows [`eval.schema.json`](./eval.schema.json). Run `python scripts/validate_evals.py` from the repository root to validate JSON parsing, skill names, unique IDs, non-empty expectations, trigger decisions, and declared real fixtures. Isolated Git fixtures are contracts only and must never push to a real remote.
+The command validates skill metadata and references, both agent files, manifest consistency, behavior and trigger evals, cross-skill routing synchronization, repository JSON, and size reports. `scripts/audit_skill_sizes.py` distinguishes open-format hard limits from repository recommendations and reports the Codex 8000-character initial catalog budget as a platform budget rather than an open standard rule.
+
+The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same command with read-only repository permissions. Routing cases define future multi-run model-rate expectations, but the repository validator does not execute model routing trials.
 
 ## Install
 
-Agent Skills is an open standard supported by Cursor, Claude Code, OpenAI Codex CLI, and other compatible agents. Skills are discovered from these directories:
-
-| Path | Scope |
-| --- | --- |
-| `.agents/skills/` | Project-level |
-| `.cursor/skills/` | Project-level (Cursor) |
-| `.claude/skills/` | Project-level (Claude Code) |
-| `.codex/skills/` | Project-level (Codex CLI) |
-| `~/.agents/skills/` | User-level (global) |
-| `~/.cursor/skills/` | User-level (Cursor) |
-| `~/.claude/skills/` | User-level (Claude Code) |
-| `~/.codex/skills/` | User-level (Codex CLI) |
-
-Copy a skill folder into whichever directory matches your agent:
+Copy a skill folder to a compatible project or user skill directory such as `.agents/skills/`, `.cursor/skills/`, `.claude/skills/`, `.codex/skills/`, or their user-level equivalents.
 
 ```powershell
-# Codex CLI
-Copy-Item -Recurse .\skills\high-constraint-coding $env:USERPROFILE\.codex\skills\
-
-# Claude Code
-Copy-Item -Recurse .\skills\high-constraint-coding $env:USERPROFILE\.claude\skills\
-
-# Cursor (user-level)
-Copy-Item -Recurse .\skills\high-constraint-coding $env:USERPROFILE\.cursor\skills\
-
-# Any compatible agent (generic path)
-Copy-Item -Recurse .\skills\high-constraint-coding $env:USERPROFILE\.agents\skills\
+Copy-Item -Recurse .\skills\* $env:USERPROFILE\.agents\skills
 ```
-
-Copy all skills at once:
-
-```powershell
-Copy-Item -Recurse .\skills\* $env:USERPROFILE\.agents\skills\
-```
-
-On macOS / Linux, replace `$env:USERPROFILE` with `$HOME` and use `cp -r`.
-
-## Notes
-
-These skills are personal workflow helpers. They are intentionally plain and focused on repeatable behavior rather than presentation.
-
-All current skills are platform-independent unless a skill states otherwise.
 
 ## License
 

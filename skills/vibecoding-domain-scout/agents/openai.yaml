@@ -1,7 +1,7 @@
 interface:
   display_name: "Vibecoding Domain Scout"
   short_description: "Research unfamiliar domains before building"
-  default_prompt: "Use $vibecoding-domain-scout in research-only, product-discovery, or build-handoff mode. Research-only returns sourced domain findings without an MVP or AI Build Brief. Product-discovery adds scope and an MVP only when useful. Only build-handoff produces the AI Build Brief. Separate facts, inferences, assumptions, and validation needs."
+  default_prompt: "Use $vibecoding-domain-scout for unfamiliar industry workflows, business rules, policy, compliance, regulated operations, or expert terminology. Separate sourced domain facts, inference, assumptions, and validation needs. Let technical-solution-research own libraries, frameworks, protocols, standards, versions, and compatibility; let requirement-analysis own the final working contract; do not implement."
 
 policy:
   allow_implicit_invocation: true

@@ -1,50 +1,82 @@
 [
   {
-    "id": "explicit",
-    "query": "Write this function with no comments.",
+    "id": "routing-diagnose-fix",
+    "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case diagnose-fix."
     ]
   },
   {
-    "id": "repo-convention",
-    "query": "This repository enforces comment-free implementation code; patch the service.",
+    "id": "routing-known-fix",
+    "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case known-fix."
     ]
   },
   {
-    "id": "ordinary-code",
-    "query": "Implement a normal helper in this repository.",
+    "id": "routing-requirement-coding",
+    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case requirement-coding."
+    ]
+  },
+  {
+    "id": "routing-api-implementation",
+    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case api-implementation."
+    ]
+  },
+  {
+    "id": "routing-powershell-companion",
+    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case powershell-companion."
+    ]
+  },
+  {
+    "id": "routing-comments-companion",
+    "query": "Refactor this parser with no comments or docstrings and run its tests.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case comments-companion."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case zero-weather."
     ]
   },
   {
-    "id": "public-docs",
-    "query": "No comments except required public API JSDoc for exported functions.",
-    "should_trigger": true,
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns false for routing case zero-status."
     ]
   },
   {
-    "id": "directive-boundary",
-    "query": "Keep this patch comment-free except for the required eslint-disable directive.",
-    "should_trigger": true,
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
     "expectations": [
-      "The preference triggers while the required directive remains allowed."
+      "The trigger classifier returns false for routing case incidental-git."
     ]
   },
   {
-    "id": "generated-boundary",
-    "query": "Regenerate this file without explanatory comments but preserve the mandatory generated marker.",
-    "should_trigger": true,
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
     "expectations": [
-      "The preference triggers while the generated marker remains allowed."
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

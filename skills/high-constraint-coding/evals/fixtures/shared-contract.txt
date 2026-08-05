@@ -1,0 +1,1 @@
+Request validation rejects empty SKU. Service normalizes whitespace. Storage has a nullable SKU column used by an import path.

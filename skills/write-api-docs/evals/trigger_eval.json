@@ -1,34 +1,66 @@
 [
   {
-    "id": "docs",
-    "query": "Generate OpenAPI and integration documentation from these routes.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for this query."
-    ]
-  },
-  {
-    "id": "review",
-    "query": "Review this API contract for client-breaking omissions.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for this query."
-    ]
-  },
-  {
-    "id": "implemented-webhook-no-docs",
-    "query": "Implement webhook signature verification and retry logic, but do not write documentation.",
+    "id": "routing-source-review",
+    "query": "Review the changed authentication source for correctness regressions without editing it.",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case source-review."
     ]
   },
   {
-    "id": "ordinary-code",
-    "query": "Review this controller for performance only.",
+    "id": "routing-api-docs",
+    "query": "Create an evidence-backed OpenAPI contract from these routes and schemas without implementing endpoints.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case api-docs."
+    ]
+  },
+  {
+    "id": "routing-api-review",
+    "query": "Review this OpenAPI document for integration-breaking omissions and do not edit source.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case api-review."
+    ]
+  },
+  {
+    "id": "routing-api-implementation",
+    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case api-implementation."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

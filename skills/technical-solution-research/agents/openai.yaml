@@ -1,0 +1,7 @@
+interface:
+  display_name: "Technical Solution Research"
+  short_description: "Research current technical solution evidence"
+  default_prompt: "Use $technical-solution-research for current library, framework, protocol, standard, version, compatibility, migration, or technical option decisions. Separate evidence, inference, options, and recommendation, include the status quo when viable, and keep any spike bounded. Do not implement or replace business-domain research."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,1 @@
+Current queue is managed and reliable. Proposed queue adds ordering but requires operating three new services.

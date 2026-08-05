@@ -1,7 +1,7 @@
 interface:
   display_name: "Freelance Order Triage"
   short_description: "Judge freelance orders before quoting"
-  default_prompt: "Use $freelance-order-triage to choose a take, clarify, discovery, staged, hourly, reshape, or decline posture from the evidence. Always provide the posture, decisive basis, and a client-ready reply; use compact, standard, full, or only the additional modules needed. Accept clear low-risk work directly instead of manufacturing discovery."
+  default_prompt: "Use $freelance-order-triage as the primary owner for commercial acceptance, quote posture, hidden scope, milestones, revisions, ethics, and client-ready replies. Choose take, clarify, paid discovery, stage, hourly, reshape, or decline from evidence. Hand off domain unknowns to vibecoding-domain-scout and an accepted work contract to requirement-analysis without implementing."
 
 policy:
   allow_implicit_invocation: true

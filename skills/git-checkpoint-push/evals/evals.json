@@ -19,8 +19,7 @@
         "Stages files",
         "Creates a commit",
         "Pushes a branch"
-      ],
-      "expected_side_effects": []
+      ]
     },
     {
       "id": "local-no-push",
@@ -111,8 +110,7 @@
         "Uses Simplified Chinese for the subject and body.",
         "Preserves AuthService exactly.",
         "Makes no Git mutations."
-      ],
-      "expected_side_effects": []
+      ]
     },
     {
       "id": "explicit-english",
@@ -127,8 +125,7 @@
         "The explicit English instruction overrides the Chinese request language.",
         "Preserves OpenAPI exactly.",
         "Makes no Git mutations."
-      ],
-      "expected_side_effects": []
+      ]
     }
   ]
 }

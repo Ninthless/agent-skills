@@ -1,34 +1,50 @@
 [
   {
-    "id": "real-message",
-    "query": "Draft a commit message from my current diff only; do not change the repo.",
+    "id": "routing-git-commit",
+    "query": "Commit the current verified diff locally with an appropriate message, but do not push.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case git-commit."
     ]
   },
   {
-    "id": "fictional-message",
-    "query": "Write a commit message for an imaginary dark-mode feature; do not inspect a repo.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for this query."
-    ]
-  },
-  {
-    "id": "local-commit",
-    "query": "Create a local checkpoint commit and do not push.",
+    "id": "routing-git-push",
+    "query": "Push the existing current branch to its configured upstream after safety checks.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case git-push."
     ]
   },
   {
-    "id": "status-only",
-    "query": "Show git status only.",
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

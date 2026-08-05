@@ -1,0 +1,1 @@
+Goal: add team invitations. Maybe email or link. Admin only. Must not expose membership before acceptance. Deadline is next month.

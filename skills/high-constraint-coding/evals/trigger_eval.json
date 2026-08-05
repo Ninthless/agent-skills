@@ -1,34 +1,138 @@
 [
   {
-    "id": "source-fix",
-    "query": "Fix this production source bug carefully and run regression tests.",
+    "id": "routing-bug-primary",
+    "query": "Investigate why checkout intermittently returns 409 and give me the root cause only.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case bug-primary."
+    ]
+  },
+  {
+    "id": "routing-diagnose-fix",
+    "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case diagnose-fix."
     ]
   },
   {
-    "id": "api-doc-review",
-    "query": "Review this OpenAPI document for integration omissions.",
-    "should_trigger": false,
+    "id": "routing-known-fix",
+    "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns true for routing case known-fix."
     ]
   },
   {
-    "id": "normalize",
-    "query": "Normalize these rough requirements into an English spec.",
-    "should_trigger": false,
+    "id": "routing-source-review",
+    "query": "Review the changed authentication source for correctness regressions without editing it.",
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns true for routing case source-review."
     ]
   },
   {
-    "id": "git-checkpoint",
-    "query": "Draft a commit message from the current diff and push after approval.",
+    "id": "routing-requirement-primary",
+    "query": "Turn these conflicting product notes into scope, requirements, and testable acceptance criteria.",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case requirement-primary."
+    ]
+  },
+  {
+    "id": "routing-requirement-coding",
+    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case requirement-coding."
+    ]
+  },
+  {
+    "id": "routing-api-docs",
+    "query": "Create an evidence-backed OpenAPI contract from these routes and schemas without implementing endpoints.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case api-docs."
+    ]
+  },
+  {
+    "id": "routing-api-review",
+    "query": "Review this OpenAPI document for integration-breaking omissions and do not edit source.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case api-review."
+    ]
+  },
+  {
+    "id": "routing-api-implementation",
+    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case api-implementation."
+    ]
+  },
+  {
+    "id": "routing-freelance-primary",
+    "query": "A client wants a fixed-price rescue of an unknown legacy app by Friday; decide whether and how I should quote it.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case freelance-primary."
+    ]
+  },
+  {
+    "id": "routing-git-commit",
+    "query": "Commit the current verified diff locally with an appropriate message, but do not push.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case git-commit."
+    ]
+  },
+  {
+    "id": "routing-powershell-companion",
+    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case powershell-companion."
+    ]
+  },
+  {
+    "id": "routing-comments-companion",
+    "query": "Refactor this parser with no comments or docstrings and run its tests.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case comments-companion."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

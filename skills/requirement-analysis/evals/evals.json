@@ -1,0 +1,83 @@
+{
+  "skill_name": "requirement-analysis",
+  "evals": [
+    {
+      "id": "working-contract",
+      "prompt": "Analyze these mixed notes into implementation-ready scope and acceptance criteria.",
+      "expected_output": "A bounded working contract with ER, IR, constraints, assumptions, conflicts, FR, NFR, acceptance, risks, and handoff.",
+      "files": [
+        "mixed-notes.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A bounded working contract with ER, IR, constraints, assumptions, conflicts, FR, NFR, acceptance, risks, and handoff."
+      ]
+    },
+    {
+      "id": "english-display",
+      "prompt": "Show me a concise English specification for these conflicting requirements.",
+      "expected_output": "A visible English working contract that preserves conflicts and asks only blocking questions.",
+      "files": [
+        "conflicting-scope.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A visible English working contract that preserves conflicts and asks only blocking questions."
+      ]
+    },
+    {
+      "id": "internal-normalization",
+      "prompt": "Think in English first but show only the Chinese requirement analysis.",
+      "expected_output": "A Chinese contract without a visible intermediate English specification.",
+      "files": [
+        "acceptance-input.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A Chinese contract without a visible intermediate English specification."
+      ]
+    }
+  ]
+}

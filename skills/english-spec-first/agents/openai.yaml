@@ -1,7 +1,0 @@
-interface:
-  display_name: "English Spec First"
-  short_description: "Normalize requirements visibly or internally"
-  default_prompt: "Use $english-spec-first in display-spec mode only when the user asks to see an English spec. If the user only asks to think in English first, normalize internally and deliver the result without showing an intermediate spec. Show only a minimal working contract when a material ambiguity requires confirmation, including when the user says not to display the intermediate spec."
-
-policy:
-  allow_implicit_invocation: true

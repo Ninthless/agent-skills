@@ -1,0 +1,83 @@
+{
+  "skill_name": "bug-diagnosis",
+  "evals": [
+    {
+      "id": "intermittent",
+      "prompt": "Diagnose the intermittent 412 after token refresh. Do not change code.",
+      "expected_output": "An evidence-led diagnosis with falsifiable hypotheses and confidence.",
+      "files": [
+        "intermittent-log.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "An evidence-led diagnosis with falsifiable hypotheses and confidence."
+      ]
+    },
+    {
+      "id": "stack-trace",
+      "prompt": "Find the root cause represented by this stack trace and propose verification.",
+      "expected_output": "A causal analysis that distinguishes the observed failure from unproven upstream causes.",
+      "files": [
+        "stack-trace.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A causal analysis that distinguishes the observed failure from unproven upstream causes."
+      ]
+    },
+    {
+      "id": "version-drift",
+      "prompt": "Investigate why CI fails only on the newer runtime.",
+      "expected_output": "A minimal experiment plan and version-sensitive root-cause conclusion.",
+      "files": [
+        "version-drift.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A minimal experiment plan and version-sensitive root-cause conclusion."
+      ]
+    }
+  ]
+}

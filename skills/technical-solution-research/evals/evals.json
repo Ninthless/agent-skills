@@ -1,0 +1,83 @@
+{
+  "skill_name": "technical-solution-research",
+  "evals": [
+    {
+      "id": "compatibility",
+      "prompt": "Research whether the candidate plugin is compatible with our current stack.",
+      "expected_output": "A version-specific compatibility finding with evidence and migration implication.",
+      "files": [
+        "version-matrix.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A version-specific compatibility finding with evidence and migration implication."
+      ]
+    },
+    {
+      "id": "status-quo",
+      "prompt": "Compare replacing our managed queue with the proposed stack, including keeping what we have.",
+      "expected_output": "A bounded option comparison that includes the viable status quo.",
+      "files": [
+        "migration-context.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "A bounded option comparison that includes the viable status quo."
+      ]
+    },
+    {
+      "id": "protocol",
+      "prompt": "Recommend SSE or WebSocket for this proxy-constrained one-way update case.",
+      "expected_output": "An evidence-backed protocol recommendation separated from implementation.",
+      "files": [
+        "protocol-choice.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Uses the supplied fixture evidence."
+      ],
+      "forbidden_behaviors": [
+        "Invents evidence not present in the fixture."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Check the output against the fixture and expectations."
+      ],
+      "expectations": [
+        "An evidence-backed protocol recommendation separated from implementation."
+      ]
+    }
+  ]
+}

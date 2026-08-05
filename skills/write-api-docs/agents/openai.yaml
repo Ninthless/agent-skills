@@ -1,7 +1,7 @@
 interface:
   display_name: "Write API Docs"
   short_description: "Create and review evidence-backed API contracts"
-  default_prompt: "Use $write-api-docs with group and operation-level authority and mixed implemented, proposed, conflicting, missing, or uncertain status. Honor a requested single format. For review, return findings, Open Questions, and recommendations only without rewriting or writing files. For reconcile, default to differences and defensible fragments unless a full rewrite is authorized. Never invent behavior."
+  default_prompt: "Use $write-api-docs when the final artifact is API documentation, a machine-readable contract, reconciliation, inventory, or integration-risk review. Preserve operation-level evidence and uncertainty without inventing behavior. Let requirement-analysis own general requirements, bug-diagnosis own unknown causes, and high-constraint-coding own endpoint, client, SDK, or test implementation."
 
 policy:
   allow_implicit_invocation: true

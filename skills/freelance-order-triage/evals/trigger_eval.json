@@ -1,26 +1,50 @@
 [
   {
-    "id": "commercial",
-    "query": "Assess this client order before I quote it.",
+    "id": "routing-freelance-primary",
+    "query": "A client wants a fixed-price rescue of an unknown legacy app by Friday; decide whether and how I should quote it.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case freelance-primary."
     ]
   },
   {
-    "id": "own-repo",
-    "query": "Fix this bug in my own repository.",
-    "should_trigger": false,
+    "id": "routing-freelance-clear",
+    "query": "Assess this small paid change, set revision limits, and draft a client-ready acceptance reply.",
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns true for routing case freelance-clear."
     ]
   },
   {
-    "id": "approved-ticket",
-    "query": "The commercial scope is approved; implement ticket AC-42 exactly.",
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

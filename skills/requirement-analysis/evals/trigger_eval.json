@@ -1,0 +1,74 @@
+[
+  {
+    "id": "routing-requirement-primary",
+    "query": "Turn these conflicting product notes into scope, requirements, and testable acceptance criteria.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case requirement-primary."
+    ]
+  },
+  {
+    "id": "routing-requirement-coding",
+    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case requirement-coding."
+    ]
+  },
+  {
+    "id": "routing-english-spec",
+    "query": "Show me a concise English specification with scope and acceptance criteria.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case english-spec."
+    ]
+  },
+  {
+    "id": "routing-internal-english",
+    "query": "Think in English first, do not show it, and return the requirement analysis in Chinese.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case internal-english."
+    ]
+  },
+  {
+    "id": "routing-domain-to-requirements",
+    "query": "Research the real insurance claims workflow, then turn the findings into an MVP requirement handoff.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case domain-to-requirements."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
+    ]
+  }
+]

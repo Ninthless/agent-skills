@@ -1,34 +1,42 @@
 [
   {
-    "id": "specific-risk",
-    "query": "PowerShell expands $env:API_URL and $1 inside my nested replacement command.",
+    "id": "routing-powershell-companion",
+    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
     "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns true for this query."
+      "The trigger classifier returns true for routing case powershell-companion."
     ]
   },
   {
-    "id": "windows-only",
-    "query": "Run npm test in this Windows PowerShell repository.",
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case zero-weather."
     ]
   },
   {
-    "id": "create-skill",
-    "query": "Create a skill about reliable Windows commands.",
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case zero-status."
     ]
   },
   {
-    "id": "direct-git",
-    "query": "Run git status directly with no variables or quoting.",
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
     "should_trigger": false,
     "expectations": [
-      "The trigger classifier returns false for this query."
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
     ]
   }
 ]

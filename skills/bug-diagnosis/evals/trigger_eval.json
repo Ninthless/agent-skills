@@ -1,0 +1,58 @@
+[
+  {
+    "id": "routing-bug-primary",
+    "query": "Investigate why checkout intermittently returns 409 and give me the root cause only.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case bug-primary."
+    ]
+  },
+  {
+    "id": "routing-diagnose-fix",
+    "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case diagnose-fix."
+    ]
+  },
+  {
+    "id": "routing-known-fix",
+    "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case known-fix."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
+    ]
+  }
+]

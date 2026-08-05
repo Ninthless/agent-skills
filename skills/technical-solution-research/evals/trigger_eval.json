@@ -1,0 +1,66 @@
+[
+  {
+    "id": "routing-technical-primary",
+    "query": "Research whether SQLAlchemy 2.0 is compatible with our Python 3.12 stack and recommend a path.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case technical-primary."
+    ]
+  },
+  {
+    "id": "routing-technical-status-quo",
+    "query": "Compare the current queue with two maintained alternatives and include keeping the current system.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case technical-status-quo."
+    ]
+  },
+  {
+    "id": "routing-single-tech-fact",
+    "query": "Check the current HTTP standard requirement for a 204 response body.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case single-tech-fact."
+    ]
+  },
+  {
+    "id": "routing-domain-primary",
+    "query": "Research pharmacy dispensing roles, exception workflows, and regulatory validation needs before scoping an app.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case domain-primary."
+    ]
+  },
+  {
+    "id": "routing-zero-weather",
+    "query": "What is the weather concept called when warm air sits above cold air?",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-weather."
+    ]
+  },
+  {
+    "id": "routing-zero-status",
+    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case zero-status."
+    ]
+  },
+  {
+    "id": "routing-incidental-git",
+    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-git."
+    ]
+  },
+  {
+    "id": "routing-incidental-api",
+    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case incidental-api."
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Minimal verified source-code changes and reviews"
-  default_prompt: "Use $high-constraint-coding only for correctness-sensitive source review or code changes. Internally pass the readiness gate before editing and expose it only when user confirmation is needed. Keep the smallest complete project-native slice coherent and verified. Let write-api-docs, english-spec-first, and git-checkpoint-push lead API documentation, requirement normalization, and Git checkpoint tasks unless implementation-source correctness is also requested."
+  short_description: "Minimal verified source changes and reviews"
+  default_prompt: "Use $high-constraint-coding for authorized correctness-sensitive source implementation or defect-first source review. Read the real behavior path, keep contracts coherent, mirror maintained local conventions, introduce only intentional artifacts, and verify proportionately. Let bug-diagnosis own unknown causes, requirement-analysis own contracts, technical-solution-research own solution decisions, write-api-docs own documentation deliverables, and git-checkpoint-push own explicit Git actions."
 
 policy:
   allow_implicit_invocation: true

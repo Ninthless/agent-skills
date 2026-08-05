@@ -6,3 +6,5 @@ Thumbs.db
 *.skill
 .skill-trigger-results/
 .claude/commands/
+__pycache__/
+*.pyc

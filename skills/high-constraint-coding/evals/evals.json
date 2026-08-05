@@ -2,34 +2,82 @@
   "skill_name": "high-constraint-coding",
   "evals": [
     {
-      "id": "source-fix",
-      "prompt": "Fix the order cancellation inventory bug with the smallest verified source change.",
-      "expected_output": "A narrow source-code fix after an internal readiness gate and targeted tests.",
+      "id": "known-source-fix",
+      "prompt": "The cancellation bug is proven to skip inventory release after a paid order; implement the smallest verified correction.",
+      "expected_output": "A narrow project-native source fix with targeted and adjacent contract verification.",
       "files": [
         "inventory-flow.txt"
       ],
       "fixture": {
         "type": "real"
       },
+      "required_information": [
+        "Uses the known causal seam and current flow."
+      ],
+      "forbidden_behaviors": [
+        "Reopens root-cause diagnosis without contradictory evidence."
+      ],
+      "expected_side_effects": [
+        "Only authorized source and test files may change."
+      ],
+      "verification": [
+        "Run a targeted cancellation test and an adjacent inventory consumer check."
+      ],
       "expectations": [
         "Reads the real behavior path before editing.",
-        "Does not require a public current-behavior sentence unless confirmation is needed.",
-        "Runs targeted verification."
+        "Keeps the complete affected contract coherent."
+      ]
+    },
+    {
+      "id": "contract-change",
+      "prompt": "Implement the SKU normalization change across validation, import, storage, and tests without broad cleanup.",
+      "expected_output": "A coherent vertical change with one authoritative normalization boundary.",
+      "files": [
+        "shared-contract.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "required_information": [
+        "Identifies the import path and nullable storage contract."
+      ],
+      "forbidden_behaviors": [
+        "Leaves contradictory normalization or null semantics."
+      ],
+      "expected_side_effects": [
+        "Only the requested behavior slice changes."
+      ],
+      "verification": [
+        "Exercise direct requests and import behavior."
+      ],
+      "expectations": [
+        "Maps cross-layer contract ownership before editing."
       ]
     },
     {
       "id": "source-review",
-      "prompt": "Review the auth implementation source for refresh-token regressions.",
-      "expected_output": "A findings-first correctness review.",
+      "prompt": "Review this refresh-token source change for correctness regressions without editing.",
+      "expected_output": "A findings-first review grounded in ownership and retry behavior.",
       "files": [
-        "inventory-flow.txt"
+        "review-diff.txt"
       ],
       "fixture": {
         "type": "real"
       },
+      "required_information": [
+        "Uses caller ownership and retry reuse evidence."
+      ],
+      "forbidden_behaviors": [
+        "Modifies source during review-only work."
+      ],
+      "expected_side_effects": [
+        "No project mutation."
+      ],
+      "verification": [
+        "Trace the mutated value through persistence and retry consumers."
+      ],
       "expectations": [
-        "Traces callers and contracts.",
-        "Prioritizes actionable correctness findings."
+        "Prioritizes the caller-owned mutation regression."
       ]
     }
   ]
