@@ -1,7 +1,7 @@
 interface:
   display_name: "PowerShell Safe Commands"
-  short_description: "Avoid Windows PowerShell quoting and wrapper-shell failures"
-  default_prompt: "Use $powershell-safe-commands before running or generating PowerShell commands that contain $, $_, @{u}, regex, nested quotes, or file edits."
+  short_description: "Avoid PowerShell parsing and interpolation failures"
+  default_prompt: "Use $powershell-safe-commands only for PowerShell-specific parsing, wrapping, interpolation, quoting, path-literal, or encoding risk. Prefer a host edit or patch tool, then direct execution, then an existing project script, and a cleaned system-temp script last. Before any EncodedCommand, sanitize the decoded script and never expose secrets."
 
 policy:
   allow_implicit_invocation: true

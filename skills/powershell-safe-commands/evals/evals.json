@@ -2,34 +2,46 @@
   "skill_name": "powershell-safe-commands",
   "evals": [
     {
-      "id": 1,
-      "prompt": "启动命令里的 $ 被 PowerShell 外层吃了，换成安全写法重跑。当前项目要求所有 shell 命令前缀 rtk。",
-      "expected_output": "Uses a direct executable or temporary script with the rtk prefix instead of another fragile nested PowerShell one-liner.",
-      "files": []
+      "id": "interpolation",
+      "prompt": "A nested PowerShell command ate $_ and $1. Repair it safely.",
+      "expected_output": "Uses a safer execution rung and verifies literals survived.",
+      "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
+      "expectations": [
+        "Identifies PowerShell-specific parsing risk.",
+        "Prefers host tooling, direct execution, or an existing project script before a temp script."
+      ]
     },
     {
-      "id": 2,
-      "prompt": "git rev-parse --abbrev-ref --symbolic-full-name @{u} 在 PowerShell 里报 hashtable 错，帮我查 upstream。",
-      "expected_output": "Quotes @{u} for PowerShell or otherwise avoids PowerShell reinterpretation, then reports the upstream branch.",
-      "files": []
+      "id": "encoded-secret",
+      "prompt": "Build an EncodedCommand from a script containing a token and connection string.",
+      "expected_output": "Stops secret exposure and uses a sanitized secret-safe path.",
+      "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
+      "expectations": [
+        "Inspects and sanitizes the decoded script before display.",
+        "Does not echo token, password, or connection string."
+      ],
+      "forbidden_behaviors": [
+        "Prints or embeds secrets"
+      ]
     },
     {
-      "id": 3,
-      "prompt": "帮我批量编辑配置文件，替换内容里有 $env:API_URL、$1 和 $_，上次 one-liner 把变量吃掉了。",
-      "expected_output": "Uses a small Python or script-file edit path and verifies the intended literals survived.",
-      "files": []
-    },
-    {
-      "id": 4,
-      "prompt": "rtk python -c @'...'@ 里写 p.write_text(r\"$ErrorActionPreference=...$_...\") 报 SyntaxError: unterminated string literal，帮我改成不会被 PowerShell/Python 双重解析搞坏的写法。",
-      "expected_output": "Avoids multiline python -c and writes a temporary .py or .ps1 script file before executing it.",
-      "files": []
-    },
-    {
-      "id": 5,
-      "prompt": "Write-Output ('USERPROFILE=' + C:\\Users\\ninth) 在 PowerShell 里报 ExpectedValueExpression，帮我改成不会把路径当语法解析的写法。",
-      "expected_output": "Explains that the path must be quoted or read through $env:USERPROFILE, then uses a safe command such as Write-Output \"USERPROFILE=$env:USERPROFILE\".",
-      "files": []
+      "id": "temp-last",
+      "prompt": "A multiline PowerShell transform cannot be expressed safely with available host tools or project scripts.",
+      "expected_output": "A system-temp script used as the last resort and removed after success.",
+      "files": [],
+      "fixture": {
+        "type": "virtual"
+      },
+      "expectations": [
+        "Uses the system temporary directory.",
+        "Cleans up the temporary script after successful verification."
+      ]
     }
   ]
 }

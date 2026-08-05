@@ -1,7 +1,7 @@
 interface:
   display_name: "Git Checkpoint Push"
-  short_description: "Safe Git/GitHub checkpoint commit and push"
-  default_prompt: "Use $git-checkpoint-push to create a professional Git/GitHub checkpoint commit and push it safely when a completed milestone is ready."
+  short_description: "Authorized Git checkpoint actions or message-only drafting"
+  default_prompt: "Use $git-checkpoint-push only for the explicitly authorized stage, commit, push, or real-diff message-only subset. Never upgrade local commit to push, never create or push a branch without authorization, and stop after any failed verification, stage, hook, or commit. Preserve the requested commit-message language and execute dependent PowerShell 5 commands step by step with success checks."
 
 policy:
   allow_implicit_invocation: true

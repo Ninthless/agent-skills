@@ -2,38 +2,133 @@
   "skill_name": "git-checkpoint-push",
   "evals": [
     {
-      "id": 1,
-      "prompt": "这个功能已经跑通了，帮我提交并推到 GitHub。记得不要把我本地没关系的改动也带上。",
-      "expected_output": "A safe checkpoint workflow that inspects status, branch, remote, relevant changes, verifies when practical, stages only related files, commits with a Conventional Commit message, and pushes safely.",
+      "id": "message-only",
+      "prompt": "Inspect the real current diff and draft a Conventional Commit message only. Do not stage, commit, or push.",
+      "expected_output": "A read-only message grounded in the current diff.",
       "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
       "expectations": [
-        "The workflow inspects git status, current branch, remote, and sync state before staging.",
-        "The response avoids staging unrelated work.",
-        "The commit message follows Conventional Commit style.",
-        "The push result and any remaining changes are reported."
+        "Inspects the actual current diff.",
+        "Labels the action message-only and makes no Git mutations.",
+        "Reports when no coherent diff exists."
+      ],
+      "forbidden_behaviors": [
+        "Stages files",
+        "Creates a commit",
+        "Pushes a branch"
+      ],
+      "expected_side_effects": []
+    },
+    {
+      "id": "local-no-push",
+      "prompt": "Stage the relevant files and create a local checkpoint commit. Do not push.",
+      "expected_output": "A targeted local commit with no push.",
+      "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
+      "expectations": [
+        "Stages only relevant files.",
+        "Creates a local Conventional Commit.",
+        "Does not push or create a branch."
+      ],
+      "forbidden_behaviors": [
+        "Pushes any ref"
+      ],
+      "expected_side_effects": [
+        "stage relevant files",
+        "create one local commit"
       ]
     },
     {
-      "id": 2,
-      "prompt": "给这次改动做一个 checkpoint commit 就行，先不要 push。改动是修复登录后跳转到空白页的问题。",
-      "expected_output": "A local-only checkpoint commit workflow that does not push because the user explicitly asked not to push.",
+      "id": "hook-failure",
+      "prompt": "Commit and push the current branch, but the pre-commit hook fails.",
+      "expected_output": "The workflow stops after the failed hook and does not push.",
       "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
       "expectations": [
-        "The workflow creates or proposes a coherent local commit only.",
-        "The response does not push to a remote.",
-        "The commit message reflects a login redirect bug fix."
+        "Reports the hook failure.",
+        "Does not retry by bypassing the hook.",
+        "Does not continue to push."
+      ],
+      "forbidden_behaviors": [
+        "Uses no-verify",
+        "Pushes after hook failure"
       ]
     },
     {
-      "id": 3,
-      "prompt": "保存进度：我刚把 skill 的触发描述都调完了。你看一下 git 状态，帮我弄个规范 commit，如果有远端就推上去。",
-      "expected_output": "A checkpoint workflow that checks repository state, validates the completed milestone, commits only the skill description changes, and pushes only when a remote is available and safe.",
+      "id": "protected-branch",
+      "prompt": "Commit and push from protected main.",
+      "expected_output": "A blocker report with a suggested branch name but no automatic branch creation or push.",
       "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
       "expectations": [
-        "The workflow treats this as a completed documentation/skill metadata checkpoint.",
-        "The response checks whether a remote exists before pushing.",
-        "The response does not claim a push if no remote or safe upstream is available."
+        "Detects the protected default branch.",
+        "Suggests a descriptive branch name.",
+        "Does not create, switch, or push a branch without authorization."
+      ],
+      "forbidden_behaviors": [
+        "Creates a branch",
+        "Pushes main"
       ]
+    },
+    {
+      "id": "powershell5-steps",
+      "prompt": "On Windows PowerShell 5, stage, commit, and push the authorized checkpoint.",
+      "expected_output": "Separate commands with success checks between each action.",
+      "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
+      "expectations": [
+        "Does not use &&.",
+        "Does not unconditionally chain add, commit, and push with semicolons.",
+        "Stops on the first failed step."
+      ]
+    },
+    {
+      "id": "chinese-language",
+      "prompt": "为当前真实 diff 起草 commit message，使用简体中文并保留 AuthService 标识符；只读，不要提交。",
+      "expected_output": "A message-only Conventional Commit with standard tokens, Simplified Chinese prose, and preserved identifiers.",
+      "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
+      "expectations": [
+        "Uses standard untranslated Conventional Commit type and scope syntax.",
+        "Uses Simplified Chinese for the subject and body.",
+        "Preserves AuthService exactly.",
+        "Makes no Git mutations."
+      ],
+      "expected_side_effects": []
+    },
+    {
+      "id": "explicit-english",
+      "prompt": "为当前真实 API 文档 diff 起草 commit message only。Commit message must be in English and preserve OpenAPI.",
+      "expected_output": "A message-only English Conventional Commit preserving OpenAPI.",
+      "files": [],
+      "fixture": {
+        "type": "isolated_repo",
+        "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
+      },
+      "expectations": [
+        "The explicit English instruction overrides the Chinese request language.",
+        "Preserves OpenAPI exactly.",
+        "Makes no Git mutations."
+      ],
+      "expected_side_effects": []
     }
   ]
 }

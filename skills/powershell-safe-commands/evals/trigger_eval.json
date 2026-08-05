@@ -1,98 +1,34 @@
 [
   {
-    "query": "Codex 在 Windows 上跑这个命令又把 $_ 吃掉了：Get-ChildItem | Where-Object { $_.Name -match \"log\" }，帮我重跑但别再用脆弱 one-liner。",
-    "should_trigger": true
+    "id": "specific-risk",
+    "query": "PowerShell expands $env:API_URL and $1 inside my nested replacement command.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for this query."
+    ]
   },
   {
-    "query": "启动命令里的 $ 被 PowerShell 外层吃了，换成安全写法重跑。这个任务还要遵守 rtk 前缀。",
-    "should_trigger": true
+    "id": "windows-only",
+    "query": "Run npm test in this Windows PowerShell repository.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "我需要你改 package.json 的 scripts，之前 powershell -Command 里 regex replacement 把 $1 展开没了，直接用最稳的方式编辑。",
-    "should_trigger": true
+    "id": "create-skill",
+    "query": "Create a skill about reliable Windows commands.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   },
   {
-    "query": "git rev-parse --abbrev-ref --symbolic-full-name @{u} 在 PowerShell 里变成 hashtable 报错了，帮我查 upstream。",
-    "should_trigger": true
-  },
-  {
-    "query": "这个 Windows Codex 环境里别再套 powershell -Command \"...$_...\"，帮我把筛选文件名的命令改成可运行的。",
-    "should_trigger": true
-  },
-  {
-    "query": "PowerShell 报 ExpectedValueExpression：Write-Output ('USERPROFILE=' + C:\\Users\\ninth)，看起来环境变量被替换成未加引号路径了，帮我改安全写法。",
-    "should_trigger": true
-  },
-  {
-    "query": "在 Windows 上用 Codex 修改配置文件，里面有 $env:API_URL 和正则捕获，别让 shell 提前插值。",
-    "should_trigger": true
-  },
-  {
-    "query": "刚才你说改用 Python 做同一个最小编辑，把这个处理方式固化一下：遇到 $_、@{u}、$1 就不要硬怼 PowerShell。",
-    "should_trigger": true
-  },
-  {
-    "query": "用户把多行 Python 写进 rtk python -c @'...'@，里面又 p.write_text(r\"...$ErrorActionPreference...$_...\")，结果 SyntaxError: unterminated string literal。帮他改成安全写法。",
-    "should_trigger": true
-  },
-  {
-    "query": "帮我运行 npm test，如果失败就看日志。",
-    "should_trigger": false
-  },
-  {
-    "query": "解释一下 PowerShell 的 $_ 是什么，只要概念说明，不需要运行命令。",
-    "should_trigger": false
-  },
-  {
-    "query": "写一个 Bash 脚本把当前目录下的图片压缩，目标环境是 Ubuntu。",
-    "should_trigger": false
-  },
-  {
-    "query": "帮我设计一个 GitHub Actions workflow 跑 pytest，项目是 Linux runner。",
-    "should_trigger": false
-  },
-  {
-    "query": "这个 Python 函数里 $ 符号是业务字段名，帮我重构解析逻辑。",
-    "should_trigger": false
-  },
-  {
-    "query": "请联网查 PowerShell 最新版本发布说明。",
-    "should_trigger": false
-  },
-  {
-    "query": "帮我 review 这段 C# 代码的异常处理，不涉及命令行。",
-    "should_trigger": false
-  },
-  {
-    "query": "把 README 里的命令格式排版得好看一点，不需要执行。",
-    "should_trigger": false
-  },
-  {
-    "query": "在 macOS zsh 里运行 grep，正则里有 $，帮我解释为什么匹配不到。",
-    "should_trigger": false
-  },
-  {
-    "query": "帮我创建一个 skill，主题是 Windows 命令可靠执行，重点是 Codex 经常写错 PowerShell escaping。",
-    "should_trigger": true
-  },
-  {
-    "query": "帮我把这段 shell 输出整理成故障排查摘要，不要执行任何命令。",
-    "should_trigger": false
-  },
-  {
-    "query": "PowerShell 里要对带方括号和单引号的绝对路径做精确文件操作，请用 LiteralPath 避免解析错误。",
-    "should_trigger": true
-  },
-  {
-    "query": "Replace version=v1 with version=v2 in a config, but the PowerShell regex replacement contains $1 and keeps expanding incorrectly.",
-    "should_trigger": true
-  },
-  {
-    "query": "Run git status in this Windows repository. It is a direct command with no PowerShell variables or quoting.",
-    "should_trigger": false
-  },
-  {
-    "query": "Explain what a PowerShell here-string is with a short conceptual example, but do not execute or repair a command.",
-    "should_trigger": false
+    "id": "direct-git",
+    "query": "Run git status directly with no variables or quoting.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for this query."
+    ]
   }
 ]
