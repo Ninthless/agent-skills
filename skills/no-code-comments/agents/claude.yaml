@@ -1,7 +1,7 @@
 interface:
   display_name: "No Code Comments"
-  short_description: "Avoid low-value comments when preferred"
-  default_prompt: "Use $no-code-comments only as a companion when the user explicitly requests no comments or the repository establishes a comment-free policy. Suppress low-value comments while the primary skill owns architecture, implementation, and verification. Do not trigger for ordinary coding, webpage work, read-only analysis, translation, or API docs without that explicit policy; preserve required directives, generated markers, legal headers, and public API documentation."
+  short_description: "Low-priority companion for coding output"
+  default_prompt: "Use $no-code-comments as a low-priority companion whenever a coding task creates or modifies code-like artifacts. Suppress low-value comments while the primary skill owns architecture, implementation, and verification. Preserve required directives, generated markers, legal headers, public API documentation, and necessary non-obvious rationale. Do not trigger for read-only analysis, requirements-only work, research, translation, API documentation-only work, or Git actions unless explicitly requested."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

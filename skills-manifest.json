@@ -47,7 +47,7 @@
       "name": "no-code-comments",
       "mode": "companion",
       "role": "companion",
-      "implicit": false,
+      "implicit": true,
       "side_effects": false,
       "handoff": []
     },

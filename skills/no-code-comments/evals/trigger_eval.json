@@ -10,17 +10,17 @@
   {
     "id": "routing-diagnose-fix",
     "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case diagnose-fix."
+      "The trigger classifier returns true for routing case diagnose-fix."
     ]
   },
   {
     "id": "routing-known-fix",
     "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case known-fix."
+      "The trigger classifier returns true for routing case known-fix."
     ]
   },
   {
@@ -42,9 +42,9 @@
   {
     "id": "routing-requirement-coding",
     "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case requirement-coding."
+      "The trigger classifier returns true for routing case requirement-coding."
     ]
   },
   {
@@ -122,9 +122,9 @@
   {
     "id": "routing-api-implementation",
     "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case api-implementation."
+      "The trigger classifier returns true for routing case api-implementation."
     ]
   },
   {
@@ -162,9 +162,9 @@
   {
     "id": "routing-powershell-companion",
     "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case powershell-companion."
+      "The trigger classifier returns true for routing case powershell-companion."
     ]
   },
   {
@@ -210,25 +210,25 @@
   {
     "id": "routing-web-responsive-implementation",
     "query": "Implement the responsive account settings page from the approved design and verify the real page at desktop and mobile widths.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case web-responsive-implementation."
+      "The trigger classifier returns true for routing case web-responsive-implementation."
     ]
   },
   {
     "id": "routing-web-react-interaction",
     "query": "Fix the React dropdown interaction so keyboard selection updates the form, then verify the flow in the browser.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case web-react-interaction."
+      "The trigger classifier returns true for routing case web-react-interaction."
     ]
   },
   {
     "id": "routing-web-css-browser",
     "query": "Modify the checkout CSS to stop the mobile total from overlapping the submit button and verify it in the browser.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case web-css-browser."
+      "The trigger classifier returns true for routing case web-css-browser."
     ]
   },
   {
@@ -258,9 +258,9 @@
   {
     "id": "routing-web-css-browser-verify",
     "query": "Change the CSS layout for the dashboard and use browser verification to check the actual page and console.",
-    "should_trigger": false,
+    "should_trigger": true,
     "expectations": [
-      "The trigger classifier returns false for routing case web-css-browser-verify."
+      "The trigger classifier returns true for routing case web-css-browser-verify."
     ]
   },
   {
@@ -285,6 +285,22 @@
     "should_trigger": false,
     "expectations": [
       "The trigger classifier returns false for routing case web-unknown-bug-diagnose."
+    ]
+  },
+  {
+    "id": "chinese-code-change-companion",
+    "query": "修改登录表单的校验逻辑，补上回归测试并验证。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers as a low-priority companion for a Chinese source-change request."
+    ]
+  },
+  {
+    "id": "ordinary-test-change-companion",
+    "query": "Add regression tests for the payment retry behavior and run the focused suite.",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers as a low-priority companion when the task creates test code."
     ]
   }
 ]

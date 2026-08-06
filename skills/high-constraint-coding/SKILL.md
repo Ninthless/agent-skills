@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Implement, change, fix, build, or review actual source code in all programming languages with controlled scope, language- and ecosystem-native judgment, senior-engineer-quality design, and maintainable, readable, verified behavior. Own frontend, backend, web, scripts, tests, migrations, refactors, known-cause fixes, and defect-first code reviews. Web edits retain browser verification when available. Do not use for unknown-root-cause diagnosis only, requirements without implementation, current framework/version research, API documentation-only work, translation, or Git checkpoints.'
+description: 'Primary skill for coding tasks: write, implement, change, fix, build, test, refactor, or review actual source code in any programming language, including frontend, backend, web, scripts, SQL, migrations, configuration, and tests. Apply controlled scope, language- and ecosystem-native judgment, senior-engineer-quality design, maintainable code, and verified behavior. Trigger for explicit coding, programming, implementation, or source-change requests. Do not use for unknown-root-cause diagnosis only, requirements without implementation, current framework/version research, API documentation-only work, translation, or Git checkpoints.'
 ---
 # High Constraint Coding
 

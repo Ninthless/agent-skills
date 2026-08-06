@@ -23,7 +23,7 @@
       "id": "diagnose-fix",
       "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
       "expected_primary_skill": "bug-diagnosis",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [],
       "expected_no_skill": false,
       "expected_sequence": [
@@ -41,7 +41,7 @@
       "id": "known-fix",
       "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [
         "bug-diagnosis"
       ],
@@ -98,7 +98,7 @@
       "id": "requirement-coding",
       "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
       "expected_primary_skill": "requirement-analysis",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [],
       "expected_no_skill": false,
       "expected_sequence": [
@@ -280,7 +280,7 @@
       "id": "api-implementation",
       "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [
         "write-api-docs"
       ],
@@ -371,9 +371,7 @@
       "id": "powershell-companion",
       "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [
-        "powershell-safe-commands"
-      ],
+      "allowed_companions": ["powershell-safe-commands", "no-code-comments"],
       "forbidden_skills": [],
       "expected_no_skill": false,
       "expected_sequence": [
@@ -390,9 +388,7 @@
       "id": "comments-companion",
       "query": "Refactor this parser with no comments or docstrings and run its tests.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [
-        "no-code-comments"
-      ],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [],
       "expected_no_skill": false,
       "expected_sequence": [
@@ -474,7 +470,7 @@
       "id": "web-responsive-implementation",
       "query": "Implement the responsive account settings page from the approved design and verify the real page at desktop and mobile widths.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [
         "requirement-analysis",
         "technical-solution-research"
@@ -494,7 +490,7 @@
       "id": "web-react-interaction",
       "query": "Fix the React dropdown interaction so keyboard selection updates the form, then verify the flow in the browser.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [
         "bug-diagnosis"
       ],
@@ -513,7 +509,7 @@
       "id": "web-css-browser",
       "query": "Modify the checkout CSS to stop the mobile total from overlapping the submit button and verify it in the browser.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [
         "requirement-analysis"
       ],
@@ -585,7 +581,7 @@
       "id": "web-css-browser-verify",
       "query": "Change the CSS layout for the dashboard and use browser verification to check the actual page and console.",
       "expected_primary_skill": "high-constraint-coding",
-      "allowed_companions": [],
+      "allowed_companions": ["no-code-comments"],
       "forbidden_skills": [],
       "expected_no_skill": false,
       "expected_sequence": [

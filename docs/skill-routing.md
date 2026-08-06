@@ -14,7 +14,7 @@ A request may use zero skills when it is a simple fact, ordinary conversation, s
 
 ## Companions
 
-`no-code-comments` may accompany work that writes code-like artifacts when the user or repository requires comment-free output. `powershell-safe-commands` may accompany an action containing real PowerShell parsing, quoting, interpolation, path, wrapper, or encoding risk. Companions never replace the primary skill and do not expand authorization.
+`no-code-comments` accompanies coding work that creates or modifies code-like artifacts as a low-priority comment-style preference; an explicit no-comment request or repository convention strengthens it. It does not accompany read-only review, requirements-only work, research, translation, API documentation-only work, or Git actions unless explicitly requested. `powershell-safe-commands` may accompany an action containing real PowerShell parsing, quoting, interpolation, path, wrapper, or encoding risk. Companions never replace the primary skill and do not expand authorization.
 
 ## Sequences and authorization
 

@@ -286,5 +286,29 @@
     "expectations": [
       "The trigger classifier returns false for routing case web-unknown-bug-diagnose."
     ]
+  },
+  {
+    "id": "chinese-code-change",
+    "query": "修改登录表单的校验逻辑，补上回归测试并验证。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for an explicit Chinese source-change and test request."
+    ]
+  },
+  {
+    "id": "chinese-web-change",
+    "query": "调整个人中心页面的移动端布局，改完自行验证实际页面。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for an explicit Chinese browser-facing implementation request."
+    ]
+  },
+  {
+    "id": "configuration-implementation",
+    "query": "Update the CI workflow to run lint on pull requests and validate the change.",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for an explicit configuration implementation request."
+    ]
   }
 ]
