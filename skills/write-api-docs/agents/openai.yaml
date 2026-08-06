@@ -1,7 +1,7 @@
 interface:
   display_name: "Write API Docs"
   short_description: "Create and review evidence-backed API contracts"
-  default_prompt: "Use $write-api-docs when the final artifact is API documentation, a machine-readable contract, reconciliation, inventory, or integration-risk review. Preserve operation-level evidence and uncertainty without inventing behavior. Let requirement-analysis own general requirements, bug-diagnosis own unknown causes, and high-constraint-coding own endpoint, client, SDK, or test implementation."
+  default_prompt: "Use $write-api-docs when the final artifact is API documentation or an integration contract: create, rewrite, review, reconcile, inventory, or assess OpenAPI/Swagger, GraphQL, gRPC, webhooks, AsyncAPI, or frontend/backend API contracts. Preserve evidence and uncertainty without invention. Endpoint, client, SDK, webpage, test, and ordinary source implementation or review belong to high-constraint-coding."
 
 policy:
   allow_implicit_invocation: true

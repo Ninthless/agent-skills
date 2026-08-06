@@ -1,6 +1,6 @@
 ---
 name: technical-solution-research
-description: 'Research current technical solutions using evidence about libraries, frameworks, protocols, standards, versions, compatibility, and operational constraints. Use when the requested result is a bounded technical recommendation, compatibility finding, migration choice, or evidence-backed comparison that includes keeping the current approach when viable. Separate facts, inferences, options, and recommendation, and use a bounded spike only when documents cannot resolve a decisive uncertainty. Do not implement, perform business-domain discovery, or manufacture multiple options for a single factual answer.'
+description: 'Research current technical solutions using evidence about libraries, frontend or backend frameworks, protocols, standards, versions, compatibility, and operations. Use when the user asks to research, compare, choose, or recommend a framework, library, protocol, version, migration, or compatibility path. Do not trigger for direct source or webpage implementation, unknown-bug diagnosis, requirement contracts, API docs, business-domain workflow research, or alternatives for a single factual answer.'
 ---
 # Technical Solution Research
 

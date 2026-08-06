@@ -1,7 +1,7 @@
 interface:
   display_name: "Requirement Analysis"
   short_description: "Bound requirements into a testable contract"
-  default_prompt: "Use $requirement-analysis when the requested result is a bounded requirement contract, scope analysis, acceptance criteria, or explicit English specification. Separate ER, IR, constraints, preferences, assumptions, conflicts, FR, NFR, dependencies, risks, and handoff. Keep think-in-English normalization internal unless the user requests a visible English spec. Do not implement or invent domain and technical facts."
+  default_prompt: "Use $requirement-analysis when the deliverable is a bounded requirement contract: clarify or organize scope, resolve ambiguity, write acceptance criteria, FR/NFR, a spec, or a handoff, including webpage requirements without implementation. Keep analysis read-only and hand source implementation to high-constraint-coding. Clear implementation, translation-only, diagnosis, technical choices, API docs, and business-domain research belong elsewhere."
 
 policy:
   allow_implicit_invocation: true

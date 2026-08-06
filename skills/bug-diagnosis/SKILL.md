@@ -1,6 +1,6 @@
 ---
 name: bug-diagnosis
-description: 'Diagnose software defects through symptoms, evidence, falsifiable hypotheses, minimal reproduction or experiments, and explicit confidence. Use when the root cause is unknown and the requested result is diagnosis, investigation, reproduction, or a fix direction. Default to read-only work and produce proven facts, unproven items, a root-cause conclusion, fix direction, and verification plan. Do not modify code without authorization, guess a cause from symptoms, or develop security exploits.'
+description: 'Diagnose unknown software defects through symptoms, evidence, falsifiable hypotheses, reproduction, and safe experiments. Use when the user asks to investigate, debug, reproduce, find the root cause, or explain an unexplained crash, wrong response, flaky test, broken UI, or performance regression before repair. Do not trigger for a proven-cause fix or direct source implementation, requirements, API contract work, technical research, or ordinary code review; remain read-only unless separately authorized.'
 ---
 # Bug Diagnosis
 

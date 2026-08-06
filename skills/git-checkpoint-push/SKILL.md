@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: 'Safely inspect, stage, commit, checkpoint, push, or draft a commit message for the real current diff. Use only for an explicitly authorized Git action subset or a message-only request grounded in the current repository diff. Preserve Conventional Commit language rules, unrelated work, branch protections, and remote history. Never turn commit-only into push, invent a message for a fictional change, create or push a branch without authorization, or continue after a failed stage, hook, commit, or verification step.'
+description: 'Perform only explicit Git actions such as stage, commit, checkpoint, push, PR handoff, or draft a message from the real current diff. Use when the user clearly requests one of those actions. Do not trigger for merely mentioning git, status, diff, branch, or repository, for read-only Git questions, implementation, or ordinary review; never infer an action.'
 ---
 # Git Checkpoint Push
 

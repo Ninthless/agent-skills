@@ -1,6 +1,6 @@
 ---
 name: powershell-safe-commands
-description: 'Author or repair commands only when PowerShell-specific parsing, quoting, interpolation, wrapper, path-literal, or encoding behavior can change meaning. Use for $, $_, $env:, @{u}, $(...), here-strings, regex replacements, nested powershell -Command, quoted Windows paths, -EncodedCommand, or failures caused by these constructs. Do not trigger merely because the host is Windows or PowerShell, for direct commands without PowerShell-specific risk, conceptual explanations, or non-PowerShell shells.'
+description: 'Author or repair commands as a companion only when PowerShell parsing, quoting, interpolation, wrappers, path literals, or encoding can change meaning. Use for requests involving dollar-variable interpolation, pipeline variables, environment variables, here-strings, regex replacements, nested powershell -Command, quoted Windows paths, -EncodedCommand, or failures caused by those constructs. Do not become the primary owner or expand authorization; do not trigger merely because the host is Windows/PowerShell, for simple direct commands, conceptual explanations, non-PowerShell shells, or source changes with no PowerShell-specific risk.'
 ---
 # PowerShell Safe Commands
 

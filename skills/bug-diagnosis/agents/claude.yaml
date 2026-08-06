@@ -1,7 +1,7 @@
 interface:
   display_name: "Bug Diagnosis"
   short_description: "Find evidence-backed root causes read-only"
-  default_prompt: "Use $bug-diagnosis for unknown-root-cause software investigation. Default to read-only work, build falsifiable hypotheses, run safe discriminating experiments, state confidence and unproven items, and hand fix direction plus verification cases to high-constraint-coding. Do not edit without authorization, guess causes, or develop exploits."
+  default_prompt: "Use $bug-diagnosis only for unknown-root-cause investigation, debugging, reproduction, performance regression investigation, and evidence-backed diagnosis. Remain read-only, state confidence and unproven items, and hand an actionable fix direction plus verification cases to high-constraint-coding. Proven-cause fixes, direct webpage or source implementation, requirements, technical research, API docs, translation, and ordinary code review belong elsewhere."
 
 policy:
   allow_implicit_invocation: true

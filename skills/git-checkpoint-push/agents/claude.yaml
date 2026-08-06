@@ -1,7 +1,7 @@
 interface:
   display_name: "Git Checkpoint Push"
   short_description: "Authorized Git checkpoint actions or message-only drafting"
-  default_prompt: "Use $git-checkpoint-push only for an explicit real-repository request to stage, commit, checkpoint, push, create a PR handoff, or draft a message from the current diff. Execute only the authorized subset, never infer push permission, and stop after failed prerequisites. Incidental Git words, status questions, implementation, and ordinary review do not trigger it."
+  default_prompt: "Use $git-checkpoint-push only for an explicit real-repository request to stage, commit, checkpoint, push, create a PR handoff, or draft a message from the current diff. Execute only the named action subset. Mere mentions of git, status, diff, branch, or repository, implementation, and ordinary review do not trigger it."
 
 policy:
   allow_implicit_invocation: false

@@ -1,6 +1,6 @@
 ---
 name: requirement-analysis
-description: 'Turn rough, mixed-language, conflicting, or incomplete product and engineering material into a bounded implementation-ready working contract. Use for scope analysis, requirement normalization, ER/IR classification, constraints, assumptions, conflicts, FR/NFR, testable acceptance criteria, dependencies, risks, or an implementation handoff. Preserve English-spec capability through explicit display-spec and internal-normalization modes. Do not implement, create a long-running requirements state machine, research missing domain facts, or select technical solutions.'
+description: 'Turn rough, mixed-language, conflicting, or incomplete notes into a bounded requirement contract. Use when the user asks to clarify or organize requirements, define scope, resolve contradictions, write FR/NFR, acceptance criteria, a spec, or an implementation handoff, including webpage requirements without code changes. Do not trigger for clear implementation, source changes, unknown-bug diagnosis, API documentation, missing business-domain research, framework/version choices, or UI copy translation only.'
 ---
 # Requirement Analysis
 

@@ -1,12 +1,12 @@
 ---
 name: no-code-comments
-description: 'Prefer self-explanatory code and avoid low-value comments when the user explicitly requests comment-free code, the repository has an established no-comment convention, or this skill is selected as a low-priority companion. Discourage comments that merely restate syntax or nearby code. Do not treat every coding task as a must-trigger, and do not block required directives, generated markers, legal headers, public API documentation contracts, useful docstrings/JSDoc/XML docs, or schema-native description and summary fields.'
+description: 'Apply a comment-style companion when the user explicitly asks for no comments, remove comments, comment-free code, or the repository clearly requires that policy. Use only alongside the primary implementation or documentation skill. Do not trigger for ordinary coding, webpage work, read-only analysis, translation, or API docs without an explicit or repository-established no-comment policy; preserve required directives, generated markers, legal headers, and public API documentation.'
 ---
 # No Code Comments
 
 ## Trigger policy
 
-Use when the user explicitly asks for no comments or clean comment-free output, when repository evidence establishes that convention, or as a low-priority companion that does not conflict with stronger requirements. Do not must-trigger for ordinary writing, editing, refactoring, tests, configs, schemas, or code output solely because they are code-like.
+Use only when the user explicitly asks for no comments or clean comment-free output, or when repository evidence establishes that convention. Do not trigger as an implicit low-priority companion for ordinary writing, editing, refactoring, tests, configs, schemas, webpage work, API implementation, or other code output solely because it is code-like. A platform may select this skill only when that explicit or repository-established evidence exists.
 
 Priority order:
 

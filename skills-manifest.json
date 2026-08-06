@@ -2,15 +2,108 @@
   "extension": "repository-local",
   "repository_local_extension": true,
   "skills": [
-    {"name": "bug-diagnosis", "mode": "analysis", "role": "primary", "implicit": true, "side_effects": false, "handoff": ["high-constraint-coding"]},
-    {"name": "freelance-order-triage", "mode": "analysis", "role": "primary", "implicit": true, "side_effects": false, "handoff": ["requirement-analysis", "vibecoding-domain-scout"]},
-    {"name": "git-checkpoint-push", "mode": "action", "role": "primary", "implicit": false, "side_effects": true, "handoff": []},
-    {"name": "high-constraint-coding", "mode": "execution", "role": "primary", "implicit": true, "side_effects": true, "handoff": ["bug-diagnosis", "requirement-analysis", "technical-solution-research"]},
-    {"name": "no-code-comments", "mode": "companion", "role": "companion", "implicit": true, "side_effects": false, "handoff": []},
-    {"name": "powershell-safe-commands", "mode": "companion", "role": "companion", "implicit": true, "side_effects": false, "handoff": []},
-    {"name": "requirement-analysis", "mode": "analysis", "role": "primary", "implicit": true, "side_effects": false, "handoff": ["high-constraint-coding", "technical-solution-research", "vibecoding-domain-scout", "write-api-docs"]},
-    {"name": "technical-solution-research", "mode": "analysis", "role": "primary", "implicit": true, "side_effects": false, "handoff": ["requirement-analysis", "high-constraint-coding"]},
-    {"name": "vibecoding-domain-scout", "mode": "analysis", "role": "primary", "implicit": true, "side_effects": false, "handoff": ["requirement-analysis", "technical-solution-research"]},
-    {"name": "write-api-docs", "mode": "execution", "role": "primary", "implicit": true, "side_effects": true, "handoff": ["requirement-analysis", "high-constraint-coding"]}
+    {
+      "name": "bug-diagnosis",
+      "mode": "analysis",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": [
+        "high-constraint-coding"
+      ]
+    },
+    {
+      "name": "freelance-order-triage",
+      "mode": "analysis",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": [
+        "requirement-analysis",
+        "vibecoding-domain-scout"
+      ]
+    },
+    {
+      "name": "git-checkpoint-push",
+      "mode": "action",
+      "role": "primary",
+      "implicit": false,
+      "side_effects": true,
+      "handoff": []
+    },
+    {
+      "name": "high-constraint-coding",
+      "mode": "execution",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": true,
+      "handoff": [
+        "bug-diagnosis",
+        "requirement-analysis",
+        "technical-solution-research"
+      ]
+    },
+    {
+      "name": "no-code-comments",
+      "mode": "companion",
+      "role": "companion",
+      "implicit": false,
+      "side_effects": false,
+      "handoff": []
+    },
+    {
+      "name": "powershell-safe-commands",
+      "mode": "companion",
+      "role": "companion",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": []
+    },
+    {
+      "name": "requirement-analysis",
+      "mode": "analysis",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": [
+        "high-constraint-coding",
+        "technical-solution-research",
+        "vibecoding-domain-scout",
+        "write-api-docs"
+      ]
+    },
+    {
+      "name": "technical-solution-research",
+      "mode": "analysis",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": [
+        "requirement-analysis",
+        "high-constraint-coding"
+      ]
+    },
+    {
+      "name": "vibecoding-domain-scout",
+      "mode": "analysis",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": false,
+      "handoff": [
+        "requirement-analysis",
+        "technical-solution-research"
+      ]
+    },
+    {
+      "name": "write-api-docs",
+      "mode": "execution",
+      "role": "primary",
+      "implicit": true,
+      "side_effects": true,
+      "handoff": [
+        "requirement-analysis",
+        "high-constraint-coding"
+      ]
+    }
   ]
 }

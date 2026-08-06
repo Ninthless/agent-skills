@@ -190,6 +190,8 @@ def validate_routing(path: Path, skill_names: set[str], triggers: dict[str, dict
         for skill in true_skills:
             actual = triggers.get(skill, {}).get(query)
             require(actual is True, f"{label}: {skill} trigger_eval must contain query with should_trigger=true", errors)
+        if no_skill is False:
+            false_skills = skill_names - true_skills
         for skill in false_skills:
             actual = triggers.get(skill, {}).get(query)
             require(actual is False, f"{label}: {skill} trigger_eval must contain query with should_trigger=false", errors)

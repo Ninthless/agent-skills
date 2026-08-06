@@ -1,6 +1,6 @@
 ---
 name: vibecoding-domain-scout
-description: 'Research unfamiliar, current, regulated, or platform-dependent domains before product scoping or coding. Use when a product depends on industry workflows, business rules, policies, standards, compliance, real-world operations, or expert terminology. Produce research-only domain findings, product discovery with an evidence-based scope, or a build handoff. Do not use for routine apps, pure UI work, generic market summaries, or clear technical tasks that need no domain discovery.'
+description: 'Research unfamiliar industry workflows, business rules, regulation, compliance, roles, operational exceptions, or expert terminology before product scope or build. Use when the user asks how a real domain such as pharmacy, insurance, finance, education, or platform policy works and the findings must shape a product. Do not trigger for pure UI or webpage implementation, framework or library research, technical solution selection, requirements based on known facts, or generic market summaries.'
 ---
 # Vibecoding Domain Scout
 

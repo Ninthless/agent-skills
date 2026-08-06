@@ -1,6 +1,6 @@
 ---
 name: write-api-docs
-description: 'Create, rewrite, reconcile, or review implementation-ready API contracts and integration documentation from requirements, frontend types and mocks, routes, handlers, schemas, tests, runtime evidence, OpenAPI/Swagger, GraphQL, gRPC, webhooks/callbacks, AsyncAPI, and message contracts. Use when the requested deliverable is API documentation, a machine-readable contract, API inventory, compatibility analysis, or frontend/backend contract reconciliation. Support mixed implemented, proposed, conflicting, missing, and uncertain operations in one API set without inventing behavior. Do not use for endpoint/client/SDK implementation, pure UI or database work, generic HTTP/OAuth teaching, test-only runs, or ordinary source review that does not request API contract documentation.'
+description: 'Create, rewrite, reconcile, or review API documentation and integration contracts from routes, handlers, schemas, tests, runtime evidence, OpenAPI/Swagger, GraphQL, gRPC, webhooks, AsyncAPI, or messages. Use when the user asks for API docs, an OpenAPI contract, endpoint inventory, frontend/backend contract reconciliation, or API integration review. Do not trigger for endpoint, client, SDK, webpage, or test implementation, ordinary source review, unknown-bug diagnosis, generic HTTP teaching, or incidental API mentions.'
 ---
 # Write API Docs
 

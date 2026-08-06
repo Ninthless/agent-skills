@@ -24,6 +24,158 @@
     ]
   },
   {
+    "id": "routing-source-review",
+    "query": "Review the changed authentication source for correctness regressions without editing it.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case source-review."
+    ]
+  },
+  {
+    "id": "routing-requirement-primary",
+    "query": "Turn these conflicting product notes into scope, requirements, and testable acceptance criteria.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case requirement-primary."
+    ]
+  },
+  {
+    "id": "routing-requirement-coding",
+    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case requirement-coding."
+    ]
+  },
+  {
+    "id": "routing-english-spec",
+    "query": "Show me a concise English specification with scope and acceptance criteria.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case english-spec."
+    ]
+  },
+  {
+    "id": "routing-internal-english",
+    "query": "Think in English first, do not show it, and return the requirement analysis in Chinese.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case internal-english."
+    ]
+  },
+  {
+    "id": "routing-technical-primary",
+    "query": "Research whether SQLAlchemy 2.0 is compatible with our Python 3.12 stack and recommend a path.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case technical-primary."
+    ]
+  },
+  {
+    "id": "routing-technical-status-quo",
+    "query": "Compare the current queue with two maintained alternatives and include keeping the current system.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case technical-status-quo."
+    ]
+  },
+  {
+    "id": "routing-single-tech-fact",
+    "query": "Check the current HTTP standard requirement for a 204 response body.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case single-tech-fact."
+    ]
+  },
+  {
+    "id": "routing-domain-primary",
+    "query": "Research pharmacy dispensing roles, exception workflows, and regulatory validation needs before scoping an app.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case domain-primary."
+    ]
+  },
+  {
+    "id": "routing-domain-to-requirements",
+    "query": "Research the real insurance claims workflow, then turn the findings into an MVP requirement handoff.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case domain-to-requirements."
+    ]
+  },
+  {
+    "id": "routing-api-docs",
+    "query": "Create an evidence-backed OpenAPI contract from these routes and schemas without implementing endpoints.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case api-docs."
+    ]
+  },
+  {
+    "id": "routing-api-review",
+    "query": "Review this OpenAPI document for integration-breaking omissions and do not edit source.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case api-review."
+    ]
+  },
+  {
+    "id": "routing-api-implementation",
+    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case api-implementation."
+    ]
+  },
+  {
+    "id": "routing-freelance-primary",
+    "query": "A client wants a fixed-price rescue of an unknown legacy app by Friday; decide whether and how I should quote it.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case freelance-primary."
+    ]
+  },
+  {
+    "id": "routing-freelance-clear",
+    "query": "Assess this small paid change, set revision limits, and draft a client-ready acceptance reply.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case freelance-clear."
+    ]
+  },
+  {
+    "id": "routing-git-commit",
+    "query": "Commit the current verified diff locally with an appropriate message, but do not push.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case git-commit."
+    ]
+  },
+  {
+    "id": "routing-git-push",
+    "query": "Push the existing current branch to its configured upstream after safety checks.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case git-push."
+    ]
+  },
+  {
+    "id": "routing-powershell-companion",
+    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case powershell-companion."
+    ]
+  },
+  {
+    "id": "routing-comments-companion",
+    "query": "Refactor this parser with no comments or docstrings and run its tests.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case comments-companion."
+    ]
+  },
+  {
     "id": "routing-zero-weather",
     "query": "What is the weather concept called when warm air sits above cold air?",
     "should_trigger": false,
@@ -53,6 +205,86 @@
     "should_trigger": false,
     "expectations": [
       "The trigger classifier returns false for routing case incidental-api."
+    ]
+  },
+  {
+    "id": "routing-web-responsive-implementation",
+    "query": "Implement the responsive account settings page from the approved design and verify the real page at desktop and mobile widths.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-responsive-implementation."
+    ]
+  },
+  {
+    "id": "routing-web-react-interaction",
+    "query": "Fix the React dropdown interaction so keyboard selection updates the form, then verify the flow in the browser.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-react-interaction."
+    ]
+  },
+  {
+    "id": "routing-web-css-browser",
+    "query": "Modify the checkout CSS to stop the mobile total from overlapping the submit button and verify it in the browser.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-css-browser."
+    ]
+  },
+  {
+    "id": "routing-web-requirements-only",
+    "query": "Write testable requirements for a responsive marketing page, but do not implement or modify any files.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-requirements-only."
+    ]
+  },
+  {
+    "id": "routing-frontend-framework-research",
+    "query": "Research whether we should use Next.js or Remix for the new website and recommend one; do not implement it.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case frontend-framework-research."
+    ]
+  },
+  {
+    "id": "routing-ui-copy-translation",
+    "query": "Translate these five UI button labels into Japanese; do not inspect or change the application.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case ui-copy-translation."
+    ]
+  },
+  {
+    "id": "routing-web-css-browser-verify",
+    "query": "Change the CSS layout for the dashboard and use browser verification to check the actual page and console.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-css-browser-verify."
+    ]
+  },
+  {
+    "id": "routing-web-framework-research",
+    "query": "Compare the current React and Vue versions for this web project and recommend which framework to choose; do not implement.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-framework-research."
+    ]
+  },
+  {
+    "id": "routing-web-api-docs-only",
+    "query": "Reconcile the web frontend types with the OpenAPI contract and rewrite the API documentation only; do not implement endpoints or UI.",
+    "should_trigger": false,
+    "expectations": [
+      "The trigger classifier returns false for routing case web-api-docs-only."
+    ]
+  },
+  {
+    "id": "routing-web-unknown-bug-diagnose",
+    "query": "Debug and reproduce the unexplained web page freeze, identify the root cause, and do not change source code.",
+    "should_trigger": true,
+    "expectations": [
+      "The trigger classifier returns true for routing case web-unknown-bug-diagnose."
     ]
   }
 ]
