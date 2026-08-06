@@ -1,0 +1,169 @@
+{
+  "orientation": [
+    {
+      "id": "language-version",
+      "text": "Identifies the language family, version, compiler or runtime, and relevant framework assumptions.",
+      "obligation": "require"
+    },
+    {
+      "id": "toolchain",
+      "text": "Uses repository evidence to identify build, package, formatter, linter, type-check, and test commands.",
+      "obligation": "require"
+    },
+    {
+      "id": "local-conventions",
+      "text": "Reads repository rules and maintained code in the affected subsystem before choosing a shape.",
+      "obligation": "require"
+    },
+    {
+      "id": "behavior-model",
+      "text": "Models current behavior, callers, consumers, data, state, errors, and compatibility obligations.",
+      "obligation": "require"
+    },
+    {
+      "id": "invariants-lifecycle",
+      "text": "Makes invariants, concurrency, cancellation, resource ownership, lifecycle, and recovery explicit.",
+      "obligation": "require"
+    }
+  ],
+  "design_judgment": [
+    {
+      "id": "correct-seam",
+      "text": "Chooses the layer that owns the behavior or shared invariant.",
+      "obligation": "require"
+    },
+    {
+      "id": "real-options-only",
+      "text": "Compares only a few credible options when a real tradeoff exists, including keeping the current shape when viable.",
+      "obligation": "require"
+    },
+    {
+      "id": "evidence-based-choice",
+      "text": "Selects the design using project evidence, compatibility, operability, debuggability, and verification cost.",
+      "obligation": "require"
+    },
+    {
+      "id": "compatibility",
+      "text": "Preserves or deliberately changes public, data, runtime, and migration compatibility within authorization.",
+      "obligation": "require"
+    }
+  ],
+  "implementation_quality": [
+    {
+      "id": "idiomatic-types-errors",
+      "text": "Uses language- and ecosystem-native types, naming, interfaces, and error handling.",
+      "obligation": "require"
+    },
+    {
+      "id": "resource-ownership",
+      "text": "Makes ownership, cleanup, transactions, and resource lifetime explicit and correct.",
+      "obligation": "require"
+    },
+    {
+      "id": "concurrency-cancellation",
+      "text": "Handles concurrency, cancellation, timeouts, ordering, and shutdown according to project idioms.",
+      "obligation": "require"
+    },
+    {
+      "id": "explicit-boundaries",
+      "text": "Keeps external boundaries, validation, state transitions, dependencies, and compatibility semantics explicit.",
+      "obligation": "require"
+    },
+    {
+      "id": "observable-errors",
+      "text": "Preserves useful error context and makes failure and recovery diagnosable.",
+      "obligation": "require"
+    }
+  ],
+  "maintainability_audit": [
+    {
+      "id": "cognitive-load",
+      "text": "Keeps names, control flow, and decomposition understandable to maintainers.",
+      "obligation": "require"
+    },
+    {
+      "id": "artifact-justification",
+      "text": "Justifies every new field, state, branch, helper, layer, dependency, file, and test by a current consumer or requirement.",
+      "obligation": "require"
+    },
+    {
+      "id": "no-template-symmetry",
+      "text": "Rejects boilerplate symmetry, duplicated logic, pass-through layering, and generalized helpers without evidence.",
+      "obligation": "require"
+    },
+    {
+      "id": "reasonable-asymmetry",
+      "text": "Preserves local asymmetry when domain behavior, compatibility, or subsystem evidence justifies it.",
+      "obligation": "require"
+    },
+    {
+      "id": "debuggability",
+      "text": "Leaves behavior, ownership, failure context, and recovery paths observable and diagnosable.",
+      "obligation": "require"
+    }
+  ],
+  "verification": [
+    {
+      "id": "behavior-tests",
+      "text": "Prioritizes project-native behavior or public-contract tests over incidental implementation details.",
+      "obligation": "require"
+    },
+    {
+      "id": "failure-recovery",
+      "text": "Tests relevant failure, recovery, cancellation, timeout, duplicate, ordering, resource, or compatibility behavior.",
+      "obligation": "require"
+    },
+    {
+      "id": "adjacent-risk",
+      "text": "Checks adjacent consumers and shared contracts when the change crosses a semantic seam.",
+      "obligation": "require"
+    },
+    {
+      "id": "fix-retest",
+      "text": "Fixes failures attributable to the change and reruns the relevant verification loop.",
+      "obligation": "require"
+    },
+    {
+      "id": "honest-evidence",
+      "text": "Reports exact checks, blockers, assumptions, unproven behavior, and residual risk without overclaiming.",
+      "obligation": "require"
+    }
+  ],
+  "forbidden_patterns": [
+    {
+      "id": "speculative-abstraction",
+      "text": "Does not add abstraction, configuration, dependency, state, or performance work for hypothetical future needs.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "pass-through-layer",
+      "text": "Does not add mechanically mirrored or pass-through wrappers without a real boundary or behavior.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "swallowed-error",
+      "text": "Does not swallow errors, use catch-all handling, or silently discard failure context.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "suppression-instead-of-modeling",
+      "text": "Does not use assertions, casts, non-null, warning, or type suppression to hide a modeling defect.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "test-only-production-hook",
+      "text": "Does not add production branches or hooks that exist only to satisfy tests.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "unsupported-performance-claim",
+      "text": "Does not claim or make performance improvements without relevant baseline or measurement evidence.",
+      "obligation": "forbid"
+    },
+    {
+      "id": "authorship-claim",
+      "text": "Does not claim or imply human authorship; it evaluates observable engineering properties instead.",
+      "obligation": "forbid"
+    }
+  ]
+}

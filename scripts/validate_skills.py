@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+from collections import Counter
 import json
 import re
 import sys
@@ -74,6 +75,86 @@ def parse_agent(path: Path, errors: list[str]) -> tuple[dict[str, str], dict[str
     return interface, policy
 
 
+WEB_CONTRACT_FIELDS = {"applies_to", "required_steps", "fallback_when_unavailable", "forbidden_claims"}
+WEB_REQUIRED_STEP_IDS = {item_id: "require" for item_id in {"server-reuse", "browser-page", "affected-flow", "responsive-viewports", "console", "conditional-network", "evidence", "fix-retest"}}
+WEB_FALLBACK_IDS = {item_id: "require" for item_id in {"static-checks", "report-blocker"}}
+WEB_FORBIDDEN_IDS = {item_id: "forbid" for item_id in {"duplicate-server", "unverified-pass", "report-only-failure"}}
+ENGINEERING_CONTRACT_IDS = {
+    "orientation": {item_id: "require" for item_id in {"language-version", "toolchain", "local-conventions", "behavior-model", "invariants-lifecycle"}},
+    "design_judgment": {item_id: "require" for item_id in {"correct-seam", "real-options-only", "evidence-based-choice", "compatibility"}},
+    "implementation_quality": {item_id: "require" for item_id in {"idiomatic-types-errors", "resource-ownership", "concurrency-cancellation", "explicit-boundaries", "observable-errors"}},
+    "maintainability_audit": {item_id: "require" for item_id in {"cognitive-load", "artifact-justification", "no-template-symmetry", "reasonable-asymmetry", "debuggability"}},
+    "verification": {item_id: "require" for item_id in {"behavior-tests", "failure-recovery", "adjacent-risk", "fix-retest", "honest-evidence"}},
+    "forbidden_patterns": {item_id: "forbid" for item_id in {"speculative-abstraction", "pass-through-layer", "swallowed-error", "suppression-instead-of-modeling", "test-only-production-hook", "unsupported-performance-claim", "authorship-claim"}},
+}
+
+
+def validate_structured_contract(path: Path, expected_fields_and_ids: dict[str, dict[str, str] | None], errors: list[str]) -> None:
+    label = str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        errors.append(f"{label}: invalid structured contract: {exc}")
+        return
+    if not isinstance(data, dict):
+        errors.append(f"{label}: contract root must be an object")
+        return
+    if set(data) != set(expected_fields_and_ids):
+        errors.append(f"{label}: fields must be {sorted(expected_fields_and_ids)}")
+    for field, required_ids in expected_fields_and_ids.items():
+        values = data.get(field)
+        if not isinstance(values, list) or not values:
+            errors.append(f"{label}: {field} must be a non-empty array")
+            continue
+        if required_ids is None:
+            if not all(isinstance(item, str) and item.strip() for item in values):
+                errors.append(f"{label}: {field} entries must be non-empty strings")
+            continue
+        ids = []
+        for index, item in enumerate(values):
+            item_label = f"{label}: {field}[{index}]"
+            if not isinstance(item, dict) or set(item) != {"id", "obligation", "text"}:
+                errors.append(f"{item_label} must contain only id, obligation, and text")
+                continue
+            item_id = item.get("id")
+            item_text = item.get("text")
+            obligation = item.get("obligation")
+            if not isinstance(item_id, str) or not item_id.strip():
+                errors.append(f"{item_label}: id must be a non-empty string")
+            else:
+                ids.append(item_id)
+            if not isinstance(item_text, str) or not item_text.strip():
+                errors.append(f"{item_label}: text must be a non-empty string")
+            if obligation not in {"require", "forbid"}:
+                errors.append(f"{item_label}: obligation must be require or forbid")
+            elif isinstance(item_id, str) and item_id in required_ids and obligation != required_ids[item_id]:
+                errors.append(f"{item_label}: obligation must be {required_ids[item_id]} for {item_id}")
+        id_counts = Counter(ids)
+        duplicate_ids = sorted(item_id for item_id, count in id_counts.items() if count > 1)
+        if duplicate_ids:
+            errors.append(f"{label}: {field} contains duplicate ids: {duplicate_ids}")
+        actual_ids = set(ids)
+        expected_ids = set(required_ids)
+        missing_ids = sorted(expected_ids - actual_ids)
+        if missing_ids:
+            errors.append(f"{label}: {field} missing required ids: {missing_ids}")
+        unexpected_ids = sorted(actual_ids - expected_ids)
+        if unexpected_ids:
+            errors.append(f"{label}: {field} contains unexpected ids: {unexpected_ids}")
+
+
+def validate_web_contract(path: Path, errors: list[str]) -> None:
+    validate_structured_contract(
+        path,
+        {
+            "applies_to": None,
+            "required_steps": WEB_REQUIRED_STEP_IDS,
+            "fallback_when_unavailable": WEB_FALLBACK_IDS,
+            "forbidden_claims": WEB_FORBIDDEN_IDS,
+        },
+        errors,
+    )
+
 def main() -> int:
     errors = []
     warnings = []
@@ -83,6 +164,12 @@ def main() -> int:
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         print(f"Skill validation failed:\n- skills-manifest.json: {exc}")
         return 1
+    validate_web_contract(SKILLS / "high-constraint-coding" / "evals" / "web-verification-contract.json", errors)
+    validate_structured_contract(
+        SKILLS / "high-constraint-coding" / "evals" / "engineering-quality-contract.json",
+        ENGINEERING_CONTRACT_IDS,
+        errors,
+    )
     entries = manifest.get("skills")
     if manifest.get("extension") != "repository-local" or manifest.get("repository_local_extension") is not True:
         errors.append("skills-manifest.json: repository-local extension marker is required")
@@ -166,6 +253,9 @@ def main() -> int:
                 manifest_entry = manifest_entries.get(skill)
                 if isinstance(manifest_entry, dict) and isinstance(manifest_entry.get("implicit"), bool) and allow_implicit != manifest_entry["implicit"]:
                     errors.append(f"{agent_path.relative_to(ROOT)}: policy.allow_implicit_invocation must match manifest implicit")
+            prompt = interface.get("default_prompt", "")
+            if isinstance(prompt, str) and skill not in prompt:
+                errors.append(f"{agent_path.relative_to(ROOT)}: default_prompt must reference {skill}")
         if chr(92) + "references" in text or "references" + chr(92) in text:
             errors.append(f"{path.relative_to(ROOT)}: reference paths must use forward slashes")
         for match in REFERENCE_PATTERN.finditer(text):

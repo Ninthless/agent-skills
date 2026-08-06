@@ -3,14 +3,15 @@
 Use this completion gate for non-trivial source review or code changes.
 
 - [ ] The result matches requested behavior without unrelated changes.
-- [ ] Relevant callers, inputs, validation, defaults, state, persistence, outputs, consumers, and tests use coherent semantics.
-- [ ] Each invariant has an explainable owner; defensive behavior protects a reachable boundary.
+- [ ] Language, ecosystem, version, toolchain, repository rules, and maintained local conventions are known.
+- [ ] Relevant callers, inputs, state, errors, persistence, outputs, consumers, and contracts use coherent semantics.
+- [ ] The change uses the correct owning seam; alternatives are compared only when a real tradeoff exists.
 - [ ] Every new field, state, index, endpoint, abstraction, dependency, and file has a current requirement or consumer.
-- [ ] The requested slice is complete, including realistic failure or recovery behavior, without speculative adjacent features.
-- [ ] Naming, wiring, control flow, errors, mapping, transactions, pagination, and tests follow one evidence-backed repository convention.
+- [ ] Errors, resources, concurrency, cancellation, lifecycle, and realistic recovery are correct where relevant.
+- [ ] Naming, control flow, boundaries, and decomposition minimize cognitive load and remain maintainable and debuggable.
 - [ ] Public compatibility, migrations, documentation, and operational claims match the implementation.
 - [ ] The implementation stays direct and readable; performance complexity is evidence-based.
-- [ ] Targeted verification proves the changed behavior and checks adjacent regression risk where practical.
+- [ ] Behavior-focused tests prove success, failure, and recovery without binding to implementation details; adjacent risk is checked where practical.
 - [ ] Unverified behavior, assumptions, and residual risk are reported precisely.
 - [ ] Engineering evidence is not used to claim human or AI authorship.
 

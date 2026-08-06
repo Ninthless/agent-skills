@@ -1,0 +1,14 @@
+Context: PostgreSQL rolling deployment with old and new application versions running concurrently. This is a migration excerpt, not a database fixture that is available to execute. Representative migration tests normally load a snapshot and apply scripts twice.
+
+```sql
+ALTER TABLE customers ADD COLUMN customer_region text NOT NULL;
+DO $$
+DECLARE row_record record;
+BEGIN
+  FOR row_record IN SELECT id, external_region FROM customers LOOP
+    EXECUTE format('UPDATE customers SET customer_region = %L WHERE id = %L', row_record.external_region, row_record.id);
+  END LOOP;
+END $$;
+```
+
+Required contract: stage additive compatibility before constraints, backfill safely without interpolating data into executable SQL, define transaction/lock and rerun behavior, and support old/new application overlap. Expected project checks, only when a disposable PostgreSQL harness exists: apply to representative data twice, verify forward compatibility, and exercise documented recovery assumptions.
