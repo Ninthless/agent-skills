@@ -97,7 +97,7 @@
       ]
     },
     {
-      "id": "chinese-language",
+      "id": "explicit-chinese-language",
       "prompt": "为当前真实 diff 起草 commit message，使用简体中文并保留 AuthService 标识符；只读，不要提交。",
       "expected_output": "A message-only Conventional Commit with standard tokens, Simplified Chinese prose, and preserved identifiers.",
       "files": [],
@@ -107,22 +107,22 @@
       },
       "expectations": [
         "Uses standard untranslated Conventional Commit type and scope syntax.",
-        "Uses Simplified Chinese for the subject and body.",
+        "Uses Simplified Chinese for the subject and body because the commit-message language is explicitly requested.",
         "Preserves AuthService exactly.",
         "Makes no Git mutations."
       ]
     },
     {
-      "id": "explicit-english",
-      "prompt": "为当前真实 API 文档 diff 起草 commit message only。Commit message must be in English and preserve OpenAPI.",
-      "expected_output": "A message-only English Conventional Commit preserving OpenAPI.",
+      "id": "default-english-from-chinese-request",
+      "prompt": "为当前真实 API 文档 diff 起草 commit message only，保留 OpenAPI，不要指定 commit message 语言。",
+      "expected_output": "A message-only English Conventional Commit preserving OpenAPI, because English is the default.",
       "files": [],
       "fixture": {
         "type": "isolated_repo",
         "contract": "Create an isolated local repository with no credentialed remote and never perform a real push"
       },
       "expectations": [
-        "The explicit English instruction overrides the Chinese request language.",
+        "Uses English even though the surrounding request is in Chinese because no other commit-message language was explicitly requested.",
         "Preserves OpenAPI exactly.",
         "Makes no Git mutations."
       ]

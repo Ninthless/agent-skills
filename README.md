@@ -1,5 +1,7 @@
 # Agent Skills
 
+[简体中文](README.zh-CN.md)
+
 A proprietary collection of ten focused Agent Skills for repeatable analysis, execution, action, and companion workflows.
 
 ## Skills

@@ -48,11 +48,7 @@ Use Conventional Commits:
 [optional footer]
 ```
 
-Choose natural language in this order:
-
-1. Use the language explicitly requested for the commit message.
-2. Otherwise match the primary language of the checkpoint request.
-3. For mixed requests, use the language describing the change and commit intent, then the conversation language if still unclear.
+Use English for commit message prose by default. Do not infer the language from the conversation, user interface, or surrounding request. Switch to Chinese, Japanese, or another language only when the user explicitly requests that language for the commit message.
 
 Keep `type`, scope syntax, `!`, and `BREAKING CHANGE` standard and untranslated. Preserve identifiers and issue references exactly. Use an imperative, accurate subject under 72 characters. Include body or footer only when evidence requires context, verification, issue references, or breaking-change details.
 
