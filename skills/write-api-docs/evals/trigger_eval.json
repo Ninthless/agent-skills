@@ -286,5 +286,29 @@
     "expectations": [
       "The trigger classifier returns false for routing case web-unknown-bug-diagnose."
     ]
+  },
+  {
+    "id": "chinese-frontend-first-api-docs",
+    "query": "前端已经先写好了类型和请求，请生成一份精简接口文档给后端实现，不要写分析报告。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for a frontend-first API contract handoff written in Chinese."
+    ]
+  },
+  {
+    "id": "chinese-backend-first-api-docs",
+    "query": "后端接口已经实现，请按现有代码生成标准 API 文档给前端对接，只保留调用需要的内容。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for a backend-first API reference handoff written in Chinese."
+    ]
+  },
+  {
+    "id": "api-style-research-only",
+    "query": "搜索一下优秀 API 文档通常怎么组织，但先不要创建或修改任何接口文档。",
+    "should_trigger": false,
+    "expectations": [
+      "Does not claim a research-only request whose final artifact is not API documentation."
+    ]
   }
 ]

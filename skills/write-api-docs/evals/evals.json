@@ -14,7 +14,8 @@
       "expectations": [
         "Does not choose one global mode.",
         "Marks GET implemented, POST proposed, and DELETE conflicting with evidence.",
-        "Defaults to machine contract plus Markdown."
+        "Produces one repository-native or requested primary artifact by default.",
+        "Keeps evidence analysis and conflict details out of settled endpoint reference sections."
       ]
     },
     {
@@ -111,6 +112,74 @@
       "expectations": [
         "Uses AsyncAPI channel and message semantics.",
         "Does not force the message into an OpenAPI path."
+      ]
+    },
+    {
+      "id": "frontend-first-handoff",
+      "prompt": "The frontend was built first from the supplied types and client calls. Write concise Markdown API documentation for the backend team to implement. Do not include an analysis report.",
+      "expected_output": "A compact backend implementation contract grouped by endpoint.",
+      "files": [
+        "frontend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Documents method, path, request fields, success response, and relevant errors from the frontend evidence.",
+        "Uses one Markdown deliverable because the prompt requests Markdown.",
+        "Keeps unresolved implementation decisions as local TBD items only when they block the contract.",
+        "Does not include source inventory, evidence matrix, frontend implementation notes, risk register, recommendations, or conclusion."
+      ],
+      "forbidden_behaviors": [
+        "Adds a source analysis section",
+        "Adds an evidence or status legend",
+        "Adds implementation recommendations unrelated to the contract",
+        "Creates an additional OpenAPI artifact"
+      ]
+    },
+    {
+      "id": "backend-first-handoff",
+      "prompt": "Generate the existing user endpoint documentation for frontend integration. Follow the repository's OpenAPI format and do not add a separate Markdown guide.",
+      "expected_output": "A concise OpenAPI contract matching the backend behavior.",
+      "files": [
+        "backend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Documents the implemented method, path, authentication, parameters, response schema, and evidenced errors.",
+        "Uses short operation summaries and field-level constraints.",
+        "Produces OpenAPI only and does not duplicate the contract in Markdown.",
+        "Does not expose source file paths or narrate the inspection process."
+      ],
+      "forbidden_behaviors": [
+        "Creates a Markdown companion document",
+        "Includes a codebase evidence report",
+        "Invents undocumented response fields or errors"
+      ]
+    },
+    {
+      "id": "concise-markdown-reference",
+      "prompt": "Rewrite the supplied API notes as a standard concise API reference. Keep only what a frontend engineer needs to call the API.",
+      "expected_output": "A lookup-oriented API reference without report-style padding.",
+      "files": [
+        "backend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses shared authentication and error rules once instead of repeating them per endpoint.",
+        "Includes only applicable endpoint sections and representative examples.",
+        "Omits empty sections and generic HTTP explanations.",
+        "Does not add table of contents, architecture narrative, status legend, risk register, recommendations, changelog, or conclusion."
+      ],
+      "forbidden_behaviors": [
+        "Explains basic REST or HTTP concepts",
+        "Repeats the same shared rule under every endpoint",
+        "Adds non-blocking open questions",
+        "Adds a document-generation summary inside the reference"
       ]
     }
   ]
