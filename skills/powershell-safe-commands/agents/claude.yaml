@@ -1,7 +1,7 @@
 interface:
   display_name: "PowerShell Safe Commands"
-  short_description: "Avoid PowerShell parsing and interpolation failures"
-  default_prompt: "Use $powershell-safe-commands only as a companion when actual PowerShell parsing, quoting, interpolation, path-literal, wrapper, regex, or encoding risk can change command meaning. Prefer structured tools or direct execution and never expand the primary task or authorization. Windows or PowerShell context alone, ordinary direct commands, conceptual explanations, and non-PowerShell shells do not trigger it."
+  short_description: "Avoid Windows PowerShell quoting and wrapper-shell failures"
+  default_prompt: "Use $powershell-safe-commands before running or generating PowerShell commands that contain $, $_, @{u}, regex, nested quotes, or file edits."
 
 policy:
   allow_implicit_invocation: true

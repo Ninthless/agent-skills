@@ -1,306 +1,98 @@
 [
   {
-    "id": "routing-bug-primary",
-    "query": "Investigate why checkout intermittently returns 409 and give me the root cause only.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case bug-primary."
-    ]
+    "query": "帮我写一个 Python 脚本读取 input.csv，按 department 分组统计平均薪资，输出 summary.json。",
+    "should_trigger": true
   },
   {
-    "id": "routing-diagnose-fix",
-    "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case diagnose-fix."
-    ]
+    "query": "Create a React login form component with email, password, loading state, and submit handler. Keep it production-ready.",
+    "should_trigger": true
   },
   {
-    "id": "routing-known-fix",
-    "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case known-fix."
-    ]
+    "query": "Refactor this Java service to reduce duplication without changing behavior.",
+    "should_trigger": true
   },
   {
-    "id": "routing-source-review",
-    "query": "Review the changed authentication source for correctness regressions without editing it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case source-review."
-    ]
+    "query": "生成一个 GitHub Actions workflow，push 和 PR 时跑 npm test。",
+    "should_trigger": true
   },
   {
-    "id": "routing-requirement-primary",
-    "query": "Turn these conflicting product notes into scope, requirements, and testable acceptance criteria.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case requirement-primary."
-    ]
+    "query": "Patch the Dockerfile so the app runs as a non-root user.",
+    "should_trigger": true
   },
   {
-    "id": "routing-requirement-coding",
-    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case requirement-coding."
-    ]
+    "query": "写一个最小 FastAPI endpoint，POST /events，接收 JSON 并返回 ok。",
+    "should_trigger": true
   },
   {
-    "id": "routing-english-spec",
-    "query": "Show me a concise English specification with scope and acceptance criteria.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case english-spec."
-    ]
+    "query": "Update this Prisma migration to add a nullable externalId column.",
+    "should_trigger": true
   },
   {
-    "id": "routing-internal-english",
-    "query": "Think in English first, do not show it, and return the requirement analysis in Chinese.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case internal-english."
-    ]
+    "query": "给我一个干净的 TypeScript helper，把数组按 key 分组。",
+    "should_trigger": true
   },
   {
-    "id": "routing-technical-primary",
-    "query": "Research whether SQLAlchemy 2.0 is compatible with our Python 3.12 stack and recommend a path.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case technical-primary."
-    ]
+    "query": "Explain this Python function in plain English. Do not rewrite the code.",
+    "should_trigger": false
   },
   {
-    "id": "routing-technical-status-quo",
-    "query": "Compare the current queue with two maintained alternatives and include keeping the current system.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case technical-status-quo."
-    ]
+    "query": "Review this code for possible bugs, but don't edit it or output a patched version.",
+    "should_trigger": false
   },
   {
-    "id": "routing-single-tech-fact",
-    "query": "Check the current HTTP standard requirement for a 204 response body.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case single-tech-fact."
-    ]
+    "query": "Teach me how comments work in JavaScript with examples that include comments.",
+    "should_trigger": false
   },
   {
-    "id": "routing-domain-primary",
-    "query": "Research pharmacy dispensing roles, exception workflows, and regulatory validation needs before scoping an app.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case domain-primary."
-    ]
+    "query": "Add detailed docstrings to every public function in this module.",
+    "should_trigger": false
   },
   {
-    "id": "routing-domain-to-requirements",
-    "query": "Research the real insurance claims workflow, then turn the findings into an MVP requirement handoff.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case domain-to-requirements."
-    ]
+    "query": "Write onboarding code with teaching comments for a junior developer.",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-docs",
-    "query": "Create an evidence-backed OpenAPI contract from these routes and schemas without implementing endpoints.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case api-docs."
-    ]
+    "query": "What are the tradeoffs between inline comments and self-documenting code?",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-review",
-    "query": "Review this OpenAPI document for integration-breaking omissions and do not edit source.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case api-review."
-    ]
+    "query": "Summarize this diff in a paragraph; no code output needed.",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-implementation",
-    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case api-implementation."
-    ]
+    "query": "Generate API documentation text for these endpoints.",
+    "should_trigger": false
   },
   {
-    "id": "routing-freelance-primary",
-    "query": "A client wants a fixed-price rescue of an unknown legacy app by Friday; decide whether and how I should quote it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case freelance-primary."
-    ]
+    "query": "Show me where comments would be useful in this legacy code, but don't change it.",
+    "should_trigger": false
   },
   {
-    "id": "routing-freelance-clear",
-    "query": "Assess this small paid change, set revision limits, and draft a client-ready acceptance reply.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case freelance-clear."
-    ]
+    "query": "Explain what a Dockerfile is to a beginner.",
+    "should_trigger": false
   },
   {
-    "id": "routing-git-commit",
-    "query": "Commit the current verified diff locally with an appropriate message, but do not push.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case git-commit."
-    ]
+    "query": "Compare two possible implementations conceptually; don't write code yet.",
+    "should_trigger": false
   },
   {
-    "id": "routing-git-push",
-    "query": "Push the existing current branch to its configured upstream after safety checks.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case git-push."
-    ]
+    "query": "Please output commented sample code for a tutorial blog post.",
+    "should_trigger": false
   },
   {
-    "id": "routing-powershell-companion",
-    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case powershell-companion."
-    ]
+    "query": "Add a GitHub Actions YAML workflow for lint and tests. Keep generated files clean.",
+    "should_trigger": true
   },
   {
-    "id": "routing-comments-companion",
-    "query": "Refactor this parser with no comments or docstrings and run its tests.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case comments-companion."
-    ]
+    "query": "Show me the SQL migration that adds a unique index and rolls it back safely.",
+    "should_trigger": true
   },
   {
-    "id": "routing-zero-weather",
-    "query": "What is the weather concept called when warm air sits above cold air?",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case zero-weather."
-    ]
+    "query": "Review this repository and describe maintainability risks, but do not propose patches or show code.",
+    "should_trigger": false
   },
   {
-    "id": "routing-zero-status",
-    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case zero-status."
-    ]
-  },
-  {
-    "id": "routing-incidental-git",
-    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case incidental-git."
-    ]
-  },
-  {
-    "id": "routing-incidental-api",
-    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case incidental-api."
-    ]
-  },
-  {
-    "id": "routing-web-responsive-implementation",
-    "query": "Implement the responsive account settings page from the approved design and verify the real page at desktop and mobile widths.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case web-responsive-implementation."
-    ]
-  },
-  {
-    "id": "routing-web-react-interaction",
-    "query": "Fix the React dropdown interaction so keyboard selection updates the form, then verify the flow in the browser.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case web-react-interaction."
-    ]
-  },
-  {
-    "id": "routing-web-css-browser",
-    "query": "Modify the checkout CSS to stop the mobile total from overlapping the submit button and verify it in the browser.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case web-css-browser."
-    ]
-  },
-  {
-    "id": "routing-web-requirements-only",
-    "query": "Write testable requirements for a responsive marketing page, but do not implement or modify any files.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-requirements-only."
-    ]
-  },
-  {
-    "id": "routing-frontend-framework-research",
-    "query": "Research whether we should use Next.js or Remix for the new website and recommend one; do not implement it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case frontend-framework-research."
-    ]
-  },
-  {
-    "id": "routing-ui-copy-translation",
-    "query": "Translate these five UI button labels into Japanese; do not inspect or change the application.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case ui-copy-translation."
-    ]
-  },
-  {
-    "id": "routing-web-css-browser-verify",
-    "query": "Change the CSS layout for the dashboard and use browser verification to check the actual page and console.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case web-css-browser-verify."
-    ]
-  },
-  {
-    "id": "routing-web-framework-research",
-    "query": "Compare the current React and Vue versions for this web project and recommend which framework to choose; do not implement.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-framework-research."
-    ]
-  },
-  {
-    "id": "routing-web-api-docs-only",
-    "query": "Reconcile the web frontend types with the OpenAPI contract and rewrite the API documentation only; do not implement endpoints or UI.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-api-docs-only."
-    ]
-  },
-  {
-    "id": "routing-web-unknown-bug-diagnose",
-    "query": "Debug and reproduce the unexplained web page freeze, identify the root cause, and do not change source code.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-unknown-bug-diagnose."
-    ]
-  },
-  {
-    "id": "chinese-code-change-companion",
-    "query": "修改登录表单的校验逻辑，补上回归测试并验证。",
-    "should_trigger": true,
-    "expectations": [
-      "Triggers as a low-priority companion for a Chinese source-change request."
-    ]
-  },
-  {
-    "id": "ordinary-test-change-companion",
-    "query": "Add regression tests for the payment retry behavior and run the focused suite.",
-    "should_trigger": true,
-    "expectations": [
-      "Triggers as a low-priority companion when the task creates test code."
-    ]
+    "query": "Create a teaching example with detailed inline comments explaining every line.",
+    "should_trigger": false
   }
 ]

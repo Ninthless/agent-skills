@@ -1,3 +1,0 @@
-WEBHOOK payment.failed is provider-initiated HTTP POST.
-CALLBACK POST /exports accepts callbackUrl and invokes it on completion.
-MESSAGE Kafka topic order.created is consumed asynchronously.

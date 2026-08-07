@@ -1,1 +1,0 @@
-Local runtime 3.11 passes. CI runtime 3.12 fails during timezone parsing. Dependency lock differs only in tzdata.

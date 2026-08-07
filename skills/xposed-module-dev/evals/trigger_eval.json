@@ -1,0 +1,98 @@
+[
+  {
+    "query": "我想从零写一个 LSPosed 模块，hook com.example.target 里 MainActivity.getTitleText(String)，把参数和返回值打到 logcat。",
+    "should_trigger": true
+  },
+  {
+    "query": "这个老 Xposed 模块 implements IXposedHookLoadPackage，用 XposedHelpers，LSPosed 里不显示。帮我查应该补什么。",
+    "should_trigger": true
+  },
+  {
+    "query": "把 legacy XposedBridge 模块迁到现代 libxposed，需要从 assets/xposed_init、manifest metadata、findAndHookMethod 迁哪些东西？",
+    "should_trigger": true
+  },
+  {
+    "query": "LSPosed 作用域已经勾了目标 app，但 hook 没进，logcat 只有模块加载日志，没有方法日志。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我写一个 system_server hook，目标是 Android 系统服务里的一个 Java 方法，scope.list 应该怎么配？",
+    "should_trigger": true
+  },
+  {
+    "query": "我的 module.prop 和 java_init.list 打进 APK 了，但现代 XposedModule 入口没被调用，帮我排查。",
+    "should_trigger": true
+  },
+  {
+    "query": "XposedHelpers.findAndHookMethod 报 ClassNotFoundException，目标类在 app 里，可能是 classloader 或时机问题。",
+    "should_trigger": true
+  },
+  {
+    "query": "写 Xposed 模块 hook 我自己测试 app 的某个方法，只用于本机调试。",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a normal Android Activity with a button and a Toast.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what Android intents are and how startActivity works.",
+    "should_trigger": false
+  },
+  {
+    "query": "Help me debug a Kotlin coroutine crash in my regular Android app, no Xposed involved.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a Gradle convention plugin for Android modules.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I read adb logcat and filter by package name?",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what a Java classloader is in general terms.",
+    "should_trigger": false
+  },
+  {
+    "query": "Build a Magisk module that only replaces a system font file.",
+    "should_trigger": false
+  },
+  {
+    "query": "Reverse engineer this APK's network API for interoperability documentation.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write Frida JavaScript to inspect method arguments in my test app.",
+    "should_trigger": false
+  },
+  {
+    "query": "Set up a basic Android Gradle project with Kotlin and Compose.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is the difference between rooting Android and unlocking the bootloader?",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain the Android package name rules for manifest namespaces.",
+    "should_trigger": false
+  },
+  {
+    "query": "My LSPosed module installs but does not appear in the module list; inspect module.prop, scope.list, and the APK metadata.",
+    "should_trigger": true
+  },
+  {
+    "query": "Migrate this legacy XposedBridge hook to modern libxposed and preserve the system_server scope.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a Magisk Zygisk native module that injects into an app, with no Xposed or LSPosed dependency.",
+    "should_trigger": false
+  },
+  {
+    "query": "Patch this APK's smali method directly and rebuild the package; do not use runtime hooks.",
+    "should_trigger": false
+  }
+]

@@ -2,68 +2,39 @@
   "skill_name": "no-code-comments",
   "evals": [
     {
-      "id": "explicit-clean",
-      "prompt": "Refactor this function and add no comments.",
-      "expected_output": "Self-explanatory code without low-value comments.",
+      "id": 1,
+      "prompt": "帮我写一个 Python 脚本，读取 `input.csv`，按 `department` 分组统计平均薪资，再把结果输出到 `summary.json`。",
+      "expected_output": "A working Python solution that completes the task without adding explanatory comments or docstrings.",
       "files": [],
-      "fixture": {
-        "type": "virtual"
-      },
       "expectations": [
-        "Honors the explicit no-comment preference.",
-        "Preserves required directives and unrelated existing comments."
+        "The output includes Python code that reads from `input.csv`.",
+        "The output includes logic that groups by `department` and computes average salary.",
+        "The output includes logic that writes results to `summary.json`.",
+        "The output contains no explanatory comments or docstrings."
       ]
     },
     {
-      "id": "required-directive",
-      "prompt": "Keep code comment-free, but mypy requires a targeted type ignore directive.",
-      "expected_output": "Comment-light code retaining the necessary directive.",
+      "id": 2,
+      "prompt": "Create a React component for a login form with email, password, loading state, and submit handler. Keep the code clean and production-ready.",
+      "expected_output": "A production-ready React component with clear structure and naming, but without inline comments, block comments, or JSDoc.",
       "files": [],
-      "fixture": {
-        "type": "virtual"
-      },
       "expectations": [
-        "The preference triggers.",
-        "The required directive is allowed and narrowly scoped."
+        "The output includes a React login form component with email and password inputs.",
+        "The output includes loading state handling and a submit handler.",
+        "The output is structured as production-ready component code.",
+        "The output contains no inline comments, block comments, or JSDoc."
       ]
     },
     {
-      "id": "generated-marker",
-      "prompt": "Regenerate this file without explanatory comments; the repository requires its generated-file marker.",
-      "expected_output": "Generated output retaining the mandatory marker.",
+      "id": 3,
+      "prompt": "Refactor this Java service class to improve readability and reduce duplication, but keep the behavior unchanged.",
+      "expected_output": "A refactored Java service that improves readability through code structure rather than new comments.",
       "files": [],
-      "fixture": {
-        "type": "virtual"
-      },
       "expectations": [
-        "The generated marker is preserved.",
-        "No unrelated comments are removed."
-      ]
-    },
-    {
-      "id": "public-api-docs",
-      "prompt": "Keep implementation comments minimal and add repository-required public JSDoc for exported functions.",
-      "expected_output": "Source code with required public API documentation and no restatement comments.",
-      "files": [],
-      "fixture": {
-        "type": "virtual"
-      },
-      "expectations": [
-        "Public API JSDoc takes priority.",
-        "Low-value restatement comments are avoided."
-      ]
-    },
-    {
-      "id": "machine-contract",
-      "prompt": "Create OpenAPI with concise description and summary fields while avoiding source-code comments.",
-      "expected_output": "A machine contract containing specification-native semantic documentation.",
-      "files": [],
-      "fixture": {
-        "type": "virtual"
-      },
-      "expectations": [
-        "OpenAPI description and summary fields are allowed.",
-        "Markdown API prose is not treated as a code comment."
+        "The output presents a refactored Java service implementation.",
+        "The output reduces duplication or improves readability through code structure.",
+        "The output does not rely on newly added comments to explain the refactor.",
+        "The output contains no new explanatory comments or docstrings."
       ]
     }
   ]

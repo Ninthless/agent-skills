@@ -1,7 +1,4 @@
 interface:
   display_name: "Vibecoding Domain Scout"
   short_description: "Research unfamiliar domains before building"
-  default_prompt: "Use $vibecoding-domain-scout for unfamiliar industry workflows, business rules, regulation, compliance, operational exceptions, roles, or expert terminology needed before product scope or build. Separate facts, inference, assumptions, and validation needs. Do not implement UI or source, choose frameworks, research purely technical options, or replace requirements analysis based on known facts."
-
-policy:
-  allow_implicit_invocation: true
+  default_prompt: "Use $vibecoding-domain-scout to research this unfamiliar domain, verify current facts, and turn the idea into a domain map, MVP scope, risks, and build-ready spec."

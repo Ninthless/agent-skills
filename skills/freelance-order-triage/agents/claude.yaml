@@ -1,7 +1,7 @@
 interface:
   display_name: "Freelance Order Triage"
   short_description: "Judge freelance orders before quoting"
-  default_prompt: "Use $freelance-order-triage only for explicit commercial or client work decisions: accept, decline, quote, clarify scope, set milestones, limit revisions, stage delivery, or assess order risk. Do not trigger for ordinary coding, webpage changes, debugging, requirements, or review without a commercial engagement or delivery decision."
+  default_prompt: "Apply the freelance-order-triage skill to evaluate this client or student request, expose hidden scope and delivery risk, choose a take, clarify, discovery, hourly, reshape, or decline posture, and draft a client-ready response with bounded acceptance and revisions."
 
 policy:
   allow_implicit_invocation: true

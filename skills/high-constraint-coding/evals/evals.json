@@ -2,445 +2,101 @@
   "skill_name": "high-constraint-coding",
   "evals": [
     {
-      "id": "trivial-fast-path",
-      "prompt": "Fix the misspelled local CLI label in this fixture and run the focused check; do not refactor surrounding code.",
-      "expected_output": "A truly local low-risk edit using the fast path and focused verification.",
-      "files": [
-        "inventory-flow.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Confirms one obvious owner and no shared contract or lifecycle impact."
-      ],
-      "forbidden_behaviors": [
-        "Introduces a formatter abstraction or broad cleanup."
-      ],
-      "expected_side_effects": [
-        "Only the local label and directly affected test may change."
-      ],
-      "verification": [
-        "Runs the focused project-native test and retests after any failure."
-      ],
+      "id": 1,
+      "prompt": "修一下订单取消的 bug：用户取消后库存偶尔没恢复。别大改，先看清楚现有流程，只改必要的地方，并跑相关测试。",
+      "expected_output": "A disciplined coding workflow that reads the relevant order and inventory code path before editing, makes a narrow fix, and verifies with targeted tests.",
+      "files": [],
       "expectations": [
-        "Uses the fast path only after establishing trivial local risk."
+        "The response inspects the relevant implementation path before proposing edits.",
+        "The fix is scoped to the cancellation and inventory restoration behavior.",
+        "The response runs or clearly identifies targeted verification."
       ]
     },
     {
-      "id": "known-source-fix",
-      "prompt": "The cancellation bug is proven to skip inventory release after a paid order; implement the smallest verified correction.",
-      "expected_output": "A narrow project-native source fix with targeted and adjacent contract verification.",
-      "files": [
-        "inventory-flow.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Uses the known causal seam, callers, failure behavior, and current flow."
-      ],
-      "forbidden_behaviors": [
-        "Reopens root-cause diagnosis without contradictory evidence.",
-        "Adds speculative abstractions."
-      ],
-      "expected_side_effects": [
-        "Only authorized source and test files may change."
-      ],
-      "verification": [
-        "Runs cancellation failure/recovery tests and an adjacent inventory consumer check."
-      ],
+      "id": 2,
+      "prompt": "Review this PR for regressions. It changes auth token refresh and session invalidation. I care more about correctness than style.",
+      "expected_output": "A review-style response that leads with concrete correctness findings, regression risks, missing tests, and file or line references when available.",
+      "files": [],
       "expectations": [
-        "Keeps the complete affected contract coherent."
+        "Findings are prioritized before summary.",
+        "The review focuses on correctness, security, regression risk, and missing tests.",
+        "The response avoids broad style commentary unless it affects behavior."
       ]
     },
     {
-      "id": "contract-design-tradeoff",
-      "prompt": "Implement SKU normalization across validation, import, storage, and tests. Compare only credible seams and preserve old stored rows.",
-      "expected_output": "An evidence-based shared-seam decision and coherent compatible vertical change.",
-      "files": [
-        "shared-contract.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Maps authoritative normalization, import callers, storage nullability, and compatibility."
-      ],
-      "forbidden_behaviors": [
-        "Produces an invented multi-option ceremony.",
-        "Duplicates normalization in every layer."
-      ],
-      "expected_side_effects": [
-        "Only the requested behavior slice changes."
-      ],
-      "verification": [
-        "Exercises direct requests, imports, existing stored values, and failure behavior."
-      ],
+      "id": 3,
+      "prompt": "Refactor this payment service, but keep behavior identical. Don't introduce a framework or rewrite the module; just make the duplicated validation easier to maintain.",
+      "expected_output": "A minimal refactor workflow that preserves behavior, avoids speculative abstraction, mirrors local style, and verifies with tests or equivalent checks.",
+      "files": [],
       "expectations": [
-        "Explains rejected options only if review depends on them."
+        "The response states behavior preservation as a hard constraint.",
+        "The implementation avoids broad rewrites and one-off over-abstractions.",
+        "The response includes practical verification evidence or an explicit test gap."
       ]
     },
     {
-      "id": "rust-ownership-cancellation",
-      "prompt": "Repair the Rust worker lifecycle and add the right tests without changing its public API. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Tokio-native cancellation, task shutdown, and lease ownership with verified cleanup. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "rust-lifecycle.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies Rust/Tokio versions, CancellationToken convention, JoinHandle ownership, and lease-drop invariant."
-      ],
-      "forbidden_behaviors": [
-        "Detaches the task or relies on Drop timing without evidence."
-      ],
-      "expected_side_effects": [
-        "Worker lifecycle and targeted tests change; public API remains compatible."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
+      "id": 4,
+      "prompt": "Add notification preferences to this existing Go API and React app. Users only need email and push toggles and a save action; digest scheduling and administrator controls are not requested. Make the implementation feel native to this repository, not like a generated full-stack template, and verify it properly.",
+      "expected_output": "A project-native, end-to-end feature slice that derives conventions from analogous maintained modules, maps the input-to-storage-to-UI contract, implements only the requested preference behavior, and verifies the complete save and recovery paths.",
+      "files": [],
       "expectations": [
-        "Uses ownership and cancellation semantics rather than suppression.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
+        "The response inspects analogous API, persistence, frontend state, and test patterns before choosing an implementation shape.",
+        "Input validation, defaults, stored values, returned values, UI state, and error recovery use one coherent contract.",
+        "The implementation does not add digest cadence, administrator states, generic preference engines, or unused extension hooks for imagined future requirements.",
+        "All new files use one evidence-backed naming, dependency wiring, error handling, and testing convention without cleaning unrelated legacy inconsistencies.",
+        "Verification covers saving each valid combination, a failure path, and persistence or reload behavior at the strongest practical level."
       ]
     },
     {
-      "id": "go-api-errors",
-      "prompt": "Review and correct the proposed Go store helper while keeping caller contracts stable. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Context-preserving, errors.Is-compatible Go code with consumer-owned interface decisions. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "go-api.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies Go version, context propagation, error wrapping, interface ownership, race and leak tooling."
-      ],
-      "forbidden_behaviors": [
-        "Uses context.Background in request work.",
-        "Logs and returns nil after an error.",
-        "Adds a pass-through interface beside the implementation."
-      ],
-      "expected_side_effects": [
-        "Only the helper and behavior tests change."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
+      "id": 5,
+      "prompt": "Fix a Python job configuration bug carefully. The HTTP request schema requires a non-empty region, but the worker service also defaults a missing region to us-east-1. The service may have non-HTTP callers. Decide what is actually correct from the repository instead of blindly deleting or retaining defenses, keep the change small, and add tests.",
+      "expected_output": "An evidence-led invariant decision that traces every caller, chooses one authoritative validation or defaulting boundary, preserves a fallback only if a real alternate caller needs it, and verifies both the primary and alternate call paths.",
+      "files": [],
       "expectations": [
-        "Keeps errors observable and cancellation connected.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
+        "The response traces HTTP and non-HTTP callers before deciding whether the service fallback is reachable and intentional.",
+        "It does not assume that duplicated-looking defense is automatically redundant or automatically necessary.",
+        "The final contract has one explainable owner for requiredness and defaulting, with no contradictory semantics across layers.",
+        "The patch remains limited to the invariant and affected tests rather than refactoring the worker architecture.",
+        "Verification demonstrates the required request behavior and any legitimate alternate caller behavior."
       ]
     },
     {
-      "id": "typescript-discriminated-state",
-      "prompt": "Implement the checkout state update in TypeScript without weakening strictness or runtime validation. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "A project-native discriminated state model with exhaustive safe rendering. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "typescript-state.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies TS strictness, union states, external Zod boundary, and UI consumers."
-      ],
-      "forbidden_behaviors": [
-        "Adds boolean soup, optional stringly state, casts, or non-null assertions."
-      ],
-      "expected_side_effects": [
-        "State model, reducers, rendering, and relevant tests change coherently."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
+      "id": 6,
+      "prompt": "Add archive support to an existing order service and database. Before coding, determine whether this needs a boolean, a status enum, an index, restore behavior, API changes, events, or UI state. Implement only the behavior the requirements and real consumers justify, keep migrations compatible, and avoid half-finished design.",
+      "expected_output": "A bounded archive feature whose state model, storage, indexes, transitions, API surface, consumers, migration, and tests are derived from actual requirements and query behavior rather than generated CRUD symmetry.",
+      "files": [],
       "expectations": [
-        "Preserves impossible-state prevention across producers and consumers.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
+        "The response builds a lifecycle and consumer map before choosing fields, enums, indexes, events, or endpoints.",
+        "Every introduced state and index has a demonstrated write path, read path, transition, query need, or explicit domain requirement.",
+        "Unrequested restore, administrator, event, or UI behavior is not invented merely to make the model appear complete.",
+        "The migration and public contracts remain compatible or the compatibility impact is stated explicitly.",
+        "Tests cover the supported archive behavior and relevant query semantics without claiming unsupported adjacent functionality."
       ]
     },
     {
-      "id": "python-boundary-global-state",
-      "prompt": "Fix the Python tenant behavior while preserving the established service boundary and parallel test isolation. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Request-scoped state and explicit error translation using local FastAPI conventions. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "python-service.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies Python/FastAPI versions, RequestContext ownership, route error boundary, parallel execution, and mypy contract."
-      ],
-      "forbidden_behaviors": [
-        "Keeps tenant state in a module global.",
-        "Catches Exception and returns an empty success value.",
-        "Mocks every collaborator."
-      ],
-      "expected_side_effects": [
-        "Request-scoped service behavior and focused tests change."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
+      "id": 7,
+      "prompt": "Review this new feature for quality and tell me whether it was written by AI. It spans an API handler, input model, domain service, database migration, frontend screen, and tests. Search for contradictions, unfinished design, and convention drift, but be precise about what the evidence can and cannot prove.",
+      "expected_output": "A findings-first cross-layer review that reports correctness and maintainability problems with concrete evidence while refusing to infer human or AI authorship from style, commit size, or absence of public code matches.",
+      "files": [],
       "expectations": [
-        "Makes the dynamic boundary and failures observable.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
+        "Findings trace input rules, defaults, domain decisions, persistence state, external behavior, tests, and documentation as one contract.",
+        "The review identifies unreachable defense, dormant artifacts, incomplete lifecycles, mixed conventions, or unsupported claims only when the code provides evidence.",
+        "Code-search matches are treated as possible duplication evidence, while no match is explicitly not treated as proof of original or human authorship.",
+        "Commit size or one-shot history may be noted as process context but is not presented as proof that AI was used.",
+        "The response separates actionable engineering findings from provenance uncertainty and does not promise an AI-free verdict."
       ]
     },
     {
-      "id": "java-concurrency-lifetime",
-      "prompt": "Implement the Java concurrent fetch safely, including cancellation and cleanup when either operation fails. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Java 21-native structured concurrency with bounded lifetime and useful errors. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "java-concurrency.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies Java version, structured scope convention, interruption behavior, AutoCloseable clients, and operation IDs."
-      ],
-      "forbidden_behaviors": [
-        "Creates an unclosed executor per request.",
-        "Swallows interruption or catches all failures without context."
-      ],
-      "expected_side_effects": [
-        "Concurrent orchestration and behavior tests change without unrelated executor abstractions."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
+      "id": 8,
+      "prompt": "Implement a user feedback submission feature in an existing layered application. Requirements cover submitting a category and message and showing the user's recent entries; no moderation workflow is specified. Existing modules disagree on dependency wiring and pagination style. Produce a small, complete, project-native slice with tests and no speculative scaffolding.",
+      "expected_output": "A coherent feedback slice that selects conventions from analogous maintained features, aligns validation and defaulting across layers, introduces only states and storage required by the requested workflow, and verifies submission, retrieval, ownership, and failure behavior.",
+      "files": [],
       "expectations": [
-        "Preserves cancellation and debuggable failure context.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "cpp-raii-resource",
-      "prompt": "Fix the C++ session leak on every exit while preserving ABI and the established error API. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "C++20 RAII ownership with all exit paths covered and ABI unchanged. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "cpp-resource.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies unique_handle convention, exception and early returns, expected error type, toolchain, and public ABI boundary."
-      ],
-      "forbidden_behaviors": [
-        "Adds manual cleanup to selected paths only.",
-        "Changes public headers without need."
-      ],
-      "expected_side_effects": [
-        "Internal ownership and focused tests change; ABI remains stable."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Uses resource ownership rather than repeated cleanup calls.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "sql-idempotent-migration",
-      "prompt": "Rewrite the PostgreSQL migration for safe rolling deployment, reruns, and representative existing data. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "A transactional or explicitly staged compatible migration with idempotent recovery semantics. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "sql-migration.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Models old/new application overlap, lock and transaction scope, backfill ordering, injection boundary, and rerun behavior."
-      ],
-      "forbidden_behaviors": [
-        "Adds NOT NULL before compatible backfill.",
-        "Interpolates untrusted text into SQL.",
-        "Assumes rollback without evidence."
-      ],
-      "expected_side_effects": [
-        "Migration and migration tests change only."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Treats migration behavior as a public data contract.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "shell-quoting-failure",
-      "prompt": "Repair the deployment shell script for paths with spaces and failure-safe cleanup. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Repository-native Bash quoting, arrays, error propagation, and trap-based lifecycle handling. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "shell-script.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies Bash contract, quoting, expansion, exit status, cleanup ownership, ShellCheck, and Bats conventions."
-      ],
-      "forbidden_behaviors": [
-        "Parses ls output.",
-        "Uses unquoted expansions.",
-        "Ignores archive failure or deletes evidence unconditionally."
-      ],
-      "expected_side_effects": [
-        "Script and focused fixtures change without introducing a generic shell library."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Keeps failures observable and resources recoverable.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "legacy-reasonable-asymmetry",
-      "prompt": "Review the Kotlin symmetry refactor and recommend only changes justified by current billing behavior. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "A review that preserves evidence-backed asymmetry and rejects speculative mirrored layers. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "legacy-asymmetry.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Distinguishes gateway partial reversal from append-only ledger behavior and current consumers."
-      ],
-      "forbidden_behaviors": [
-        "Approves factories and mirrored interfaces solely for visual symmetry."
-      ],
-      "expected_side_effects": [
-        "No mutation during review-only work."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Turns template smell into concrete cognitive-load and artifact-justification findings.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "review-only-regression",
-      "prompt": "Review this refresh-token source change for correctness and maintainability regressions without editing.",
-      "expected_output": "A findings-first review grounded in ownership, retry behavior, compatibility, and test gaps.",
-      "files": [
-        "review-diff.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Uses caller ownership, persistence, retry reuse, errors, and recovery evidence."
-      ],
-      "forbidden_behaviors": [
-        "Modifies source.",
-        "Focuses on style before behavioral regressions.",
-        "Claims an author identity."
-      ],
-      "expected_side_effects": [
-        "No project mutation."
-      ],
-      "verification": [
-        "Traces the mutated value through persistence and retry consumers and identifies behavior-level coverage."
-      ],
-      "expectations": [
-        "Prioritizes actionable findings and states residual test risk."
-      ]
-    },
-    {
-      "id": "anti-pattern-performance-abstraction",
-      "prompt": "Add a reusable cache layer and generic repository wrapper to make this one local lookup faster, even though no profile exists. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "A bounded evidence-based response that rejects unsupported performance and speculative layers, then applies only a proven change if authorized. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "go-api.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Checks whether a measured bottleneck or current second consumer exists."
-      ],
-      "forbidden_behaviors": [
-        "Adds cache, pass-through repository, generic utility, or performance claim without baseline."
-      ],
-      "expected_side_effects": [
-        "No speculative production artifacts."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Challenges the requested mechanism while pursuing the underlying outcome.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "anti-pattern-swallowed-error",
-      "prompt": "Make the Python import endpoint look reliable by catching every exception, logging it, and returning an empty successful result. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "A bounded correction that preserves useful failure context and models error translation at the established boundary. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "python-service.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Traces domain failures to the route boundary and identifies the observable recovery contract."
-      ],
-      "forbidden_behaviors": [
-        "Catches Exception and returns success, discards context, or treats logging as error handling."
-      ],
-      "expected_side_effects": [
-        "Only the established error boundary and behavior tests may change."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Rejects swallowed errors as a reliability mechanism.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
-      ]
-    },
-    {
-      "id": "anti-pattern-test-implementation-coupling",
-      "prompt": "Add production-only getters and branches so tests can assert the TypeScript reducer's private call order and internal state writes. Base the result only on the supplied code excerpt and project context. Produce an implementation-ready patch or design decision and exact check plan; execute checks only if the executable project and required tooling are actually available, otherwise mark each check unexecuted.",
-      "expected_output": "Behavior-level tests through public state transitions without test-only production hooks. The result is evidence-bounded to the excerpt, distinguishes proposed edits from executed work, and does not claim compilation or test execution without an executable project and tool evidence.",
-      "files": [
-        "typescript-state.txt"
-      ],
-      "fixture": {
-        "type": "real"
-      },
-      "required_information": [
-        "Identifies the public transition contract, observable outcomes, and relevant failure recovery."
-      ],
-      "forbidden_behaviors": [
-        "Adds test-only production APIs, asserts private call order, or snapshots incidental internal structure."
-      ],
-      "expected_side_effects": [
-        "Production design remains consumer-driven; tests change only where behavior coverage requires it."
-      ],
-      "verification": [
-        "Specify exact project-native commands/checks and, when the executable project and required tooling are available, run them; otherwise mark each check unexecuted and do not claim compilation or test success."
-      ],
-      "expectations": [
-        "Keeps tests coupled to behavior rather than implementation details.",
-        "Produces implementation-ready guidance from the supplied excerpt without treating the text fixture as an executable repository."
+        "The response inspects analogous completed features before choosing dependency wiring, mapping, query, pagination, and test conventions.",
+        "Category requiredness or defaulting has one authoritative rule and no unreachable duplicate fallback.",
+        "Moderation statuses, indexes, administrator endpoints, or UI are omitted unless an existing contract or explicit requirement justifies them.",
+        "The new slice is internally consistent even if unrelated legacy modules use mixed styles, and unrelated cleanup stays out of scope.",
+        "Tests cover valid submission, invalid input, ownership boundaries, recent-entry ordering or limits, persistence, and an applicable failure path."
       ]
     }
   ]

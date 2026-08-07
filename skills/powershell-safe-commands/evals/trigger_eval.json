@@ -1,290 +1,98 @@
 [
   {
-    "id": "routing-bug-primary",
-    "query": "Investigate why checkout intermittently returns 409 and give me the root cause only.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case bug-primary."
-    ]
+    "query": "Codex 在 Windows 上跑这个命令又把 $_ 吃掉了：Get-ChildItem | Where-Object { $_.Name -match \"log\" }，帮我重跑但别再用脆弱 one-liner。",
+    "should_trigger": true
   },
   {
-    "id": "routing-diagnose-fix",
-    "query": "Diagnose the unknown cause of the checkout 409, then implement and verify the fix.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case diagnose-fix."
-    ]
+    "query": "启动命令里的 $ 被 PowerShell 外层吃了，换成安全写法重跑。这个任务还要遵守 rtk 前缀。",
+    "should_trigger": true
   },
   {
-    "id": "routing-known-fix",
-    "query": "The null dereference is proven at parseOrder line 44; implement the smallest verified fix.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case known-fix."
-    ]
+    "query": "我需要你改 package.json 的 scripts，之前 powershell -Command 里 regex replacement 把 $1 展开没了，直接用最稳的方式编辑。",
+    "should_trigger": true
   },
   {
-    "id": "routing-source-review",
-    "query": "Review the changed authentication source for correctness regressions without editing it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case source-review."
-    ]
+    "query": "git rev-parse --abbrev-ref --symbolic-full-name @{u} 在 PowerShell 里变成 hashtable 报错了，帮我查 upstream。",
+    "should_trigger": true
   },
   {
-    "id": "routing-requirement-primary",
-    "query": "Turn these conflicting product notes into scope, requirements, and testable acceptance criteria.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case requirement-primary."
-    ]
+    "query": "这个 Windows Codex 环境里别再套 powershell -Command \"...$_...\"，帮我把筛选文件名的命令改成可运行的。",
+    "should_trigger": true
   },
   {
-    "id": "routing-requirement-coding",
-    "query": "Clarify these materially ambiguous requirements, then implement the agreed smallest slice.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case requirement-coding."
-    ]
+    "query": "PowerShell 报 ExpectedValueExpression：Write-Output ('USERPROFILE=' + C:\\Users\\ninth)，看起来环境变量被替换成未加引号路径了，帮我改安全写法。",
+    "should_trigger": true
   },
   {
-    "id": "routing-english-spec",
-    "query": "Show me a concise English specification with scope and acceptance criteria.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case english-spec."
-    ]
+    "query": "在 Windows 上用 Codex 修改配置文件，里面有 $env:API_URL 和正则捕获，别让 shell 提前插值。",
+    "should_trigger": true
   },
   {
-    "id": "routing-internal-english",
-    "query": "Think in English first, do not show it, and return the requirement analysis in Chinese.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case internal-english."
-    ]
+    "query": "刚才你说改用 Python 做同一个最小编辑，把这个处理方式固化一下：遇到 $_、@{u}、$1 就不要硬怼 PowerShell。",
+    "should_trigger": true
   },
   {
-    "id": "routing-technical-primary",
-    "query": "Research whether SQLAlchemy 2.0 is compatible with our Python 3.12 stack and recommend a path.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case technical-primary."
-    ]
+    "query": "用户把多行 Python 写进 rtk python -c @'...'@，里面又 p.write_text(r\"...$ErrorActionPreference...$_...\")，结果 SyntaxError: unterminated string literal。帮他改成安全写法。",
+    "should_trigger": true
   },
   {
-    "id": "routing-technical-status-quo",
-    "query": "Compare the current queue with two maintained alternatives and include keeping the current system.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case technical-status-quo."
-    ]
+    "query": "帮我运行 npm test，如果失败就看日志。",
+    "should_trigger": false
   },
   {
-    "id": "routing-single-tech-fact",
-    "query": "Check the current HTTP standard requirement for a 204 response body.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case single-tech-fact."
-    ]
+    "query": "解释一下 PowerShell 的 $_ 是什么，只要概念说明，不需要运行命令。",
+    "should_trigger": false
   },
   {
-    "id": "routing-domain-primary",
-    "query": "Research pharmacy dispensing roles, exception workflows, and regulatory validation needs before scoping an app.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case domain-primary."
-    ]
+    "query": "写一个 Bash 脚本把当前目录下的图片压缩，目标环境是 Ubuntu。",
+    "should_trigger": false
   },
   {
-    "id": "routing-domain-to-requirements",
-    "query": "Research the real insurance claims workflow, then turn the findings into an MVP requirement handoff.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case domain-to-requirements."
-    ]
+    "query": "帮我设计一个 GitHub Actions workflow 跑 pytest，项目是 Linux runner。",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-docs",
-    "query": "Create an evidence-backed OpenAPI contract from these routes and schemas without implementing endpoints.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case api-docs."
-    ]
+    "query": "这个 Python 函数里 $ 符号是业务字段名，帮我重构解析逻辑。",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-review",
-    "query": "Review this OpenAPI document for integration-breaking omissions and do not edit source.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case api-review."
-    ]
+    "query": "请联网查 PowerShell 最新版本发布说明。",
+    "should_trigger": false
   },
   {
-    "id": "routing-api-implementation",
-    "query": "Implement the already-specified users endpoint and its tests; do not rewrite the API docs.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case api-implementation."
-    ]
+    "query": "帮我 review 这段 C# 代码的异常处理，不涉及命令行。",
+    "should_trigger": false
   },
   {
-    "id": "routing-freelance-primary",
-    "query": "A client wants a fixed-price rescue of an unknown legacy app by Friday; decide whether and how I should quote it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case freelance-primary."
-    ]
+    "query": "把 README 里的命令格式排版得好看一点，不需要执行。",
+    "should_trigger": false
   },
   {
-    "id": "routing-freelance-clear",
-    "query": "Assess this small paid change, set revision limits, and draft a client-ready acceptance reply.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case freelance-clear."
-    ]
+    "query": "在 macOS zsh 里运行 grep，正则里有 $，帮我解释为什么匹配不到。",
+    "should_trigger": false
   },
   {
-    "id": "routing-git-commit",
-    "query": "Commit the current verified diff locally with an appropriate message, but do not push.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case git-commit."
-    ]
+    "query": "帮我创建一个 skill，主题是 Windows 命令可靠执行，重点是 Codex 经常写错 PowerShell escaping。",
+    "should_trigger": true
   },
   {
-    "id": "routing-git-push",
-    "query": "Push the existing current branch to its configured upstream after safety checks.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case git-push."
-    ]
+    "query": "帮我把这段 shell 输出整理成故障排查摘要，不要执行任何命令。",
+    "should_trigger": false
   },
   {
-    "id": "routing-powershell-companion",
-    "query": "Implement the config update using a PowerShell command containing $_ and a quoted path with spaces.",
-    "should_trigger": true,
-    "expectations": [
-      "The trigger classifier returns true for routing case powershell-companion."
-    ]
+    "query": "PowerShell 里要对带方括号和单引号的绝对路径做精确文件操作，请用 LiteralPath 避免解析错误。",
+    "should_trigger": true
   },
   {
-    "id": "routing-comments-companion",
-    "query": "Refactor this parser with no comments or docstrings and run its tests.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case comments-companion."
-    ]
+    "query": "Replace version=v1 with version=v2 in a config, but the PowerShell regex replacement contains $1 and keeps expanding incorrectly.",
+    "should_trigger": true
   },
   {
-    "id": "routing-zero-weather",
-    "query": "What is the weather concept called when warm air sits above cold air?",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case zero-weather."
-    ]
+    "query": "Run git status in this Windows repository. It is a direct command with no PowerShell variables or quoting.",
+    "should_trigger": false
   },
   {
-    "id": "routing-zero-status",
-    "query": "Summarize the repository status I already pasted; do not inspect or change anything.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case zero-status."
-    ]
-  },
-  {
-    "id": "routing-incidental-git",
-    "query": "Explain what eventual consistency means; the word git appears in my notes incidentally.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case incidental-git."
-    ]
-  },
-  {
-    "id": "routing-incidental-api",
-    "query": "Translate this sentence containing the phrase API gateway into Chinese.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case incidental-api."
-    ]
-  },
-  {
-    "id": "routing-web-responsive-implementation",
-    "query": "Implement the responsive account settings page from the approved design and verify the real page at desktop and mobile widths.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-responsive-implementation."
-    ]
-  },
-  {
-    "id": "routing-web-react-interaction",
-    "query": "Fix the React dropdown interaction so keyboard selection updates the form, then verify the flow in the browser.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-react-interaction."
-    ]
-  },
-  {
-    "id": "routing-web-css-browser",
-    "query": "Modify the checkout CSS to stop the mobile total from overlapping the submit button and verify it in the browser.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-css-browser."
-    ]
-  },
-  {
-    "id": "routing-web-requirements-only",
-    "query": "Write testable requirements for a responsive marketing page, but do not implement or modify any files.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-requirements-only."
-    ]
-  },
-  {
-    "id": "routing-frontend-framework-research",
-    "query": "Research whether we should use Next.js or Remix for the new website and recommend one; do not implement it.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case frontend-framework-research."
-    ]
-  },
-  {
-    "id": "routing-ui-copy-translation",
-    "query": "Translate these five UI button labels into Japanese; do not inspect or change the application.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case ui-copy-translation."
-    ]
-  },
-  {
-    "id": "routing-web-css-browser-verify",
-    "query": "Change the CSS layout for the dashboard and use browser verification to check the actual page and console.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-css-browser-verify."
-    ]
-  },
-  {
-    "id": "routing-web-framework-research",
-    "query": "Compare the current React and Vue versions for this web project and recommend which framework to choose; do not implement.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-framework-research."
-    ]
-  },
-  {
-    "id": "routing-web-api-docs-only",
-    "query": "Reconcile the web frontend types with the OpenAPI contract and rewrite the API documentation only; do not implement endpoints or UI.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-api-docs-only."
-    ]
-  },
-  {
-    "id": "routing-web-unknown-bug-diagnose",
-    "query": "Debug and reproduce the unexplained web page freeze, identify the root cause, and do not change source code.",
-    "should_trigger": false,
-    "expectations": [
-      "The trigger classifier returns false for routing case web-unknown-bug-diagnose."
-    ]
+    "query": "Explain what a PowerShell here-string is with a short conceptual example, but do not execute or repair a command.",
+    "should_trigger": false
   }
 ]

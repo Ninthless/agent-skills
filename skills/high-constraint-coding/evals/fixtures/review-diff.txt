@@ -1,1 +1,0 @@
-Changed refresh-token rotation to mutate the caller-owned token list before persistence. Existing retry code reuses the original list.

@@ -1,1 +1,0 @@
-Clients need server updates through restrictive corporate proxies. Bidirectional client messages are not required.

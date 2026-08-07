@@ -1,0 +1,7 @@
+interface:
+  display_name: "Build User-Facing UI"
+  short_description: "Build distinctive, usable, evidence-checked interfaces"
+  default_prompt: "Apply the build-user-facing-ui skill and treat broad UI refactors as Transformation mode: extract product contracts, visually quarantine the old UI, design the destination from a blank canvas, replace the complete layout and UI system, migrate valid functionality, verify every surface, and do not visually derive the replacement from the old UI or preserve its structure for convenience."
+
+policy:
+  allow_implicit_invocation: true

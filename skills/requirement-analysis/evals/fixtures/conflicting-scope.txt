@@ -1,1 +1,0 @@
-The export must include every record. The export must exclude archived records. Existing clients expect archived records.

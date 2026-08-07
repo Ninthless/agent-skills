@@ -1,1 +1,0 @@
-Application runtime: Node 20. Current framework: 4.x. Candidate plugin requires framework 5.x and Node 20 or later.

@@ -1,1 +1,0 @@
-Observed: request 412 fails after token refresh. Same request succeeds before refresh. Reproduction rate 4/5.

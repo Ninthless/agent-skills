@@ -1,0 +1,45 @@
+{
+  "skill_name": "xposed-module-dev",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想从零写一个 LSPosed 模块，hook com.example.target 里 com.example.target.MainActivity 的 getTitleText(String) 方法，把参数和返回值打到 logcat。请给出最小可运行项目需要的文件和代码。",
+      "expected_output": "A modern libxposed skeleton with java_init.list, module.prop, scope.list, manifest label/description, entry class extending XposedModule, package filtering, classloader use, hook/interceptor code, and build/install/debug notes.",
+      "files": [],
+      "expectations": [
+        "Chooses modern libxposed API for a new LSPosed module",
+        "Includes META-INF/xposed/java_init.list, module.prop, and scope.list",
+        "Filters by target package before installing hooks",
+        "Uses the target package classloader",
+        "Explains build, enable scope, restart, and logcat verification"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "这个老 Xposed 模块只有 MainHook.java，LSPosed 里不显示。它 implements IXposedHookLoadPackage，用 XposedHelpers.findAndHookMethod。帮我指出应该补哪些文件，不要迁移到 modern API。",
+      "expected_output": "A legacy XposedBridge-focused answer that keeps IXposedHookLoadPackage, adds assets/xposed_init, manifest xposed metadata, compileOnly dependency guidance, and LSPosed activation/scope troubleshooting.",
+      "files": [],
+      "expectations": [
+        "Keeps the project on legacy XposedBridge because the user requested no migration",
+        "Mentions app/src/main/assets/xposed_init with the fully qualified entry class",
+        "Mentions legacy AndroidManifest xposedmodule metadata",
+        "Mentions compileOnly for the Xposed API dependency",
+        "Explains LSPosed enable/scope/restart troubleshooting"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我想把一个 legacy XposedBridge 模块迁到 libxposed。现在有 assets/xposed_init、xposedmodule metadata、IXposedHookLoadPackage、XposedHelpers.findAndHookMethod 和一个资源 hook。请给我迁移清单和哪些东西不能直接迁。",
+      "expected_output": "A migration checklist explaining entry/metadata/scope changes, XposedModule lifecycle mapping, hook API rewrite, dependency separation, and warning that resource hooks are removed in modern API.",
+      "files": [],
+      "expectations": [
+        "Explains assets/xposed_init becomes META-INF/xposed/java_init.list",
+        "Explains legacy manifest metadata is replaced by label/description and module.prop",
+        "Explains scope.list",
+        "Explains IXposedHookLoadPackage maps to modern lifecycle callbacks such as onPackageReady",
+        "Warns that legacy resource hooks are not supported by the modern API",
+        "Warns not to mix modern libxposed and legacy XposedBridge APIs casually"
+      ]
+    }
+  ]
+}
