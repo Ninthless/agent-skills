@@ -1,0 +1,3 @@
+IMPLEMENTED GET /users returns 200 with users[].id as string.
+PROPOSED POST /users accepts email; no implementation exists.
+CONFLICT DELETE /users/{id}: requirement says 204, source notes 202.

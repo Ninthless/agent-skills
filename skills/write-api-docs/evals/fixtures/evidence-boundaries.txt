@@ -1,0 +1,31 @@
+Repository API format: OpenAPI 3.1 YAML.
+
+No API or documentation version is defined.
+
+Implemented route:
+GET /api/accounts/{accountId}
+
+The router requires the accountId path segment. Validation requires accountId to match the pattern ^acct_[A-Za-z0-9]+$.
+
+A focused authorization test proves that the operation requires the accounts:read OAuth scope.
+
+A captured successful response returned HTTP 200:
+{
+  "id": "acct_A7K9",
+  "ownerId": "usr_2457",
+  "state": "active",
+  "nickname": null,
+  "createdAt": "2026-08-07T16:00:00Z"
+}
+
+Another captured successful response omitted nickname. No response schema, serializer presence rule, enum declaration, date-time validator, or test proves which response properties are required, whether nickname is nullable by contract, whether state has a closed set of values, or whether id, ownerId, and createdAt use standard OpenAPI formats.
+
+A captured missing-account response returned HTTP 404:
+{
+  "error": {
+    "code": "ACCOUNT_NOT_FOUND",
+    "message": "Account was not found"
+  }
+}
+
+No evidence defines whether the error object properties are always present. No evidence defines rate limits, caching, retries, or other errors.

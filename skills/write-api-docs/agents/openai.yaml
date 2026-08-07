@@ -1,0 +1,7 @@
+interface:
+  display_name: "Write API Docs"
+  short_description: "Write concise implementation-ready API documentation"
+  default_prompt: "Use $write-api-docs when the final artifact is API documentation or an integration contract. Create, rewrite, review, or reconcile REST/OpenAPI, GraphQL, gRPC, webhooks, AsyncAPI, messages, or frontend/backend handoffs from repository evidence without inventing behavior. Treat captured payloads and examples as observed instances only: never infer required, nullable, format, pattern, default, enum, const, version, or another field's constraints from them or from names. Emit only valid machine-readable artifacts: no empty OAuth2 flows, malformed security requirements, unresolved refs, or invalid placeholder values. If security evidence is insufficient to encode validly, report the missing detail instead of inventing it. Audit every emitted constraint against exact evidence and remove unsupported guarantees. Default to one requested or repository-native format, not duplicate machine and Markdown artifacts. Keep reference output limited to facts needed to send valid requests, handle responses, and understand constraints; omit analysis reports, generic teaching, recommendations, and non-blocking questions. Source implementation belongs to high-constraint-coding."
+
+policy:
+  allow_implicit_invocation: true

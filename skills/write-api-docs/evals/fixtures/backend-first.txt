@@ -1,0 +1,33 @@
+Repository API format: OpenAPI 3.1 YAML.
+
+Implemented route:
+GET /api/users/{userId}
+
+Authentication middleware requires Authorization: Bearer <token>.
+Path parameter userId is a required UUID string.
+
+HTTP 200 JSON response:
+{
+  "id": "3f7ebf6b-dc2c-4eb2-91c8-16c29c91bd3f",
+  "email": "alex@example.test",
+  "displayName": "Alex Chen",
+  "createdAt": "2026-08-01T10:15:30Z"
+}
+
+Validation rejects a malformed userId with HTTP 400:
+{
+  "error": {
+    "code": "INVALID_USER_ID",
+    "message": "userId must be a UUID"
+  }
+}
+
+Missing users return HTTP 404:
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "User not found"
+  }
+}
+
+The handler has no documented rate-limit, cache, pagination, or retry behavior.

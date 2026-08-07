@@ -1,0 +1,219 @@
+{
+  "skill_name": "write-api-docs",
+  "evals": [
+    {
+      "id": "mixed-status",
+      "prompt": "Create docs for one API set: GET /users is implemented, POST /users is proposed, and DELETE /users/{id} conflicts between requirements and source.",
+      "expected_output": "A coordinated API package with authority and status per operation.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Does not choose one global mode.",
+        "Marks GET implemented, POST proposed, and DELETE conflicting with evidence.",
+        "Produces one repository-native or requested primary artifact by default.",
+        "Keeps evidence analysis and conflict details out of settled endpoint reference sections."
+      ]
+    },
+    {
+      "id": "review-only",
+      "prompt": "Review the API documentation for integration defects. Do not rewrite or edit files.",
+      "expected_output": "Findings, Open Questions, and recommendations only.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Leads with actionable findings.",
+        "Does not output rewritten artifacts.",
+        "Does not write files."
+      ],
+      "forbidden_behaviors": [
+        "Rewrites the contract",
+        "Edits documentation files"
+      ]
+    },
+    {
+      "id": "single-format",
+      "prompt": "Create this REST contract as OpenAPI YAML only; do not add Markdown.",
+      "expected_output": "One OpenAPI artifact only.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Honors the explicit single-format request.",
+        "Does not add Markdown integration documentation."
+      ]
+    },
+    {
+      "id": "reconcile-default",
+      "prompt": "Reconcile frontend and backend API evidence; do not perform a full rewrite.",
+      "expected_output": "A difference list and only defensible fragments.",
+      "files": [
+        "mixed-api.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Lists differences and owners.",
+        "Does not silently choose a side.",
+        "Does not perform a complete rewrite without authorization."
+      ]
+    },
+    {
+      "id": "webhook",
+      "prompt": "Document the provider-initiated HTTP payment webhook.",
+      "expected_output": "An OpenAPI webhook contract with evidenced delivery behavior.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses top-level webhooks where supported.",
+        "Does not model the webhook as a callback or message channel."
+      ]
+    },
+    {
+      "id": "callback",
+      "prompt": "Document the callback URL supplied in POST /exports and invoked when processing completes.",
+      "expected_output": "An operation-bound OpenAPI callback contract.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses callbacks bound to the initiating operation.",
+        "Does not model it as a provider-configured webhook."
+      ]
+    },
+    {
+      "id": "message",
+      "prompt": "Document the Kafka order.created topic and consumer acknowledgement behavior.",
+      "expected_output": "An AsyncAPI message/channel contract.",
+      "files": [
+        "protocols.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses AsyncAPI channel and message semantics.",
+        "Does not force the message into an OpenAPI path."
+      ]
+    },
+    {
+      "id": "frontend-first-handoff",
+      "prompt": "The frontend was built first from the supplied types and client calls. Write concise Markdown API documentation for the backend team to implement. Do not include an analysis report.",
+      "expected_output": "A compact backend implementation contract grouped by endpoint.",
+      "files": [
+        "frontend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Documents method, path, request fields, success response, and relevant errors from the frontend evidence.",
+        "Uses one Markdown deliverable because the prompt requests Markdown.",
+        "Keeps unresolved implementation decisions as local TBD items only when they block the contract.",
+        "Does not include source inventory, evidence matrix, frontend implementation notes, risk register, recommendations, or conclusion."
+      ],
+      "forbidden_behaviors": [
+        "Adds a source analysis section",
+        "Adds an evidence or status legend",
+        "Adds implementation recommendations unrelated to the contract",
+        "Creates an additional OpenAPI artifact"
+      ]
+    },
+    {
+      "id": "backend-first-handoff",
+      "prompt": "Generate the existing user endpoint documentation for frontend integration. Follow the repository's OpenAPI format and do not add a separate Markdown guide.",
+      "expected_output": "A concise OpenAPI contract matching the backend behavior.",
+      "files": [
+        "backend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Documents the implemented method, path, authentication, parameters, response schema, and evidenced errors.",
+        "Uses short operation summaries and field-level constraints.",
+        "Produces OpenAPI only and does not duplicate the contract in Markdown.",
+        "Does not expose source file paths or narrate the inspection process."
+      ],
+      "forbidden_behaviors": [
+        "Creates a Markdown companion document",
+        "Includes a codebase evidence report",
+        "Invents undocumented response fields or errors",
+        "Marks response properties as required from the single response example",
+        "Adds uuid or date-time formats to response fields based on their names or example values",
+        "Copies the path parameter UUID constraint onto the response id field",
+        "Invents an API version such as 1.0.0"
+      ]
+    },
+    {
+      "id": "schema-evidence-boundaries",
+      "prompt": "Generate an OpenAPI 3.1 YAML contract for frontend integration from the supplied backend evidence. Keep observed examples, but include only schema guarantees that the evidence actually proves.",
+      "expected_output": "A machine-readable draft whose constraints remain within the exact evidence boundary.",
+      "files": [
+        "evidence-boundaries.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Documents the required accountId path parameter and its evidenced pattern.",
+        "Documents the evidenced accounts:read security scope.",
+        "Keeps captured payloads as examples without promoting their observed values to universal constraints.",
+        "Either obtains an API version before finalizing or represents the unevidenced required metadata as an explicit draft TBD."
+      ],
+      "forbidden_behaviors": [
+        "Adds required arrays to response or error schemas without presence evidence",
+        "Marks nickname nullable solely because one captured value is null",
+        "Defines state as an enum or const from the value active",
+        "Adds uuid, date-time, email, URI, or another format based on field names or examples",
+        "Transfers the accountId pattern to response id",
+        "States that undocumented rate limits, caching, retries, or errors do not exist",
+        "Silently sets info.version to 1.0.0",
+        "Emits an OAuth2 security scheme with empty flows",
+        "Emits a malformed security requirement object or invents a scope mapping",
+        "Leaves unresolved references or examples that fail the declared specification validator"
+      ]
+    },
+    {
+      "id": "concise-markdown-reference",
+      "prompt": "Rewrite the supplied API notes as a standard concise API reference. Keep only what a frontend engineer needs to call the API.",
+      "expected_output": "A lookup-oriented API reference without report-style padding.",
+      "files": [
+        "backend-first.txt"
+      ],
+      "fixture": {
+        "type": "real"
+      },
+      "expectations": [
+        "Uses shared authentication and error rules once instead of repeating them per endpoint.",
+        "Includes only applicable endpoint sections and representative examples.",
+        "Omits empty sections and generic HTTP explanations.",
+        "Does not add table of contents, architecture narrative, status legend, risk register, recommendations, changelog, or conclusion."
+      ],
+      "forbidden_behaviors": [
+        "Explains basic REST or HTTP concepts",
+        "Repeats the same shared rule under every endpoint",
+        "Adds non-blocking open questions",
+        "Adds a document-generation summary inside the reference"
+      ]
+    }
+  ]
+}
