@@ -127,6 +127,8 @@
       "expectations": [
         "Documents method, path, request fields, success response, and relevant errors from the frontend evidence.",
         "Uses one Markdown deliverable because the prompt requests Markdown.",
+        "States required, optional, conditionally required, or unconfirmed for every request field.",
+        "Distinguishes nullable from presence and does not infer response-required fields from examples.",
         "Keeps unresolved implementation decisions as local TBD items only when they block the contract.",
         "Does not include source inventory, evidence matrix, frontend implementation notes, risk register, recommendations, or conclusion."
       ],
@@ -149,6 +151,8 @@
       },
       "expectations": [
         "Documents the implemented method, path, authentication, parameters, response schema, and evidenced errors.",
+        "Represents the proven required path parameter in the OpenAPI contract.",
+        "Does not convert unproven response-field presence into required response properties.",
         "Uses short operation summaries and field-level constraints.",
         "Produces OpenAPI only and does not duplicate the contract in Markdown.",
         "Does not expose source file paths or narrate the inspection process."
@@ -189,7 +193,13 @@
         "Silently sets info.version to 1.0.0",
         "Emits an OAuth2 security scheme with empty flows",
         "Emits a malformed security requirement object or invents a scope mapping",
-        "Leaves unresolved references or examples that fail the declared specification validator"
+        "Leaves unresolved references or examples that fail the declared specification validator",
+        "Invents authorizationUrl, tokenUrl, issuer URL, callback URL, scope description, or dummy security host",
+        "Uses example.invalid, localhost, or another placeholder domain to make unsupported security metadata appear complete",
+        "Keeps an operation security object whose scheme or flow cannot be encoded from the evidence",
+        "Omits the presence status of a request parameter or request-body field in a readable handoff",
+        "Labels an unconfirmed request field optional merely because no required evidence was found",
+        "Treats a nullable field as optional or an optional field as nullable without evidence"
       ]
     },
     {

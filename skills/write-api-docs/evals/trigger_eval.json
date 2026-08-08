@@ -310,5 +310,37 @@
     "expectations": [
       "Does not claim a research-only request whose final artifact is not API documentation."
     ]
+  },
+  {
+    "id": "chinese-api-docs-rewrite",
+    "query": "把现有前后端接口整理成一份精简的 API 对接文档，保留真实字段和错误响应。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers when the final artifact is a Chinese API integration document."
+    ]
+  },
+  {
+    "id": "chinese-api-contract-complete",
+    "query": "根据前端请求和类型补齐后端接口契约，不写接口实现代码。",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers for a frontend-to-backend API contract handoff even without the exact phrase API documentation."
+    ]
+  },
+  {
+    "id": "api-mentioned-code-fix",
+    "query": "修复 API client 的重试逻辑和单元测试，不要改接口文档。",
+    "should_trigger": false,
+    "expectations": [
+      "Does not trigger for API client implementation and tests when documentation is explicitly excluded."
+    ]
+  },
+  {
+    "id": "api-reference-reconcile",
+    "query": "Reconcile the frontend types with the backend routes and update the endpoint reference only.",
+    "should_trigger": true,
+    "expectations": [
+      "Triggers when endpoint reference is the explicit final artifact."
+    ]
   }
 ]
