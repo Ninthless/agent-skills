@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Minimal-diff, verified, production-quality code changes"
-  default_prompt: "Use $high-constraint-coding to make the smallest complete, project-native change: inspect the affected behavior path, keep contracts and local conventions coherent across applicable layers, remove speculative or unreachable code, and verify the behavior with proportionate tests."
+  short_description: "Verified code designed for direct human maintenance"
+  default_prompt: "Use $high-constraint-coding to make the smallest complete, project-native change that a human maintainer can locate, trace, hand-edit, and verify; keep ownership, contracts, dependencies, and tests coherent, and avoid speculative architecture or hidden control flow."
 
 policy:
   allow_implicit_invocation: true

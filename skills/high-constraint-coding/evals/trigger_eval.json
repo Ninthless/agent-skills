@@ -118,5 +118,73 @@
   {
     "query": "Rewrite this short paragraph so it sounds less like AI writing; there is no code involved.",
     "should_trigger": false
+  },
+  {
+    "query": "把这个模块重构成方便工程师继续手写维护的结构：行为要容易定位和追踪，常见改动尽量局部，不要堆生成器式分层。",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this architecture for human hand-maintainability across Go, Rust, and TypeScript conventions. Focus on ownership, change propagation, explicit dependencies, and stable behavioral tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "The code passes tests but every small business-rule change touches six files and three generic layers. Refactor it carefully so a maintainer has one obvious starting point.",
+    "should_trigger": true
+  },
+  {
+    "query": "Calculate the cognitive complexity score of this function and return only the number.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain clean architecture, hexagonal architecture, and onion architecture at a conceptual level. Do not inspect or modify code.",
+    "should_trigger": false
+  },
+  {
+    "query": "List ten general tips for writing readable code in any language.",
+    "should_trigger": false
+  },
+  {
+    "query": "Implement this library integration carefully. Verify the installed version and custom registration, and prove the data survives serialize, save, reload, and edit instead of assuming the API name means it works.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix this async callback flow: the owner may be destroyed, callers may never settle the promise, and captured state can become stale while work is in flight. Keep the fix project-native and tested.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review whether this generated SDK method and serializer actually support the field in our checked-in version and runtime configuration. Do not rely on latest online docs.",
+    "should_trigger": true
+  },
+  {
+    "query": "What does Promise.race do in JavaScript? Give a conceptual explanation only.",
+    "should_trigger": false
+  },
+  {
+    "query": "Show the latest documentation example for this library method; no repository or implementation work is needed.",
+    "should_trigger": false
+  },
+  {
+    "query": "Fix this callback adapter carefully. Its methods form a stateful protocol, caller-provided output constraints must survive across calls, and every terminal path must reset session state.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this Rust-to-C FFI patch for parameter direction, ownership, lifetime, panic containment, partial outputs, cleanup, and exact error mapping.",
+    "should_trigger": true
+  },
+  {
+    "query": "This production event dispatcher may be reentered from callbacks and cancellation races with delivery. Make the smallest verified fix without holding locks across unknown handlers.",
+    "should_trigger": true
+  },
+  {
+    "query": "The patch works in debug locally but fails in a supported release build and for library consumers. Check transitive includes, feature flags, link mode, ABI compatibility, and initialization order.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain what an in-out parameter means in C APIs. No code or repository review is needed.",
+    "should_trigger": false
+  },
+  {
+    "query": "List common static and dynamic linking differences at a conceptual level.",
+    "should_trigger": false
   }
 ]

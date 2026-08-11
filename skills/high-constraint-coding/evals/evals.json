@@ -98,6 +98,136 @@
         "The new slice is internally consistent even if unrelated legacy modules use mixed styles, and unrelated cleanup stays out of scope.",
         "Tests cover valid submission, invalid input, ownership boundaries, recent-entry ordering or limits, persistence, and an applicable failure path."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "Refactor a TypeScript pricing module so humans can keep editing it by hand. A single discount rule is currently split across a controller, generic rule engine, helper registry, base class, and three mocks. Preserve behavior, follow this repository's idioms, and make the next likely request—adding a customer-tier condition—easy to locate and change without introducing a new framework.",
+      "expected_output": "A behavior-preserving refactor that identifies one clear owner for discount policy, removes navigation-only or template-generated indirection when evidence permits, keeps dependency direction explicit, and protects observable pricing behavior with stable tests.",
+      "files": [],
+      "expectations": [
+        "The response traces the current rule, callers, side effects, and tests before changing the architecture.",
+        "It states where a maintainer should start and which owner and contract a future customer-tier condition should primarily change.",
+        "It removes or consolidates generic engine, registry, base-class, helper, or mock layers only when they add navigation without owning a real variation or boundary.",
+        "The result uses repository and domain vocabulary, explicit control flow, and project-native TypeScript patterns rather than a language-neutral template.",
+        "Behavioral pricing assertions remain stable across the refactor and cover representative discount and no-discount cases."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Design and implement a retryable file-import change in an existing Rust service. The import parser, persistence transaction, retry classification, and telemetry currently have clear owners. Keep it easy for a Rust maintainer to hand-edit: do not impose Java-style repositories or a generic workflow framework. Decide the boundary from actual change reasons, make failure and resource lifecycles explicit, and verify behavior.",
+      "expected_output": "A language-idiomatic Rust change that preserves clear ownership, introduces only the seam needed for retry policy or external effects, keeps error and transaction flow explicit, and tests observable import and retry behavior without mirroring private calls.",
+      "files": [],
+      "expectations": [
+        "The response preserves existing clear owners unless a demonstrated coupling problem requires changing them.",
+        "Architecture follows likely independent changes and Rust project conventions rather than prescribed layers or patterns from another language.",
+        "Retry classification, transaction outcome, telemetry, and parser errors have explicit contracts and no scattered duplicate ownership.",
+        "The implementation avoids service locators, generic workflow engines, unnecessary traits, and mocks for internal collaborators.",
+        "Verification covers success, retryable failure, non-retryable failure, and transaction or resource cleanup at stable behavioral seams."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Review this Python feature for hand maintainability across future edits. Do not score it from line count or cognitive complexity alone. Determine whether a maintainer can locate the behavior, trace state and errors, identify one owner for each rule, make a realistic follow-up change locally, and rely on tests that survive internal refactoring.",
+      "expected_output": "A findings-first maintainability review grounded in actual ownership, change propagation, explicit behavior paths, dependency direction, project idioms, and test contracts rather than metric thresholds or architecture fashion.",
+      "files": [],
+      "expectations": [
+        "Findings identify concrete scattered ownership, hidden control flow, excessive navigation, change coupling, or brittle tests with file and line evidence when available.",
+        "The review simulates at least one realistic follow-up change to assess discoverability and locality.",
+        "Metrics are treated only as signals and no maintainability verdict is based on a threshold alone.",
+        "The response does not prescribe more layers, classes, services, or patterns unless they isolate a demonstrated change reason or boundary.",
+        "Language-specific Python conventions and repository practices remain authoritative."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Implement metadata editing for embedded records in an existing Java application. A library method named format accepts arbitrary keys, and current online documentation shows a serializer API, but the repository may use an older version and may require a registered extension for custom metadata. Verify the real dependency contract, make edits survive save and reload, preserve undo behavior, and keep the change small.",
+      "expected_output": "An evidence-led implementation that verifies the installed library version and extension registration, distinguishes a successful method call from authoritative and durable state change, uses the supported state model, and proves edit-save-reload and undo behavior.",
+      "files": [],
+      "expectations": [
+        "The response checks the manifest or lockfile, repository registrations or custom types, and exact-version documentation or implementation before relying on the named API.",
+        "It does not infer custom metadata support merely because a method accepts a key or because newer documentation contains a serializer API.",
+        "The implementation updates the authoritative model and verifies serialization and reload rather than manually emitting a change notification.",
+        "Tests cover create or edit, save, reload, and undo through stable public behavior.",
+        "Missing capability is handled by the smallest supported extension or reported as unsupported instead of hidden behind a plausible call."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Add asynchronous document conversion to a C# desktop application. The operation captures the current document revision, reports completion through a callback supplied by the view, and may outlive the window. Users can continue editing or close the window while conversion runs. Define correct ownership and terminal states without tying the solution to a specific UI framework.",
+      "expected_output": "A lifecycle-explicit design that determines the contract for captured versus current revision, assigns completion and cancellation ownership, prevents late mutation after teardown, guarantees terminal settlement, and tests edits-during-flight and owner-destruction behavior.",
+      "files": [],
+      "expectations": [
+        "The response treats captured revision semantics as a product contract to preserve or clarify rather than silently choosing the old or current state.",
+        "One owner is responsible for starting, completing, cancelling, and observing conversion.",
+        "The callback path cannot remain pending indefinitely and handles missing, duplicate, delayed, and late completion safely.",
+        "Window or view destruction cannot cause late completion to mutate detached state; transfer to a longer-lived owner is explicit if supported.",
+        "Tests cover success, failure, cancellation, edits during conversion, and completion after owner teardown without depending on a specific framework's private internals."
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Review a Go service change that adds a database-driver retry helper. The code reuses the same transaction and request body after a failed attempt, catches any driver error as retryable, and emits a success event before commit returns. Determine whether the implementation is correct from actual driver and transaction contracts, not from method names or generic retry advice.",
+      "expected_output": "A findings-first contract review that verifies driver version and transaction semantics, identifies unsafe reuse and error classification only when supported by evidence, treats commit as the authoritative success boundary, and requires focused retry and ambiguity tests.",
+      "files": [],
+      "expectations": [
+        "The review checks the resolved driver version, project wrapper, transaction contract, and structured error types before stating what can be retried or reused.",
+        "It distinguishes a failed attempt's resources from a fresh attempt and does not assume transactions or consumed bodies are reusable.",
+        "Success notification occurs only after the authoritative commit outcome is known or the ambiguity contract is explicitly handled.",
+        "Tests cover retryable and non-retryable failure, fresh-resource creation, retry exhaustion, and uncertain commit outcomes when applicable.",
+        "The response avoids framework-specific or language-foreign architecture recommendations."
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Implement a drag-session adapter for an existing Kotlin application. The host calls enter, update, drop, and leave methods, and the output action on update must remain compatible with both the caller's allowed actions and the decision made at enter. Treat the methods as one protocol, keep the change project-native, and add sequence tests.",
+      "expected_output": "A protocol-aware implementation that derives valid call order and negotiated constraints from the host contract, carries only required session state, resets it at every terminal path, and tests complete and invalid callback sequences.",
+      "files": [],
+      "expectations": [
+        "The response inspects the actual host interface and existing adapter behavior instead of implementing each callback independently.",
+        "The selected output remains within caller-provided capabilities and consistent with prior protocol decisions.",
+        "Cross-call state has one owner and is reset after drop, leave, rejection, cancellation, and teardown as applicable.",
+        "Unexpected repetition, skipped calls, and out-of-order calls have explicit behavior rather than accidental stale-state reuse.",
+        "Tests exercise full sequences and terminal resets, not only one happy-path method at a time."
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Review a Zig library exported through a C ABI. The exported function writes through several output pointers, allocates a result buffer, invokes a user callback, and may return Zig errors. Check the real header and ownership contract, make failures safe for C callers, and keep any proposed fix minimal.",
+      "expected_output": "A findings-first boundary review that verifies parameter direction, nullability, ownership, lifetime, layout, callback failure behavior, cleanup, and translation of Zig failures into the C contract without leaking language-level failure mechanisms.",
+      "files": [],
+      "expectations": [
+        "The review derives input, output, input-output, optional, and ownership semantics from the public header and implementation contract rather than pointer names.",
+        "No Zig error or panic is allowed to escape through an ABI that cannot represent it.",
+        "Output parameters and allocated resources remain in contract-valid states on every failure path.",
+        "Callback lifetime, reentrancy, user failure, and result-buffer release responsibilities are addressed.",
+        "Verification includes allocation, conversion, callback, null-input, and cleanup failures at the public boundary."
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Fix an event dispatcher in an existing Swift service. Observers may unsubscribe or synchronously publish another event from inside a callback, and cancellation can race with delivery. Preserve the documented ordering contract, avoid a broad rewrite, and verify the concurrency behavior.",
+      "expected_output": "A concurrency- and reentrancy-aware fix that identifies authoritative observer state, avoids unsafe mutation or lock-held callbacks, preserves documented ordering, and defines cancellation, nested delivery, duplicate delivery, and teardown behavior.",
+      "files": [],
+      "expectations": [
+        "The response establishes whether callbacks can be concurrent or reentrant from repository and runtime evidence.",
+        "Unknown user callbacks are not invoked while holding a lock unless the verified contract requires it and deadlock implications are handled.",
+        "Observer removal, nested publication, cancellation races, ordering, and memory visibility have explicit semantics.",
+        "The fix remains local to the dispatcher contract and does not introduce a generic concurrency framework.",
+        "Tests deterministically cover unsubscribe-during-callback, nested publication, cancellation race, ordering, and teardown where applicable."
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "A C++ library change builds in one developer configuration but fails for downstream consumers and on another supported compiler. Review the patch for direct includes, generated headers, feature flags, static versus shared linking, initialization order, and ABI compatibility. Do not add support for undeclared platforms.",
+      "expected_output": "An evidence-led build-integrity review that checks the repository's declared support matrix, removes accidental transitive or configuration-order dependencies, preserves required source and binary contracts, and verifies representative supported configurations.",
+      "files": [],
+      "expectations": [
+        "The review distinguishes declared support from hypothetical portability and does not expand scope to unsupported platforms.",
+        "Headers and modules include or import their direct dependencies instead of relying on consumer include order or re-exports not guaranteed by the project.",
+        "Generated artifacts, conditional compilation, feature combinations, link modes, compiler settings, and initialization order are checked where relevant.",
+        "Public layout, calling convention, symbol visibility, and source or binary compatibility are assessed from actual consumers and contracts.",
+        "Verification covers representative supported build profiles or clearly reports configurations that remain unproven."
+      ]
     }
   ]
 }
