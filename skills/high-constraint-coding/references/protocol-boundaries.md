@@ -2,6 +2,8 @@
 
 Use this reference when code implements a multi-stage protocol, callback interface, ABI or FFI boundary, plugin contract, concurrent workflow, transaction, retry loop, resource-owning API, or platform-sensitive build.
 
+Use [dependency-contracts.md](./dependency-contracts.md) as well when correctness also depends on whether the repository's installed dependency version, registration, extension, generated artifact, serializer, or framework state model supports the operation.
+
 ## Contents
 
 - Protocol State

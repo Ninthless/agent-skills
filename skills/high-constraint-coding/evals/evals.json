@@ -228,6 +228,66 @@
         "Public layout, calling convention, symbol visibility, and source or binary compatibility are assessed from actual consumers and contracts.",
         "Verification covers representative supported build profiles or clearly reports configurations that remain unproven."
       ]
+    },
+    {
+      "id": 19,
+      "prompt": "Fix a local synchronous validation branch in an existing Ruby command. The behavior and owner are already clear, no external dependency or architecture change is involved, and one focused test covers the branch. Use the smallest complete change.",
+      "expected_output": "A narrow project-native fix that uses the core workflow and quality bar without loading unrelated maintainability, dependency, or protocol guidance.",
+      "files": [],
+      "expectations": [
+        "The response reads the command and focused test before editing.",
+        "It makes the smallest complete local change and does not introduce a helper, abstraction, dependency, or unrelated cleanup.",
+        "It uses the quality bar but does not expand the task into architecture, dependency capability, lifecycle, protocol, ABI, concurrency, or build-matrix analysis.",
+        "Verification remains proportionate to the isolated synchronous behavior."
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Refactor an existing PHP policy module because one rule is scattered across controllers, generic helpers, and duplicated tests. There is no external library uncertainty or asynchronous behavior. Make the next hand edit local and preserve behavior.",
+      "expected_output": "A maintainability-focused refactor that loads the human-maintainability guidance, identifies one policy owner, removes only demonstrated navigation or change coupling, and avoids unrelated dependency or protocol analysis.",
+      "files": [],
+      "expectations": [
+        "The response routes to the human-maintainability reference because ownership, change propagation, and future hand edits are central.",
+        "It does not route to dependency or protocol guidance without corresponding task signals.",
+        "The implementation preserves observable behavior and uses project-native PHP conventions.",
+        "A realistic follow-up policy change is traceable to one coherent owner and stable tests."
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "Add a custom field to an existing Elixir serializer integration. Confirm the locked package version, configured extension, authoritative state model, and encode-decode-reload round trip. The operation is synchronous and has no multi-call protocol, retry, transaction, or concurrency behavior.",
+      "expected_output": "A dependency-capability implementation that loads the dependency contract guidance, proves support in the installed integration and round trip, and does not add protocol-boundary analysis without a matching signal.",
+      "files": [],
+      "expectations": [
+        "The response routes to dependency-contracts because version, registration, state authority, and serialization survival determine correctness.",
+        "It does not load protocol-boundaries solely because an external library is involved.",
+        "The implementation distinguishes API existence, successful invocation, authoritative state change, and round-trip observation.",
+        "Verification covers encode, decode, reload, and unsupported capability handling through the smallest supported path."
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "Review an internal C callback session with begin, update, and finish calls. The API is implemented entirely in this repository, but output parameters are input-output constraints, callbacks may reenter, and finish races with cancellation. No third-party capability or version question exists.",
+      "expected_output": "A protocol-boundary review that loads ordering, parameter, ownership, reentrancy, and race guidance without performing irrelevant external dependency capability research.",
+      "files": [],
+      "expectations": [
+        "The response routes to protocol-boundaries because ordered calls, input-output parameters, reentrancy, and cancellation races are central.",
+        "It does not route to dependency-contracts when no external version, registration, extension, serializer, generated artifact, or framework state question exists.",
+        "The review treats the callbacks as one protocol and checks cross-call state, legal outputs, reset, and teardown.",
+        "Verification covers complete sequences, invalid order, reentry, cancellation races, and boundary-valid failure outputs."
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "Implement retryable writes through a version-pinned Java database driver. Determine supported structured retry errors and transaction reuse from the checked-in driver, then make ambiguous commits, fresh-attempt resources, cancellation, and idempotency explicit.",
+      "expected_output": "A combined dependency-and-protocol implementation that loads both references because installed driver capability and retry, transaction, ownership, and ambiguous-commit semantics jointly determine correctness.",
+      "files": [],
+      "expectations": [
+        "The response routes to dependency-contracts for the installed driver's actual error and transaction capabilities.",
+        "It also routes to protocol-boundaries for retries, idempotency, resource recreation, cancellation, and ambiguous commits.",
+        "It does not infer retryability or reuse from method names or generic database advice.",
+        "Verification covers retryable and terminal errors, fresh attempt resources, cancellation, retry exhaustion, and uncertain commit outcomes."
+      ]
     }
   ]
 }

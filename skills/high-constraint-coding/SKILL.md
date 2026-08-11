@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Apply a careful, minimal, verified workflow to correctness-sensitive coding work and produce project-native code that human maintainers can locate, trace, modify, and test directly across any programming language. Use for bug fixes, refactors, reviews, production edits, architecture or module-boundary changes, shared contracts, vertical feature slices, tests, migrations, or regression-prone behavior, and requests such as 最小改动, 高质量代码, 便于手写维护, 人类易维护, 不要 AI 味, 像人工写的, 别乱重构, 先看清楚再改, read the code first, maintainable code, or guarantee correctness. Trigger when work requires controlled scope, coherent contracts, low change propagation, explicit control flow and ownership, project-native conventions, feature completeness, and evidence before claiming success. Do not use for pure conceptual questions, status reporting, or non-code planning with no source review or code change.'
+description: 'Use this skill for correctness-sensitive repository coding or review that needs the smallest complete implementation, project-native conventions, human hand-maintainability, coherent contracts, or verified claims. Trigger for production bugs, behavior-preserving refactors, shared APIs or schemas, migrations, architecture or module boundaries, dependency integrations, async or concurrent lifecycles, protocols, ABI/FFI, and regression-prone behavior; also for 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, read the code first, maintainable code, or guarantee correctness. Use when the user emphasizes narrow scope, compatibility, complete failure paths, or tests even without naming the skill. Do not use for conceptual explanations, source-free brainstorming or planning, status-only requests, trivial formatting or syntax conversion, throwaway scripts, isolated edits needing no repository investigation, or UI/API-document work owned by another skill unless explicitly requested.'
 ---
 
 # High Constraint Coding
@@ -62,6 +62,20 @@ If the request is trivial, keep the process lightweight. If the request is ambig
 
 ## Required Workflow
 
+### 0. Route references
+
+Load only the references whose signals are present. Do not preload every reference.
+
+- Read [quality-bar.md](./references/quality-bar.md) for every repository implementation or review governed by this skill, including small local fixes.
+- Read [human-maintainability.md](./references/human-maintainability.md) when the task requires a decision about architecture, module boundaries, ownership, abstraction shape, discoverability, change propagation, or the next realistic hand edit. Shared or long-lived code alone is not enough.
+- Read [dependency-contracts.md](./references/dependency-contracts.md) when correctness depends on the installed version, configuration, registration, extension, serializer, generated artifact, framework state model, database or OS API, persistence or serialization round trip, or an async capability supplied by another component.
+- Read [protocol-boundaries.md](./references/protocol-boundaries.md) for ordered multi-call protocols, callbacks with cross-call state, ABI or FFI, ownership or lifetime transfer, concurrency or reentrancy, transactions, retries or idempotency, partial commits, resource teardown, or supported build and platform matrices.
+- Read both dependency and protocol references when an external capability also has ordering, ownership, concurrency, retry, transaction, or teardown semantics. Read the human-maintainability reference as well only when the implementation shape or future change path is part of the task.
+
+A serialize-save-reload sequence is a dependency round trip, not a protocol by itself. Load the protocol reference only when calls have legal or illegal order, shared session state, negotiated constraints, reset behavior, ownership, concurrency, retry, transaction, or teardown semantics. A database task needs both references only when dependency-specific driver capability and transaction or retry semantics are both material.
+
+For a local, synchronous change with no architecture decision, external capability, lifecycle, protocol, or boundary risk, use this `SKILL.md` and the quality bar only.
+
 ### 1. Bound the task
 
 Before coding, identify:
@@ -113,8 +127,6 @@ Mark pre-existing gaps as `in scope`, `out of scope`, or `blocking`. Do not inve
 
 ### 2b. Prove dependency capabilities and lifecycles
 
-When behavior depends on a framework, library, runtime, generated client, serializer, plugin, driver, or asynchronous boundary, read [dependency-contracts.md](./references/dependency-contracts.md). When it implements a multi-call protocol, ABI or FFI boundary, callback interface, concurrent workflow, retry, transaction, resource-owning API, or platform-sensitive build, also read [protocol-boundaries.md](./references/protocol-boundaries.md).
-
 Before implementation, prove:
 
 - the repository's actual version and configuration expose the required capability
@@ -131,8 +143,6 @@ Separate `API exists`, `call succeeds`, `state changes`, `state survives round t
 If evidence is missing, use a proven repository path, add the smallest required integration and contract test, or report the unsupported assumption. Do not implement from a plausible API name or documentation for an unverified version.
 
 ### 2c. Map human maintenance
-
-For architecture, shared code, or behavior likely to change again, read [human-maintainability.md](./references/human-maintainability.md) before choosing the implementation shape.
 
 Identify:
 
@@ -414,7 +424,7 @@ Use these rules to keep the skill sharp:
 
 ## Quality Bar
 
-Read [quality-bar.md](./references/quality-bar.md) before completing any non-trivial implementation or review. Read [dependency-contracts.md](./references/dependency-contracts.md) when external or framework behavior is non-trivial. Read [protocol-boundaries.md](./references/protocol-boundaries.md) for multi-call protocols, ABI or FFI, callbacks, concurrency, transactions, retries, resource ownership, or platform-sensitive builds. Read [human-maintainability.md](./references/human-maintainability.md) for architecture, shared modules, refactors, or code expected to receive repeated hand edits. Treat all applicable gates as required.
+Apply every gate from the references selected in step 0. Treat applicable gates as required.
 
 ## Example Response Shape
 

@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Verified code designed for direct human maintenance"
-  default_prompt: "Apply the high-constraint-coding skill: inspect the complete behavior and maintenance paths, then make the smallest complete project-native change that a human can locate, trace, hand-edit, and verify. Keep ownership, contracts, dependency direction, state, outputs, and behavior-focused tests coherent; reject speculative layers, hidden control flow, scattered policy, and metric-driven architecture."
+  short_description: "Smallest complete, verified, maintainable code changes"
+  default_prompt: "Apply the high-constraint-coding skill to make the smallest complete project-native change. Load only the applicable quality, maintainability, dependency, or protocol references; keep ownership, contracts, failure paths, and behavior-focused tests coherent; remove unnecessary code and report only verified claims."
 
 policy:
   allow_implicit_invocation: true

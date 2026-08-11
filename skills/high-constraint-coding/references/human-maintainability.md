@@ -2,6 +2,8 @@
 
 Use this reference when a task changes architecture, module boundaries, shared code, or a feature that humans will extend repeatedly.
 
+Do not load it for every bug fix or small local edit. Load it when ownership, discoverability, change propagation, abstraction shape, or the next realistic hand edit is part of the engineering decision.
+
 ## Contents
 
 - Working Definition

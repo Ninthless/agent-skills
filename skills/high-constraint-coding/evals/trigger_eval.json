@@ -186,5 +186,45 @@
   {
     "query": "List common static and dynamic linking differences at a conceptual level.",
     "should_trigger": false
+  },
+  {
+    "query": "最少代码实现这个已有服务里的审计开关，保持接口兼容，不要新建通用配置框架，并跑现有回归测试。",
+    "should_trigger": true
+  },
+  {
+    "query": "This is a small-looking production fix, but the same normalization contract is shared by REST, a queue consumer, and persisted jobs. Trace it before editing and keep the patch narrow.",
+    "should_trigger": true
+  },
+  {
+    "query": "The package compiles, but I am not sure whether our installed serializer version and registered extension preserve this field after reload. Verify it before implementing.",
+    "should_trigger": true
+  },
+  {
+    "query": "The callbacks work individually, but together they form a session with caller-owned handles and teardown races. Review the sequence and ownership contract.",
+    "should_trigger": true
+  },
+  {
+    "query": "Remove this unused local variable and run the formatter. Nothing else is affected.",
+    "should_trigger": false
+  },
+  {
+    "query": "Update the text color in this isolated CSS rule from #333 to #222.",
+    "should_trigger": false
+  },
+  {
+    "query": "Redesign the entire account settings UI with responsive states, accessibility, and visual verification.",
+    "should_trigger": false
+  },
+  {
+    "query": "Generate an OpenAPI document from these handlers and schemas, including required and optional fields.",
+    "should_trigger": false
+  },
+  {
+    "query": "Give me a high-level plan for migrating this monolith next year. Do not inspect or change source yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "写一个临时 Python 脚本，把当前目录的 txt 文件名改成小写，用完就删。",
+    "should_trigger": false
   }
 ]

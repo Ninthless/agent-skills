@@ -1,6 +1,8 @@
 # Dependency Capabilities And Lifecycles
 
-Use this reference when correctness depends on a framework, library, runtime, protocol, generated client, plugin, serializer, database driver, operating-system API, or asynchronous boundary.
+Use this reference when correctness depends on proving an external capability in the repository's actual version, configuration, registration, generated artifacts, state model, or round trip.
+
+Use [protocol-boundaries.md](./protocol-boundaries.md) instead for call ordering, ABI or FFI, parameter direction, ownership transfer, concurrency, reentrancy, transactions, retries, idempotency, partial commits, or build matrices. Use both when an external dependency also owns those semantics.
 
 ## Contents
 
