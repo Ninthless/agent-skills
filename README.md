@@ -33,6 +33,7 @@ The collection emphasizes:
 | [`no-code-comments`](./skills/no-code-comments/) | Keep generated and modified code-like artifacts comment-free by default while preserving required directives and documentation contracts. |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | Prevent PowerShell interpolation, quoting, wrapper-layer, path, and nested command failures on Windows. |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | Research unfamiliar or regulated domains and convert findings into workflows, constraints, risks, MVP boundaries, and build-ready briefs. |
+| [`websearch-first`](./skills/websearch-first/) | Search authoritative current sources before answering or editing, reconcile external evidence with local facts, and cite the sources that materially affect the result. |
 | [`write-api-docs`](./skills/write-api-docs/) | Create or review API contracts from routes, schemas, clients, tests, runtime evidence, OpenAPI, GraphQL, gRPC, webhooks, or messages without inventing unsupported behavior. |
 | [`xposed-module-dev`](./skills/xposed-module-dev/) | Build, review, migrate, and debug Android Xposed or LSPosed modules across modern libxposed and legacy XposedBridge projects. |
 
@@ -75,6 +76,7 @@ Skills can operate independently or compose around one task. Typical flows inclu
 
 - `english-spec-first` -> `vibecoding-domain-scout` -> implementation skill
 - `freelance-order-triage` -> paid discovery or bounded delivery plan
+- `websearch-first` + any task skill -> current external evidence reconciled with local facts
 - `high-constraint-coding` + `no-code-comments` -> controlled production code with a clean source style
 - `build-user-facing-ui` + `high-constraint-coding` -> complete UI behavior with disciplined implementation
 - `write-api-docs` -> evidence-backed integration contract

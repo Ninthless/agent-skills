@@ -1,0 +1,82 @@
+[
+  {
+    "query": "查一下 React 目前推荐的数据获取方式，再结合我们的现有项目给出实现建议。",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix this local OAuth callback bug. Search the provider's current official docs first and verify our installed SDK version.",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement image alt text editing in our Quill component, but first research exact-version support and the official state model.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this database retry helper against the driver's documented transaction and idempotency behavior.",
+    "should_trigger": true
+  },
+  {
+    "query": "What are the current EU rules that could affect this employee screening feature?",
+    "should_trigger": true
+  },
+  {
+    "query": "Compare two implementation approaches for this WebSocket reconnection flow using current standards and vendor guidance.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我修这个 CSS 兼容性问题，先搜一下目标浏览器当前支持情况。",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain passkeys using current FIDO and platform documentation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Upgrade this package safely. Check release notes, migration docs, and breaking changes before editing.",
+    "should_trigger": true
+  },
+  {
+    "query": "I know the code change is local, but search for an authoritative basis before choosing the locking pattern.",
+    "should_trigger": true
+  },
+  {
+    "query": "Plan a Stripe subscription cancellation flow using current official billing behavior, then inspect our repository.",
+    "should_trigger": true
+  },
+  {
+    "query": "先联网搜索一下这个报错和官方解决方案，再结合本地代码修复。",
+    "should_trigger": true
+  },
+  {
+    "query": "Do not use the internet. Analyze only the files I attached and clearly state any missing evidence.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rename README.tmp to README.md. No factual decision or content change is involved.",
+    "should_trigger": false
+  },
+  {
+    "query": "Sort these already-provided JSON keys alphabetically without changing values.",
+    "should_trigger": false
+  },
+  {
+    "query": "Report the current git branch and working tree status.",
+    "should_trigger": false
+  },
+  {
+    "query": "Use only the supplied specification as the contract; network access is prohibited for this task.",
+    "should_trigger": false
+  },
+  {
+    "query": "Move these three files into the existing archive folder without modifying their contents.",
+    "should_trigger": false
+  },
+  {
+    "query": "Apply the exact patch I supplied verbatim, then show whether it applied cleanly. Do not research alternatives.",
+    "should_trigger": false
+  },
+  {
+    "query": "Calculate 937 multiplied by 48 and return only the result.",
+    "should_trigger": false
+  }
+]

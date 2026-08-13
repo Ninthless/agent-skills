@@ -1,0 +1,7 @@
+interface:
+  display_name: "Web Search First"
+  short_description: "Search for current evidence before acting"
+  default_prompt: "Apply the websearch-first skill: search authoritative current sources before answering or editing, reconcile them with local repository and runtime evidence, and report only the sources that materially support the result."
+
+policy:
+  allow_implicit_invocation: true

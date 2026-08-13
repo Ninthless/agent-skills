@@ -1,0 +1,70 @@
+{
+  "skill_name": "websearch-first",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fix an image metadata editing bug in an existing TypeScript editor integration. Search for the library's exact-version capabilities and official state model before modifying local code.",
+      "expected_output": "An evidence-led repository change that researches authoritative versioned sources, checks the installed dependency and local registration, reconciles any mismatch, implements the smallest supported fix, verifies the round trip, and cites only sources that affected the implementation.",
+      "files": [],
+      "expectations": [
+        "The response searches official or primary library sources before choosing an API or implementation pattern.",
+        "It checks the repository manifest or lockfile, registrations, adapters, and tests instead of assuming the latest documentation applies.",
+        "It distinguishes API existence, local support, authoritative state change, and persistence or reload behavior.",
+        "The implementation follows local evidence when it conflicts with generic online examples and reports the mismatch.",
+        "The final evidence note identifies material sources, established facts, applied decisions, and remaining local uncertainty."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Recommend an authentication approach for a new web application using current security standards and platform guidance. Explain which external facts support the recommendation and where product decisions remain.",
+      "expected_output": "A current, source-backed recommendation that prioritizes standards and primary platform guidance, separates normative facts from design judgment, checks material alternatives, and cites the sources that change the recommendation.",
+      "files": [],
+      "expectations": [
+        "The response searches current standards bodies, platform documentation, or other primary security sources.",
+        "It does not rely on a single blog post, search snippet, or remembered best practice.",
+        "It separates verified protocol or platform facts from product-specific recommendations and assumptions.",
+        "It checks at least one material alternative or tradeoff before concluding.",
+        "It reports time-sensitive uncertainty and does not claim that external guidance proves an untested local implementation."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Update a local Go service to use a dependency feature shown in the latest online documentation. The repository is pinned to an older module version. Search first, then decide the correct implementation without upgrading unless necessary.",
+      "expected_output": "A version-aware implementation that researches official documentation and release history, treats the pinned module and local source as authoritative for current behavior, avoids silently applying newer APIs, and either uses a supported path or clearly justifies a necessary upgrade.",
+      "files": [],
+      "expectations": [
+        "The response searches exact-version documentation, source, or release notes rather than only the latest guide.",
+        "It inspects go.mod, go.sum, local wrappers, and relevant tests before editing.",
+        "It does not upgrade the module merely because the latest API is more convenient.",
+        "Any upgrade recommendation includes compatibility, migration, and verification evidence.",
+        "The final report distinguishes what the web established from what local build and tests proved."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Analyze a private repository bug without exposing proprietary code in search queries. Research the public framework behavior needed to diagnose it, sanitize all queries, and keep local facts separate.",
+      "expected_output": "A privacy-preserving investigation that searches only public abstractions and sanitized symptoms, avoids disclosing repository details, uses local evidence for project-specific conclusions, and documents the limits of the external evidence.",
+      "files": [],
+      "expectations": [
+        "Search queries omit proprietary source, private identifiers, credentials, personal data, and internal URLs.",
+        "The response abstracts the symptom to public framework terminology before searching.",
+        "External sources establish only generic or versioned framework behavior.",
+        "Repository-specific diagnosis is based on local source, configuration, logs, or tests.",
+        "The evidence note states what was sanitized and what remains unproven."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The user explicitly says not to use the internet and provides a complete local specification for a small code change. Follow the specification and report any evidence limitations.",
+      "expected_output": "A compliant offline workflow that does not browse, uses the supplied specification and local repository evidence, performs proportionate verification, and records that web research was skipped by explicit instruction.",
+      "files": [],
+      "expectations": [
+        "The response does not invoke web search or imply that browsing occurred.",
+        "It treats the supplied specification and repository as the available evidence boundary.",
+        "It does not invent external support for the implementation.",
+        "It verifies the local change using available tests or checks.",
+        "The final report states that search was skipped because the user prohibited network access and identifies any resulting uncertainty."
+      ]
+    }
+  ]
+}

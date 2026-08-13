@@ -39,6 +39,7 @@
 | [`no-code-comments`](./skills/no-code-comments/) | 默认让生成或修改的代码类文件不包含解释性注释，同时保留工具指令和必要文档契约。 |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | 避免 Windows PowerShell 中的插值、引号、嵌套 Shell、路径和包装层解析错误。 |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | 调研陌生、受监管或依赖平台规则的领域，并整理真实流程、约束、风险、MVP 边界和可开发需求。 |
+| [`websearch-first`](./skills/websearch-first/) | 在回答或修改文件前搜索权威且时效匹配的来源，把外部依据与本地事实对照，并只引用实际影响结果的资料。 |
 | [`write-api-docs`](./skills/write-api-docs/) | 根据路由、Schema、客户端、测试、运行证据、OpenAPI、GraphQL、gRPC、Webhook 或消息协议编写和审查接口契约，不虚构行为。 |
 | [`xposed-module-dev`](./skills/xposed-module-dev/) | 开发、审查、迁移和调试 Android Xposed 或 LSPosed 模块，覆盖现代 libxposed 和传统 XposedBridge 项目。 |
 
@@ -81,6 +82,7 @@ Skill 可以独立使用，也可以围绕同一个任务组合：
 
 - `english-spec-first` -> `vibecoding-domain-scout` -> 对应实现 Skill
 - `freelance-order-triage` -> 付费调研、分阶段交付或受控报价
+- `websearch-first` + 任意任务 Skill -> 用当前外部依据校准本地事实
 - `high-constraint-coding` + `no-code-comments` -> 严谨实现和干净源码风格
 - `build-user-facing-ui` + `high-constraint-coding` -> 完整界面体验和受控工程实现
 - `write-api-docs` -> 有证据支持的接口对接契约
