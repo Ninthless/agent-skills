@@ -65,6 +65,41 @@
         "It verifies the local change using available tests or checks.",
         "The final report states that search was skipped because the user prohibited network access and identifies any resulting uncertainty."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Rename one local file exactly as instructed, then report whether the operation succeeded. Apply the websearch-first workflow before the file operation.",
+      "expected_output": "A search-first workflow that performs a brief relevant search before the mechanical local operation, does not invent a technical rationale from the search, and verifies the local result.",
+      "files": [],
+      "expectations": [
+        "The response invokes web search before touching the local file.",
+        "The search is brief and relevant to the file operation or its environment rather than an open-ended research detour.",
+        "The response does not let an unrelated search result change an exact user instruction.",
+        "The rename is verified locally and the search evidence is reported succinctly."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Calculate a supplied arithmetic expression and return only the result, but use websearch-first before responding.",
+      "expected_output": "A search-first response that performs a brief search as instructed, computes the expression accurately, and does not use web content as evidence for the arithmetic result.",
+      "files": [],
+      "expectations": [
+        "The response performs or attempts the required web search before answering.",
+        "The arithmetic result comes from deterministic calculation, not an unverified web snippet.",
+        "The final response remains concise and identifies that the search did not materially affect the calculation."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Inspect a local configuration file and summarize its contents. Search first, keep the search separate from the local file evidence, and do not expose any secrets found in the file.",
+      "expected_output": "A search-first local inspection that searches briefly for relevant format or handling guidance, reads the file locally, redacts sensitive values, and distinguishes external guidance from file facts.",
+      "files": [],
+      "expectations": [
+        "The response searches before reading or summarizing the local file.",
+        "The search query does not contain secrets or the file's private contents.",
+        "The summary is based on the local file and redacts credentials, tokens, keys, and personal data.",
+        "The final evidence note separates search guidance from facts observed in the file."
+      ]
     }
   ]
 }

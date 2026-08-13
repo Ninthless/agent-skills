@@ -1,7 +1,7 @@
 interface:
   display_name: "Web Search First"
   short_description: "Search for current evidence before acting"
-  default_prompt: "Use $websearch-first to search authoritative sources before acting, reconcile external evidence with local facts, and cite the sources that materially affect the result."
+  default_prompt: "Use $websearch-first before doing anything: run a web search first, reconcile the result with local and user-provided facts, and cite the sources that materially affect the work."
 
 policy:
   allow_implicit_invocation: true

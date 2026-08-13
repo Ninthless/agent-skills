@@ -1,6 +1,6 @@
 ---
 name: websearch-first
-description: 'Search authoritative web sources before answering, planning, reviewing, or changing local files when external evidence can improve correctness. Use for current facts, unfamiliar domains, APIs and libraries, dependency versions, standards, policies, prices, security, platform behavior, implementation decisions, and repository code changes that need an external basis; also trigger for 先联网搜索, 先查资料, web search, browse first, or do research first. Separate web evidence from local repository and runtime evidence, and cite the sources that affected the result. Do not search when the user explicitly forbids network access, search is unavailable, or the task is a purely mechanical local operation with no factual decision; record that exception instead.'
+description: 'Use this skill by default for every user request: search the web before answering, explaining, planning, reviewing, coding, editing local files, running commands, or making recommendations. Search authoritative sources for current facts, unfamiliar domains, APIs, libraries, versions, standards, policies, security, prices, platform behavior, and implementation choices, and still perform a brief relevance search for simple local tasks. Trigger for 先联网搜索, 先查资料, 先搜索, web search, browse first, do research first, or webserach. Reconcile web evidence with local repository, runtime, and user-provided facts; cite sources that affect the result. Skip only when the user explicitly forbids network access or the search capability is unavailable, and report the exception.'
 ---
 
 # Websearch First
@@ -15,6 +15,7 @@ Use web research as the default evidence-gathering step before making a decision
 
 ## Operating Contract
 
+- Invoke web search before every task, including local code changes, repository inspection, file edits, command execution, formatting, calculations, and simple explanations. Do not decide that a task is too trivial to search.
 - Search before action when the task has any material external fact, current behavior, unfamiliar concept, dependency capability, version, standard, policy, security, pricing, platform, or implementation-choice question.
 - For local code changes, search official API documentation, versioned docs, standards, release notes, source repositories, or maintainer guidance before editing when those sources can reduce uncertainty.
 - Treat local repository evidence as the final authority for project-specific behavior. Treat runtime and test evidence as stronger than assumptions from web pages or names.
@@ -35,7 +36,7 @@ Before searching, state the decision the search must support:
 - implementation pattern or tradeoff
 - local code change that needs external justification
 
-If none applies, search briefly for a relevant authoritative basis anyway unless the task is explicitly mechanical, offline, or network-prohibited. Never invent a research need merely to justify irrelevant browsing.
+If none applies, run a brief general search related to the task or its subject, then state whether it affected the result. Never silently skip because the task appears mechanical or obvious.
 
 ### 2. Search in source order
 
@@ -75,7 +76,7 @@ End with a compact evidence note when web research affected the result:
 - Applied: the decision, code path, or recommendation changed by those facts
 - Remaining uncertainty: what still depends on local testing, user confirmation, or expert review
 
-If search was skipped, say why. If search failed, continue only with clearly labeled local or prior evidence and state what remains unproven.
+If search was skipped, say why. The only normal skip is an explicit no-network instruction. If search failed or is unavailable, continue only with clearly labeled local or prior evidence and state what remains unproven.
 
 ## Hard Boundaries
 

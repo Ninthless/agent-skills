@@ -53,15 +53,15 @@
   },
   {
     "query": "Rename README.tmp to README.md. No factual decision or content change is involved.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Sort these already-provided JSON keys alphabetically without changing values.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Report the current git branch and working tree status.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Use only the supplied specification as the contract; network access is prohibited for this task.",
@@ -69,14 +69,26 @@
   },
   {
     "query": "Move these three files into the existing archive folder without modifying their contents.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Apply the exact patch I supplied verbatim, then show whether it applied cleanly. Do not research alternatives.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Calculate 937 multiplied by 48 and return only the result.",
-    "should_trigger": false
+    "should_trigger": true
+  },
+  {
+    "query": "解释一下这个普通英文单词的意思。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我打开并读取这个本地配置文件，然后告诉我里面有什么。",
+    "should_trigger": true
+  },
+  {
+    "query": "只做一次本地格式化，先搜索一下相关工具或格式规范再执行。",
+    "should_trigger": true
   }
 ]
