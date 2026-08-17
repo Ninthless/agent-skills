@@ -140,12 +140,30 @@ Read the target skill's `description` and workflow before assuming it applies. N
 
 ## Evaluation And Validation
 
-Complex skills include two complementary evaluation surfaces:
+Complex skills include complementary evaluation surfaces:
 
 - `trigger_eval.json` checks whether representative requests should or should not activate the skill.
 - `evals.json` checks expected workflow behavior on realistic tasks without prescribing one implementation.
+- Code-eval fixtures execute real repository changes against public tests, grader-only acceptance tests, dependency restrictions, and diff scope policies.
 
 Some skills also include deterministic scripts. Examples include UI evidence validation, visual fingerprint comparison, and OpenAPI evidence validation.
+
+`high-constraint-coding` includes three cross-platform code fixtures for runtime-version compatibility, persistence round trips, and transaction retry boundaries. Its runner copies only the public fixture into an isolated workspace, runs an optional agent command, injects grader tests after implementation, and treats test, protected-path, dependency, and scope violations as hard failures.
+
+Run the deterministic checks:
+
+```powershell
+python -m unittest skills/high-constraint-coding/scripts/test_run_code_eval.py -v
+python skills/high-constraint-coding/scripts/self_check_code_evals.py
+```
+
+Run one candidate through the isolated evaluator:
+
+```powershell
+python skills/high-constraint-coding/scripts/run_code_eval.py skills/high-constraint-coding/evals/fixtures/go-metadata-roundtrip/fixture.json --agent-command <executable> <arguments>
+```
+
+The evaluator passes the task through the `CODE_EVAL_PROMPT` environment variable. An applicable failed gate blocks completion; an unverified required gate permits only `Implemented but unverified`.
 
 When modifying a skill:
 

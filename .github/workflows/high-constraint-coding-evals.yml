@@ -1,0 +1,33 @@
+name: High Constraint Coding Evals
+
+permissions: {}
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/high-constraint-coding-evals.yml"
+      - "skills/high-constraint-coding/**"
+  push:
+    paths:
+      - ".github/workflows/high-constraint-coding-evals.yml"
+      - "skills/high-constraint-coding/**"
+  workflow_dispatch:
+
+jobs:
+  deterministic-evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18.20.8"
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.x"
+      - run: python -m json.tool skills/high-constraint-coding/evals/evals.json > /dev/null
+      - run: python -m json.tool skills/high-constraint-coding/evals/trigger_eval.json > /dev/null
+      - run: python -m unittest skills/high-constraint-coding/scripts/test_run_code_eval.py -v
+      - run: python skills/high-constraint-coding/scripts/self_check_code_evals.py

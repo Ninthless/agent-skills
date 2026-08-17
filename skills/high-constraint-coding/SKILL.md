@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Use this skill for correctness-sensitive repository coding or review that needs the smallest complete implementation, project-native conventions, human hand-maintainability, coherent contracts, or verified claims. Trigger for production bugs, behavior-preserving refactors, shared APIs or schemas, migrations, architecture or module boundaries, dependency integrations, async or concurrent lifecycles, protocols, ABI/FFI, and regression-prone behavior; also for 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, read the code first, maintainable code, or guarantee correctness. Use when the user emphasizes narrow scope, compatibility, complete failure paths, or tests even without naming the skill. Do not use for conceptual explanations, source-free brainstorming or planning, status-only requests, trivial formatting or syntax conversion, throwaway scripts, isolated edits needing no repository investigation, or UI/API-document work owned by another skill unless explicitly requested.'
+description: 'Use this skill by default for repository source-code implementation, modification, bug fixing, behavior-preserving refactoring, and correctness review whenever the task requires engineering judgment. Enforce the smallest complete project-native change, explicit contracts, human hand-maintainability, and evidence-backed completion. Trigger for production code, shared behavior, tests, APIs or schemas, persistence, migrations, dependency integrations, async lifecycles, protocols, concurrency, transactions, retries, ABI/FFI, build compatibility, 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Do not use for pure formatting, syntax-only conversion, verbatim mechanical edits, throwaway scripts, source-free discussion, status-only requests, or artifacts owned entirely by a specialized UI or API-documentation skill.'
 ---
 
 # High Constraint Coding
@@ -9,431 +9,195 @@ description: 'Use this skill for correctness-sensitive repository coding or revi
 
 Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
 
-## Triggers
+## Purpose
 
-- The user asks for a bug fix, refactor, code review, or implementation that must be correct.
-- The task touches production code, shared behavior, contracts, tests, or regression-sensitive logic.
-- The task changes architecture, module boundaries, dependencies, or code that humans will extend repeatedly.
-- The user wants minimal diffs, explicit assumptions, practical verification, and code that is easy to hand-maintain.
-- The user says `最小改动`, `高质量代码`, `便于手写维护`, `人类易维护`, `不要 AI 味`, `像人工写的`, `别乱重构`, `先看清楚再改`, `先读代码`, `不要乱改`, or `保证正确`.
-- The request implies careful engineering rather than quick speculative changes.
-
-## Overview
-
-Use this skill to force a disciplined coding workflow that reduces the usual LLM failure modes: guessing unclear requirements, changing too much code, inventing abstractions, skipping verification, and shipping patches with hidden regressions.
-
-Optimize for correct behavior, project-native coherence, code that humans can quickly locate, trace, hand-edit, and verify, and the smallest complete implementation that satisfies the task. Treat maintainability as low effort and low risk for a competent project contributor making the next realistic change. Do not optimize for speed if speed would weaken rigor.
-
-Do not treat "human-written" as a cosmetic style or detector-evasion target. Produce code whose every choice is justified by the requirement, an established project convention, a real caller, or measured evidence. Never claim that code is AI-free or infer authorship from style, commit size, or public-code search.
-
-## Priority Order
-
-When tradeoffs appear, resolve them in this order:
+Produce the smallest complete repository-native result that satisfies the request and survives proportionate verification. Optimize in this order:
 
 1. correctness
-2. contract and feature coherence
+2. contract and lifecycle coherence
 3. human hand-maintainability
 4. project-native consistency
 5. verification strength
-6. local extensibility
-7. performance
-8. brevity
+6. brevity
 
-Use brevity only when the result stays obvious to another engineer. Use performance work only when it is required by the task, supported by evidence, or clearly necessary on a hot path.
+Do not infer authorship from code style. Treat "human-written" as code whose behavior, ownership, dependencies, and tests are easy for a contributor to locate, trace, change, and verify.
 
-## Operating Contract
+## 1. Select the delivery mode
 
-Treat every coding request as a bounded engineering task with a quality bar.
+Choose one mode before proceeding:
 
-- Define the concrete task before editing code.
-- Surface assumptions that can change behavior, interfaces, data shape, persistence, or user-visible output.
-- Prefer the smallest direct implementation that satisfies the request.
-- Avoid speculative refactors, generic frameworks, or future-proofing unless the current task requires them.
-- Keep changes local to the relevant files and lines.
-- Make every new field, state, branch, abstraction, endpoint, index, and configuration entry earn its place through a current requirement or real consumer.
-- Keep validation, defaulting, normalization, nullability, persistence, and state transitions coherent across every touched layer.
-- Deliver a complete requested slice rather than a broad but half-connected scaffold.
-- Verify the change with the strongest practical evidence before finishing.
-- Prefer code that another engineer can locate, understand, modify, and extend without reverse-engineering hidden intent or hidden framework behavior.
-- Keep common changes local to one clear owner and its explicit contracts.
-- Minimize the number of concepts, files, ownership boundaries, and implicit mechanisms a maintainer must hold in mind at once.
+- **Implementation:** inspect, edit, verify, audit the diff, and apply the completion gate.
+- **Review:** inspect the diff and affected behavior path, report actionable findings first, and do not edit unless asked.
+- **Diagnosis-only:** reproduce or trace the failure, establish the cause, and report evidence without implementing a fix.
 
-If the request is trivial, keep the process lightweight. If the request is ambiguous or risky, tighten the process rather than improvising.
+If the request changes mode, follow the latest request. Do not turn a review or diagnosis into an implementation without authorization.
 
-## Required Workflow
+## 2. Route references
 
-### 0. Route references
+Read only the references whose signals are present:
 
-Load only the references whose signals are present. Do not preload every reference.
+- Read [quality-bar.md](./references/quality-bar.md) for every repository implementation or review.
+- Read [human-maintainability.md](./references/human-maintainability.md) when ownership, discoverability, abstraction shape, change propagation, or the next realistic hand edit is part of the decision.
+- Read [dependency-contracts.md](./references/dependency-contracts.md) when correctness depends on an installed version, configuration, registration, generated artifact, serializer, framework state model, persistence round trip, or external async capability.
+- Read [protocol-boundaries.md](./references/protocol-boundaries.md) for ordered protocols, ownership transfer, ABI/FFI, concurrency, reentrancy, transactions, retries, idempotency, partial commits, teardown, or supported build matrices.
+- Read both dependency and protocol references when an external capability also owns ordering, lifetime, transaction, retry, concurrency, or teardown semantics.
 
-- Read [quality-bar.md](./references/quality-bar.md) for every repository implementation or review governed by this skill, including small local fixes.
-- Read [human-maintainability.md](./references/human-maintainability.md) when the task requires a decision about architecture, module boundaries, ownership, abstraction shape, discoverability, change propagation, or the next realistic hand edit. Shared or long-lived code alone is not enough.
-- Read [dependency-contracts.md](./references/dependency-contracts.md) when correctness depends on the installed version, configuration, registration, extension, serializer, generated artifact, framework state model, database or OS API, persistence or serialization round trip, or an async capability supplied by another component.
-- Read [protocol-boundaries.md](./references/protocol-boundaries.md) for ordered multi-call protocols, callbacks with cross-call state, ABI or FFI, ownership or lifetime transfer, concurrency or reentrancy, transactions, retries or idempotency, partial commits, resource teardown, or supported build and platform matrices.
-- Read both dependency and protocol references when an external capability also has ordering, ownership, concurrency, retry, transaction, or teardown semantics. Read the human-maintainability reference as well only when the implementation shape or future change path is part of the task.
+For each selected reference, classify its named checks as `pass`, `fail`, `not applicable`, or `unverified`. Only applicable checks are mandatory, but no applicable failed or unverified check may be silently treated as passed.
 
-A serialize-save-reload sequence is a dependency round trip, not a protocol by itself. Load the protocol reference only when calls have legal or illegal order, shared session state, negotiated constraints, reset behavior, ownership, concurrency, retry, transaction, or teardown semantics. A database task needs both references only when dependency-specific driver capability and transaction or retry semantics are both material.
-
-For a local, synchronous change with no architecture decision, external capability, lifecycle, protocol, or boundary risk, use this `SKILL.md` and the quality bar only.
-
-### 1. Bound the task
-
-Before coding, identify:
-
-- the exact behavior to add, fix, or preserve
-- the files or modules likely involved
-- the complete affected behavior path: entry point, contracts, decisions, state, outputs, consumers, and tests as applicable
-- the validation target
-- the assumptions that matter
-
-If multiple interpretations would lead to materially different implementations, stop and ask a concise question instead of silently choosing one.
-
-### 2. Read before writing
-
-**This step is mandatory. Do not skip it even for small changes.**
-
-Inspect the real implementation path before proposing changes.
-
-- find the entry point, call chain, and affected data flow
-- identify any shared helper, normalization rule, or contract that multiple call sites depend on
-- check adjacent tests, types, interfaces, schemas, or configuration
-- inspect manifests, lockfiles, generated artifacts, registrations, adapters, and runtime configuration when dependency behavior matters
-- inspect analogous completed features, not only the nearest file, to learn the project's actual conventions
-- inspect relevant history or blame when it clarifies why a convention or invariant exists; never manufacture commit history to imitate human development
-- read the actual file content, not a remembered or guessed version
-
-**Before writing a single line of code, state in one sentence what the current code does in the relevant area.** If you cannot produce that sentence confidently, keep reading. A vague or hedged description means the understanding is not yet sufficient to make a safe change.
-
-Do not start from a guessed implementation shape.
-If the visible bug is downstream from a shared semantic seam, fix the seam rather than only patching the leaf caller.
-
-**If you have already tried a fix twice and it is still failing:** stop patching. Diagnose the root cause from the evidence you have. Explain what went wrong and propose a fundamentally different approach before writing more code.
-
-### 2a. Build a contract map
-
-For non-trivial behavior, map the touched slice before implementation:
-
-- entry points and callers
-- request, input type, schema, and validation rules
-- defaulting, normalization, and null semantics
-- service or domain decisions
-- domain model, storage schema, index, migration, and persistence behavior
-- response, event, UI, and downstream consumers
-- tests, fixtures, docs, and operational claims
-
-Choose one authoritative boundary for each invariant. Do not validate a value as mandatory at one boundary and also add an unreachable fallback for its absence downstream without a real bypassing caller. Do not let two layers silently assign different defaults or meanings.
-
-Mark pre-existing gaps as `in scope`, `out of scope`, or `blocking`. Do not invent unrelated functionality merely to make an existing schema look complete.
-
-### 2b. Prove dependency capabilities and lifecycles
-
-Before implementation, prove:
-
-- the repository's actual version and configuration expose the required capability
-- any custom field, format, hook, extension, operator, annotation, or serializer is registered and supported
-- the call updates the authoritative state rather than only a rendered view, cache, or notification
-- required data survives serialization, persistence, reload, reconstruction, undo, retry, or transport
-- asynchronous work has an explicit owner, terminal states, cancellation or teardown behavior, and a policy for stale captured state
-- related calls preserve protocol state, caller constraints, parameter direction, ownership, and reset behavior
-- failures cannot escape through an unsupported ABI or FFI mechanism
-- concurrency, partial failure, retry, and build-environment assumptions match explicit contracts
-
-Separate `API exists`, `call succeeds`, `state changes`, `state survives round trip`, and `consumer observes it` into distinct claims. Gather evidence for every claim the feature relies on.
-
-If evidence is missing, use a proven repository path, add the smallest required integration and contract test, or report the unsupported assumption. Do not implement from a plausible API name or documentation for an unverified version.
-
-### 2c. Map human maintenance
+## 3. Bound the task
 
 Identify:
 
-- where a maintainer would start to locate the behavior
-- which module owns each policy, state transition, side effect, and external contract
-- which implementation decisions are likely to change independently
-- which files and callers currently change together
-- which dependencies and framework mechanisms make behavior implicit
-- which tests describe behavior and which merely mirror implementation
+- the exact behavior to add, fix, preserve, diagnose, or review
+- the likely entry point, owners, callers, state, outputs, and tests
+- the public, persisted, generated, or operational contracts that may change
+- the strongest practical validation target
+- assumptions that could materially change the solution
 
-State the expected maintenance path in one sentence: `A future change to [behavior] should primarily modify [owner] and its [contract/tests].`
+Ask one concise question when competing interpretations would produce materially different behavior. Mark pre-existing gaps as `in scope`, `out of scope`, or `blocking`.
 
-If that sentence cannot name one coherent owner, improve the existing boundary or justify why the behavior is inherently cross-cutting.
+## 4. Read before deciding
 
-### 3. Choose the narrowest solution
+Inspect the real implementation path before proposing code or review conclusions:
 
-Select the lowest-complexity change that fully solves the task.
+- read the actual files, callers, types, schemas, configuration, and focused tests
+- inspect analogous maintained modules to identify project conventions
+- inspect manifests, lockfiles, registrations, adapters, generated artifacts, and runtime paths when dependency behavior matters
+- inspect relevant history only when it explains an invariant or convention
 
-- prefer extending an existing path over introducing new layers
-- prefer direct logic over abstractions used once
-- prefer explicit control flow over compact cleverness
-- prefer preserving public contracts over broad rewrites
-- prefer simple seams over speculative extension systems
+Before editing, be able to state in one sentence what the current code does in the affected area. If that sentence is uncertain, keep reading.
 
-Reject changes that are larger than the problem.
-Do not mistake a local-looking call-site patch for the narrowest solution if it leaves sibling paths inconsistent.
+For a non-trivial slice, map:
 
-### 3a. Preserve human understandability
+- entry and caller
+- validation, normalization, defaults, and null semantics
+- policy and state transitions
+- persistence, serialization, events, output, and downstream observation
+- failure, recovery, cancellation, retry, and teardown where applicable
+- behavioral tests and supported build environments
 
-Code should be easy for a competent project contributor to continue editing by hand.
+Choose one authoritative owner for each invariant. Do not preserve contradictory validation or defaults across layers.
 
-- make the behavior easy to locate from repository and domain vocabulary
-- make the happy path easy to follow
-- keep important state transitions visible
-- avoid hiding business logic inside dense helpers, chained transforms, or clever expressions
-- use names that explain the role of a value, not just its type
-- keep functions and modules cohesive enough that their ownership is obvious
-- avoid navigation-only decomposition: helpers and layers must hide a real decision, policy, or side effect
-- keep error and resource lifecycles visible in the language's ordinary form
-- prefer explicit dependencies over globals, service locators, implicit registration, or action at a distance
-- keep the authoritative state model explicit; do not substitute rendered output or manual notifications for a real state transition
-- use comments only when they preserve non-obvious rationale or constraints that structure and naming cannot express
+## 5. Choose the narrowest complete solution
 
-If a shorter version is harder to read, choose the slightly longer version.
+Prefer:
 
-### 3b. Mirror the local style
+- an existing path over a new layer
+- direct control flow over clever compression
+- one clear owner over scattered helpers
+- stable public contracts over broad rewrites
+- language and repository idioms over generic architecture
+- observable behavioral tests over private-call assertions
 
-Before writing, identify 3–5 concrete style patterns in analogous, maintained code and carry them through the entire feature slice. Look for:
+Reject:
 
-- naming conventions: casing, prefixes, verb vs noun choices, abbreviation habits
-- control flow preferences: early return vs nested if, guard clauses vs else branches
-- error handling shape: exceptions vs result types vs sentinel values
-- function length and decomposition granularity
-- how the codebase expresses intent: inline logic vs named helpers, explicit vs implicit
-- dependency wiring, transaction, pagination, mapping, validation, concurrency, and test conventions where applicable
+- speculative frameworks, extension points, generic utilities, or future states
+- template-symmetric layers, CRUD surfaces, fields, indexes, or configuration with no current consumer
+- pass-through wrappers, catch-and-rethrow helpers, and navigation-only decomposition
+- unrelated renames, formatting churn, cleanup, or dependency upgrades
+- plausible API calls unsupported by the repository's actual version and integration
 
-A change that is correct but conventionally foreign is harder for maintainers to trust and extend. Make new code look native to the project because it follows its actual engineering decisions, not because it imitates superficial syntax.
+A local-looking patch is not narrow if it leaves sibling paths inconsistent. A short implementation is not minimal if it hides behavior or omits a required failure path.
 
-If the repository is inconsistent, choose in this order: enforced tooling or architecture rules, the convention used by analogous maintained modules, then the dominant recent pattern. Use one coherent convention across the new slice. Do not mix styles within the feature, and do not clean up unrelated legacy inconsistencies.
+When maintainability is material, name the expected maintenance path:
 
-### 3c. Preserve local extensibility
+`A future change to [behavior] should primarily modify [owner] and its [contract/tests].`
 
-Write code that can be changed safely when nearby requirements evolve, without building a speculative framework.
-
-- isolate task-specific logic behind clear boundaries when the code already has those boundaries
-- organize boundaries around responsibilities and decisions that change for different reasons
-- hide volatile implementation choices behind the smallest stable interface needed by real callers
-- keep interfaces stable unless changing them is necessary
-- avoid coupling unrelated concerns into one function or component
-- prevent convenience dependencies from bypassing module ownership
-- leave a natural place for the next likely change
-- do not generalize for imaginary future cases
-
-Good extensibility means low-friction modification of the local area, not building a reusable platform.
-
-Do not prescribe one architecture across languages. Keep a monolith, layered module, package, component, service, function, actor, or data pipeline when it makes the real change local and understandable. Add a boundary only when it reduces demonstrated change propagation or isolates a real policy, side effect, external dependency, deployment unit, or ownership boundary.
-
-### 3d. Close the requested feature slice
-
-Treat completeness as traceable behavior, not file count.
-
-- connect every requested action from caller to outcome and recovery path
-- give every new persisted field, enum, status, or index a current producer, consumer, lifecycle, or explicit domain requirement
-- keep request validation, service behavior, stored data, returned data, and UI behavior aligned
-- verify required round trips across in-memory state, serialization, persistence, reload, and downstream observation
-- close asynchronous operations across success, failure, cancellation, stale completion, and owner teardown as applicable
-- close protocol sequences across valid order, invalid order, repeated calls, reset, reentrancy, and teardown as applicable
-- make partial success, rollback, commit, retry, and duplicate-delivery semantics explicit where side effects can outlive one call
-- include the targeted test level supported by the repository for new behavior
-- update documentation or completion claims only when the implementation proves them
-
-Do not generate administrator workflows, CRUD endpoints, states, or UI merely because an entity could support them. If they are not requested, omit their supporting schema when newly introduced and unnecessary. If they already exist, report the gap without expanding scope unless it blocks correctness.
-
-### 3e. Run an intentionality audit
-
-Before editing and again before completion, ask of every introduced artifact: why does this exist now, who calls or consumes it, and what evidence supports this shape?
-
-Remove or reject:
-
-- defensive defaults or null guards made unreachable by upstream validation and real call paths
-- input, domain, persistence, transport, service, or presentation layers created only by template symmetry
-- unused fields, statuses, indexes, extension hooks, configuration, or generic base types added for imagined future work
-- catch-and-rethrow wrappers, redundant conversions, and pass-through helpers that add no policy
-- broad README, architecture, or completion claims not demonstrated by working code
-
-Defensive code is valid when it protects a real boundary or alternate caller. Name that boundary in the design reasoning and test it.
-
-### 3f. Simulate the next hand edit
-
-Before implementation is finalized, choose one likely follow-up request and trace how a maintainer would make it without writing the change.
-
-Check:
-
-- the starting file or symbol is discoverable
-- the rule has one clear owner
-- the change does not require synchronized edits across unrelated modules
-- affected callers, persisted data, and external contracts can be predicted
-- behavioral tests would catch a regression without depending on private call sequences
-
-If the simulated change requires repository-wide archaeology, hidden framework knowledge, or broad test rewrites, reduce indirection, clarify ownership, or move the boundary.
-
-### 4. Implement with hard constraints
+## 6. Implement the bounded slice
 
 While editing:
 
-- change only what is required for the task
-- do not rewrite unrelated code for style
-- do not rename unrelated symbols
-- do not mix bug fixes with opportunistic cleanup
-- remove any import, branch, helper, or test made obsolete by your own change
-- preserve existing comments unless the touched comment becomes incorrect
-- keep all new files in the slice consistent with the selected project conventions
-- remove scaffolding, placeholder branches, and unused artifacts introduced by the change
+- change only what the requested behavior requires
+- keep validation, state, persistence, outputs, and consumers coherent
+- remove artifacts made obsolete by this change
+- preserve compatible interfaces unless the request requires a contract change
+- keep error, resource, async, transaction, and teardown behavior explicit
+- make every new artifact answer: why now, who consumes it, and what evidence supports it
+- do not replace authoritative state transitions with rendered changes or manual success notifications
+- do not claim adjacent unimplemented behavior
 
-When writing code, bias toward:
+If two attempted fixes fail, stop patching. Re-establish the cause from runtime or repository evidence and choose a materially different approach.
 
-- obvious names
-- simple data flow
-- cohesive functions and modules with one clear responsibility
-- direct error handling
-- stable interfaces
-- linear control flow when practical
-- a small number of moving parts
-- explicit dependency direction
-- behavior-focused tests that survive internal refactoring
+## 7. Verify the result
 
-Avoid patterns that weaken project-native quality:
+Run the strongest practical checks in this order as applicable:
 
-- nested ternaries for multi-branch behavior
-- one-liners that compress multiple transformations and hide intent
-- wrapper abstractions with only one caller
-- generic utilities introduced only to avoid writing a few explicit lines
-- generic `utils`, `common`, `helpers`, `base`, `manager`, or `processor` ownership when a domain-specific owner exists
-- pass-through layers that add navigation but no policy
-- hidden work in constructors, accessors, annotations, globals, registration, reflection, operators, or lifecycle callbacks without an established and discoverable project convention
-- dependency calls inferred from names or remembered APIs without version, configuration, registration, or runtime evidence
-- manual success or change events that mask an unchanged or inconsistent authoritative state
-- promises, callbacks, streams, transactions, handles, selections, cursors, or tokens with undefined completion, cancellation, reuse, or teardown behavior
-- callback methods implemented independently when correctness depends on prior calls, negotiated constraints, or protocol reset
-- pointer, reference, buffer, handle, status, or callback semantics inferred from syntax instead of the boundary contract
-- exceptions, panics, partial initialization, borrowed references, or ownership transfers crossing a boundary that cannot safely represent them
-- unsynchronized shared state, locks held across unknown callbacks, or retrying side effects without proven idempotency or ambiguous-commit handling
-- reliance on transitive includes, incidental import order, one build profile, or one platform when the repository supports more
-- premature caching, memoization, batching, or async complexity without evidence
-- blanket null handling, fallback values, or exception wrapping without a reachable case
-- full CRUD or multi-layer boilerplate generated by entity shape rather than requested behavior
+1. targeted behavior and contract tests
+2. exact-version dependency probes or round-trip tests
+3. protocol, transaction, retry, concurrency, failure, and teardown tests
+4. integration or end-to-end checks for changed vertical slices
+5. adjacent regression tests for shared seams
+6. typecheck, build, lint, static analysis, and supported configuration checks
+7. manual reproduction only when automation is unavailable
 
-## Performance Rule
+Do not stop at a symptom test when shared behavior changed. Distinguish:
 
-Aim for code that is efficient enough for the real workload while staying easy to reason about.
+- tests that passed
+- tests that failed because of the change
+- known baseline failures
+- checks not run and why
 
-- preserve existing performance-critical behavior unless the task requires changing it
-- optimize when there is evidence, a known hot path, or an explicit performance goal
-- prefer the simplest efficient approach over clever micro-optimizations
-- explain any readability tradeoff made for performance
-- if performance is uncertain and important, say what should be measured
+Audit the final diff:
 
-Do not sacrifice maintainability for hypothetical performance wins.
+- no unrelated files or generated artifacts
+- no new dependency without a demonstrated requirement
+- no deleted or weakened test used to make the change pass
+- no placeholder, unreachable fallback, dormant state, or half-wired surface introduced by the change
 
-### 5. Verify before claiming success
+## 8. Apply the completion gate
 
-Run the strongest practical verification available.
+Use exactly one final status:
 
-Preferred order:
+### Completed
 
-1. targeted tests that prove the changed behavior and contract boundaries
-2. focused dependency contract tests or runtime probes for version-sensitive or extension-sensitive behavior
-3. protocol-sequence, boundary-failure, concurrency, transaction, or retry tests when applicable
-4. integration or end-to-end checks for a changed vertical slice
-5. nearby regression tests
-6. typecheck, build, lint, static analysis, and representative supported build configurations
-7. manual reproduction steps when automated checks are unavailable
+Use only when:
 
-If the fix touches shared logic, do not stop at the first passing symptom test. Run at least one adjacent contract or regression check that exercises another consumer of the same seam when practical.
-Prefer tests against observable behavior and stable public seams. A behavior-preserving refactor should not require rewriting assertions merely because private structure changed.
-If verification cannot be run, say so explicitly and explain what remains unproven.
+- the requested implementation or review deliverable is complete
+- every applicable required check is `pass`
+- direct evidence proves the changed behavior or review conclusion
+- no relevant regression introduced by the change is known
 
-### 6. Report like an engineer
+### Implemented but unverified
 
-Final output should be concise and concrete:
+Use only when:
 
-- what changed
-- how it was verified
-- what assumptions or residual risks remain
+- the requested code change is present
+- a required check is `unverified` because of an explicit environment, access, tool, or time limitation
+- no applicable check is known to have failed
 
-Do not over-explain implementation details unless the user asks.
+Do not say `fixed`, `verified`, `done`, or equivalent. List the missing checks and the claims they leave unproven.
 
-## Strict Do Nots
+### Blocked
 
-Do not:
+Use when:
 
-- infer missing requirements when the risk of being wrong is meaningful — ask instead
-- introduce dependencies, configuration toggles, or reusable frameworks for one-off logic
-- keep contradictory validation, defaults, or state semantics across layers
-- add dormant schema, statuses, indexes, endpoints, or abstractions for hypothetical future work
-- mix injection, mapping, error handling, pagination, or test conventions inside one new feature slice
-- generate every architectural layer or CRUD operation merely for symmetry
-- select microservices, event buses, plugins, repositories, factories, base classes, containers, or generic adapters by fashion rather than present change, deployment, ownership, integration, or testing needs
-- scatter one business rule across multiple modules or duplicate its ownership
-- infer dependency capability, version compatibility, serialization support, or lifecycle safety from a plausible API call
-- implement protocol callbacks as unrelated functions without proving call order, cross-call state, caller constraints, and reset behavior
-- infer parameter direction, ownership, lifetime, ABI safety, retryability, idempotency, or thread safety from type shape or naming
-- treat a rendered change, emitted notification, or successful initialization as proof of durable state correctness
-- optimize for file size, layer count, maintainability index, cyclomatic complexity, or cognitive complexity as proof of human maintainability
-- claim a fix without testing or a credible reproduction path
-- bury uncertainty behind confident language or leave partially implemented ideas in the patch
-- confuse minimal diff with minimal understandable solution — the goal is the latter
-- claim code is human-written, AI-free, copied, or AI-generated from stylistic clues, commit size, or search results
+- a material requirement or contract cannot be determined safely
+- a required dependency capability is unsupported or unproven and no repository-supported path exists
+- an applicable required check fails and cannot be corrected within scope
+- completing the slice would require unauthorized scope, access, or destructive action
 
-## Review Mode
+Do not ship a guessed or half-connected implementation as completion.
 
-When the user asks for a review, prioritize findings over summaries.
+Any applicable `fail` forbids `Completed` and `Implemented but unverified`. Any applicable `unverified` forbids `Completed`.
 
-- report correctness bugs first
-- then regression risk, missing validation, unsafe assumptions, and needless complexity
-- pay extra attention to removed guards, changed normalization semantics, caller-owned mutation, ordering rules, and missing coverage around the modified behavior
-- trace contradictions between validation, service defaults, persistence states, UI affordances, and documentation
-- challenge dependency calls whose version, registration, extension, serialization, or lifecycle contracts are not evidenced
-- trace whether state changes survive the required round trip and whether async operations terminate safely after cancellation or teardown
-- trace multi-call protocols as state machines, including negotiated inputs, legal outputs, reset, repetition, and out-of-order behavior
-- inspect ABI or FFI error containment, parameter direction, ownership, lifetime, reentrancy, partial failure, and ambiguous commits
-- challenge code that succeeds only through transitive dependencies, incidental initialization order, or one unrepresentative build configuration
-- report scattered ownership, hidden control flow, unstable interfaces, dependency inversion violations, and high change propagation when they make hand maintenance risky
-- assess whether a realistic follow-up change has an obvious starting point and a local modification path
-- treat complexity metrics as investigation signals, not maintainability verdicts
-- distinguish maintainability evidence from provenance speculation; code search can reveal duplication but cannot prove authorship or absence of AI use
-- include file and line references when possible
-- state explicitly if no findings were found
+## 9. Review mode
 
-## Decision Rules
+Report findings before summary:
 
-Use these rules to keep the skill sharp:
+1. correctness and security defects
+2. contract, lifecycle, persistence, protocol, and compatibility regressions
+3. missing or misleading tests and completion claims
+4. maintainability risks caused by scattered ownership, hidden behavior, or needless complexity
 
-- If the task is unclear, ask.
-- If the change is broad, split it into coherent verified slices without leaving the requested behavior half-wired.
-- If two layers own the same invariant, choose one authoritative boundary.
-- If a new field or state has no current lifecycle, remove it or obtain a requirement.
-- If dependency behavior is assumed, verify the installed version, configuration, registration, implementation, or runtime path before relying on it.
-- If a change exists only in presentation or a notification, update or verify the authoritative state and round trip.
-- If asynchronous work captures mutable state, define whether completion uses the captured state, current state, a stable identity, or conflict handling.
-- If an operation can outlive its owner, define cancellation, transfer, or safe late completion.
-- If related calls form a protocol, model their shared state, valid order, caller constraints, terminal states, and reset behavior.
-- If code crosses an ABI or FFI boundary, contain language-specific failures and prove parameter direction, ownership, lifetime, layout, and thread rules.
-- If an operation can partially commit or be retried, define atomicity, idempotency, ambiguous-success handling, resource recreation, and final failure.
-- If correctness depends on concurrency or callbacks, define reentrancy, synchronization, ordering, duplicate delivery, and teardown races.
-- If the repository supports multiple build modes or platforms, verify the relevant matrix and remove reliance on incidental transitive dependencies.
-- If a requested slice is incomplete, finish the slice before adding adjacent features.
-- If local conventions conflict, choose one evidence-backed convention for the new slice and leave unrelated cleanup alone.
-- If a common change has no clear owner, establish or repair the narrowest existing boundary.
-- If a helper or layer only increases navigation, inline it or give it a real policy boundary.
-- If a design hides behavior behind implicit machinery, make the dependency or transition discoverable in the project's ordinary form.
-- If tests fail on harmless internal rearrangement, move them toward observable behavior where practical.
-- If the code is clever, simplify it.
-- If the verification is weak, strengthen it.
-- If the patch includes unrelated edits, remove them.
-- If a shorter implementation is less obvious, expand it slightly.
-- If extensibility requires a framework, it is probably overdesigned.
-- If performance work lacks evidence, defer it or state it as a risk rather than implementing it.
+Include file and line evidence when available. Distinguish confirmed defects from risks and questions. State explicitly when no findings are found and identify the review coverage and limits.
 
-## Quality Bar
+## 10. Report concisely
 
-Apply every gate from the references selected in step 0. Treat applicable gates as required.
+Report:
 
-## Example Response Shape
+- final status
+- what changed, diagnosed, or found
+- verification evidence
+- assumptions, residual risks, or blockers
 
-For non-trivial coding tasks, use this internal sequence:
-
-1. Scope the task and state material assumptions.
-2. Inspect the relevant code path and tests.
-3. Implement the smallest viable change.
-4. Run targeted verification.
-5. Report outcome, evidence, and residual risk.
-
-For simple tasks, compress the same logic into a shorter execution path without skipping the underlying discipline.
+Do not claim more than the evidence proves.

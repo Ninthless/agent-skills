@@ -146,12 +146,30 @@ cp -r ./skills/* ~/.agents/skills/
 
 ## 评测与验证
 
-复杂 Skill 通常包含两类互补评测：
+复杂 Skill 通常包含多类互补评测：
 
 - `trigger_eval.json`：验证代表性请求是否应该触发该 Skill。
 - `evals.json`：验证 Agent 在真实任务中的工作方式和质量要求，但不强制唯一实现。
+- 代码评测夹具：针对真实仓库改动运行公开测试、仅评分阶段可见的验收测试、依赖限制和 Diff 范围规则。
 
 部分 Skill 还包含确定性脚本，例如 UI 证据校验、视觉指纹比较和 OpenAPI 证据校验。
+
+`high-constraint-coding` 包含三个跨平台代码夹具，分别覆盖运行时版本兼容、持久化往返和事务重试边界。Runner 只把公开夹具复制到隔离工作区，可选执行外部 Agent 命令，等实现结束后再注入评分测试，并把测试失败、受保护文件改动、依赖变更和越界修改视为硬失败。
+
+运行确定性检查：
+
+```powershell
+python -m unittest skills/high-constraint-coding/scripts/test_run_code_eval.py -v
+python skills/high-constraint-coding/scripts/self_check_code_evals.py
+```
+
+让候选实现通过隔离评测：
+
+```powershell
+python skills/high-constraint-coding/scripts/run_code_eval.py skills/high-constraint-coding/evals/fixtures/go-metadata-roundtrip/fixture.json --agent-command <可执行程序> <参数>
+```
+
+Runner 通过 `CODE_EVAL_PROMPT` 环境变量传递任务。任何适用门槛失败都禁止完成声明；必需门槛未验证时只能标记为 `Implemented but unverified`。
 
 修改 Skill 时，应当：
 

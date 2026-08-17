@@ -1,0 +1,33 @@
+{
+  "id": "python-sqlite-retry",
+  "prompt": "修复 transfer.py 中 SQLite 转账重试的事务与资源生命周期。保持公开 API 小而直接，仅依据 RetryableTransactionError 重试；每次尝试必须使用新连接，失败尝试必须回滚，成功事件只能在 commit 完成后发布，并确保所有连接在成功和失败路径关闭。保留 fault_hook 和窄 connection_factory 注入点，不添加第三方依赖或 pyproject.toml。",
+  "public_dir": "public",
+  "grader_dir": "grader",
+  "public_test": [
+    "python",
+    "-m",
+    "unittest",
+    "-v",
+    "test_transfer.py"
+  ],
+  "grader_test": [
+    "python",
+    "-m",
+    "unittest",
+    "-v",
+    "test_transfer.py",
+    "test_transfer_hidden.py"
+  ],
+  "timeout_seconds": 30,
+  "allowed_paths": [
+    "transfer.py"
+  ],
+  "forbid_new_dependencies": true,
+  "protected_test_paths": [
+    "test_transfer.py"
+  ],
+  "dependency_files": [
+    "pyproject.toml",
+    "requirements.txt"
+  ]
+}

@@ -226,5 +226,45 @@
   {
     "query": "写一个临时 Python 脚本，把当前目录的 txt 文件名改成小写，用完就删。",
     "should_trigger": false
+  },
+  {
+    "query": "Fix this single-file parser bug in the repository and run its focused test. Keep the patch small.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this diff only for naming and whitespace preferences; do not assess behavior or regressions.",
+    "should_trigger": false
+  },
+  {
+    "query": "Diagnose why the production cache occasionally returns stale records. Trace the repository path and runtime evidence, but do not implement a fix yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "The account form displays saved values correctly, but after reload its UI state disagrees with the persisted API contract. Find and minimally fix the cross-layer inconsistency.",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement a compatible API schema migration used by two existing clients and update contract tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "Document the existing API schema migration as an OpenAPI handoff. Do not change implementation.",
+    "should_trigger": false
+  },
+  {
+    "query": "Use $high-constraint-coding to change this isolated constant exactly as specified.",
+    "should_trigger": true
+  },
+  {
+    "query": "Guarantee correctness while sorting these supplied JSON keys alphabetically without changing values.",
+    "should_trigger": false
+  },
+  {
+    "query": "Perform a security review of this authentication diff and report exploitable findings without editing.",
+    "should_trigger": true
+  },
+  {
+    "query": "Change only the visible spacing and color tokens in this component; the UI design skill owns the task and no state or behavior changes.",
+    "should_trigger": false
   }
 ]

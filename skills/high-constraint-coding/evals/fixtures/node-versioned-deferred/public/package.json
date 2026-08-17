@@ -1,0 +1,11 @@
+{
+  "name": "node-versioned-deferred",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18 <20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

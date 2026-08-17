@@ -288,6 +288,60 @@
         "It does not infer retryability or reuse from method names or generic database advice.",
         "Verification covers retryable and terminal errors, fresh attempt resources, cancellation, retry exhaustion, and uncertain commit outcomes."
       ]
+    },
+    {
+      "id": 24,
+      "prompt": "Fix createDeferred for the repository's declared Node.js runtime. Preserve the public return contract, do not raise the minimum runtime or add dependencies, and verify the focused behavior.",
+      "expected_output": "A version-aware minimal implementation that reads the runtime constraint, replaces the unsupported API without changing the public contract, runs focused tests, and reports a completion status supported by evidence.",
+      "files": [
+        "fixtures/node-versioned-deferred/public"
+      ],
+      "fixture": {
+        "type": "code-eval",
+        "manifest": "fixtures/node-versioned-deferred/fixture.json"
+      },
+      "expectations": [
+        "The implementation preserves createDeferred returning promise, resolve, and reject.",
+        "The minimum Node version and dependency set remain unchanged.",
+        "Public and grader tests pass before the result is marked Completed.",
+        "The final diff stays within the implementation file and any explicitly allowed focused test."
+      ]
+    },
+    {
+      "id": 25,
+      "prompt": "Fix document metadata so it survives save and reload. Keep old JSON files compatible, avoid storage-layer redesign, and prove the real disk round trip.",
+      "expected_output": "A narrow authoritative-state fix that updates the actual JSON contract, preserves old files and existing fields, passes public and hidden round-trip tests, and reports evidence without overstating completion.",
+      "files": [
+        "fixtures/go-metadata-roundtrip/public"
+      ],
+      "fixture": {
+        "type": "code-eval",
+        "manifest": "fixtures/go-metadata-roundtrip/fixture.json"
+      },
+      "expectations": [
+        "Metadata is encoded and reconstructed from disk rather than restored from cache or the original object.",
+        "Old JSON without metadata remains loadable and editable.",
+        "Existing ID and title behavior remains intact.",
+        "The result is Completed only when all applicable public and grader tests pass."
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "Fix the SQLite transfer retry flow. Each retry must start clean, only explicit retryable failures may retry, committed state must exist before publishing success, and failures must not leave partial balances.",
+      "expected_output": "A transaction-aware minimal fix that separates an attempt from retry control, recreates or safely resets resources, publishes only after commit, preserves atomicity, passes hidden failure tests, and uses the completion gate honestly.",
+      "files": [
+        "fixtures/python-sqlite-retry/public"
+      ],
+      "fixture": {
+        "type": "code-eval",
+        "manifest": "fixtures/python-sqlite-retry/fixture.json"
+      },
+      "expectations": [
+        "Failed attempts cannot leak debit or credit changes into a later attempt.",
+        "Non-retryable failures execute once and propagate.",
+        "Success publication observes committed state from an independent connection.",
+        "Retry exhaustion and cleanup are verified before marking the task Completed."
+      ]
     }
   ]
 }

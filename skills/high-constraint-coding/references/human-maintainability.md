@@ -1,8 +1,8 @@
 # Human Hand-Maintainability
 
-Use this reference when a task changes architecture, module boundaries, shared code, or a feature that humans will extend repeatedly.
+Use this reference when ownership, discoverability, change propagation, abstraction shape, or the next realistic hand edit is part of the engineering decision.
 
-Do not load it for every bug fix or small local edit. Load it when ownership, discoverability, change propagation, abstraction shape, or the next realistic hand edit is part of the engineering decision.
+Do not load it only because code is shared or long-lived. Load it when the task must decide whether the current owner and boundary make a realistic future change local, traceable, and verifiable.
 
 ## Contents
 

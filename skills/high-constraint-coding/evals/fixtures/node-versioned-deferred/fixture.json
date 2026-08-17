@@ -1,0 +1,27 @@
+{
+  "id": "node-versioned-deferred",
+  "prompt": "Fix src/deferred.js so createDeferred works on every Node.js version allowed by package.json. Preserve the existing API shape and behavior, use no dependencies, keep the change minimal, and run the public tests. Do not change package.json or tests.",
+  "public_dir": "public",
+  "grader_dir": "grader",
+  "public_test": [
+    "node",
+    "--test"
+  ],
+  "grader_test": [
+    "node",
+    "--test"
+  ],
+  "timeout_seconds": 120,
+  "allowed_paths": [
+    "src/deferred.js"
+  ],
+  "forbid_new_dependencies": true,
+  "protected_test_paths": [
+    "test/deferred.test.js"
+  ],
+  "dependency_files": [
+    "package.json"
+  ],
+  "grader_target": "test/deferred_grader.test.js",
+  "initial_public_expectation": "runtime-dependent"
+}

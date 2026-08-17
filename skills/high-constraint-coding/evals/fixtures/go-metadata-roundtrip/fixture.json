@@ -1,0 +1,28 @@
+{
+  "id": "go-metadata-roundtrip",
+  "prompt": "Fix the Document metadata persistence bug in document/document.go. Metadata already works in memory, but it must survive Save followed by Load while remaining compatible with existing JSON files that omit metadata. Preserve the public API and ID/Title behavior, use only the Go standard library, keep the change minimal, and run the public tests. Do not change go.mod or tests.",
+  "public_dir": "public",
+  "grader_dir": "grader",
+  "public_test": [
+    "go",
+    "test",
+    "./..."
+  ],
+  "grader_test": [
+    "go",
+    "test",
+    "./..."
+  ],
+  "timeout_seconds": 120,
+  "allowed_paths": [
+    "document/document.go"
+  ],
+  "forbid_new_dependencies": true,
+  "protected_test_paths": [
+    "document/document_test.go"
+  ],
+  "dependency_files": [
+    "go.mod"
+  ],
+  "grader_target": "document/document_grader_test.go"
+}
