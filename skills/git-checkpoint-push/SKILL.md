@@ -116,6 +116,14 @@ Analyze the actual staged diff to determine:
 - description: a present-tense, imperative summary under 72 characters
 - body/footer: include only when the change needs context, verification notes, issue references, or breaking-change details
 
+Choose the subject language from the user's explicit request:
+
+- If the user does not explicitly specify a commit-message language, default the entire commit message to English regardless of the conversation language or repository history, such as `fix(web): correct login redirect`.
+- If the user explicitly requests a language, keep the Conventional Commits type and scope in English and write the description in the requested language: `<English type>(<English scope>): <description in the requested language>`.
+- Apply this rule to every valid type, including `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `build`, `ci`, `style`, `perf`, and project-specific types.
+- Do not translate the type or scope. Do not mix languages in the description unless a technical identifier, API name, or product name requires it.
+- Apply the same imperative, concise, no-trailing-period rules in the requested language. For example, use `fix(api): 修复字段校验` rather than `fix(api): 修复了字段校验问题`.
+
 Commit types:
 
 | Type       | Purpose                        |
@@ -160,6 +168,12 @@ Examples:
 
 - `feat(api): add workspace and auth demo endpoints`
 - `fix(web): correct login portal layout`
+- `feat(auth): 增加登录校验`
+- `fix(web): 修复登录重定向`
+- `docs(api): 更新接口说明`
+- `refactor(core): 简化配置加载`
+- `test(auth): 增加令牌复用检测`
+- `chore(deps): 更新依赖版本`
 - `refactor(web): rebuild frontend as Ant Design workspace`
 - `test(auth): cover refresh token reuse detection`
 - `ci(github): add required workflow permissions`
