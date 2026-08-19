@@ -33,7 +33,7 @@
   },
   {
     "query": "Create a quick toy todo app in one HTML file for a demo.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Explain the difference between unit tests and integration tests.",
@@ -41,11 +41,11 @@
   },
   {
     "query": "Format this JSON file alphabetically.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Generate a throwaway script to rename a bunch of screenshots in my Downloads folder.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Brainstorm five possible architectures for a chat app, no code yet.",
@@ -57,15 +57,15 @@
   },
   {
     "query": "Write a SQL query that counts users by country from this simple table.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Make the button blue and bigger in this CSS snippet; no need to inspect the whole app.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Convert this JavaScript function to TypeScript syntax only.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "List common causes of race conditions in web apps.",
@@ -73,7 +73,7 @@
   },
   {
     "query": "Write a regex for matching US phone numbers.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Tell me what this stack trace means at a high level; don't change code yet.",
@@ -205,19 +205,19 @@
   },
   {
     "query": "Remove this unused local variable and run the formatter. Nothing else is affected.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Update the text color in this isolated CSS rule from #333 to #222.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Redesign the entire account settings UI with responsive states, accessibility, and visual verification.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Generate an OpenAPI document from these handlers and schemas, including required and optional fields.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Give me a high-level plan for migrating this monolith next year. Do not inspect or change source yet.",
@@ -225,7 +225,7 @@
   },
   {
     "query": "写一个临时 Python 脚本，把当前目录的 txt 文件名改成小写，用完就删。",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Fix this single-file parser bug in the repository and run its focused test. Keep the patch small.",
@@ -265,6 +265,50 @@
   },
   {
     "query": "Change only the visible spacing and color tokens in this component; the UI design skill owns the task and no state or behavior changes.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a one-line Python script that prints today's date.",
+    "should_trigger": true
+  },
+  {
+    "query": "Convert this JavaScript function to TypeScript syntax only, preserving behavior.",
+    "should_trigger": true
+  },
+  {
+    "query": "Format this JSON file alphabetically without changing its values.",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a SQL query that counts users by country from this simple table.",
+    "should_trigger": true
+  },
+  {
+    "query": "Give me a regular expression for matching US phone numbers.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a quick toy todo app in one HTML file for a demo.",
+    "should_trigger": true
+  },
+  {
+    "query": "Generate an OpenAPI document from these handlers and schemas, including required and optional fields.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make the button blue and bigger in this CSS snippet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Generate a throwaway script to rename screenshots in my Downloads folder.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain the difference between unit tests and integration tests without writing code.",
+    "should_trigger": false
+  },
+  {
+    "query": "Brainstorm five possible architectures for a chat app, no code yet.",
     "should_trigger": false
   }
 ]

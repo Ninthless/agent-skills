@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Use this skill by default for repository source-code implementation, modification, bug fixing, behavior-preserving refactoring, and correctness review whenever the task requires engineering judgment. Enforce the smallest complete project-native change, explicit contracts, human hand-maintainability, and evidence-backed completion. Trigger for production code, shared behavior, tests, APIs or schemas, persistence, migrations, dependency integrations, async lifecycles, protocols, concurrency, transactions, retries, ABI/FFI, build compatibility, 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Do not use for pure formatting, syntax-only conversion, verbatim mechanical edits, throwaway scripts, source-free discussion, status-only requests, or artifacts owned entirely by a specialized UI or API-documentation skill.'
+description: 'Use this skill for every task that writes, edits, reviews, refactors, generates, converts, formats, tests, or otherwise produces code or code-like artifacts in any language, including source files, scripts, queries, configs, schemas, migrations, tests, snippets, and CI. Apply it as the universal coding-quality companion: read the real context, make the smallest complete project-native result, preserve contracts, keep code hand-maintainable, and verify what is claimed. Also trigger for production fixes, APIs, persistence, dependencies, async work, protocols, concurrency, transactions, ABI/FFI, build compatibility, 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Use alongside a specialized UI, API-documentation, security, or platform skill when that skill owns the artifact; do not use for prose-only discussion, status-only requests, or non-code planning.'
 ---
 
 # High Constraint Coding
@@ -21,6 +21,16 @@ Produce the smallest complete repository-native result that satisfies the reques
 6. brevity
 
 Do not infer authorship from code style. Treat "human-written" as code whose behavior, ownership, dependencies, and tests are easy for a contributor to locate, trace, change, and verify.
+
+## Universal Coding Companion
+
+Use this skill whenever the task includes code or a code-like artifact, regardless of size, language, risk, or whether another specialized skill is also active. This includes:
+
+- source, scripts, snippets, queries, regular expressions, tests, fixtures, configs, schemas, migrations, workflows, build files, and generated code
+- implementation, bug fixing, review, diagnosis with code output, refactoring, conversion, formatting, cleanup, scaffolding, and exact mechanical edits
+- throwaway, demo, prototype, one-file, isolated, and syntax-only code tasks
+
+Keep the process proportionate: use the full contract and lifecycle workflow for risky work, and compress it for trivial work without dropping the code-quality companion role. When a specialized skill owns the deliverable, compose with it rather than replacing it. The specialized skill governs its artifact-specific requirements; this skill governs bounded changes, clear code, project fit, and honest verification.
 
 ## 1. Select the delivery mode
 

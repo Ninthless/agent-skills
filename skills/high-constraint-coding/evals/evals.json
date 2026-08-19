@@ -342,6 +342,39 @@
         "Success publication observes committed state from an independent connection.",
         "Retry exhaustion and cleanup are verified before marking the task Completed."
       ]
+    },
+    {
+      "id": 27,
+      "prompt": "Write a one-line Python script that prints today's date. Keep the code clear and run the smallest useful verification.",
+      "expected_output": "A proportionate coding workflow that treats the script as a coding artifact, keeps it simple and readable, runs a direct syntax or execution check, and reports the actual verification.",
+      "files": [],
+      "expectations": [
+        "The response uses the coding companion workflow even though the artifact is tiny and disposable.",
+        "The implementation does not add unnecessary structure, dependencies, or explanation inside the code.",
+        "The script is syntax-checked or executed and the result is reported accurately."
+      ]
+    },
+    {
+      "id": 28,
+      "prompt": "Convert this JavaScript function to TypeScript syntax only while preserving behavior. Do not redesign the API.",
+      "expected_output": "A bounded code conversion that preserves the supplied behavior and interface, avoids unrelated refactoring, and verifies syntax or type validity proportionately.",
+      "files": [],
+      "expectations": [
+        "The response invokes the coding companion for a syntax-only code artifact.",
+        "The conversion does not introduce unrelated architecture or behavior changes.",
+        "The final code is checked with an available proportionate syntax or type validation."
+      ]
+    },
+    {
+      "id": 29,
+      "prompt": "Format the supplied JSON alphabetically without changing values. Treat the output as a code-like artifact and verify that it remains valid JSON.",
+      "expected_output": "A mechanical but code-aware transformation that preserves values, makes no unrelated edits, and verifies JSON validity.",
+      "files": [],
+      "expectations": [
+        "The response uses the coding companion because it produces a code-like configuration artifact.",
+        "Only key ordering or formatting changes; values and structure remain equivalent.",
+        "The resulting JSON is parsed successfully."
+      ]
     }
   ]
 }
