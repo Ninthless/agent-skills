@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Universal coding quality companion"
-  default_prompt: "Use $high-constraint-coding for any coding or code-like task. Keep the result clear, bounded, project-native, and proportionate; compose with specialized skills, verify what matters, and report only supported claims."
+  short_description: "Verified, human-maintainable project-native code"
+  default_prompt: "Use $high-constraint-coding for this coding or repository-grounded code review task. Select a proportionate depth, read the real behavior path, preserve contracts, keep ownership and future changes clear, make the smallest complete project-native result, verify applicable behavior and architecture gates, and report only supported claims."
 
 policy:
   allow_implicit_invocation: true

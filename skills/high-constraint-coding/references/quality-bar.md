@@ -37,6 +37,22 @@ Do not infer `pass` from silence. Record the evidence for each applicable gate.
 - No generic layer, pass-through helper, dormant state, or speculative extension point was introduced.
 - The code remains direct enough for a contributor to locate and trace.
 
+## Architecture And Maintainability
+
+Apply this section to bounded behavioral and architectural work. Mark it `not applicable` only for a genuinely mechanical edit with no behavior, contract, state, dependency, or ownership decision.
+
+- Each changed business rule and authoritative state has one discoverable owner.
+- The primary and realistic failure paths can be traced from entry to outcome without hidden control flow or ambient mutable state.
+- Cross-boundary inputs, outputs, errors, ownership, and optionality use an explicit repository-native contract.
+- Callers depend on stable public behavior rather than another owner's private representation, positional protocol, or incidental storage shape.
+- Dependency direction remains intentional, and no new cycle or boundary bypass was introduced.
+- Independently changing policy, external integration, state transition, persistence, and presentation concerns are not combined without a demonstrated reason.
+- Every new boundary, abstraction, named type, or module has a current caller, change reason, lifecycle need, or testing seam.
+- A behavior-preserving refactor keeps behavioral assertions stable instead of rewriting tests to mirror the new structure.
+- A simulated likely follow-up change is `local` or `coordinated but coherent`, not `scattered`.
+
+Do not infer a pass from smaller files, more types, added layers, lower complexity metrics, higher coverage, or successful tests alone.
+
 ## Feature Closure
 
 - Each requested action reaches an observable outcome and applicable recovery path.
@@ -51,6 +67,8 @@ Do not infer `pass` from silence. Record the evidence for each applicable gate.
 - Shared behavior has an adjacent regression check when practical.
 - Tests were not deleted, skipped, or weakened to manufacture success.
 - Build, typecheck, lint, static analysis, or supported configuration checks ran when material.
+- Stateful, persistent, asynchronous, retrying, concurrent, or resource-owning changes have lifecycle and round-trip evidence proportional to risk.
+- Architectural work includes evidence that allowed dependencies, public contracts, and affected callers remain coherent.
 
 ## Final Status
 

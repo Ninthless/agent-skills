@@ -375,6 +375,43 @@
         "Only key ordering or formatting changes; values and structure remain equivalent.",
         "The resulting JSON is parsed successfully."
       ]
+    },
+    {
+      "id": 30,
+      "prompt": "Fix an isolated local validation branch in an existing command. The owner, behavior, and focused test are already clear; no contract, state, dependency, or architecture decision is involved.",
+      "expected_output": "A mechanical-depth workflow that reads the target and focused test, makes the smallest complete change, and runs proportionate verification without an architecture ceremony.",
+      "files": [],
+      "expectations": [
+        "The response selects a mechanical or similarly compressed depth.",
+        "The response does not invent modules, abstractions, dependency analysis, protocol analysis, or future architecture work.",
+        "Verification remains focused on the local behavior."
+      ]
+    },
+    {
+      "id": 31,
+      "prompt": "Refactor a large Python handler whose provider request construction, response parsing, state policy, persistence, and HTTP output have grown together. A likely next change adds another provider. Preserve behavior, inspect callers and tests first, and make the smallest boundary improvement that makes the next change local.",
+      "expected_output": "An evidence-led architectural refactor that identifies current ownership and change reasons, protects behavior before structural edits where needed, introduces only justified boundaries, and verifies the likely provider extension path.",
+      "files": [],
+      "expectations": [
+        "The response classifies the work as architectural based on ownership and independent change reasons rather than line count.",
+        "The response maps the current behavior path, callers, state, contracts, and tests before editing.",
+        "The result does not impose a fixed controller-service-repository template or split into navigation-only helpers.",
+        "The response states where the next provider change should primarily occur and which contract/tests protect it.",
+        "Verification covers preserved behavior and at least one realistic failure or integration path."
+      ]
+    },
+    {
+      "id": 32,
+      "prompt": "Review this feature for human hand-maintainability. The code passes tests, but a common business-rule change requires editing several generic layers and duplicated conditionals. Report concrete ownership, dependency, hidden-state, and test-contract findings, then simulate one realistic follow-up change.",
+      "expected_output": "A findings-first maintainability review grounded in concrete change propagation and behavior contracts, with no metric-only or architecture-fashion verdict.",
+      "files": [],
+      "expectations": [
+        "The review identifies the owner of each relevant rule and state with repository evidence.",
+        "The review distinguishes a local, coordinated-but-coherent, or scattered follow-up change.",
+        "The review treats metrics and passing tests as signals rather than sufficient proof.",
+        "The review proposes the smallest boundary correction supported by the findings.",
+        "The review reports uncertainty and does not claim authorship from style."
+      ]
     }
   ]
 }

@@ -8,7 +8,10 @@ Do not load it only because code is shared or long-lived. Load it when the task 
 
 - Working Definition
 - Language-Independent Model
+- Maintenance Task Model
 - Architecture Decision Rule
+- Boundary Decision Record
+- Misleading Heuristics
 - Human Change Simulation
 - Metrics Boundary
 - Cross-Language Adaptation
@@ -60,6 +63,23 @@ Do not reduce maintainability to short files, low metric scores, many abstractio
 - A behavior-preserving refactor should normally leave behavioral assertions unchanged.
 - Verify the most likely future change or failure path when it reveals whether the selected boundary is useful.
 
+## Maintenance Task Model
+
+Evaluate maintainability against a concrete task, not code in the abstract.
+
+For the requested change and one likely follow-up change, identify:
+
+- start point: where a maintainer would begin and why it is discoverable
+- behavior owner: the module, type, or function that owns the rule
+- state owner: the authoritative source and permitted transitions
+- contract: the inputs, outputs, errors, persisted shape, or public surface consumers rely on
+- dependencies: the owners this behavior may call and the direction of those calls
+- verification: the focused tests or probes that prove the behavior
+
+Treat architecture as healthy when these answers are explicit and mostly local. Treat it as risky when the answers depend on repository-wide search, positional knowledge, shared mutable state, repeated conditionals, implicit framework behavior, or synchronized edits across unrelated owners.
+
+Complex results that cross a boundary should use the repository's ordinary named representation when field meaning, optionality, or evolution matters. A tuple, array, map, or primitive remains appropriate when its contract is conventional, small, and unambiguous. Do not replace every value with a domain type mechanically.
+
 ## Architecture Decision Rule
 
 Do not choose architecture by fashion or by language.
@@ -77,6 +97,44 @@ Keep the current architecture when it already makes the requested change local a
 
 Do not introduce microservices, plugins, event buses, repositories, factories, generic adapters, dependency injection containers, base classes, or framework layers solely to appear maintainable. These structures are justified only by current deployment, ownership, variation, integration, or testing needs.
 
+When one unit performs several steps, separate them only when at least one boundary is real:
+
+- the steps change for different product or integration reasons
+- one step owns state or side effects that others should not control
+- callers need a stable contract independent of an implementation detail
+- failures, retries, cancellation, or teardown require separate lifecycle ownership
+- focused tests need a real external or policy seam
+
+For example, request construction, response parsing, error classification, state policy, persistence, and presentation may begin together in a small program. Split the boundaries that have independent variation or ownership; do not reproduce a fixed six-layer template.
+
+## Boundary Decision Record
+
+For architectural work, record the decision briefly before editing:
+
+- **Owner:** the behavior or state the boundary owns
+- **Callers:** current consumers, not hypothetical future clients
+- **Contract:** the smallest stable surface they need
+- **Hidden decision:** the representation, policy, integration, or lifecycle detail callers must not depend on
+- **Change reason:** the realistic cause that should remain local
+- **Allowed dependencies:** the owners this boundary may use
+- **Protection:** the behavioral or contract tests that make replacement safe
+
+If these fields cannot be answered, the proposed boundary is probably premature or the repository model is incomplete. Prefer improving names and direct control flow over inventing an owner with no coherent responsibility.
+
+## Misleading Heuristics
+
+Reject mechanical conclusions:
+
+- A long file is not automatically poorly designed; scattered ownership and unrelated change coupling are the defect.
+- A short function is not automatically readable; navigation-only decomposition can hide the primary path.
+- A class, data class, interface, or value object is not automatically a useful domain boundary.
+- Repetition is not automatically wrong; duplicate a small obvious sequence when unification would couple different rules.
+- Layering is not modularity when callers bypass contracts or every change crosses every layer.
+- Dependency injection is not decoupling when abstractions have one fixed implementation and no lifecycle or test need.
+- High test coverage is not protection when tests assert private call order, snapshots without meaning, or mocked implementation layout.
+- Passing tests do not prove maintainability when ownership remains hidden or a common change still propagates through unrelated modules.
+- A single file is not automatically appropriate for a prototype if it already contains independently changing policies, external integrations, and persistent state.
+
 ## Human Change Simulation
 
 Before completion, simulate one realistic follow-up change without implementing it.
@@ -89,7 +147,13 @@ Ask:
 4. Can they predict affected callers and persisted or external contracts?
 5. Would tests fail for a behavioral regression rather than an internal rearrangement?
 
-If the answer requires repository-wide search, coordinated edits across unrelated modules, knowledge of hidden framework behavior, or broad test rewrites, improve the boundary or lower the maintainability claim.
+Classify the result:
+
+- **Local:** one owner and its contract or focused tests contain the change.
+- **Coordinated but coherent:** a small set of related owners change through explicit contracts, with predictable tests and compatibility work.
+- **Scattered:** unrelated modules, duplicate rules, hidden state, private representations, or broad test rewrites must change together.
+
+`Local` is preferred but not universally required. `Coordinated but coherent` is acceptable for a true vertical slice or contract migration. `Scattered` fails the maintainability gate unless the scattering is a documented pre-existing constraint outside the authorized scope; in that case report it as residual risk or blocker rather than claiming the architecture is maintainable.
 
 Do not optimize for a numeric file or layer count. Use the simulation to detect unnecessary navigation, hidden coupling, and scattered ownership.
 

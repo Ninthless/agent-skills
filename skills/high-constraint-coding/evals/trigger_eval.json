@@ -233,7 +233,7 @@
   },
   {
     "query": "Review this diff only for naming and whitespace preferences; do not assess behavior or regressions.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Diagnose why the production cache occasionally returns stale records. Trace the repository path and runtime evidence, but do not implement a fix yet.",
@@ -257,7 +257,7 @@
   },
   {
     "query": "Guarantee correctness while sorting these supplied JSON keys alphabetically without changing values.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Perform a security review of this authentication diff and report exploitable findings without editing.",
@@ -265,7 +265,7 @@
   },
   {
     "query": "Change only the visible spacing and color tokens in this component; the UI design skill owns the task and no state or behavior changes.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Write a one-line Python script that prints today's date.",
@@ -280,19 +280,7 @@
     "should_trigger": true
   },
   {
-    "query": "Write a SQL query that counts users by country from this simple table.",
-    "should_trigger": true
-  },
-  {
     "query": "Give me a regular expression for matching US phone numbers.",
-    "should_trigger": true
-  },
-  {
-    "query": "Create a quick toy todo app in one HTML file for a demo.",
-    "should_trigger": true
-  },
-  {
-    "query": "Generate an OpenAPI document from these handlers and schemas, including required and optional fields.",
     "should_trigger": true
   },
   {
@@ -308,7 +296,15 @@
     "should_trigger": false
   },
   {
-    "query": "Brainstorm five possible architectures for a chat app, no code yet.",
+    "query": "Refactor this large Python handler so a maintainer can add a new provider without editing unrelated persistence and HTTP code. Preserve behavior and prove the new ownership boundary with tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this module for human-maintainable architecture: identify the owner of each rule, dependency direction, hidden state, change propagation, and the next realistic hand edit.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain what high cohesion and low coupling mean in software architecture with a simple conceptual example. Do not inspect or write code.",
     "should_trigger": false
   }
 ]

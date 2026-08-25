@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Use this skill for every task that writes, edits, reviews, refactors, generates, converts, formats, tests, or otherwise produces code or code-like artifacts in any language, including source files, scripts, queries, configs, schemas, migrations, tests, snippets, and CI. Apply it as the universal coding-quality companion: read the real context, make the smallest complete project-native result, preserve contracts, keep code hand-maintainable, and verify what is claimed. Also trigger for production fixes, APIs, persistence, dependencies, async work, protocols, concurrency, transactions, ABI/FFI, build compatibility, 最小改动, 最少代码实现, 高质量代码, 便于手写维护, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Use alongside a specialized UI, API-documentation, security, or platform skill when that skill owns the artifact; do not use for prose-only discussion, status-only requests, or non-code planning.'
+description: 'Universal coding-quality and maintainable-architecture companion for tasks that create, change, diagnose, test, convert, format, or review code or code-like artifacts. Use for source, scripts, queries, regex, configs, schemas, migrations, tests, generated code, builds, CI, bug fixes, production incidents, refactors, dependency integrations, APIs, persistence, async work, protocols, concurrency, transactions, ABI/FFI, architecture changes, and repository-grounded code review or diagnosis. Trigger for write/fix/implement/refactor/review code, production-ready or human-maintainable architecture, 最小改动, 最少代码实现, 高质量代码, 人类可维护, 代码架构, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Read real context, preserve contracts, assign ownership, make the smallest complete project-native result, and verify claims. Compose with specialized UI, API-documentation, security, or platform skills. Do not use for conceptual explanations, prose-only work, status requests, or planning with no code artifact or repository analysis.'
 ---
 
 # High Constraint Coding
@@ -32,7 +32,7 @@ Use this skill whenever the task includes code or a code-like artifact, regardle
 
 Keep the process proportionate: use the full contract and lifecycle workflow for risky work, and compress it for trivial work without dropping the code-quality companion role. When a specialized skill owns the deliverable, compose with it rather than replacing it. The specialized skill governs its artifact-specific requirements; this skill governs bounded changes, clear code, project fit, and honest verification.
 
-## 1. Select the delivery mode
+## 1. Select the delivery mode and depth
 
 Choose one mode before proceeding:
 
@@ -42,12 +42,20 @@ Choose one mode before proceeding:
 
 If the request changes mode, follow the latest request. Do not turn a review or diagnosis into an implementation without authorization.
 
+For implementation and review, also choose the lightest sufficient depth:
+
+- **Mechanical:** an exact local edit with no behavioral, contract, state, dependency, or ownership decision. Read the target and immediate context, make the edit, and run a focused check.
+- **Bounded behavioral:** one coherent behavior changes within known owners and contracts. Map the affected vertical slice and verify its normal and realistic failure paths.
+- **Architectural:** the change creates or moves ownership, crosses independently changing responsibilities, introduces a module or dependency direction, or materially affects shared state, persistence, concurrency, protocols, or multiple consumers. Establish the architecture model and staged change before editing.
+
+Escalate depth when evidence reveals broader coupling. Do not classify by line count or file count. Do not force mechanical work through an architecture ceremony, and do not disguise an architectural decision as a local patch.
+
 ## 2. Route references
 
 Read only the references whose signals are present:
 
 - Read [quality-bar.md](./references/quality-bar.md) for every repository implementation or review.
-- Read [human-maintainability.md](./references/human-maintainability.md) when ownership, discoverability, abstraction shape, change propagation, or the next realistic hand edit is part of the decision.
+- Read [human-maintainability.md](./references/human-maintainability.md) for bounded behavioral and architectural work, or whenever ownership, discoverability, abstraction shape, change propagation, or the next realistic hand edit is part of the decision.
 - Read [dependency-contracts.md](./references/dependency-contracts.md) when correctness depends on an installed version, configuration, registration, generated artifact, serializer, framework state model, persistence round trip, or external async capability.
 - Read [protocol-boundaries.md](./references/protocol-boundaries.md) for ordered protocols, ownership transfer, ABI/FFI, concurrency, reentrancy, transactions, retries, idempotency, partial commits, teardown, or supported build matrices.
 - Read both dependency and protocol references when an external capability also owns ordering, lifetime, transaction, retry, concurrency, or teardown semantics.
@@ -65,6 +73,8 @@ Identify:
 - assumptions that could materially change the solution
 
 Ask one concise question when competing interpretations would produce materially different behavior. Mark pre-existing gaps as `in scope`, `out of scope`, or `blocking`.
+
+Split broad work into the smallest independently reviewable and verifiable slices. Prefer behavior-protecting tests before structure-changing refactors when current behavior lacks reliable coverage. Keep feature work and unrelated cleanup separate.
 
 ## 4. Read before deciding
 
@@ -86,6 +96,14 @@ For a non-trivial slice, map:
 - failure, recovery, cancellation, retry, and teardown where applicable
 - behavioral tests and supported build environments
 
+For bounded behavioral and architectural work, also establish:
+
+- the authoritative owner of each changed rule and state
+- the public, persisted, or cross-module contracts that expose it
+- the dependency direction and any boundary currently bypassed
+- the decisions likely to change independently
+- the expected location of the next realistic maintenance change
+
 Choose one authoritative owner for each invariant. Do not preserve contradictory validation or defaults across layers.
 
 ## 5. Choose the narrowest complete solution
@@ -98,6 +116,8 @@ Prefer:
 - stable public contracts over broad rewrites
 - language and repository idioms over generic architecture
 - observable behavioral tests over private-call assertions
+- named cross-boundary data over positional or shape-dependent protocols
+- boundaries around independently changing policy, state, side effects, or external integrations
 
 Reject:
 
@@ -106,12 +126,18 @@ Reject:
 - pass-through wrappers, catch-and-rethrow helpers, and navigation-only decomposition
 - unrelated renames, formatting churn, cleanup, or dependency upgrades
 - plausible API calls unsupported by the repository's actual version and integration
+- magic indexes, undocumented tuple or array protocols, and loosely shaped cross-function results whose fields have independent meaning
+- silent broad exception handling, hidden mutable globals, and duplicate business rules
+- functions or modules that combine independently changing request construction, parsing, policy, state transition, persistence, and presentation without a demonstrated reason
+- architecture chosen from a fashionable name, symmetric template, file-size target, or generic layer count
 
 A local-looking patch is not narrow if it leaves sibling paths inconsistent. A short implementation is not minimal if it hides behavior or omits a required failure path.
 
 When maintainability is material, name the expected maintenance path:
 
 `A future change to [behavior] should primarily modify [owner] and its [contract/tests].`
+
+Strengthen an existing boundary before adding one. Add a boundary only when it localizes a demonstrated change reason, state owner, side effect, external dependency, or testing seam for current behavior. Do not split code into navigation-only helpers or layers.
 
 ## 6. Implement the bounded slice
 
@@ -125,6 +151,9 @@ While editing:
 - make every new artifact answer: why now, who consumes it, and what evidence supports it
 - do not replace authoritative state transitions with rendered changes or manual success notifications
 - do not claim adjacent unimplemented behavior
+- make cross-boundary inputs, results, errors, and ownership explicit when callers otherwise depend on position, mutation, ambient state, or undocumented shape
+- keep dependency flow toward stable contracts and prevent callers from reaching into another owner's private representation
+- separate independently changing responsibilities only as far as the current slice and verification evidence justify
 
 If two attempted fixes fail, stop patching. Re-establish the cause from runtime or repository evidence and choose a materially different approach.
 
@@ -153,6 +182,16 @@ Audit the final diff:
 - no new dependency without a demonstrated requirement
 - no deleted or weakened test used to make the change pass
 - no placeholder, unreachable fallback, dormant state, or half-wired surface introduced by the change
+
+For bounded behavioral and architectural work, perform an architecture health audit:
+
+- each changed rule and state has one discoverable authoritative owner
+- the primary and failure paths remain traceable without reconstructing hidden control flow
+- cross-boundary dependencies use explicit contracts rather than private data, magic positions, or ambient state
+- no new dependency cycle, scattered duplicate policy, or unrelated synchronized edit was introduced
+- tests protect observable behavior and contracts rather than the new internal layout
+
+Simulate one likely follow-up change without implementing it. Identify where a maintainer would start, which owners and contracts would change, and which tests would catch a regression. If the change would require repository-wide discovery or coordinated edits across unrelated owners, improve the boundary or classify maintainability as failed or unverified.
 
 ## 8. Apply the completion gate
 
