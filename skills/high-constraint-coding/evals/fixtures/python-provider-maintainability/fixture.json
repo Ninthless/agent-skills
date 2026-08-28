@@ -1,0 +1,33 @@
+{
+  "id": "python-provider-maintainability",
+  "prompt": "Refactor this provider status service so adding a provider changes one clear owner instead of unrelated persistence and HTTP code. Preserve the public API and behavior, keep the implementation idiomatic Python, and add only the tests needed to protect the provider status and persistence paths.",
+  "public_dir": "public",
+  "grader_dir": "grader",
+  "public_test": [
+    "python",
+    "-m",
+    "unittest",
+    "-v",
+    "test_status.py"
+  ],
+  "grader_test": [
+    "python",
+    "-m",
+    "unittest",
+    "-v",
+    "test_status.py",
+    "test_status_hidden.py"
+  ],
+  "timeout_seconds": 30,
+  "allowed_paths": [
+    "status.py",
+    "test_status.py"
+  ],
+  "protected_test_paths": [],
+  "dependency_files": [
+    "pyproject.toml",
+    "requirements.txt"
+  ],
+  "forbid_new_dependencies": true,
+  "initial_public_expectation": "pass"
+}

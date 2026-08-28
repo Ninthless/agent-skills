@@ -83,6 +83,46 @@ def fixed_text(case_id, path):
             "        finally:\n"
             "            connection.close()\n"
         )
+    if case_id == "python-provider-maintainability":
+        return (
+            "import json\n"
+            "import sqlite3\n"
+            "import urllib.request\n\n\n"
+            "def fetch_provider_state(endpoint, timeout):\n"
+            "    request = urllib.request.Request(endpoint, headers={\"Accept\": \"application/json\"})\n"
+            "    try:\n"
+            "        with urllib.request.urlopen(request, timeout=timeout) as response:\n"
+            "            payload = json.loads(response.read().decode(\"utf-8\"))\n"
+            "        return \"up\" if payload.get(\"status\") == \"ok\" else \"degraded\", None\n"
+            "    except Exception as exc:\n"
+            "        return \"down\", str(exc)\n\n\n"
+            "def save_provider_check(database, provider, state, error):\n"
+            "    connection = sqlite3.connect(database)\n"
+            "    try:\n"
+            "        connection.execute(\n"
+            "            \"INSERT INTO provider_checks (provider, state, error) VALUES (?, ?, ?)\",\n"
+            "            (provider, state, error),\n"
+            "        )\n"
+            "        connection.commit()\n"
+            "    finally:\n"
+            "        connection.close()\n\n\n"
+            "def check_provider(database, provider, endpoint, timeout=5):\n"
+            "    state, error = fetch_provider_state(endpoint, timeout)\n"
+            "    save_provider_check(database, provider, state, error)\n"
+            "    return {\"provider\": provider, \"state\": state, \"error\": error}\n\n\n"
+            "def render_status(database):\n"
+            "    connection = sqlite3.connect(database)\n"
+            "    try:\n"
+            "        rows = connection.execute(\n"
+            "            \"SELECT provider, state, error FROM provider_checks ORDER BY id\"\n"
+            "        ).fetchall()\n"
+            "    finally:\n"
+            "        connection.close()\n"
+            "    return [\n"
+            "        {\"provider\": provider, \"state\": state, \"error\": error}\n"
+            "        for provider, state, error in rows\n"
+            "    ]\n"
+        )
     raise RuntimeError(case_id)
 
 
@@ -91,6 +131,7 @@ def implementation_path(case_id):
         "node-versioned-deferred": "src/deferred.js",
         "go-metadata-roundtrip": "document/document.go",
         "python-sqlite-retry": "transfer.py",
+        "python-provider-maintainability": "status.py",
     }[case_id]
 
 

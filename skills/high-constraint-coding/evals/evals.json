@@ -412,6 +412,25 @@
         "The review proposes the smallest boundary correction supported by the findings.",
         "The review reports uncertainty and does not claim authorship from style."
       ]
+    },
+    {
+      "id": 33,
+      "prompt": "Refactor the existing provider status code so adding another provider does not require editing persistence or HTTP presentation logic. Preserve the public functions and stored status output, keep the patch project-native, and prove the provider and persistence paths with tests.",
+      "expected_output": "A maintainability-focused Python refactor that separates only the demonstrated provider integration and persistence responsibilities, preserves the public behavior, and verifies success and failure paths.",
+      "files": [
+        "fixtures/python-provider-maintainability/public"
+      ],
+      "fixture": {
+        "type": "code-eval",
+        "manifest": "fixtures/python-provider-maintainability/fixture.json"
+      },
+      "expectations": [
+        "The response reads the existing provider, persistence, and rendering path before editing.",
+        "Provider-specific integration behavior has a clear owner without imposing a generic framework or fixed layer template.",
+        "The public check_provider and render_status behavior remains compatible.",
+        "Tests cover a successful provider response, provider failure, and persisted status observation.",
+        "The response explains where a future provider should be added and what contract protects the change."
+      ]
     }
   ]
 }
