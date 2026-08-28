@@ -88,11 +88,23 @@
     "should_trigger": true
   },
   {
+    "query": "提交这个破坏性配置迁移，正文解释为什么改，footer 写清楚 BREAKING CHANGE，但先不要 push。",
+    "should_trigger": true
+  },
+  {
+    "query": "Create the commit with a useful body and a Fixes #214 footer, then push the current branch safely.",
+    "should_trigger": true
+  },
+  {
     "query": "Show git status and list commits that are not on origin yet. Do not stage, commit, or push anything.",
     "should_trigger": false
   },
   {
     "query": "The feature is complete, but leave the worktree uncommitted because I want to review it first.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain when Conventional Commits uses a body or footer, but do not touch the repository.",
     "should_trigger": false
   }
 ]

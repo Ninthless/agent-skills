@@ -4,12 +4,13 @@
     {
       "id": 1,
       "prompt": "这个功能已经跑通了，帮我提交并推到 GitHub。记得不要把我本地没关系的改动也带上。",
-      "expected_output": "A safe checkpoint workflow that inspects status, branch, remote, relevant changes, verifies when practical, stages only related files, commits with a Conventional Commit message, and pushes safely.",
+      "expected_output": "A safe checkpoint workflow that inspects status, branch, remote, relevant changes, verifies when practical, stages only related files, builds a complete Conventional Commit message from the staged diff, and pushes safely.",
       "files": [],
       "expectations": [
         "The workflow inspects git status, current branch, remote, and sync state before staging.",
         "The response avoids staging unrelated work.",
-        "The commit message follows Conventional Commit style.",
+        "The commit message follows the Conventional Commits header grammar.",
+        "The workflow explicitly decides whether a body and footer are warranted instead of defaulting mechanically to a subject-only message.",
         "The push result and any remaining changes are reported."
       ]
     },
@@ -21,7 +22,8 @@
       "expectations": [
         "The workflow creates or proposes a coherent local commit only.",
         "The response does not push to a remote.",
-        "The commit message reflects a login redirect bug fix."
+        "The commit message reflects a login redirect bug fix.",
+        "A subject-only message is allowed only if the staged change is genuinely small, obvious, and has no applicable footer metadata."
       ]
     },
     {
@@ -33,6 +35,41 @@
         "The workflow treats this as a completed documentation/skill metadata checkpoint.",
         "The response checks whether a remote exists before pushing.",
         "The response does not claim a push if no remote or safe upstream is available."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "提交这次支付回调修复并推送。问题是回调先标记订单成功、后写审计记录，审计写入失败时会留下不一致状态，对应 GitHub issue #214。请使用完整 Conventional Commit。",
+      "expected_output": "A safe fix checkpoint with a Conventional Commit header, a body explaining the prior inconsistency and the atomicity correction, and an issue-closing footer for #214.",
+      "files": [],
+      "expectations": [
+        "The message uses a fix type with an appropriate scope when supported by the staged diff.",
+        "The message includes a body because the failure mode and transactional reason are not obvious from a concise subject.",
+        "The body explains motivation and behavior rather than listing changed files or repeating the header.",
+        "The footer uses a valid issue reference such as `Fixes #214` and does not invent other metadata."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "把配置迁移提交掉：旧的 PROVIDER_A_URL 和 PROVIDER_B_URL 已经删除，现在统一要求 PROVIDERS_JSON。这个版本会让现有部署必须修改环境变量。先 commit，不要 push。",
+      "expected_output": "A local-only breaking-change commit that marks the header with ! and provides a BREAKING CHANGE footer describing the required migration.",
+      "files": [],
+      "expectations": [
+        "The response does not push.",
+        "The header places `!` immediately before the colon.",
+        "The message includes a useful body explaining the new configuration contract.",
+        "The footer uses the exact `BREAKING CHANGE: ` token and tells consumers how to migrate."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "帮我提交这个一行拼写修正，只改了 README 里的一个单词，没有 issue，也没有兼容性影响。不要 push。",
+      "expected_output": "A concise local docs commit without empty body or footer sections because the change is trivial and self-explanatory.",
+      "files": [],
+      "expectations": [
+        "The response creates or proposes a docs commit and does not push.",
+        "The message may contain only the Conventional Commit header.",
+        "The response does not add placeholder body text, fake issue references, or invented trailers."
       ]
     }
   ]

@@ -1,6 +1,6 @@
 ---
 name: git-checkpoint-push
-description: 'Safely stage, commit, checkpoint, or push completed work with targeted files and Conventional Commit messages. Use only when the user explicitly asks to save work in git or GitHub, 提交代码, 推送, 保存进度, create a commit message, push after milestones, or prepare a GitHub PR handoff. Inspect status, remotes, upstream divergence, verification, and unrelated changes before writing history. Do not trigger for read-only git status, diff, log, or review requests, and do not commit or push ordinary coding milestones unless the user has requested checkpoint handling.'
+description: 'Safely stage, commit, checkpoint, or push completed work using the full Conventional Commits 1.0.0 structure: type, optional scope, optional breaking marker, description, meaningful body when context is not obvious, and valid footer trailers when applicable. Use only when the user explicitly asks to save work in git or GitHub, 提交代码, 推送, 保存进度, Conventional Commit, commit message, milestone push, or GitHub PR handoff. Inspect status, remotes, upstream divergence, verification, unrelated changes, compatibility impact, issue references, and attribution before writing history. Do not trigger for read-only git status, diff, log, review, conceptual Git questions, or imaginary commit examples that do not authorize repository mutation.'
 ---
 
 # Git Checkpoint Push
@@ -97,12 +97,12 @@ Rules:
 - Review staged changes before committing when the checkpoint includes generated files, dependency lockfiles, workflow files, permissions, or security-sensitive paths.
 - Recheck `git status --short` after staging so you know exactly what will be committed.
 
-### 6. Write Conventional Commit messages
+### 6. Write complete Conventional Commit messages
 
-Use the Conventional Commits format for checkpoint commits:
+Follow Conventional Commits 1.0.0:
 
 ```text
-<type>[optional scope]: <description>
+<type>[optional scope][optional !]: <description>
 
 [optional body]
 
@@ -113,8 +113,36 @@ Analyze the actual staged diff to determine:
 
 - type: what kind of change this checkpoint contains
 - scope: the area, package, app, module, workflow, or GitHub configuration affected
-- description: a present-tense, imperative summary under 72 characters
-- body/footer: include only when the change needs context, verification notes, issue references, or breaking-change details
+- breaking marker: whether consumers must change because a public, persisted, configuration, data, protocol, or operational contract is incompatible
+- description: a concise imperative summary without a trailing period
+- body: the motivation, previous behavior, chosen approach, and important effects that are not obvious from the diff
+- footers: structured breaking-change details, issue references, attribution, review, signoff, or other repository-supported trailers
+
+Use a subject-only commit only when all of these are true:
+
+- the change is small and single-purpose
+- its reason and effect are obvious from the subject and diff
+- it has no compatibility, migration, operational, security, or non-obvious architectural consequence
+- it has no issue reference, attribution, signoff, or other required trailer
+
+Otherwise write a body. A non-trivial feature, fix, refactor, migration, dependency change, CI change, security change, or cross-layer checkpoint should normally have a body.
+
+### 6a. Header rules
+
+The header must match:
+
+```text
+<type>[optional scope][optional !]: <description>
+```
+
+- Use a lowercase type.
+- Use a concise noun for scope when it improves understanding; omit it when no single stable scope exists.
+- Put `!` immediately before `:` for a breaking change.
+- Start the description immediately after `: `.
+- Use imperative mood and describe the checkpoint outcome.
+- Keep the header under 72 characters when practical; prefer about 50 characters for simple commits.
+- Do not end the description with a period.
+- Do not use multiple types or scopes to hide an incoherent checkpoint.
 
 Choose the subject language from the user's explicit request:
 
@@ -139,9 +167,59 @@ Commit types:
 | `ci`       | CI configuration or workflows  |
 | `chore`    | Maintenance or miscellaneous work |
 | `revert`   | Revert a previous commit       |
-| `security` | Security hardening or secret removal when project convention accepts it |
+| `security` | Security hardening or secret removal only when project convention accepts it |
 
-Breaking changes may be represented with an exclamation mark or a footer:
+Conventional Commits mandates `feat`, `fix`, and breaking-change semantics. Other types are allowed but repository convention remains authoritative. Prefer an existing repository type over inventing a synonym.
+
+### 6b. Body rules
+
+Separate the body from the header with one blank line. Write one or more short paragraphs that explain useful context, especially:
+
+- why the change was necessary
+- what behavior or contract existed before
+- how the checkpoint changes that behavior
+- why this approach was chosen over the relevant alternative
+- compatibility, migration, rollout, performance, security, or operational effects
+- verification limitations only when they materially affect confidence
+
+Do not use the body as a file list, diff narration, chat summary, or test transcript. Do not repeat the header. Focus on intent and consequences that future maintainers cannot recover cheaply from the diff.
+
+For a meaningful checkpoint, prefer a concise body of two to five sentences over omitting context. Multiple paragraphs are valid when the change has distinct motivation and impact.
+
+### 6c. Footer rules
+
+Separate footers from the body with one blank line. Each footer must use a valid Conventional Commits or Git trailer shape:
+
+```text
+Token: value
+Token #value
+```
+
+- Use hyphens instead of spaces in footer tokens, such as `Co-authored-by`, `Reviewed-by`, and `Signed-off-by`.
+- `BREAKING CHANGE` and `BREAKING-CHANGE` are the only space-token exception defined by Conventional Commits.
+- Use one footer per logical metadata item.
+- Continue a long footer value on following lines only when required.
+- Do not invent issue IDs, reviewers, co-authors, signoffs, or release metadata.
+- Add `Signed-off-by` only when the project requires it or the user explicitly requests it; signoff has legal or contribution-policy meaning.
+- Add `Co-authored-by` only for real co-authors with evidence-supported identity and email.
+- Use issue-closing footers only when the checkpoint genuinely resolves the issue and the identifier is known.
+
+Common footers:
+
+```text
+BREAKING CHANGE: clients must use the new provider configuration
+Fixes #123
+Refs #456
+Co-authored-by: Name <email@example.com>
+Reviewed-by: Name <email@example.com>
+Signed-off-by: Name <email@example.com>
+```
+
+Follow the repository's existing issue-footer convention when it differs. GitHub closing keywords may also use forms such as `Fixes #123`; do not rewrite a working project convention solely for stylistic uniformity.
+
+### 6d. Breaking changes
+
+Breaking changes must be marked with `!`, a `BREAKING CHANGE:` footer, or both:
 
 ```text
 feat!: remove deprecated endpoint
@@ -153,6 +231,38 @@ feat(config): allow config to extend other configs
 BREAKING CHANGE: `extends` key behavior changed.
 ```
 
+Prefer both `!` and a footer when the header alone cannot tell consumers exactly what must migrate:
+
+```text
+feat(config)!: replace legacy provider variables
+
+Use a provider map so validation and provider discovery share one
+configuration contract.
+
+BREAKING CHANGE: remove PROVIDER_A_URL and PROVIDER_B_URL; configure
+providers through PROVIDERS_JSON.
+```
+
+Do not mark a change as breaking merely because internal code, tests, or file layout changed. Check actual public, persisted, configuration, protocol, data, CLI, build, or operational consumers.
+
+### 6e. Message construction
+
+Construct multi-line commit messages without losing blank lines or trailer boundaries. Prefer a message file or a shell-native multi-line value. Review the complete staged message before committing.
+
+The final commit message should usually resemble:
+
+```text
+fix(auth): preserve sessions during token refresh
+
+Keep the previous token valid until the replacement session is
+persisted. This prevents concurrent requests from observing a
+temporary logged-out state.
+
+Fixes #123
+```
+
+Do not add a body or footer merely to fill the template. Omit empty sections rather than writing placeholders.
+
 Guidelines:
 
 - Keep one coherent checkpoint per commit.
@@ -163,6 +273,8 @@ Guidelines:
 - Reference issues with GitHub closing keywords only when the completed checkpoint genuinely resolves the issue.
 - Do not mention temporary struggle, conversation context, or `AI`.
 - Do not stuff multiple unrelated points into one commit message.
+- Explain why and important consequences in the body for non-trivial checkpoints.
+- Preserve footer syntax and blank-line separation exactly.
 
 Examples:
 
@@ -178,6 +290,24 @@ Examples:
 - `test(auth): cover refresh token reuse detection`
 - `ci(github): add required workflow permissions`
 - `security(auth): remove token from persisted config`
+
+Examples with bodies and footers:
+
+```text
+refactor(coding): separate provider integration boundaries
+
+Keep provider request and response handling independent from status
+persistence and presentation so new providers have one maintenance path.
+```
+
+```text
+fix(inventory): restore stock after cancellation
+
+Move inventory restoration into the committed cancellation path so a
+failed transaction cannot leave order and stock state inconsistent.
+
+Fixes #214
+```
 
 ### 7. Push safely
 

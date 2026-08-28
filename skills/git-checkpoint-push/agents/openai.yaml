@@ -1,7 +1,7 @@
 interface:
   display_name: "Git Checkpoint Push"
-  short_description: "Safe Git/GitHub checkpoint commit and push"
-  default_prompt: "Use $git-checkpoint-push to create a professional Git/GitHub checkpoint commit and push it safely when a completed milestone is ready."
+  short_description: "Safe checkpoints with complete Conventional Commits"
+  default_prompt: "Use $git-checkpoint-push to inspect, verify, stage, and safely save the completed checkpoint. Build a Conventional Commits 1.0.0 message from the staged diff, including a meaningful body for non-trivial context and valid footer trailers whenever breaking changes, issues, attribution, or signoff apply."
 
 policy:
   allow_implicit_invocation: true
