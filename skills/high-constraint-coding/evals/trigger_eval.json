@@ -5,7 +5,7 @@
   },
   {
     "query": "Review this PR for correctness. It touches refresh tokens, session invalidation, and logout behavior. Findings first, style later.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Refactor the payment service to remove duplicated validation, but behavior must stay identical and I don't want a broad rewrite.",
@@ -85,7 +85,7 @@
   },
   {
     "query": "Review this production data migration for rollback and data-loss risks, with exact file and line findings.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Brainstorm three possible architectures for a greenfield prototype; there is no repository or code to inspect yet.",
@@ -93,7 +93,7 @@
   },
   {
     "query": "What npm command installs the latest TypeScript package? Just give me the command.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "这次要高质量代码，不要 AI 味。先读同类模块，把接口、校验、数据库、前端状态和测试做成一个完整且符合项目习惯的功能。",
@@ -105,11 +105,11 @@
   },
   {
     "query": "先检查全链路契约是否一致：输入校验、默认值、领域逻辑、持久化、输出和调用方不能互相矛盾，也不要加未来可能用的空架子。",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Review this cross-layer implementation for contradictory invariants, unfinished state lifecycles, convention drift, and unsupported documentation claims. Findings first and do not speculate about authorship.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Can you explain why people sometimes say code has an AI style? No repository or code review is involved.",
@@ -125,7 +125,7 @@
   },
   {
     "query": "Review this architecture for human hand-maintainability across Go, Rust, and TypeScript conventions. Focus on ownership, change propagation, explicit dependencies, and stable behavioral tests.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "The code passes tests but every small business-rule change touches six files and three generic layers. Refactor it carefully so a maintainer has one obvious starting point.",
@@ -153,7 +153,7 @@
   },
   {
     "query": "Review whether this generated SDK method and serializer actually support the field in our checked-in version and runtime configuration. Do not rely on latest online docs.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "What does Promise.race do in JavaScript? Give a conceptual explanation only.",
@@ -161,7 +161,7 @@
   },
   {
     "query": "Show the latest documentation example for this library method; no repository or implementation work is needed.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Fix this callback adapter carefully. Its methods form a stateful protocol, caller-provided output constraints must survive across calls, and every terminal path must reset session state.",
@@ -169,7 +169,7 @@
   },
   {
     "query": "Review this Rust-to-C FFI patch for parameter direction, ownership, lifetime, panic containment, partial outputs, cleanup, and exact error mapping.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "This production event dispatcher may be reentered from callbacks and cancellation races with delivery. Make the smallest verified fix without holding locks across unknown handlers.",
@@ -201,7 +201,7 @@
   },
   {
     "query": "The callbacks work individually, but together they form a session with caller-owned handles and teardown races. Review the sequence and ownership contract.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Remove this unused local variable and run the formatter. Nothing else is affected.",
@@ -233,11 +233,11 @@
   },
   {
     "query": "Review this diff only for naming and whitespace preferences; do not assess behavior or regressions.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Diagnose why the production cache occasionally returns stale records. Trace the repository path and runtime evidence, but do not implement a fix yet.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "The account form displays saved values correctly, but after reload its UI state disagrees with the persisted API contract. Find and minimally fix the cross-layer inconsistency.",
@@ -249,7 +249,7 @@
   },
   {
     "query": "Document the existing API schema migration as an OpenAPI handoff. Do not change implementation.",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Use $high-constraint-coding to change this isolated constant exactly as specified.",
@@ -261,7 +261,7 @@
   },
   {
     "query": "Perform a security review of this authentication diff and report exploitable findings without editing.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Change only the visible spacing and color tokens in this component; the UI design skill owns the task and no state or behavior changes.",
@@ -301,10 +301,46 @@
   },
   {
     "query": "Review this module for human-maintainable architecture: identify the owner of each rule, dependency direction, hidden state, change propagation, and the next realistic hand edit.",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Explain what high cohesion and low coupling mean in software architecture with a simple conceptual example. Do not inspect or write code.",
+    "should_trigger": false
+  },
+  {
+    "query": "检查当前仓库用了哪个 TypeScript 版本，只报告结果，不要修改文件。",
+    "should_trigger": false
+  },
+  {
+    "query": "Why does this Python stack trace show KeyError after deserialization? Explain likely causes without editing anything.",
+    "should_trigger": false
+  },
+  {
+    "query": "Plan a safe PostgreSQL schema migration for this service, but stop before implementation.",
+    "should_trigger": false
+  },
+  {
+    "query": "Review the package.json scripts and tell me which command runs unit tests. Read-only.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write pseudocode for an idempotent webhook consumer.",
+    "should_trigger": true
+  },
+  {
+    "query": "Translate this product announcement from English to Chinese.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize this legal contract in plain language.",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我制定一周健身计划，重点练背和腿。",
+    "should_trigger": false
+  },
+  {
+    "query": "What is the capital of France?",
     "should_trigger": false
   }
 ]

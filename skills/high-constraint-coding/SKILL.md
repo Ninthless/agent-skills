@@ -1,6 +1,6 @@
 ---
 name: high-constraint-coding
-description: 'Universal coding-quality and maintainable-architecture companion for tasks that create, change, diagnose, test, convert, format, or review code or code-like artifacts. Use for source, scripts, queries, regex, configs, schemas, migrations, tests, generated code, builds, CI, bug fixes, production incidents, refactors, dependency integrations, APIs, persistence, async work, protocols, concurrency, transactions, ABI/FFI, architecture changes, and repository-grounded code review or diagnosis. Trigger for write/fix/implement/refactor/review code, production-ready or human-maintainable architecture, 最小改动, 最少代码实现, 高质量代码, 人类可维护, 代码架构, 不要 AI 味, 别乱重构, 先看清楚再改, or 保证正确. Read real context, preserve contracts, assign ownership, make the smallest complete project-native result, and verify claims. Compose with specialized UI, API-documentation, security, or platform skills. Do not use for conceptual explanations, prose-only work, status requests, or planning with no code artifact or repository analysis.'
+description: 'Mandatory coding-quality and maintainable-architecture companion whenever the agent will generate, write, create, implement, edit, modify, patch, refactor, convert, format, scaffold, regenerate, or otherwise output code or a code-like artifact. Always trigger before producing or changing source, snippets, scripts, commands, queries, regex, configs, schemas, migrations, tests, fixtures, generated code, build files, CI workflows, API definitions, pseudocode, examples, or proposed patches, whether in a repository or only in chat and whether trivial, throwaway, hypothetical, or production. Compose with specialized UI, API, security, platform, or documentation skills. Preserve contracts and ownership, make the smallest maintainable result, and verify proportionately. Do not trigger for explanation, planning, inspection, diagnosis, status, or review when no code-like output will be produced or modified.'
 ---
 
 # High Constraint Coding
@@ -22,15 +22,20 @@ Produce the smallest complete repository-native result that satisfies the reques
 
 Do not infer authorship from code style. Treat "human-written" as code whose behavior, ownership, dependencies, and tests are easy for a contributor to locate, trace, change, and verify.
 
-## Universal Coding Companion
+## Mandatory Code-Producing Companion
 
-Use this skill whenever the task includes code or a code-like artifact, regardless of size, language, risk, or whether another specialized skill is also active. This includes:
+Use this skill whenever the response or task will produce or modify code or a code-like artifact, regardless of size, language, risk, destination, or whether another specialized skill is also active. Activate it before the first code is generated, proposed, patched, or edited.
 
-- source, scripts, snippets, queries, regular expressions, tests, fixtures, configs, schemas, migrations, workflows, build files, and generated code
-- implementation, bug fixing, review, diagnosis with code output, refactoring, conversion, formatting, cleanup, scaffolding, and exact mechanical edits
-- throwaway, demo, prototype, one-file, isolated, and syntax-only code tasks
+This includes:
 
-Keep the process proportionate: use the full contract and lifecycle workflow for risky work, and compress it for trivial work without dropping the code-quality companion role. When a specialized skill owns the deliverable, compose with it rather than replacing it. The specialized skill governs its artifact-specific requirements; this skill governs bounded changes, clear code, project fit, and honest verification.
+- source, scripts, snippets, commands, queries, regular expressions, tests, fixtures, configs, schemas, migrations, workflows, build files, generated code, and API definitions
+- implementation, bug fixing with a code change, refactoring, conversion, formatting, cleanup, scaffolding, regeneration, and exact mechanical edits
+- proposed code, pseudocode, example code, patches, replacement blocks, and code shown only in chat
+- throwaway, demo, prototype, one-file, isolated, syntax-only, hypothetical, and production code
+
+Do not activate for read-only explanation, planning, exploration, diagnosis, status, or review unless the response will include proposed code or the task later transitions into modifying an artifact. If that transition occurs, activate this skill before producing the code.
+
+Keep the process proportionate: use focused checks for a one-line snippet or mechanical edit and the full contract and lifecycle workflow for risky implementation. Never turn mandatory triggering into mandatory ceremony. When a specialized skill owns the deliverable, compose with it rather than replacing it. The specialized skill governs its artifact-specific requirements; this skill governs bounded changes, clear code, project fit, maintainability, and honest verification.
 
 ## 1. Select the delivery mode and depth
 
@@ -42,7 +47,7 @@ Choose one mode before proceeding:
 
 If the request changes mode, follow the latest request. Do not turn a review or diagnosis into an implementation without authorization.
 
-For implementation and review, also choose the lightest sufficient depth:
+For implementation and review with proposed code, choose the lightest sufficient depth:
 
 - **Mechanical:** an exact local edit with no behavioral, contract, state, dependency, or ownership decision. Read the target and immediate context, make the edit, and run a focused check.
 - **Bounded behavioral:** one coherent behavior changes within known owners and contracts. Map the affected vertical slice and verify its normal and realistic failure paths.

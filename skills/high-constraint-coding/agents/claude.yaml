@@ -1,7 +1,7 @@
 interface:
   display_name: "High-Constraint Coding"
-  short_description: "Verified, human-maintainable project-native code"
-  default_prompt: "Use $high-constraint-coding for this coding or repository-grounded code review task. Select a proportionate depth, read the real behavior path, preserve contracts, keep ownership and future changes clear, make the smallest complete project-native result, verify applicable behavior and architecture gates, and report only supported claims."
+  short_description: "Mandatory guardrails whenever code is produced"
+  default_prompt: "Use $high-constraint-coding whenever this task generates, proposes, or modifies code or a code-like artifact, including snippets, scripts, commands, queries, configs, tests, schemas, workflows, and patches. Select proportionate depth, inspect real context when available, preserve contracts and ownership, make the smallest maintainable result, and verify claims honestly."
 
 policy:
   allow_implicit_invocation: true
