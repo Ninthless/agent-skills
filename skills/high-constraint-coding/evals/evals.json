@@ -431,6 +431,71 @@
         "Tests cover a successful provider response, provider failure, and persisted status observation.",
         "The response explains where a future provider should be added and what contract protects the change."
       ]
+    },
+    {
+      "id": 34,
+      "prompt": "Add export filtering to an existing 720-line hand-written TypeScript report module. The file already combines query parsing, filter policy, database access, CSV rendering, and HTTP response handling. Keep behavior compatible, do not split by arbitrary line count, and make the smallest maintainable change with focused tests.",
+      "expected_output": "An evidence-led implementation that treats the 720-line size as a review signal, maps real ownership and independent change reasons, and either makes a local cohesive change or extracts only a demonstrated stable boundary.",
+      "files": [],
+      "expectations": [
+        "The response performs an ownership and independent-change-reason review because the hand-written file exceeds 500 effective lines.",
+        "The response does not preserve the current shape merely because tests pass or split it mechanically to fall below a threshold.",
+        "Any extraction has an identifiable owner, current callers, explicit contract, allowed dependencies, and focused tests.",
+        "The implementation avoids pass-through modules, generic helpers, one-call wrappers, and unrelated broad cleanup.",
+        "Verification protects report filtering, existing CSV output, and a realistic failure path."
+      ]
+    },
+    {
+      "id": 35,
+      "prompt": "Generate a new production Python service file for provider health checks. The proposed draft is 1,150 hand-written lines and mixes HTTP clients, retry policy, database persistence, alert decisions, and JSON presentation. Keep generated/vendor files exempt, but make the hand-written result human-maintainable and project-native.",
+      "expected_output": "A bounded implementation that rejects a new 1,150-line mixed-responsibility hand-written file and organizes the current behavior around demonstrated owners and contracts without imposing a generic layer template.",
+      "files": [],
+      "expectations": [
+        "The response applies the default rejection threshold because the proposed new hand-written file exceeds 1000 effective lines and no repository constraint justifies it.",
+        "The response separates only responsibilities with independent change, lifecycle, dependency, side-effect, or testing reasons.",
+        "The result does not create a fixed controller-service-repository architecture, navigation-only files, or speculative extension points.",
+        "Each resulting owner has current callers, an explicit contract, allowed dependencies, and focused behavioral tests.",
+        "The response recognizes generated, vendored, snapshot, static-data, and framework-mandated files as separately classified exceptions."
+      ]
+    },
+    {
+      "id": 36,
+      "prompt": "Add refund approval to an existing commerce application. The current source tree has global controllers, services, repositories, models, and helpers folders, so every order or payment change crosses all five. Introduce only the project-structure improvement needed for this feature, preserve behavior, and prevent payment internals and tables from becoming shared contracts.",
+      "expected_output": "A project-native feature implementation that evaluates the existing global technical layers, gives refund and payment behavior a discoverable owner, keeps public contracts narrow, and changes structure only as far as the current feature and dependency evidence justify.",
+      "files": [],
+      "expectations": [
+        "The response loads project-structure guidance because packages, module ownership, cross-module dependencies, data ownership, and test placement are being changed.",
+        "The implementation organizes the feature around a business capability or stable responsibility rather than adding more unrelated classes to global technical buckets.",
+        "Payment provider SDKs, persistence models, and tables remain private to their authoritative owner.",
+        "Any new module identifies current callers, public contract, hidden decisions, allowed dependencies, and focused tests.",
+        "The response does not reorganize the entire repository, create symmetric empty layers, or claim that package-by-feature is universally required."
+      ]
+    },
+    {
+      "id": 37,
+      "prompt": "Create the package and workspace structure for a new Rust command-line tool with one library crate and two binaries. Follow Cargo conventions, keep the initial codebase small, and do not reproduce a Java-style domain/application/infrastructure template.",
+      "expected_output": "A minimal Cargo-native project structure using the standard package or workspace layout, with crate boundaries justified by buildable units and shared behavior rather than a cross-language architecture template.",
+      "files": [],
+      "expectations": [
+        "The response uses Cargo package, src, lib, bin, tests, examples, and workspace conventions as applicable.",
+        "Crate and module boundaries correspond to current build, reuse, visibility, or testing needs.",
+        "The structure remains flat enough for the current scale and does not create one crate or directory per file.",
+        "The implementation avoids Java-style layers, empty modules, speculative services, and generic shared buckets.",
+        "Verification includes Cargo metadata, check, or tests appropriate to the generated structure."
+      ]
+    },
+    {
+      "id": 38,
+      "prompt": "Extract the notification module into a microservice because its folder has grown large. It still shares transactions, tables, release cadence, and on-call ownership with the main application. Make the smallest maintainable structural change supported by current evidence.",
+      "expected_output": "An evidence-led structural decision that rejects service extraction based only on folder size, preserves the current deployment when operational independence is absent, and improves internal ownership or dependency boundaries only where demonstrated.",
+      "files": [],
+      "expectations": [
+        "The response does not treat file count, directory size, or architectural fashion as sufficient evidence for a microservice.",
+        "It evaluates independent deployment, scaling, security, ownership, release cadence, data ownership, and transaction needs.",
+        "It prefers a module or visibility improvement when the current operational lifecycle remains shared.",
+        "Any boundary change preserves explicit contracts and prevents cross-module private data access.",
+        "The response reports the conditions that would later justify service extraction without adding speculative transport or event infrastructure now."
+      ]
     }
   ]
 }

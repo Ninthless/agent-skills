@@ -166,6 +166,38 @@ Treat line count, cyclomatic complexity, cognitive complexity, dependency counts
 - Combine structural signals with real callers, change history, domain ownership, test behavior, and the likely maintenance task.
 - Prefer evidence from actual change propagation and maintainer workflow over metric thresholds.
 
+### Source File Length Policy
+
+Apply these defaults to hand-written source and code-like files when repository tooling does not define a stronger project-native rule:
+
+- **0–300 effective lines:** preferred operating range
+- **301–500 effective lines:** acceptable when the file remains cohesive and has one discoverable primary owner
+- **501–800 effective lines:** require an ownership and change-reason review before adding another responsibility
+- **801–1000 effective lines:** require a documented single-owner justification or a coherent split along demonstrated boundaries
+- **Over 1000 effective lines:** reject by default unless an explicit repository, framework, protocol, or generated-shape constraint makes decomposition less maintainable
+
+Use effective lines consistently. Normally exclude blank lines; follow repository lint or metric semantics when configured. Do not compare counts produced by different methods as if they were equivalent.
+
+Exclude or separately classify:
+
+- generated and vendored code
+- snapshots and golden files
+- large static tables or declarative data
+- framework-mandated registration or schema output
+- test matrices or fixtures whose repetition is the readable contract
+
+Do not grant an exception merely because a file is old, currently passes tests, or is expensive to understand. State the real constraint that keeps it coherent.
+
+When a touched file crosses 500 lines, answer:
+
+1. What behavior or state does the file own?
+2. Which sections change for independent reasons?
+3. Does the requested change add a new responsibility?
+4. Where should a maintainer make the next likely change?
+5. Would extraction create a stable contract or only more navigation?
+
+Split only when the result gives each extracted unit an identifiable owner, callers, contract, allowed dependencies, and focused verification. Do not create pass-through modules, one-call wrappers, generic buckets, or tiny fragments solely to satisfy the numeric threshold.
+
 ## Cross-Language Adaptation
 
 Apply the same goals in every language, but express them through local idioms:

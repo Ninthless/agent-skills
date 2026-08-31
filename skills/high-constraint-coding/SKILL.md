@@ -55,12 +55,22 @@ For implementation and review with proposed code, choose the lightest sufficient
 
 Escalate depth when evidence reveals broader coupling. Do not classify by line count or file count. Do not force mechanical work through an architecture ceremony, and do not disguise an architectural decision as a local patch.
 
+Treat hand-written source-file length as a maintainability signal:
+
+- target at most 300 effective lines when creating a file
+- review ownership and independent change reasons above 500 lines
+- require a justified exception or coherent split above 800 lines
+- reject growth beyond 1000 lines by default
+
+Count code consistently with repository tooling and normally ignore blank lines. Exempt generated, vendored, snapshot, static-data, and framework-mandated files when their shape is authoritative. Never split merely to satisfy a threshold; a split must create a real owner, change boundary, lifecycle boundary, or testing seam rather than pass-through files or navigation-only helpers. Read [human-maintainability.md](./references/human-maintainability.md) when a touched file crosses a threshold or file decomposition is part of the decision.
+
 ## 2. Route references
 
 Read only the references whose signals are present:
 
 - Read [quality-bar.md](./references/quality-bar.md) for every repository implementation or review.
 - Read [human-maintainability.md](./references/human-maintainability.md) for bounded behavioral and architectural work, or whenever ownership, discoverability, abstraction shape, change propagation, or the next realistic hand edit is part of the decision.
+- Read [project-structure.md](./references/project-structure.md) when creating, moving, or materially changing packages, modules, directories, workspaces, services, shared code, cross-module dependencies, data ownership, visibility, or test placement.
 - Read [dependency-contracts.md](./references/dependency-contracts.md) when correctness depends on an installed version, configuration, registration, generated artifact, serializer, framework state model, persistence round trip, or external async capability.
 - Read [protocol-boundaries.md](./references/protocol-boundaries.md) for ordered protocols, ownership transfer, ABI/FFI, concurrency, reentrancy, transactions, retries, idempotency, partial commits, teardown, or supported build matrices.
 - Read both dependency and protocol references when an external capability also owns ordering, lifetime, transaction, retry, concurrency, or teardown semantics.
@@ -108,6 +118,7 @@ For bounded behavioral and architectural work, also establish:
 - the dependency direction and any boundary currently bypassed
 - the decisions likely to change independently
 - the expected location of the next realistic maintenance change
+- the smallest project-native module or directory that should own the change
 
 Choose one authoritative owner for each invariant. Do not preserve contradictory validation or defaults across layers.
 
@@ -123,6 +134,9 @@ Prefer:
 - observable behavioral tests over private-call assertions
 - named cross-boundary data over positional or shape-dependent protocols
 - boundaries around independently changing policy, state, side effects, or external integrations
+- top-level organization by business capability, stable responsibility, or ecosystem-native module when the domain has meaningful boundaries
+- feature-internal technical subdivision only when complexity, visibility, lifecycle, dependency, or testing evidence requires it
+- compiler, build, package, project-reference, lint, or architecture-test enforcement for important dependency boundaries
 
 Reject:
 
@@ -135,6 +149,15 @@ Reject:
 - silent broad exception handling, hidden mutable globals, and duplicate business rules
 - functions or modules that combine independently changing request construction, parsing, policy, state transition, persistence, and presentation without a demonstrated reason
 - architecture chosen from a fashionable name, symmetric template, file-size target, or generic layer count
+- new hand-written files above 300 effective lines without checking whether independent responsibilities were combined
+- adding responsibilities to hand-written files above 500 lines without a documented ownership review
+- hand-written files above 800 lines without a coherent single-owner justification or evidence-based decomposition
+- hand-written files above 1000 lines unless an explicit repository constraint makes a smaller maintainable shape worse
+- global technical-layer buckets that force every business change across unrelated controllers, services, repositories, models, or handlers
+- cross-module access to private implementation types, mutable state, tables, persistence models, or provider SDKs
+- shared `utils`, `common`, `helpers`, `base`, `manager`, or `processor` areas with no narrow owner and dependency policy
+- fixed symmetric directory templates, empty layers, one-file directories, or one-implementation interfaces without a current boundary need
+- module or service splits based only on team names, file size, architectural fashion, or hypothetical future extraction
 
 A local-looking patch is not narrow if it leaves sibling paths inconsistent. A short implementation is not minimal if it hides behavior or omits a required failure path.
 
@@ -159,6 +182,9 @@ While editing:
 - make cross-boundary inputs, results, errors, and ownership explicit when callers otherwise depend on position, mutation, ambient state, or undocumented shape
 - keep dependency flow toward stable contracts and prevent callers from reaching into another owner's private representation
 - separate independently changing responsibilities only as far as the current slice and verification evidence justify
+- keep each module's public contract smaller than its internal implementation surface
+- keep mutable data, migrations, and state transitions with one authoritative module owner
+- preserve ecosystem-native source, package, workspace, test, migration, and generated-file locations
 
 If two attempted fixes fail, stop patching. Re-establish the cause from runtime or repository evidence and choose a materially different approach.
 
@@ -195,6 +221,8 @@ For bounded behavioral and architectural work, perform an architecture health au
 - cross-boundary dependencies use explicit contracts rather than private data, magic positions, or ambient state
 - no new dependency cycle, scattered duplicate policy, or unrelated synchronized edit was introduced
 - tests protect observable behavior and contracts rather than the new internal layout
+- new or changed modules have explicit owners, callers, public contracts, hidden decisions, allowed dependencies, data ownership, and focused verification
+- common changes remain local or coordinated through a small set of explicit contracts rather than global technical buckets or shared mutable storage
 
 Simulate one likely follow-up change without implementing it. Identify where a maintainer would start, which owners and contracts would change, and which tests would catch a regression. If the change would require repository-wide discovery or coordinated edits across unrelated owners, improve the boundary or classify maintainability as failed or unverified.
 
