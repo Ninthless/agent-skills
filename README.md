@@ -2,9 +2,9 @@
 
 [简体中文](./README.zh-CN.md) | English
 
-A curated collection of production-oriented Agent Skills for repeatable software engineering, product discovery, documentation, interface design, platform-specific development, and delivery workflows.
+A curated collection of production-oriented Agent Skills for repeatable software engineering, learning during AI-assisted development, product discovery, documentation, interface design, platform-specific development, and delivery workflows.
 
-The repository is built around a simple idea: recurring agent work should be governed by explicit operating rules, progressive disclosure, and evidence-based completion instead of relying on a large prompt or improvised instructions every time.
+The repository is built around a simple idea: recurring agent work should be governed by explicit operating rules, progressive disclosure, and evidence-based completion instead of relying on a large prompt or improvised instructions every time. It also treats AI-assisted delivery and human learning as compatible goals: the agent can implement the project while exposing the concepts, decisions, and verification evidence needed for the user to understand and eventually modify it.
 
 ## What This Repository Provides
 
@@ -15,6 +15,7 @@ The collection emphasizes:
 - bounded scope and explicit assumptions
 - project-native implementation instead of generic generated architecture
 - human hand-maintainability across programming languages
+- active learning during AI-led implementation, debugging, and refactoring
 - contract, lifecycle, protocol, and dependency verification
 - complete user-facing states and rendered UI evidence
 - documentation derived from source and runtime evidence
@@ -30,6 +31,7 @@ The collection emphasizes:
 | [`freelance-order-triage`](./skills/freelance-order-triage/) | Evaluate client work, hidden scope, quote posture, delivery risk, milestones, revisions, and acceptance criteria before implementation. |
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | Create coherent Git checkpoints with targeted staging, Conventional Commit messages, remote safety checks, and explicit push results. |
 | [`high-constraint-coding`](./skills/high-constraint-coding/) | Apply a minimal, evidence-led coding workflow that produces correct, project-native code humans can locate, trace, modify, and verify directly. |
+| [`learn-while-building`](./skills/learn-while-building/) | Turn active AI-assisted project work into focused learning through adaptive teaching, code tracing, recall, reflection, transfer exercises, and optional project knowledge records. |
 | [`no-code-comments`](./skills/no-code-comments/) | Keep generated and modified code-like artifacts comment-free by default while preserving required directives and documentation contracts. |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | Prevent PowerShell interpolation, quoting, wrapper-layer, path, and nested command failures on Windows. |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | Research unfamiliar or regulated domains and convert findings into workflows, constraints, risks, MVP boundaries, and build-ready briefs. |
@@ -78,6 +80,7 @@ Skills can operate independently or compose around one task. Typical flows inclu
 - `freelance-order-triage` -> paid discovery or bounded delivery plan
 - `websearch-first` + any task skill -> current external evidence reconciled with local facts
 - `high-constraint-coding` + `no-code-comments` -> controlled production code with a clean source style
+- `learn-while-building` + implementation or debugging skill -> completed project work plus focused understanding, recall, and transfer
 - `build-user-facing-ui` + `high-constraint-coding` -> complete UI behavior with disciplined implementation
 - `write-api-docs` -> evidence-backed integration contract
 - completed work -> `git-checkpoint-push`
@@ -93,34 +96,37 @@ Compatible agents discover project-level or user-level skills from these locatio
 | `.agents/skills/` | Project-level, generic |
 | `.cursor/skills/` | Project-level, Cursor |
 | `.claude/skills/` | Project-level, Claude Code |
-| `.codex/skills/` | Project-level, Codex CLI |
 | `~/.agents/skills/` | User-level, generic |
 | `~/.cursor/skills/` | User-level, Cursor |
 | `~/.claude/skills/` | User-level, Claude Code |
-| `~/.codex/skills/` | User-level, Codex CLI |
+
+Codex currently discovers repository skills from `.agents/skills/` and personal skills from `~/.agents/skills/`. Platform-specific paths depend on the host agent's own discovery rules.
 
 Install one skill on Windows:
 
 ```powershell
+New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills | Out-Null
 Copy-Item -Recurse .\skills\high-constraint-coding $env:USERPROFILE\.agents\skills\
 ```
 
 Install the complete collection:
 
 ```powershell
+New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills | Out-Null
 Copy-Item -Recurse .\skills\* $env:USERPROFILE\.agents\skills\
 ```
 
-Use `.cursor\skills`, `.claude\skills`, or `.codex\skills` instead when a platform-specific location is preferred.
+Use `.cursor\skills` or `.claude\skills` instead when that platform's discovery rules require a platform-specific location.
 
 On macOS or Linux:
 
 ```bash
+mkdir -p ~/.agents/skills
 cp -r ./skills/high-constraint-coding ~/.agents/skills/
 cp -r ./skills/* ~/.agents/skills/
 ```
 
-The target parent directory must already exist. Restart or reload the agent when its skill discovery implementation requires it.
+Restart or reload the agent when its skill discovery implementation requires it.
 
 ## Usage
 
@@ -134,6 +140,8 @@ Use high-constraint-coding to fix this regression with the smallest complete cha
 Use build-user-facing-ui to redesign this workflow and verify every responsive state.
 
 Use write-api-docs to reconcile the frontend client and backend routes into one API contract.
+
+Use learn-while-building while implementing this feature. Write the code, but teach me the request flow, key decisions, and how the tests prove the behavior.
 ```
 
 Read the target skill's `description` and workflow before assuming it applies. Negative trigger examples intentionally prevent specialized skills from taking over simple conceptual or unrelated tasks.
@@ -148,7 +156,7 @@ Complex skills include complementary evaluation surfaces:
 
 Some skills also include deterministic scripts. Examples include UI evidence validation, visual fingerprint comparison, and OpenAPI evidence validation.
 
-`high-constraint-coding` includes three cross-platform code fixtures for runtime-version compatibility, persistence round trips, and transaction retry boundaries. Its runner copies only the public fixture into an isolated workspace, runs an optional agent command, injects grader tests after implementation, and treats test, protected-path, dependency, and scope violations as hard failures.
+`high-constraint-coding` includes four cross-platform code fixtures for runtime-version compatibility, persistence round trips, transaction retry boundaries, and provider-integration maintainability. Its runner copies only the public fixture into an isolated workspace, runs an optional agent command, injects grader tests after implementation, and treats test, protected-path, dependency, and scope violations as hard failures.
 
 Run the deterministic checks:
 
