@@ -1,0 +1,7 @@
+interface:
+  display_name: "Learn While Building"
+  short_description: "Turn AI-built project work into active learning"
+  default_prompt: "Apply the learn-while-building skill to this active project task because I want to learn while AI implements, debugs, refactors, or explains it. Teach only the relevant concepts, explain key decisions and evidence, adapt the learning intensity, and create a focused opportunity for recall, tracing, reflection, or transfer without blocking delivery."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: learn-while-building
-description: "Embed learning into AI-assisted software development without blocking delivery. Use when a user wants to understand the concepts, architecture, decisions, debugging, testing, or engineering tradeoffs involved in an AI-built project; wants AI to act as a tutor while implementing, modifying, or explaining a project; or wants recall, code-tracing, reflection, and transfer exercises alongside coding work."
+description: "Learn while building with AI: turn AI-assisted project implementation, debugging, refactoring, or code explanation into focused teaching, active recall, tracing, reflection, and transfer without blocking delivery. Trigger when the user says 边做边学, 边写边学, 教我, 带我理解, 解释你为什么这样写, 把 AI 当导师, learning mode, teach me while building, help me understand this project, or has established an ongoing preference to learn from AI-built work. Do not trigger for ordinary coding with no learning intent, generic concept questions unrelated to active project work, pure review/status, or requests that only want the result."
 ---
 
 # Learn While Building
