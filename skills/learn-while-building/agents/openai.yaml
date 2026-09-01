@@ -1,0 +1,7 @@
+interface:
+  display_name: "Learn While Building"
+  short_description: "Learn the concepts behind AI-built projects"
+  default_prompt: "Use $learn-while-building to build this project while teaching the relevant concepts, explaining key decisions, checking understanding, and creating focused opportunities for recall and transfer."
+
+policy:
+  allow_implicit_invocation: true
