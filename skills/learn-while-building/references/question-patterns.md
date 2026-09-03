@@ -1,5 +1,7 @@
 # Question Patterns
 
+Read this file only for `guided` or `practice`. Do not use these prompts in the default `passive` path.
+
 Use one pattern at a time and tailor it to the repository's actual behavior.
 
 ## Prediction

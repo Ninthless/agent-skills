@@ -15,7 +15,7 @@ The collection emphasizes:
 - bounded scope and explicit assumptions
 - project-native implementation instead of generic generated architecture
 - human hand-maintainability across programming languages
-- active learning during AI-led implementation, debugging, and refactoring
+- active or passive learning during AI-led implementation, debugging, and refactoring
 - contract, lifecycle, protocol, and dependency verification
 - complete user-facing states and rendered UI evidence
 - documentation derived from source and runtime evidence
@@ -31,7 +31,7 @@ The collection emphasizes:
 | [`freelance-order-triage`](./skills/freelance-order-triage/) | Evaluate client work, hidden scope, quote posture, delivery risk, milestones, revisions, and acceptance criteria before implementation. |
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | Create coherent Git checkpoints with targeted staging, Conventional Commit messages, remote safety checks, and explicit push results. |
 | [`high-constraint-coding`](./skills/high-constraint-coding/) | Apply a minimal, evidence-led coding workflow that produces correct, project-native code humans can locate, trace, modify, and verify directly. |
-| [`learn-while-building`](./skills/learn-while-building/) | Turn active AI-assisted project work into focused learning through adaptive teaching, code tracing, recall, reflection, transfer exercises, and optional project knowledge records. |
+| [`learn-while-building`](./skills/learn-while-building/) | Passive learning companion during vibecoding: expose the relevant model, decisions, and verification while implementing, without requiring the user to ask or interrupting delivery with quizzes. |
 | [`no-code-comments`](./skills/no-code-comments/) | Keep generated and modified code-like artifacts comment-free by default while preserving required directives and documentation contracts. |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | Prevent PowerShell interpolation, quoting, wrapper-layer, path, and nested command failures on Windows. |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | Research unfamiliar or regulated domains and convert findings into workflows, constraints, risks, MVP boundaries, and build-ready briefs. |
@@ -80,7 +80,7 @@ Skills can operate independently or compose around one task. Typical flows inclu
 - `freelance-order-triage` -> paid discovery or bounded delivery plan
 - `websearch-first` + any task skill -> current external evidence reconciled with local facts
 - `high-constraint-coding` + `no-code-comments` -> controlled production code with a clean source style
-- `learn-while-building` + implementation or debugging skill -> completed project work plus focused understanding, recall, and transfer
+- `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> controlled implementation, clean source, and a compact learning overlay
 - `build-user-facing-ui` + `high-constraint-coding` -> complete UI behavior with disciplined implementation
 - `write-api-docs` -> evidence-backed integration contract
 - completed work -> `git-checkpoint-push`
@@ -141,7 +141,9 @@ Use build-user-facing-ui to redesign this workflow and verify every responsive s
 
 Use write-api-docs to reconcile the frontend client and backend routes into one API contract.
 
-Use learn-while-building while implementing this feature. Write the code, but teach me the request flow, key decisions, and how the tests prove the behavior.
+Fix this bug and run the tests.
+
+Use learn-while-building in guided mode while implementing this feature. Write the code, but teach me the request flow, key decisions, and how the tests prove the behavior.
 ```
 
 Read the target skill's `description` and workflow before assuming it applies. Negative trigger examples intentionally prevent specialized skills from taking over simple conceptual or unrelated tasks.

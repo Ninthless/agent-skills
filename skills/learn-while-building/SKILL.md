@@ -1,102 +1,108 @@
 ---
 name: learn-while-building
-description: "Learn while building with AI: turn AI-assisted project implementation, debugging, refactoring, or code explanation into focused teaching, active recall, tracing, reflection, and transfer without blocking delivery. Trigger when the user says 边做边学, 边写边学, 教我, 带我理解, 解释你为什么这样写, 把 AI 当导师, learning mode, teach me while building, help me understand this project, or has established an ongoing preference to learn from AI-built work. Do not trigger for ordinary coding with no learning intent, generic concept questions unrelated to active project work, pure review/status, or requests that only want the result."
+description: 'Mandatory passive-learning companion whenever the agent implements, debugs, refactors, or explains project code, including ordinary vibecoding. Always trigger for write, create, implement, build, fix, edit, modify, refactor, scaffold, 帮我写, 实现, 修一下, 改代码, vibe coding, and similar delivery work so the user absorbs the relevant model, decisions, and verification without asking. Default to passive teaching: finish the work first, then a compact learning overlay; do not quiz, withhold code, or ask what to learn. Upgrade to guided or practice only for 边做边学, 教我, 带我理解, learning mode, or predict-first requests. Do not trigger for result-only requests that forbid explanation, generic concept questions unrelated to current project work, git-only status/commit/push, or pure review/status with no code walkthrough.'
 ---
 
 # Learn While Building
 
-## Overview
+## Copyright
 
-Use AI as the primary implementation partner while preserving the user's role as an active learner. Identify the knowledge behind the current slice, teach only what is relevant, expose important decisions, and create proportionate opportunities for the user to predict, explain, verify, and reuse what was learned.
+Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
 
-## Operating Principles
+## Purpose
 
-- Keep project delivery and learning coupled but independently adjustable. Do not withhold complete code when the user needs implementation; add the smallest learning intervention that protects understanding.
-- Prefer a short explanation of the system model and decisions over line-by-line narration.
-- Ask for active recall before revealing an answer only when the task is important, unfamiliar, or conceptually rich. Do not turn trivial edits into quizzes.
-- Teach from the repository and runtime evidence. Do not invent project behavior, undocumented constraints, or unsupported explanations.
-- Distinguish facts observed in code or tests, engineering inferences, and recommendations.
-- Never pretend that an explanation proves understanding. Use a small prediction, trace, modification, or transfer task when learning evidence matters.
-- Respect the user's requested learning intensity:
-  - `quiet`: implement normally and provide a compact learning card
-  - `guided`: explain the model and key decisions, then ask one or two focused questions
-  - `practice`: provide hints first, ask the user to predict or attempt a small step, and reveal the solution progressively
-  - `review`: focus on explaining existing code, misconceptions, and transfer
-- If the user has not chosen an intensity, use `guided` for unfamiliar or architectural work and `quiet` for mechanical work.
+During AI-led project work, the user should absorb the relevant model, decision, and verification without having to remember to ask. Delivery stays primary. Learning rides along.
+
+This skill is a default vibecoding companion, not an opt-in tutor mode. Do not wait for `教我`, `边做边学`, `learning mode`, or an established teaching preference.
+
+## Mandatory Companion
+
+Activate whenever the response will implement, debug, refactor, or walk through project code, including ordinary requests such as `帮我写`, `实现`, `修一下`, `改代码`, `直接写`, or `vibe coding`.
+
+Do not activate for:
+
+- result-only requests that forbid teaching: `只要结果`, `不要讲解`, `不需要解释`, `no explanation`
+- generic concept questions unrelated to the current project
+- git-only status, commit, or push
+- pure review or status with no code walkthrough
+
+If a read-only task later becomes an implementation, activate before producing code. If the user later says not to teach, stop the overlay and finish the work.
+
+Compose with `high-constraint-coding`, `no-code-comments`, and any specialized delivery skill. Those skills own the artifact; this skill owns the teaching overlay.
+
+## Default: Passive
+
+Passive learning means the user can stay in flow and still leave knowing what changed and why.
+
+In the default `passive` intensity:
+
+- Implement completely. Never withhold code, patches, or answers to create a lesson.
+- Do not ask what the user already knows, what they want to learn, or to predict anything.
+- Do not quiz, wait for a reply, or turn the turn into a tutorial.
+- Teach only what this slice needs: the path, one or two concepts, the decision that mattered, and how it was verified.
+- Put rationale in the chat, not in code comments.
+- After the work, add a compact learning overlay. For a mechanical edit, one or two sentences is enough. Do not skip the overlay entirely or the skill will feel absent.
+
+Upgrade only when the user opts in:
+
+- `passive` (default): deliver, then overlay
+- `guided`: explain the model, then at most one focused question
+- `practice`: hints first, let the user attempt a bounded step, then reveal
+- `review`: explain existing code, misconceptions, and transfer
+
+Treat `教我`, `边做边学`, `带我理解`, `解释你为什么这样写`, `把 AI 当导师`, `learning mode`, `let me predict`, or `先让我猜` as an upgrade, not as the only way this skill exists. Treat `直接写` or `直接改` as `passive`, not as opt-out.
+
+If the user demonstrates mastery of a concept, shrink the overlay. If they ask why or look confused, thicken it for that slice only.
 
 ## Workflow
 
-### 1. Establish the learning contract
+### 1. Deliver first
 
-Before substantial implementation, infer or ask:
+Do the requested work. Do not open with a learning contract, a quiz, or a question about teaching preferences.
 
-- What does the user already know about the relevant stack or concept?
-- What does the user want to learn from this slice?
-- Which intensity applies: `quiet`, `guided`, `practice`, or `review`?
-- Which concepts are essential now, and which should be deferred?
+### 2. Map at most three targets
 
-Ask at most one concise question when the answer materially changes the teaching approach. Otherwise choose a sensible default and proceed.
+From the actual entry point, files, tests, and runtime path, keep only:
 
-### 2. Map the knowledge behind the slice
+1. the concept needed to understand the changed behavior
+2. the decision that reveals a boundary or tradeoff, if any
+3. one reusable idea likely to transfer, if any
 
-Inspect the actual entry point, affected files, tests, configuration, and runtime path. Identify at most three learning targets, prioritizing:
+State each target in observable terms, such as “this request goes route → service → store” or “this flag belongs in the existing settings owner.”
 
-1. concepts necessary to understand the changed behavior
-2. decisions that reveal project architecture or engineering tradeoffs
-3. reusable knowledge likely to transfer to another task
+Read [learning-protocol.md](./references/learning-protocol.md) for bounded behavioral, architectural, stateful, async, or debugging work. Stay on the passive path in that file unless the user opted into `guided` or `practice`.
 
-For each target, state the expected outcome in observable terms, such as “trace the request from route to persistence” or “explain why this state belongs in this module.”
+### 3. Teach in passing
 
-Read [learning-protocol.md](./references/learning-protocol.md) when the task is non-trivial, unfamiliar, architectural, stateful, asynchronous, or debugging-focused.
+- Before a non-obvious edit: one sentence on the path and the decision.
+- During the edit: mention only invariants, boundaries, and failure behavior that a later hand-edit would need.
+- After verification: connect the result to the test, log, or check that supports it.
 
-### 3. Teach at the right moment
+Do not narrate every line. Do not introduce concepts this slice does not use.
 
-- Before implementation: explain the problem model, affected path, and the decision that matters.
-- During implementation: explain only non-obvious choices, invariants, boundaries, and failure behavior.
-- After implementation: connect the result to tests, runtime evidence, and a likely future change.
+### 4. Overlay
 
-For `practice` intensity, use hint-first guidance and let the user attempt a bounded reasoning step before showing the complete implementation. For `quiet`, do not interrupt the implementation with questions.
-
-### 4. Create evidence of learning
-
-Choose one proportionate activity:
-
-- prediction: predict output, control flow, or failure behavior
-- trace: follow one input through state changes and boundaries
-- explain-back: describe a module, decision, or error in the user's own words
-- micro-change: modify a small adjacent behavior
-- transfer: apply the concept to a new but related scenario
-- debugging: form a hypothesis before inspecting the next evidence
-
-Use [question-patterns.md](./references/question-patterns.md) for prompts. Reveal the answer after the user attempts it, asks to skip, or the task is blocked.
-
-### 5. Produce a learning card
-
-For every bounded behavioral or architectural slice, include a concise learning card:
+For every implementation or project-code walkthrough, include a compact overlay:
 
 - `What changed`: the behavior and the path it follows
 - `Learn`: one to three relevant concepts
 - `Why`: the key design or implementation decision
-- `Verify`: the tests or runtime evidence that support the explanation
-- `Try`: one recall or transfer prompt, with the answer withheld when appropriate
-- `Next`: one useful concept to revisit later, if any
+- `Verify`: the test or runtime evidence, or the gap
+- `Next`: one useful follow-up concept, if any
 
-For a mechanical change, compress this to one or two sentences. Do not produce a learning card for a pure explanation unless it improves clarity.
+In `passive` mode, omit `Try`. Do not withhold an answer. In `guided` or `practice`, add one `Try` prompt and read [question-patterns.md](./references/question-patterns.md). Reveal the answer after the user attempts it, asks to skip, or the task is blocked.
 
-### 6. Maintain project learning context
+### 5. Persist only on request
 
-When the project is expected to continue, maintain a concise learning record only if the repository has an established location for project notes. Otherwise provide the record in the response and ask before creating a new persistent file. Record concepts encountered, the user's demonstrated understanding, important architecture decisions, recurring misconceptions, and open questions.
+Do not create a project learning file unless the user asks or the repository already has one. If either is true, use [knowledge-notes.md](./references/knowledge-notes.md). Never store secrets, personal data, or unsupported claims.
 
-Use [knowledge-notes.md](./references/knowledge-notes.md) as the format when a persistent record is requested or already exists. Never store secrets, personal data, or unsupported claims.
+## Completion
 
-## Completion Criteria
+The learning overlay is complete when:
 
-Consider the learning part complete when:
+- the user can locate the changed behavior
+- the explanation matches repository or runtime evidence
+- the overlay was actually present, including one or two sentences on mechanical work
+- no quiz or withheld deliverable was used unless the user opted in
 
-- the user can locate the changed behavior in the project
-- the key concept or decision is explained at the level needed for this task
-- the implementation and explanation agree with repository and test evidence
-- at least one proportionate opportunity for recall, tracing, explanation, debugging, or transfer was offered for non-trivial work
-- the user is told what remains uncertain or worth learning next
-
-Do not measure success by the amount of explanation, number of questions, or refusal to write code. Optimize for useful understanding with minimal interruption to project progress.
+Do not measure success by word count, number of questions, or naming this skill in the reply.

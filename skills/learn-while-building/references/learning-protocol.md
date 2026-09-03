@@ -1,45 +1,57 @@
 # Learning Protocol
 
-## Learning Loop
+## Default Path: Passive
 
-Use this loop for unfamiliar, non-trivial, architectural, stateful, asynchronous, or debugging-focused work:
+For ordinary vibecoding, implementation, debugging, and refactoring, use this loop:
 
-1. **Orient**: describe the user-visible goal and the affected execution path.
-2. **Select**: choose no more than three concepts that are necessary or highly reusable.
-3. **Model**: explain the smallest useful mental model, including inputs, outputs, state, boundaries, and failure behavior.
-4. **Predict**: ask the user to predict one observable result when active recall is appropriate.
-5. **Build**: implement the bounded slice while explaining only decisions that affect understanding or maintenance.
-6. **Verify**: connect tests, logs, traces, or manual checks to the model.
-7. **Reflect**: ask the user to explain, modify, or transfer one idea.
-8. **Record**: retain only durable learning context that the user asked to persist or that belongs in an existing project learning record.
+1. **Orient**: name the user-visible goal and the affected path.
+2. **Select**: keep at most three concepts that are necessary or reusable.
+3. **Model**: state the smallest useful model: inputs, outputs, state, boundaries, failure behavior.
+4. **Build**: implement the slice while explaining only decisions that affect understanding or maintenance.
+5. **Verify**: connect tests, logs, traces, or manual checks to the model.
+6. **Overlay**: leave a compact learning overlay. Do not quiz.
+
+Skip **Predict** and **Reflect** unless the user opted into `guided` or `practice`.
+
+## Opt-In Active Loop
+
+Use this extra loop only for `guided` or `practice`:
+
+1. **Predict**: ask the user to predict one observable result when the task is important, unfamiliar, or conceptually rich.
+2. **Build** or reveal the next step.
+3. **Verify**: connect evidence to the model.
+4. **Reflect**: ask the user to explain, modify, or transfer one idea.
+
+Never use this loop to delay a requested implementation. If the user says `直接写`, `跳过`, or `不要提问`, return to the passive path immediately.
 
 ## Depth Selection
 
 ### Mechanical
 
-Implement the change with minimal interruption. Explain the purpose and one relevant detail. Skip questions unless the user asks to practice.
+Implement with almost no interruption. State the purpose and one relevant detail. Always leave one or two overlay sentences so the skill remains visible.
 
 ### Bounded Behavioral
 
-Explain the affected path, identify one or two concepts, and offer one prediction or transfer question after verification.
+Explain the affected path and one or two concepts after the work. In `passive` mode, stop there. In `guided` mode, one optional transfer question may follow the overlay.
 
 ### Architectural
 
-Explain ownership, boundaries, dependency direction, and tradeoffs before implementation. Use one active-recall question before or during the change, then connect the result to a likely future modification.
+Explain ownership, boundaries, dependency direction, and tradeoffs in a short model, then implement. Do not require a quiz before editing unless the user asked to predict first.
 
 ### Debugging
 
-Separate symptoms, observations, hypotheses, and confirmed causes. Ask the user for a hypothesis before revealing the next diagnostic step when the issue is safe to explore. Do not confuse a passing test with understanding.
+Separate symptoms, observations, hypotheses, and confirmed causes. In `passive` mode, state the working hypothesis and the evidence as you go. In `guided` or `practice`, ask for a hypothesis before the next diagnostic step only when the issue is safe to explore. Do not confuse a passing test with understanding.
 
 ## Explanation Format
 
-Use this compact structure when it helps:
+Use this compact structure:
 
 1. **Problem model**: what the system must do.
-2. **Relevant concept**: what the user needs to understand now.
+2. **Relevant concept**: what matters in this slice.
 3. **Decision**: why this implementation fits the repository and behavior.
 4. **Evidence**: what code, test, runtime, or documentation supports it.
-5. **Practice**: one question or small task.
+
+Add **Practice** only for `guided` or `practice`.
 
 Avoid:
 
@@ -47,13 +59,16 @@ Avoid:
 - introducing concepts unrelated to the current slice
 - claiming certainty where the repository or runtime has not been inspected
 - turning every interaction into an exam
-- requiring the user to write code when they explicitly want the AI to implement
+- withholding code to force learning
+- asking what the user wants to learn before doing the work
 
 ## Adaptive Feedback
 
-- If the user answers correctly, reduce scaffolding and increase transfer.
-- If the user is partly correct, preserve the correct model and repair only the misconception.
-- If the user is incorrect, provide a smaller hint, then explain the relevant evidence.
-- If the user says “直接写” or asks to skip, implement and give a concise learning card.
-- If the user repeatedly asks for explanation, switch to `guided` or `practice`.
-- If the user demonstrates mastery, avoid repeating introductory explanations.
+- If the user stays in flow and does not engage the overlay, keep `passive` and keep the overlay short.
+- If the user asks why, traces a path, or requests teaching, thicken the model for that slice.
+- If the user answers a guided question correctly, reduce scaffolding and increase transfer.
+- If the user is partly correct, keep the correct model and repair only the misconception.
+- If the user is incorrect, give a smaller hint, then show the evidence.
+- If the user says `直接写` or asks to skip questions, implement and keep a compact overlay.
+- If the user says `只要结果` or `不要讲解`, drop the overlay.
+- If the user demonstrates mastery, do not repeat introductory explanations.

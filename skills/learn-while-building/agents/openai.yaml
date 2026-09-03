@@ -1,7 +1,7 @@
 interface:
   display_name: "Learn While Building"
-  short_description: "Turn AI-built project work into active learning"
-  default_prompt: "Use $learn-while-building for this active project task because I want to learn while AI implements, debugs, refactors, or explains it. Teach only the relevant concepts, explain key decisions and evidence, adapt the learning intensity, and create a focused opportunity for recall, tracing, reflection, or transfer without blocking delivery."
+  short_description: "Passive learning companion during vibecoding"
+  default_prompt: "Use $learn-while-building as a default companion whenever this task implements, debugs, refactors, or explains project code, including ordinary vibecoding. Teach passively: finish the work first, expose the relevant path, decision, and verification, and add a compact learning overlay. Do not quiz, withhold code, or ask what to learn unless the user opts into guided or practice. Skip the overlay only when they explicitly want the result with no teaching."
 
 policy:
   allow_implicit_invocation: true

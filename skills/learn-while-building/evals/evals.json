@@ -1,0 +1,38 @@
+{
+  "skill_name": "learn-while-building",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "修一下订单取消后库存没恢复的问题，直接改并跑测试。",
+      "expected_output": "A complete fix plus a compact passive learning overlay. No quiz, no withheld patch, and no question about what the user wants to learn.",
+      "files": [],
+      "expectations": [
+        "The response implements or proposes the inventory restoration fix instead of asking teaching-preference questions first.",
+        "The response includes a short learning overlay covering the affected path, the key decision, and verification.",
+        "The response does not ask the user to predict, explain-back, or wait before seeing the solution."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我把登录功能做完，但我想边做边学。每次只讲当前真正涉及的知识。先让我猜请求怎么走。",
+      "expected_output": "An upgraded guided or practice response that still delivers the login work, teaches only in-scope concepts, and uses at most one focused prediction prompt.",
+      "files": [],
+      "expectations": [
+        "The response treats the request as an opt-in upgrade rather than as the only reason to teach.",
+        "Teaching stays limited to the login request flow and nearby decisions.",
+        "Any recall prompt is optional and does not replace the implementation."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "只要最终结果，不要教学、问题或学习卡片：把按钮改成蓝色。",
+      "expected_output": "A result-only change with no learning overlay, quiz, or teaching commentary.",
+      "files": [],
+      "expectations": [
+        "The response performs the color change.",
+        "The response does not include a learning overlay or teaching questions.",
+        "The response does not insist on explaining the change after the user forbade teaching."
+      ]
+    }
+  ]
+}

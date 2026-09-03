@@ -21,7 +21,7 @@
 - 有边界的任务范围和明确假设
 - 符合现有项目习惯的实现，而不是生成器式通用架构
 - 跨编程语言的人类手写维护能力
-- 在 AI 主导的实现、调试和重构中进行主动学习
+- 在 AI 主导的实现、调试和重构中进行被动或主动学习
 - 契约、生命周期、顺序协议和依赖能力验证
 - 完整的用户界面状态和真实渲染证据
 - 根据源码、类型、测试和运行证据编写文档
@@ -37,7 +37,7 @@
 | [`freelance-order-triage`](./skills/freelance-order-triage/) | 在接单或报价前评估客户需求、隐藏范围、交付风险、里程碑、修改次数和验收条件。 |
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | 通过定向暂存、Conventional Commit、远程分支检查和明确结果报告创建并推送可靠的 Git 检查点。 |
 | [`high-constraint-coding`](./skills/high-constraint-coding/) | 使用最小、严谨、证据驱动的流程编写正确且符合项目习惯的代码，让人类能够直接定位、追踪、修改和验证。 |
-| [`learn-while-building`](./skills/learn-while-building/) | 把正在进行的 AI 辅助项目工作转化为聚焦学习，通过自适应教学、代码追踪、主动回忆、反思、迁移练习和可选项目知识记录帮助用户理解项目。 |
+| [`learn-while-building`](./skills/learn-while-building/) | Vibe coding 时的被动学习伴随技能：在实现过程中带出相关模型、决策和验证，不要求用户先说「教我」，也不用提问打断交付。 |
 | [`no-code-comments`](./skills/no-code-comments/) | 默认让生成或修改的代码类文件不包含解释性注释，同时保留工具指令和必要文档契约。 |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | 避免 Windows PowerShell 中的插值、引号、嵌套 Shell、路径和包装层解析错误。 |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | 调研陌生、受监管或依赖平台规则的领域，并整理真实流程、约束、风险、MVP 边界和可开发需求。 |
@@ -86,7 +86,7 @@ Skill 可以独立使用，也可以围绕同一个任务组合：
 - `freelance-order-triage` -> 付费调研、分阶段交付或受控报价
 - `websearch-first` + 任意任务 Skill -> 用当前外部依据校准本地事实
 - `high-constraint-coding` + `no-code-comments` -> 严谨实现和干净源码风格
-- `learn-while-building` + 实现或调试 Skill -> 在完成项目工作的同时形成聚焦理解、主动回忆和迁移能力
+- `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> 受控实现、干净源码，以及一份简短的学习说明
 - `build-user-facing-ui` + `high-constraint-coding` -> 完整界面体验和受控工程实现
 - `write-api-docs` -> 有证据支持的接口对接契约
 - 工作完成后 -> `git-checkpoint-push`
@@ -147,7 +147,9 @@ cp -r ./skills/* ~/.agents/skills/
 
 使用 write-api-docs，把前端客户端和后端路由整理成一份一致的接口契约。
 
-使用 learn-while-building 实现这个功能。代码由你完成，但要教我理解请求链路、关键决策，以及测试如何证明行为。
+修一下这个 bug，并跑测试。
+
+使用 learn-while-building 的 guided 模式实现这个功能。代码由你完成，但要教我理解请求链路、关键决策，以及测试如何证明行为。
 ```
 
 使用前应以目标 Skill 的 `description` 和正文工作流为准。负面触发样例会避免专业 Skill 接管简单概念问答或与其无关的任务。

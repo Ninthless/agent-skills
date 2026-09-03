@@ -1,22 +1,30 @@
 [
   {
-    "query": "帮我把登录功能做完，但我想边做边学。每次只讲当前真正涉及的知识。",
+    "query": "帮我把登录功能做完。",
     "should_trigger": true
   },
   {
-    "query": "Teach me while building this API. You can write all the code, but explain the request flow and why each boundary exists.",
+    "query": "修一下订单取消后库存没恢复的问题，直接改并跑测试。",
     "should_trigger": true
   },
   {
-    "query": "我几乎完全依赖 AI 写这个项目，请把 AI 当导师，修复这个缓存失效问题时也带我理解。",
+    "query": "Add a FastAPI endpoint POST /events that accepts JSON and returns ok.",
     "should_trigger": true
   },
   {
-    "query": "Implement the payment webhook and help me understand idempotency, retries, and how the tests prove the behavior.",
+    "query": "Refactor this React state module without changing behavior.",
     "should_trigger": true
   },
   {
-    "query": "开启 learning mode，重构这个 React 状态管理模块。先让我预测数据流，再完成代码。",
+    "query": "这个 bug 帮我修一下。",
+    "should_trigger": true
+  },
+  {
+    "query": "vibe coding 把设置页的保存做完。",
+    "should_trigger": true
+  },
+  {
+    "query": "直接写，把按钮改成蓝色。",
     "should_trigger": true
   },
   {
@@ -24,7 +32,15 @@
     "should_trigger": true
   },
   {
-    "query": "解释你为什么这样写这个数据库迁移，并给我一个能迁移到其他场景的练习。",
+    "query": "Teach me while building this API. You can write all the code, but explain the request flow and why each boundary exists.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我把登录功能做完，但我想边做边学。每次只讲当前真正涉及的知识。",
+    "should_trigger": true
+  },
+  {
+    "query": "开启 learning mode，重构这个 React 状态管理模块。先让我预测数据流，再完成代码。",
     "should_trigger": true
   },
   {
@@ -32,16 +48,8 @@
     "should_trigger": true
   },
   {
-    "query": "继续按我们之前约定的边构建边学习方式，给订单模块加退款状态。",
+    "query": "解释你为什么这样写这个数据库迁移，并给我一个能迁移到其他场景的练习。",
     "should_trigger": true
-  },
-  {
-    "query": "Use AI to build the whole feature, then give me a compact learning card covering the architecture decision and verification evidence.",
-    "should_trigger": true
-  },
-  {
-    "query": "修复订单取消后库存没恢复的问题，直接改并跑测试。",
-    "should_trigger": false
   },
   {
     "query": "Explain dependency injection in Java with a beginner-friendly example.",
