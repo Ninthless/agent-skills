@@ -118,7 +118,15 @@ A wrong comment is worse than no comment. If you cannot state the invariant prec
 - Put the comment at the closest stable scope that owns the information; avoid distant essays and repeated copies.
 - Use the language-correct documentation form. Documentation, implementation, and required directive comments may coexist when each serves a distinct contract.
 - Follow the file's established punctuation and prose style.
-- Use the repository's declared documentation language; otherwise follow the established prose language and intended contributor audience, not the identifiers alone.
+
+## Comment Language
+
+- Write new or rewritten comment prose in the natural language the user predominantly uses across the current and recent conversation.
+- An explicit request for a comment language overrides the inferred conversation language.
+- Infer from the user's own prose, not pasted code, quoted material, logs, identifiers, or isolated technical terms.
+- For genuinely mixed-language conversation, use the primary natural language of the current request. If that is still unclear, fall back to the repository's established comment language and intended contributor audience.
+- Keep identifiers, API and product names, protocol keywords, code tokens, and required directive syntax exact. Translate surrounding prose, not machine-sensitive text.
+- Do not translate untouched comments merely for consistency. When a touched comment must be rewritten, use the selected user language.
 
 ## Editing Existing Code
 
@@ -137,6 +145,7 @@ Comment policy is complete when:
 - every new or edited comment passes the admission test
 - every factual claim is supported by the available evidence
 - public documentation comments match evidenced behavior and local tooling
+- new and rewritten comment prose uses the selected user language
 - no added comment narrates obvious mechanics
 - stale comments in the touched area were fixed or removed
 - explicit comment-free output contains no optional comments

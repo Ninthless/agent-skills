@@ -2,6 +2,8 @@
 
 Read only the section for the language you are editing. These rules change the comment form and documentation contract, not the evidence and admission tests in `SKILL.md`. Follow repository convention when it is explicit, consistent, tool-valid, and compatible with evidenced behavior.
 
+The `Comment Language` policy in `SKILL.md` chooses the natural language of comment prose. The sections below govern syntax and documentation shape; English examples do not require English output.
+
 ## Python
 
 Comments (`#`) explain implementation context. Docstrings are user- and tooling-facing documentation available through `__doc__`, not ordinary implementation comments.

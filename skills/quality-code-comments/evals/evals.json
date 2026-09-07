@@ -127,6 +127,32 @@
         "The response asks for or recommends verifying a stable idempotency mechanism, reconciliation check, or proof that failed attempts were not applied.",
         "No unrelated implementation or comment cleanup is performed."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "我们平时一直用中文沟通。修改附带的 `session_cache.py`，只补必要注释并保持行为不变。缓存必须比网关的 60 秒硬过期提前 5 秒失效，以容纳客户端与网关之间的时钟偏差。",
+      "expected_output": "The load-bearing comment is written in Chinese because Chinese is the user's conversation language. Code identifiers and numeric values remain unchanged.",
+      "files": ["evals/files/session_cache.py"],
+      "expectations": [
+        "A concise Chinese comment explains that the 55-second TTL leaves five seconds before the gateway's 60-second hard expiry for clock skew.",
+        "The comment is natural Chinese prose rather than an English sentence copied from identifier names.",
+        "Identifiers such as `SESSION_TTL_SECONDS`, API names, and code syntax are not translated.",
+        "The implementation behavior and constant value remain unchanged.",
+        "No unrelated comments or tutorial narration are added."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "We normally communicate in English. Update the attached `session_cache.py` with only the necessary comment and preserve behavior. The cache must expire five seconds before the gateway's 60-second hard expiry to allow for clock skew between the client and gateway.",
+      "expected_output": "The load-bearing comment is written in English because English is the user's conversation language. Code identifiers and numeric values remain unchanged.",
+      "files": ["evals/files/session_cache.py"],
+      "expectations": [
+        "A concise English comment explains that the 55-second TTL leaves five seconds before the gateway's 60-second hard expiry for clock skew.",
+        "The comment remains English even if the repository contains comments in another natural language.",
+        "Identifiers, API names, and code syntax remain exact.",
+        "The implementation behavior and constant value remain unchanged.",
+        "No unrelated comments or tutorial narration are added."
+      ]
     }
   ]
 }

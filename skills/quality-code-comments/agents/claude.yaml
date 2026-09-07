@@ -1,7 +1,7 @@
 interface:
   display_name: "Quality Code Comments"
   short_description: "Sparse, load-bearing comments whenever code is produced"
-  default_prompt: "Apply quality-code-comments before producing any code-like artifact, including when the requested output is comment-free. Prefer clear code, and add only comments whose accurate reader value cannot be expressed locally."
+  default_prompt: "Apply quality-code-comments before producing any code-like artifact, including comment-free output. Add only accurate comments with real reader value, using the user's predominant conversation language for prose."
 
 policy:
   allow_implicit_invocation: true

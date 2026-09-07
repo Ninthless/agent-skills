@@ -1,7 +1,7 @@
 interface:
   display_name: "Quality Code Comments"
   short_description: "Sparse, load-bearing comments whenever code is produced"
-  default_prompt: "Use $quality-code-comments before producing any code-like artifact, including when the requested output is comment-free; keep optional comments accurate, necessary, and useful to the next caller or maintainer."
+  default_prompt: "Use $quality-code-comments before producing any code-like artifact, including comment-free output; keep optional comments accurate and necessary, and write their prose in the user's predominant conversation language."
 
 policy:
   allow_implicit_invocation: true
