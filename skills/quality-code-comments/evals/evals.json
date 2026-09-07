@@ -1,0 +1,64 @@
+{
+  "skill_name": "quality-code-comments",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我写一个 Python 脚本，读取 `input.csv`，按 `department` 分组统计平均薪资，再把结果输出到 `summary.json`。",
+      "expected_output": "A working Python solution whose comments, if any, are sparse. Ordinary grouping and JSON output are explained by names and structure, not by narrating each step.",
+      "files": [],
+      "expectations": [
+        "The output includes Python code that reads `input.csv`, groups by `department`, computes average salary, and writes `summary.json`.",
+        "The code does not add line-by-line narration, section banners, or docstrings that restate the obvious script flow.",
+        "Any comment that appears records a non-obvious constraint, unit, or operational caveat rather than restating the next statement."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fix retry handling for a vendor checkout API. The code already retries twice with a 5 second timeout. Keep that behavior, but a future editor keeps trying to 'simplify' it. The vendor duplicates about 2% of accepted writes, and their p99 is 3.8 seconds.",
+      "expected_output": "A small, behavior-preserving change that places a load-bearing comment at the retry/timeout site stating why two retries and 5 seconds exist, and what would break if they were removed or lowered.",
+      "files": [],
+      "expectations": [
+        "The response keeps two retries and a 5 second timeout unless local evidence contradicts the prompt.",
+        "A comment at the retry or timeout site records the duplicate-write risk and the p99-plus-margin rationale.",
+        "The comment does not merely restate `retries = 2` or `timeout = 5000`.",
+        "The response does not add tutorial comments on unrelated code."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Add comments to every line of this TypeScript helper so juniors can learn it. The helper groups items by key.",
+      "expected_output": "A refusal to narrate every line, with teaching moved to chat. The code stays sparsely commented unless a real invariant exists; names and structure carry the grouping logic.",
+      "files": [],
+      "expectations": [
+        "The response does not add a comment above every statement.",
+        "Teaching explanation appears in the chat rather than as production-style line narration.",
+        "The helper itself remains readable through naming and structure.",
+        "If a comment remains, it passes a why/invariant test rather than restating `group by key`."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Document the public Python client function `fetch_invoice(invoice_id, include_line_items=False)`. It raises `InvoiceNotFound` when missing, returns a dict, and `include_line_items` is optional. Do not invent rate limits or authentication details.",
+      "expected_output": "A PEP 257-style docstring that states the call contract evidenced by the prompt, without restating the signature or inventing unsupported fields.",
+      "files": [],
+      "expectations": [
+        "The docstring is an imperative summary, not a copied signature.",
+        "It documents `include_line_items` and `InvoiceNotFound` only as evidenced.",
+        "It does not invent rate limits, auth, or extra parameters.",
+        "Implementation comments are not used as a substitute for the public docstring."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "This Go function used to sleep 200ms as a rate limit. The sleep was removed, but the comment `// sleep to avoid vendor rate limit` is still there. Finish the surrounding bugfix and handle the comment correctly.",
+      "expected_output": "The stale comment is deleted or rewritten to match current behavior. No new narration is added to compensate.",
+      "files": [],
+      "expectations": [
+        "The leftover rate-limit sleep comment is not left claiming a sleep that no longer exists.",
+        "If a rate-limit constraint still exists, the replacement comment states the current mechanism and why.",
+        "The response treats the stale comment as a defect in the same change.",
+        "Unrelated comments are not rewritten for style."
+      ]
+    }
+  ]
+}

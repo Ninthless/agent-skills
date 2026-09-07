@@ -1,6 +1,6 @@
 ---
 name: no-code-comments
-description: 'Keep generated or modified code-like artifacts comment-free unless the user explicitly requests comments or tooling requires a directive. Use as a companion whenever a task writes, edits, refactors, scaffolds, patches, regenerates, or shows source, configs, tests, scripts, snippets, migrations, schemas, workflows, or Dockerfiles. Trigger for clean code, production-ready code, 不要注释, 无注释, or 干净代码. Do not use for pure analysis, review, planning, or explanation when no code-like content will be written or shown.'
+description: 'Keep generated or modified code-like artifacts comment-free unless the user explicitly requests comments or tooling requires a directive. Use as a companion whenever a task writes, edits, refactors, scaffolds, patches, regenerates, or shows source, configs, tests, scripts, snippets, migrations, schemas, workflows, or Dockerfiles. Trigger for clean code, production-ready code, 不要注释, 无注释, or 干净代码. Do not use for 写好注释, 优雅注释, JSDoc/docstring authoring, when quality-code-comments is the installed comment policy, or for pure analysis, review, planning, or explanation when no code-like content will be written or shown.'
 ---
 
 # No Code Comments
@@ -24,6 +24,8 @@ Move explanations into the chat response instead of the code whenever possible.
 This keeps patches cleaner and usually leads to clearer naming and structure.
 
 This skill is a default coding companion, not a standalone feature workflow. Use it together with the task's domain-specific skill whenever code will be produced or changed.
+
+This skill is mutually exclusive with `quality-code-comments`. Install only one comment-policy skill. If the user explicitly asks for high-quality comments, follow that request instead of forcing comment-free output.
 
 ## Default Behavior
 

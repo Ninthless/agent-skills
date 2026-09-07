@@ -32,8 +32,9 @@ The collection emphasizes:
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | Create coherent Git checkpoints with targeted staging, Conventional Commit messages, remote safety checks, and explicit push results. |
 | [`high-constraint-coding`](./skills/high-constraint-coding/) | Apply a minimal, evidence-led coding workflow that produces correct, project-native code humans can locate, trace, modify, and verify directly. |
 | [`learn-while-building`](./skills/learn-while-building/) | Passive learning companion during vibecoding: expose the relevant model, decisions, and verification while implementing, without requiring the user to ask or interrupting delivery with quizzes. |
-| [`no-code-comments`](./skills/no-code-comments/) | Keep generated and modified code-like artifacts comment-free by default while preserving required directives and documentation contracts. |
+| [`no-code-comments`](./skills/no-code-comments/) | Keep generated and modified code-like artifacts comment-free by default while preserving required directives and documentation contracts. Mutually exclusive with `quality-code-comments`; install only one. |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | Prevent PowerShell interpolation, quoting, wrapper-layer, path, and nested command failures on Windows. |
+| [`quality-code-comments`](./skills/quality-code-comments/) | Keep comments sparse and load-bearing whenever code is produced: record intent, invariants, constraints, workarounds, or documentation contracts the code cannot express. Mutually exclusive with `no-code-comments`; install only one. |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | Research unfamiliar or regulated domains and convert findings into workflows, constraints, risks, MVP boundaries, and build-ready briefs. |
 | [`websearch-first`](./skills/websearch-first/) | Search authoritative current sources before answering or editing, reconcile external evidence with local facts, and cite the sources that materially affect the result. |
 | [`write-api-docs`](./skills/write-api-docs/) | Create or review API contracts from routes, schemas, clients, tests, runtime evidence, OpenAPI, GraphQL, gRPC, webhooks, or messages without inventing unsupported behavior. |
@@ -80,12 +81,16 @@ Skills can operate independently or compose around one task. Typical flows inclu
 - `freelance-order-triage` -> paid discovery or bounded delivery plan
 - `websearch-first` + any task skill -> current external evidence reconciled with local facts
 - `high-constraint-coding` + `no-code-comments` -> controlled production code with a clean source style
+- `high-constraint-coding` + `quality-code-comments` -> controlled production code with sparse, load-bearing comments
 - `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> controlled implementation, clean source, and a compact learning overlay
+- `high-constraint-coding` + `quality-code-comments` + `learn-while-building` -> controlled implementation, durable comments, and a compact learning overlay
 - `build-user-facing-ui` + `high-constraint-coding` -> complete UI behavior with disciplined implementation
 - `write-api-docs` -> evidence-backed integration contract
 - completed work -> `git-checkpoint-push`
 
 The active task still determines scope. A companion skill should strengthen the workflow without expanding the requested deliverable.
+
+`no-code-comments` and `quality-code-comments` are alternative comment policies. Do not install both into the same agent discovery directory.
 
 ## Installation
 

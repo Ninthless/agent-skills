@@ -28,7 +28,7 @@ Do not activate for:
 
 If a read-only task later becomes an implementation, activate before producing code. If the user later says not to teach, stop the overlay and finish the work.
 
-Compose with `high-constraint-coding`, `no-code-comments`, and any specialized delivery skill. Those skills own the artifact; this skill owns the teaching overlay.
+Compose with `high-constraint-coding`, the installed comment-policy skill (`no-code-comments` or `quality-code-comments`, never both), and any specialized delivery skill. Those skills own the artifact; this skill owns the teaching overlay.
 
 ## Default: Passive
 

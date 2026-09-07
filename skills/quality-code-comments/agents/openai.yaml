@@ -1,0 +1,7 @@
+interface:
+  display_name: "Quality Code Comments"
+  short_description: "Sparse, load-bearing comments whenever code is produced"
+  default_prompt: "Use $quality-code-comments whenever this task writes, edits, refactors, or shows code. Keep comments sparse and load-bearing: record intent, invariants, constraints, workarounds, or documentation contracts the code cannot express. Do not narrate obvious mechanics."
+
+policy:
+  allow_implicit_invocation: true

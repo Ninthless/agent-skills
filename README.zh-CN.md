@@ -38,8 +38,9 @@
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | 通过定向暂存、Conventional Commit、远程分支检查和明确结果报告创建并推送可靠的 Git 检查点。 |
 | [`high-constraint-coding`](./skills/high-constraint-coding/) | 使用最小、严谨、证据驱动的流程编写正确且符合项目习惯的代码，让人类能够直接定位、追踪、修改和验证。 |
 | [`learn-while-building`](./skills/learn-while-building/) | Vibe coding 时的被动学习伴随技能：在实现过程中带出相关模型、决策和验证，不要求用户先说「教我」，也不用提问打断交付。 |
-| [`no-code-comments`](./skills/no-code-comments/) | 默认让生成或修改的代码类文件不包含解释性注释，同时保留工具指令和必要文档契约。 |
+| [`no-code-comments`](./skills/no-code-comments/) | 默认让生成或修改的代码类文件不包含解释性注释，同时保留工具指令和必要文档契约。与 `quality-code-comments` 互斥，只安装其中一个。 |
 | [`powershell-safe-commands`](./skills/powershell-safe-commands/) | 避免 Windows PowerShell 中的插值、引号、嵌套 Shell、路径和包装层解析错误。 |
+| [`quality-code-comments`](./skills/quality-code-comments/) | 写代码时强制使用稀疏、有载荷的注释：只记录代码本身说不出的意图、不变量、约束、workaround 或文档契约。与 `no-code-comments` 互斥，只安装其中一个。 |
 | [`vibecoding-domain-scout`](./skills/vibecoding-domain-scout/) | 调研陌生、受监管或依赖平台规则的领域，并整理真实流程、约束、风险、MVP 边界和可开发需求。 |
 | [`websearch-first`](./skills/websearch-first/) | 在回答或修改文件前搜索权威且时效匹配的来源，把外部依据与本地事实对照，并只引用实际影响结果的资料。 |
 | [`write-api-docs`](./skills/write-api-docs/) | 根据路由、Schema、客户端、测试、运行证据、OpenAPI、GraphQL、gRPC、Webhook 或消息协议编写和审查接口契约，不虚构行为。 |
@@ -86,12 +87,16 @@ Skill 可以独立使用，也可以围绕同一个任务组合：
 - `freelance-order-triage` -> 付费调研、分阶段交付或受控报价
 - `websearch-first` + 任意任务 Skill -> 用当前外部依据校准本地事实
 - `high-constraint-coding` + `no-code-comments` -> 严谨实现和干净源码风格
+- `high-constraint-coding` + `quality-code-comments` -> 严谨实现，以及只保留有载荷的注释
 - `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> 受控实现、干净源码，以及一份简短的学习说明
+- `high-constraint-coding` + `quality-code-comments` + `learn-while-building` -> 受控实现、耐久注释，以及一份简短的学习说明
 - `build-user-facing-ui` + `high-constraint-coding` -> 完整界面体验和受控工程实现
 - `write-api-docs` -> 有证据支持的接口对接契约
 - 工作完成后 -> `git-checkpoint-push`
 
 组合使用不代表自动扩大任务范围。辅助 Skill 应该加强当前工作流，而不是增加用户没有要求的交付物。
+
+`no-code-comments` 和 `quality-code-comments` 是两套互斥的注释策略。不要把它们同时安装到同一个 Agent 发现目录。
 
 ## 安装
 
