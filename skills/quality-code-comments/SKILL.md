@@ -1,6 +1,6 @@
 ---
 name: quality-code-comments
-description: 'Mandatory comment-quality companion whenever the agent will generate, write, create, implement, edit, modify, patch, refactor, scaffold, regenerate, or otherwise output code or a code-like artifact. Always trigger before producing or changing source, snippets, scripts, commands, queries, regex, configs, schemas, migrations, tests, fixtures, workflows, Dockerfiles, patches, or example code in chat, even if the user never mentions comments. Trigger for write, create, generate, implement, build, fix, edit, refactor, 写代码, 帮我写, 实现, 修一下, 改代码, 重构, 加注释, 写好注释, 优雅注释, JSDoc, docstring, or rustdoc. Keep comments sparse and load-bearing: record only intent, invariants, constraints, workarounds, or documentation contracts the code cannot express. Do not trigger for explicit comment-free requests such as 不要注释, no comments, or use no-code-comments, or for explanation, planning, review, or status when no code-like content will be written or shown.'
+description: 'Mandatory comment-quality companion whenever the agent will generate, show, edit, patch, refactor, format, scaffold, or otherwise produce code or a code-like artifact. Always trigger before writing source, snippets, scripts, shell commands, queries, regex, configs, schemas, migrations, tests, fixtures, workflows, Dockerfiles, pseudocode, examples, or proposed patches, including trivial, throwaway, production, and explicitly comment-free requests. Trigger for write, create, generate, implement, fix, modify, refactor, 写代码, 帮我写, 实现, 修一下, 改代码, 重构, 加注释, JSDoc, docstring, and similar delivery work. It governs whether each comment should exist: prefer clear code, preserve required directives and documentation contracts, and add only accurate information the artifact cannot express locally. A no-comments request means zero optional comments; it never disables this skill. Do not trigger for read-only explanation, planning, inspection, diagnosis, status, or review when no code-like content will be produced.'
 ---
 
 # Quality Code Comments
@@ -11,92 +11,114 @@ Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied,
 
 ## Purpose
 
-Govern comments as part of the code, not as decoration. Most lines need no comment. When a comment exists, it must still be true after a refactor, and it must tell a future reader or agent something the code cannot.
+Govern every comment decision in code-producing work. Activation does not require adding a comment; zero optional comments is often the correct result.
 
 Optimize in this order:
 
-1. make the code name and structure carry the meaning
-2. add the smallest comment that records a non-local fact
-3. match the repository's existing comment and documentation contract
-4. keep comments current; a stale comment is a bug
+1. verify evidenced behavior and public contracts
+2. follow repository conventions when they are tool-valid and consistent with those contracts
+3. make names, types, structure, and executable checks carry what they can enforce
+4. identify the caller or maintainer knowledge still missing
+5. record the smallest accurate statement at the scope that owns that fact
+6. update or delete the comment when the code changes
 
-Do not optimize for looking thoroughly documented. Do not narrate control flow. Do not use comments as a substitute for clearer names, types, tests, or structure.
+A useful comment reduces the risk or cost of a future misuse, wrong edit, or reverse-engineering step. Do not optimize for comment count, documentation appearance, or line-by-line narration.
 
 ## Mandatory Code-Producing Companion
 
-Activate whenever the response will produce, modify, or show code or a code-like artifact, including snippets, configs, tests, migrations, schemas, workflows, commands, regex, Dockerfiles, and patches.
+Activate whenever the response will produce, modify, or show code or a code-like artifact, including snippets, configs, tests, migrations, schemas, workflows, commands, queries, regex, Dockerfiles, pseudocode, and patches.
 
-Do not wait for 加注释, 写好注释, JSDoc, docstring, or "add comments". Ordinary coding is enough. If a later turn starts producing code, activate before writing it.
+Do not wait for 加注释, 写好注释, JSDoc, docstring, or "add comments". Ordinary coding is enough. This remains true for tiny examples, generated files, and requests that explicitly say 不要注释 or "no comments": activate, then emit zero optional comments.
 
 This skill owns comment policy. `high-constraint-coding` owns bounded implementation. `learn-while-building` owns teaching in chat. Specialized skills own their artifacts. Put rationale in chat unless the fact must live next to the code to prevent a wrong future edit.
 
-Do not activate for read-only explanation, planning, review, or status when no code will be written or shown.
+Do not activate for read-only explanation, planning, inspection, diagnosis, review, or status only when no code-like content will be written or shown. If a later turn starts producing code, activate before the first artifact.
 
-This skill is mutually exclusive with `no-code-comments`. Install only one. If the user explicitly asks for comment-free output, follow that request and do not add comments.
+This skill is mutually exclusive with `no-code-comments`. Install only one. An explicit comment-free request controls the output, not invocation: honor it without adding optional comments or removing unrelated existing comments.
 
 ## Comment Kinds
 
 Treat these as different artifacts:
 
-- **Implementation comments**: why this shape exists, what must remain true, what would break if simplified.
-- **Documentation comments**: the public or tooling-facing contract: how to call it, valid inputs, side effects, errors. Write them only where the language or repository actually consumes them.
+- **Implementation comments**: rationale, invariants, non-local constraints, or an abstraction-level explanation of necessarily low-level code.
+- **Documentation comments**: the caller-facing contract: purpose, correct use, valid inputs, outputs, side effects, errors, safety, and restrictions. Write them where the language or repository expects them.
 - **Directive comments**: compiler, linter, formatter, generated-file, or license markers required by tooling. Keep them exact and local.
+- **Tutorial annotations**: mechanics written for a learner. Use them only when the requested artifact is explicitly educational; do not make production source read like a walkthrough.
 
 Read [language-conventions.md](./references/language-conventions.md) when the current language's documentation comment form, docstring contract, or directive syntax would change the comment you write.
 
+## Evidence Before Prose
+
+Treat every factual claim in a comment as part of the code's correctness:
+
+- Ground it in the current code, tests, types, user requirement, specification, or a durable upstream issue.
+- Do not infer a business rule or historical reason from a magic number or unusual branch.
+- Do not invent owners, tickets, benchmarks, incidents, compatibility promises, or removal versions.
+- Check causality, not just vocabulary. A duplicate-write risk constrains when retries are safe; by itself it does not justify retrying.
+- For a workaround, record the affected condition and a concrete removal condition. Link the durable upstream issue when one is known.
+- Treat tests as supporting evidence, not as a substitute for caller-facing documentation or a local warning that prevents a wrong edit.
+
+If the evidence is incomplete, improve the code without asserting a reason, ask when the missing fact blocks correctness, or report the uncertainty in chat.
+
 ## Admission Test
 
-Before adding or keeping a comment, it must pass this test:
+Before adding or keeping an optional comment, ask:
 
-> Delete it. If a competent reader who knows the language still has the same next-edit decision, it was noise.
+1. What misuse, wrong edit, or expensive reconstruction does this prevent?
+2. Is the information non-obvious at the point of use despite the local names, types, and structure?
+3. Is every factual and causal claim supported?
+4. Is a comment the right artifact rather than a type, assertion, test, API document, or clearer design?
+5. Is it placed at the smallest stable scope that owns the fact?
 
-A comment earns its place only when it records at least one of:
+The comment earns its place when the answers identify real reader value. Documentation and directive comments instead earn their place through the public or tooling contract.
+
+Typical qualifying information includes:
 
 - why this approach beat the obvious one
 - an invariant, unit, range, encoding, ordering, or null/sentinel meaning the type does not carry
 - a business, security, protocol, or compatibility constraint with no local structural guard
+- a concise algorithm or protocol summary when the implementation is necessarily low-level
 - a workaround for an external bug, with the upstream issue and the removal condition
 - a documentation contract required by public API tooling or the repository
 - a required directive, legal header, or generated-file marker
 
-If a clearer name, type, helper, enum, or test would make the comment unnecessary, make that change instead.
-
 ## Write These
 
-Keep implementation comments at the point of use, not in a file essay.
+Keep implementation comments close to the code they constrain. Put broader invariants at the function, type, or module that owns them.
 
 Good shapes:
 
-- `Retry twice because the vendor API duplicates ~2% of accepted writes.`
-- `Timeout is 5s: upstream p99 is 3.8s plus margin. Do not lower without checking the gateway budget.`
+- `Retry only with the original idempotency key: the server may commit before the connection drops.`
+- `Indices are UTF-8 byte offsets, not Unicode scalar positions.`
 - `Caller must hold the session lock; this method mutates shared cursor state.`
-- `Work around https://github.com/nodejs/node/issues/48893; remove when Node >= 22 is required.`
-- `Gift-card refunds cap at 24h even when the order still has an expedited window.`
+- `Use Horner's method here to avoid allocating intermediate powers in this hot path.`
+- `Gift-card refunds remain capped at 24h; the standard refund window must not widen them.`
 
-For documentation comments, document use rather than mechanics: inputs, outputs, ownership, nullability, side effects, errors, and restrictions that callers cannot see from the signature. Omit them for obvious accessors, trivial constructors, and overrides that add no new contract.
+For documentation comments, state caller-observable behavior and correct use. Do not omit a useful purpose summary merely because the signature is typed, but do not repeat types or parameters without adding semantics. Omit documentation that adds nothing to an inherited or repository-defined contract.
 
-For `TODO`, include an owner or issue and a removal condition. Do not leave a bare `TODO` or `FIXME`.
+For `TODO` or `FIXME`, include a tracked issue or accountable owner when the repository uses them, plus a condition that makes the work actionable or removable. Never fabricate that metadata.
 
 ## Never Write These
 
 - restatements of the next line, such as increment, loop, return, or import narrations
-- comments that copy a literal already in the code (`timeout is 5000` next to `timeout = 5000`)
-- section banners, decorative separators, or changelog/authorship notes
-- comments that apologize, praise, or say the code is complex
+- comments that create a second source of truth by copying a literal, type, or signature without adding semantics
+- decorative separators, content-free banners, or changelog/authorship notes; preserve semantic headings recognized by documentation tooling
+- comments that apologize, praise, warn vaguely, or merely say the code is complex
 - teaching walkthroughs inside production code; explain in chat unless the user explicitly asked for an annotated tutorial artifact
-- guessed constraints, invented ticket numbers, or undocumented public-API fields
-- comments that duplicate a test, type, or name that already states the fact
+- guessed constraints, invented causality, ticket numbers, benchmark results, or undocumented public-API fields
+- comments that duplicate a local type or name without independent reader value; a test may verify the same contract for a different audience
 
 A wrong comment is worse than no comment. If you cannot state the invariant precisely, omit the comment and keep the uncertainty in the response.
 
 ## Style
 
 - Write complete sentences unless the repository's local comments are consistently terse.
-- Prefer why and constraints over how. How belongs in the code.
-- Do not restate names, types, or values the compiler already knows.
-- Keep comments adjacent to the constrained code. File-level essays do not steer the next edit.
-- Follow the file's existing language, punctuation, and documentation format. Do not mix JSDoc, docstrings, rustdoc, and banner comments in one file.
-- Prefer the repository's documentation language. If the file has no convention, write comments in the same language as the surrounding identifiers and existing comments.
+- For implementation comments, prefer rationale and constraints over a translation of mechanics.
+- Do not turn "why, not what" into a blind rule. API docs must say what an interface does, and low-level algorithms may need a high-level what/how summary.
+- Put the comment at the closest stable scope that owns the information; avoid distant essays and repeated copies.
+- Use the language-correct documentation form. Documentation, implementation, and required directive comments may coexist when each serves a distinct contract.
+- Follow the file's established punctuation and prose style.
+- Use the repository's declared documentation language; otherwise follow the established prose language and intended contributor audience, not the identifiers alone.
 
 ## Editing Existing Code
 
@@ -104,14 +126,18 @@ A wrong comment is worse than no comment. If you cannot state the invariant prec
 - If a touched comment is now false, update or delete it in the same change.
 - If replacing a block, rewrite its comments under this skill rather than copying stale narration.
 - Preserve required headers, generated markers, and directive comments.
-- Do not add documentation comments to private helpers just to look complete.
+- Do not add documentation comments to private helpers just to look complete; document a real non-obvious contract when one exists.
+- For an explicit comment-free request, add no optional comments and leave unrelated existing comments alone.
 
 ## Completion
 
 Comment policy is complete when:
 
+- this skill was active before every code-like artifact was produced
 - every new or edited comment passes the admission test
-- public documentation comments, if required, match evidenced behavior
+- every factual claim is supported by the available evidence
+- public documentation comments match evidenced behavior and local tooling
 - no added comment narrates obvious mechanics
 - stale comments in the touched area were fixed or removed
+- explicit comment-free output contains no optional comments
 - teaching stayed in chat unless the user asked for annotated tutorial code

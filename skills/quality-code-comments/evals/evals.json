@@ -14,50 +14,118 @@
     },
     {
       "id": 2,
-      "prompt": "Fix retry handling for a vendor checkout API. The code already retries twice with a 5 second timeout. Keep that behavior, but a future editor keeps trying to 'simplify' it. The vendor duplicates about 2% of accepted writes, and their p99 is 3.8 seconds.",
-      "expected_output": "A small, behavior-preserving change that places a load-bearing comment at the retry/timeout site stating why two retries and 5 seconds exist, and what would break if they were removed or lowered.",
-      "files": [],
+      "prompt": "Update the attached `retry_checkout.py`. Keep its one initial attempt plus at most two retries and 5 second timeout per attempt. The vendor may commit a write before the connection drops, so every attempt must reuse the original idempotency key. Their p99 is 3.8 seconds, and the caller's total budget is 15 seconds.",
+      "expected_output": "A small, behavior-preserving change that documents the idempotency invariant and the evidenced timeout/retry budget without claiming that duplicate-write risk is itself a reason to retry.",
+      "files": ["evals/files/retry_checkout.py"],
       "expectations": [
-        "The response keeps two retries and a 5 second timeout unless local evidence contradicts the prompt.",
-        "A comment at the retry or timeout site records the duplicate-write risk and the p99-plus-margin rationale.",
-        "The comment does not merely restate `retries = 2` or `timeout = 5000`.",
+        "The response keeps one initial attempt plus at most two retries and a 5 second per-attempt timeout unless local evidence contradicts the prompt.",
+        "A comment at the retry path states that all attempts must reuse the original idempotency key because the vendor may commit before the connection drops.",
+        "Any timeout or retry-cap comment connects the 3.8 second p99 to the 5 second per-attempt margin and the 15 second total caller budget.",
+        "The response does not claim that duplicate-write risk justifies retrying; it correctly treats that risk as a constraint on safe retries.",
+        "The comments do not merely restate numeric constants.",
         "The response does not add tutorial comments on unrelated code."
       ]
     },
     {
       "id": 3,
-      "prompt": "Add comments to every line of this TypeScript helper so juniors can learn it. The helper groups items by key.",
-      "expected_output": "A refusal to narrate every line, with teaching moved to chat. The code stays sparsely commented unless a real invariant exists; names and structure carry the grouping logic.",
-      "files": [],
+      "prompt": "The attached `groupBy.ts` is production source used by the application. Add comments to every line so juniors can learn it while keeping behavior unchanged.",
+      "expected_output": "A refusal to turn production source into line-by-line narration, with teaching moved to chat or a separate tutorial artifact. The helper stays sparsely commented unless a real invariant exists.",
+      "files": ["evals/files/groupBy.ts"],
       "expectations": [
         "The response does not add a comment above every statement.",
-        "Teaching explanation appears in the chat rather than as production-style line narration.",
+        "Teaching explanation appears in chat or a clearly separate tutorial artifact rather than as production-style line narration.",
         "The helper itself remains readable through naming and structure.",
         "If a comment remains, it passes a why/invariant test rather than restating `group by key`."
       ]
     },
     {
       "id": 4,
-      "prompt": "Document the public Python client function `fetch_invoice(invoice_id, include_line_items=False)`. It raises `InvoiceNotFound` when missing, returns a dict, and `include_line_items` is optional. Do not invent rate limits or authentication details.",
+      "prompt": "Document the public Python client function in the attached `invoice_client.py`. It raises `InvoiceNotFound` when missing and returns a dict. Do not invent rate limits, authentication details, or fields not evidenced by the file.",
       "expected_output": "A PEP 257-style docstring that states the call contract evidenced by the prompt, without restating the signature or inventing unsupported fields.",
-      "files": [],
+      "files": ["evals/files/invoice_client.py"],
       "expectations": [
         "The docstring is an imperative summary, not a copied signature.",
-        "It documents `include_line_items` and `InvoiceNotFound` only as evidenced.",
+        "It explains that `invoice_id` identifies the invoice without inventing an accepted type, format, or validation rule.",
+        "It documents that `include_line_items` is optional and adds `line_items` to the returned dict when true.",
+        "It documents the dict return value and the evidenced `InvoiceNotFound` exception.",
         "It does not invent rate limits, auth, or extra parameters.",
         "Implementation comments are not used as a substitute for the public docstring."
       ]
     },
     {
       "id": 5,
-      "prompt": "This Go function used to sleep 200ms as a rate limit. The sleep was removed, but the comment `// sleep to avoid vendor rate limit` is still there. Finish the surrounding bugfix and handle the comment correctly.",
-      "expected_output": "The stale comment is deleted or rewritten to match current behavior. No new narration is added to compensate.",
-      "files": [],
+      "prompt": "In the attached `vendor.go`, the function used to sleep 200ms as a rate limit, but the sleep was removed. Finish the surrounding cleanup, keep behavior unchanged, and handle its comments correctly.",
+      "expected_output": "The stale rate-limit claim is removed. Because `FetchStatus` is exported, it retains an accurate Go doc comment instead of replacing the stale comment with narration.",
+      "files": ["evals/files/vendor.go"],
       "expectations": [
         "The leftover rate-limit sleep comment is not left claiming a sleep that no longer exists.",
-        "If a rate-limit constraint still exists, the replacement comment states the current mechanism and why.",
+        "The replacement Go doc comment begins with `FetchStatus` and describes the evidenced public behavior.",
+        "The documentation does not invent a current rate-limit mechanism.",
+        "If the client timeout mutation is documented, it accurately says that a zero timeout is replaced with 10 seconds.",
         "The response treats the stale comment as a defect in the same change.",
         "Unrelated comments are not rewritten for style."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Write a small Python function that returns the first duplicate integer in a list. No comments or docstrings; just the code.",
+      "expected_output": "A correct, self-explanatory function with zero optional comments or docstrings. The skill still governs the output even though the requested result is comment-free.",
+      "files": [],
+      "expectations": [
+        "The output contains working Python code for finding the first duplicate integer.",
+        "The code contains no optional comments or docstrings.",
+        "The implementation uses clear names and structure instead of violating the explicit request to explain itself in comments.",
+        "The response does not claim that a comment-free request disables the comment policy."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "In the attached `timeout_settings.py`, add a comment explaining why `REQUEST_TIMEOUT_SECONDS` is 30. There is no issue, test, specification, incident note, or other evidence for that value.",
+      "expected_output": "The response does not invent a rationale. It either leaves the value uncommented and reports the missing evidence, or asks for the source if the rationale is necessary to complete the task.",
+      "files": ["evals/files/timeout_settings.py"],
+      "expectations": [
+        "The response does not invent an upstream p99, gateway budget, incident, ticket, compatibility rule, or business reason.",
+        "The response distinguishes the visible fact that the value is 30 seconds from the unknown reason it was chosen.",
+        "Any comment added is limited to evidence actually present in the prompt or repository.",
+        "The uncertainty is reported in chat rather than disguised as a confident source comment."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Create an explicitly annotated tutorial example that teaches a beginner how a JavaScript `for...of` loop sums an array. This code is for a lesson, not production.",
+      "expected_output": "A correct educational example whose comments explain mechanics appropriate to a beginner because annotation is the requested artifact, without pretending those comments belong in production source.",
+      "files": [],
+      "expectations": [
+        "The output includes a working JavaScript sum example.",
+        "Comments explain the loop at an audience-appropriate level and remain accurate.",
+        "The response recognizes the artifact as a tutorial exception rather than applying the production-code ban mechanically.",
+        "The example avoids unrelated banners, invented constraints, or excessive prose that obscures the code."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Document the public unsafe function in the attached `unsafe_read.rs` for crate `packet`. The caller must provide a pointer valid to read two bytes, and the pointed-to memory must not be mutated during the call.",
+      "expected_output": "Accurate rustdoc with a concise purpose, a semantic `# Safety` section, and a copyable example that can run as a doctest. The documentation does not repeat raw-pointer syntax or invent panic and error behavior.",
+      "files": ["evals/files/unsafe_read.rs"],
+      "expectations": [
+        "The function has a concise `///` summary that explains it reads a little-endian `u16`.",
+        "A `# Safety` heading states both evidenced caller obligations: two readable bytes and no mutation during the call.",
+        "The semantic `# Safety` heading is preserved rather than rejected as a decorative banner.",
+        "The example calls `packet::read_u16_le` with a valid two-byte buffer and asserts the result.",
+        "The example is suitable for rustdoc execution and contains no invented setup, error, or panic contract."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "In the attached `unsafe_retry.py`, add a comment saying the POST retries are safe because the vendor deduplicates requests. There is no idempotency key, vendor specification, reconciliation check, or evidence that a failed attempt was not applied.",
+      "expected_output": "The response refuses to encode the unsupported safety claim. It identifies that automatic retries of a non-idempotent write need evidenced idempotency or proof of non-application before they can be documented as safe.",
+      "files": ["evals/files/unsafe_retry.py"],
+      "expectations": [
+        "The response does not add a comment claiming that the vendor deduplicates requests.",
+        "The response does not treat the retry count as evidence that retries are safe.",
+        "The response explains that duplicate-write risk constrains or can disable retries rather than justifying them.",
+        "The response asks for or recommends verifying a stable idempotency mechanism, reconciliation check, or proof that failed attempts were not applied.",
+        "No unrelated implementation or comment cleanup is performed."
       ]
     }
   ]

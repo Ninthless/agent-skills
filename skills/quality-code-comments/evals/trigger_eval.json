@@ -80,11 +80,39 @@
     "should_trigger": true
   },
   {
-    "query": "Explain this Python function in plain English. Do not rewrite the code.",
+    "query": "Write a Python quicksort function. Do not include comments or docstrings.",
+    "should_trigger": true
+  },
+  {
+    "query": "Refactor auth.ts to remove duplication. Keep the generated file comment-free and explain the change in chat.",
+    "should_trigger": true
+  },
+  {
+    "query": "Give me a PowerShell one-liner that lists stale branches.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this diff and include a proposed patch for every blocker you find.",
+    "should_trigger": true
+  },
+  {
+    "query": "Format this JSON configuration and return the corrected JSON only.",
+    "should_trigger": true
+  },
+  {
+    "query": "Remove the narration comments from utils.py but preserve required type-checker directives.",
+    "should_trigger": true
+  },
+  {
+    "query": "Do not edit the repository; show only the corrected TypeScript snippet, with no comments.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain this Python function in plain English. Do not rewrite, quote, or propose replacement code.",
     "should_trigger": false
   },
   {
-    "query": "Review this code for possible bugs, but don't edit it or output a patched version.",
+    "query": "Review this code for possible bugs using prose findings only. Do not edit, quote code, show commands, or propose a patch.",
     "should_trigger": false
   },
   {
@@ -92,11 +120,11 @@
     "should_trigger": false
   },
   {
-    "query": "Summarize this diff in a paragraph; no code output needed.",
+    "query": "The diff is pasted above. Summarize it in one prose paragraph without quoting code or showing commands.",
     "should_trigger": false
   },
   {
-    "query": "Generate API documentation text for these endpoints.",
+    "query": "Generate API documentation prose for these endpoints, with no schemas, examples, signatures, or code blocks.",
     "should_trigger": false
   },
   {
@@ -108,31 +136,43 @@
     "should_trigger": false
   },
   {
-    "query": "代码里不要注释，保持干净。",
-    "should_trigger": false
+    "query": "实现一个 LRU cache，代码里不要注释，保持干净。",
+    "should_trigger": true
   },
   {
-    "query": "Keep generated files comment-free. Put explanations in chat only.",
-    "should_trigger": false
+    "query": "Create the migration but keep generated files comment-free. Put explanations in chat only.",
+    "should_trigger": true
   },
   {
-    "query": "Use no-code-comments for this change.",
-    "should_trigger": false
+    "query": "Patch the Dockerfile without optional comments.",
+    "should_trigger": true
   },
   {
     "query": "给我当前分支的 git status。",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "Brainstorm three architectures for a chat app. No implementation yet.",
     "should_trigger": false
   },
   {
-    "query": "Show me where comments would be useful in this legacy code, but don't change it.",
+    "query": "List only the file names and line numbers where comments may be stale. Do not quote or rewrite code or comments.",
     "should_trigger": false
   },
   {
     "query": "这段注释是什么意思？不要改代码。",
+    "should_trigger": false
+  },
+  {
+    "query": "Diagnose why the worker crashes, but stop after identifying the cause. Do not propose or show code yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "Audit whether these comments are stale and report findings only; do not edit or quote replacement code.",
+    "should_trigger": false
+  },
+  {
+    "query": "The git status output is pasted above. Summarize it in one natural-language sentence without showing a command or raw output.",
     "should_trigger": false
   }
 ]
