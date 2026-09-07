@@ -40,6 +40,46 @@
     "should_trigger": true
   },
   {
+    "query": "帮我写这个功能。",
+    "should_trigger": true
+  },
+  {
+    "query": "Scaffold an Express health endpoint that returns ok.",
+    "should_trigger": true
+  },
+  {
+    "query": "修复这个 bug。",
+    "should_trigger": true
+  },
+  {
+    "query": "生成一个 GitHub Actions workflow，push 和 PR 时跑 npm test。",
+    "should_trigger": true
+  },
+  {
+    "query": "给我一个最小可运行示例。",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a regex that matches ISO-8601 dates.",
+    "should_trigger": true
+  },
+  {
+    "query": "登录接口偶发 500。先读现有代码路径，别猜，最小改动修。",
+    "should_trigger": true
+  },
+  {
+    "query": "Convert this JSON payload into a TypeScript type.",
+    "should_trigger": true
+  },
+  {
+    "query": "Show me the SQL migration that adds a unique index and rolls it back safely.",
+    "should_trigger": true
+  },
+  {
+    "query": "Please output commented sample code for a tutorial blog post.",
+    "should_trigger": true
+  },
+  {
     "query": "Explain this Python function in plain English. Do not rewrite the code.",
     "should_trigger": false
   },
@@ -88,11 +128,11 @@
     "should_trigger": false
   },
   {
-    "query": "Show me the SQL migration that adds a unique index and rolls it back safely.",
-    "should_trigger": true
+    "query": "Show me where comments would be useful in this legacy code, but don't change it.",
+    "should_trigger": false
   },
   {
-    "query": "Please output commented sample code for a tutorial blog post.",
-    "should_trigger": true
+    "query": "这段注释是什么意思？不要改代码。",
+    "should_trigger": false
   }
 ]

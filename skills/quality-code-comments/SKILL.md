@@ -1,6 +1,6 @@
 ---
 name: quality-code-comments
-description: 'Mandatory comment-quality companion whenever the agent generates, writes, edits, refactors, or shows code. Keep comments sparse and load-bearing: prefer self-explanatory names and structure, then record only intent, invariants, constraints, workarounds, or documentation contracts the code cannot express. Trigger for write, create, implement, fix, edit, refactor, 写代码, 加注释, 写好注释, 优雅注释, or JSDoc/docstring requests. Do not trigger for comment-free output, pure analysis without code, or when the user has chosen no-code-comments instead.'
+description: 'Mandatory comment-quality companion whenever the agent will generate, write, create, implement, edit, modify, patch, refactor, scaffold, regenerate, or otherwise output code or a code-like artifact. Always trigger before producing or changing source, snippets, scripts, commands, queries, regex, configs, schemas, migrations, tests, fixtures, workflows, Dockerfiles, patches, or example code in chat, even if the user never mentions comments. Trigger for write, create, generate, implement, build, fix, edit, refactor, 写代码, 帮我写, 实现, 修一下, 改代码, 重构, 加注释, 写好注释, 优雅注释, JSDoc, docstring, or rustdoc. Keep comments sparse and load-bearing: record only intent, invariants, constraints, workarounds, or documentation contracts the code cannot express. Do not trigger for explicit comment-free requests such as 不要注释, no comments, or use no-code-comments, or for explanation, planning, review, or status when no code-like content will be written or shown.'
 ---
 
 # Quality Code Comments
@@ -24,11 +24,13 @@ Do not optimize for looking thoroughly documented. Do not narrate control flow. 
 
 ## Mandatory Code-Producing Companion
 
-Activate whenever the response will produce, modify, or show code or a code-like artifact, including snippets, configs, tests, migrations, schemas, workflows, and patches.
+Activate whenever the response will produce, modify, or show code or a code-like artifact, including snippets, configs, tests, migrations, schemas, workflows, commands, regex, Dockerfiles, and patches.
+
+Do not wait for 加注释, 写好注释, JSDoc, docstring, or "add comments". Ordinary coding is enough. If a later turn starts producing code, activate before writing it.
 
 This skill owns comment policy. `high-constraint-coding` owns bounded implementation. `learn-while-building` owns teaching in chat. Specialized skills own their artifacts. Put rationale in chat unless the fact must live next to the code to prevent a wrong future edit.
 
-Do not activate for read-only explanation, planning, review, or status when no code will be written or shown. If a later turn starts producing code, activate before writing it.
+Do not activate for read-only explanation, planning, review, or status when no code will be written or shown.
 
 This skill is mutually exclusive with `no-code-comments`. Install only one. If the user explicitly asks for comment-free output, follow that request and do not add comments.
 

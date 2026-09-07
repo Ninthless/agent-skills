@@ -1,7 +1,7 @@
 interface:
   display_name: "Quality Code Comments"
   short_description: "Sparse, load-bearing comments whenever code is produced"
-  default_prompt: "Apply quality-code-comments whenever this task writes, edits, or shows code. Prefer self-explanatory names and structure. Add a comment only when it records intent, an invariant, a constraint, a workaround, or a documentation contract the code cannot express. Never narrate the next line. Keep comments current in the touched area."
+  default_prompt: "Apply quality-code-comments whenever this task writes, edits, or shows code, even if the user never asked for comments. Prefer self-explanatory names and structure. Add a comment only when it records intent, an invariant, a constraint, a workaround, or a documentation contract the code cannot express."
 
 policy:
   allow_implicit_invocation: true
