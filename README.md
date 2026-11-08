@@ -27,6 +27,7 @@ The collection emphasizes:
 | Skill | Purpose |
 | --- | --- |
 | [`build-user-facing-ui`](./skills/build-user-facing-ui/) | Build, redesign, review, and verify distinctive user-facing interfaces across web, mobile, desktop, games, kiosks, and specialized surfaces. |
+| [`delivery-discipline`](./skills/delivery-discipline/) | Search the repo before edits, sync every affected layer, write everyday Chinese, report unrelated defects without fixing them, keep delivery copy in the final state, and follow the confirmed API contract. |
 | [`english-spec-first`](./skills/english-spec-first/) | Normalize rough, multilingual, or materially ambiguous requests into a concise English working specification before execution. |
 | [`freelance-order-triage`](./skills/freelance-order-triage/) | Evaluate client work, hidden scope, quote posture, delivery risk, milestones, revisions, and acceptance criteria before implementation. |
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | Create coherent Git checkpoints with targeted staging, Conventional Commit messages, remote safety checks, and explicit push results. |
@@ -85,6 +86,7 @@ Skills can operate independently or compose around one task. Typical flows inclu
 - `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> controlled implementation, clean source, and a compact learning overlay
 - `high-constraint-coding` + `quality-code-comments` + `learn-while-building` -> controlled implementation, durable comments, and a compact learning overlay
 - `build-user-facing-ui` + `high-constraint-coding` -> complete UI behavior with disciplined implementation
+- `delivery-discipline` + any implementation, copy, or backend task -> repo search, cross-layer sync, everyday Chinese, final-state copy, and the confirmed API contract
 - `write-api-docs` -> evidence-backed integration contract
 - completed work -> `git-checkpoint-push`
 

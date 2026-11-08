@@ -1,0 +1,58 @@
+[
+  {
+    "query": "把订单状态从 pending 改成 waiting，前后端、文案和测试一起改。",
+    "should_trigger": true
+  },
+  {
+    "query": "给这个空状态写一句中文提示。",
+    "should_trigger": true
+  },
+  {
+    "query": "对接列表接口。字段不够就告诉我，别自己补。",
+    "should_trigger": true
+  },
+  {
+    "query": "金额单位从分改成元，读写两边和旧数据都要查。",
+    "should_trigger": true
+  },
+  {
+    "query": "修这个按钮文案，改完告诉我搜过哪些词、还有没有残留。",
+    "should_trigger": true
+  },
+  {
+    "query": "Write the PR description for this checkout change.",
+    "should_trigger": true
+  },
+  {
+    "query": "只改前端展示，后端字段先别动。范围我还没说完。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我提交这次改动，说明为什么要改。",
+    "should_trigger": true
+  },
+  {
+    "query": "这个函数是干什么的？先别改代码。",
+    "should_trigger": false
+  },
+  {
+    "query": "解释一下 git rebase 和 merge 的区别。",
+    "should_trigger": false
+  },
+  {
+    "query": "What does DOMAIN-SUFFIX mean in a proxy rule?",
+    "should_trigger": false
+  },
+  {
+    "query": "只看这个 diff，告诉我它改了哪几个文件，先别提修改方案。",
+    "should_trigger": false
+  },
+  {
+    "query": "Mac 上怎么打开活动监视器？",
+    "should_trigger": false
+  },
+  {
+    "query": "Compare two pricing ideas conceptually. Don't write copy or code yet.",
+    "should_trigger": false
+  }
+]

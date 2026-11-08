@@ -1,0 +1,53 @@
+{
+  "skill_name": "delivery-discipline",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Rename the order status value pending to waiting across this repository. Update every layer that reads or writes it, then report what changed.",
+      "expected_output": "A bounded rename that starts with a repository search, updates API, validation, persistence, copy, and tests together, and ends with a file list, leftover-hit check, and migration status.",
+      "files": [],
+      "expectations": [
+        "The response searches the repository for the old value and related names before editing.",
+        "It updates readers and writers together instead of changing only the UI.",
+        "It checks serialization, defaults, and existing stored data before treating the rename as done.",
+        "The closing report lists changed files by layer, the search terms, leftover hits, and whether a migration was made."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "写这个结算页的空状态和按钮文案。用户还没下单。",
+      "expected_output": "Short everyday Chinese that tells the user what to do now, without design rationale, rejected alternatives, or extra boundary explanations.",
+      "files": [],
+      "expectations": [
+        "The copy uses everyday mainland Chinese and full-width punctuation.",
+        "It states the current action or result in one clear line where one line is enough.",
+        "It does not explain why the product is designed this way or list behavior the screen does not offer.",
+        "It does not mention discarded options or session history."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Wire the order list to the confirmed API. The contract has id and status only. The design also shows a customer name that is not in the contract.",
+      "expected_output": "A partial integration of the confirmed fields, plus an explicit gap for the missing customer name. No invented fallback from cache, mocks, or another endpoint.",
+      "files": [],
+      "expectations": [
+        "The response treats the confirmed contract as the source of truth.",
+        "It reports the missing customer-name field and what the backend still needs to provide.",
+        "It does not fill the gap from a list item, cache, local storage, mock data, or a default.",
+        "It still completes the part that the confirmed fields can support."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Fix the typo in the submit button label. While reading the page, you notice the success handler writes the price in cents but the API documents yuan.",
+      "expected_output": "The typo is fixed. The unit mismatch is reported separately with evidence, and it is not changed unless the user asks.",
+      "files": [],
+      "expectations": [
+        "The requested label change is completed first.",
+        "The unrelated unit mismatch is reported with the evidence that was seen.",
+        "The response does not silently rewrite the price handling.",
+        "The finding says why it matters and asks whether to fix it."
+      ]
+    }
+  ]
+}

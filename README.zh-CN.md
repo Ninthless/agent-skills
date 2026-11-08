@@ -33,6 +33,7 @@
 | Skill | 用途 |
 | --- | --- |
 | [`build-user-facing-ui`](./skills/build-user-facing-ui/) | 构建、重做、审查和验证 Web、移动端、桌面端、游戏、信息亭等用户界面，覆盖完整状态、响应式、无障碍和渲染验证。 |
+| [`delivery-discipline`](./skills/delivery-discipline/) | 改之前先全库搜索并同步各层；中文按日常说法写；顺手发现的问题先说；交付文案只写最终状态；对接后端以确认的接口为准。 |
 | [`english-spec-first`](./skills/english-spec-first/) | 把粗糙、中英混合或存在实质歧义的需求整理成简洁的英文工作规格，再据此执行任务。 |
 | [`freelance-order-triage`](./skills/freelance-order-triage/) | 在接单或报价前评估客户需求、隐藏范围、交付风险、里程碑、修改次数和验收条件。 |
 | [`git-checkpoint-push`](./skills/git-checkpoint-push/) | 通过定向暂存、Conventional Commit、远程分支检查和明确结果报告创建并推送可靠的 Git 检查点。 |
@@ -91,6 +92,7 @@ Skill 可以独立使用，也可以围绕同一个任务组合：
 - `high-constraint-coding` + `no-code-comments` + `learn-while-building` -> 受控实现、干净源码，以及一份简短的学习说明
 - `high-constraint-coding` + `quality-code-comments` + `learn-while-building` -> 受控实现、耐久注释，以及一份简短的学习说明
 - `build-user-facing-ui` + `high-constraint-coding` -> 完整界面体验和受控工程实现
+- `delivery-discipline` + 任意实现、文案或后端任务 -> 先搜全库、同步各层、中文按日常说法写、文案只留最终状态，并按已确认的接口对接
 - `write-api-docs` -> 有证据支持的接口对接契约
 - 工作完成后 -> `git-checkpoint-push`
 
