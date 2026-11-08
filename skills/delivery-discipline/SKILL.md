@@ -1,6 +1,6 @@
 ---
 name: delivery-discipline
-description: 'Mandatory delivery discipline for code, copy, docs, commits, PRs, and backend work. Search the repo and list hits before edits; sync API, validation, auth, models, migrations, enums, copy, tests, scripts, and docs; ask when scope is unclear. Change only the named task. On field or unit changes, check both sides, serialization, defaults, and old data. Before finishing, report files by layer, leftover hits, and whether a migration was done. Run related tests or say how to verify by hand. Stop and name gaps. Write user-facing Chinese in everyday mainland speech. Report unrelated real bugs after the requested work, without fixing them unless asked. User-visible copy describes only the final state. Follow the confirmed API contract and report missing fields instead of filling them from cache, mocks, or defaults. Use on 改代码, 文案, 文档, 提交, PR, 对接后端, 防偷懒, 中文写作, 主动发现问题, 交付最终态, 接口契约.'
+description: 'Mandatory delivery companion. Always trigger before any write, edit, implement, fix, refactor, scaffold, doc, commit, PR, UI copy, or backend integration, including trivial, one-line, chat-only, and ordinary requests such as 帮我写, 改一下, 修一下, 写文案, 提交, 对接接口. Also trigger whenever the reply, commit, doc, or UI text is Chinese. Do not wait to be named. Use only the sections the task needs: prose rules for a Chinese answer, and the search plus closing checklist when something changes. Do not trigger for English-only conceptual questions or status checks when no Chinese prose and no artifact will be produced.'
 ---
 
 # Delivery Discipline
@@ -8,6 +8,23 @@ description: 'Mandatory delivery discipline for code, copy, docs, commits, PRs, 
 ## Copyright
 
 Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
+
+## Mandatory companion
+
+Activate this skill before the first edit, user-facing Chinese sentence, UI string, doc, commit, PR, or backend integration. Do not wait for the user to name it. Trivial and one-line requests still activate it.
+
+Ordinary requests count, including `帮我写`, `改一下`, `修一下`, `写文案`, `提交`, and `对接接口`.
+
+Apply only the sections the task needs:
+
+- A Chinese answer with no edit uses the Chinese prose rules.
+- A change uses the search, sync, scope, and closing checklist.
+- Backend work also uses the contract rules.
+- User-visible artifacts also use the final-state rules.
+
+Do not run the edit checklist on a question that changes nothing. Do not skip the skill because the change looks small.
+
+Do not activate for an English-only conceptual question or status check when the reply will not be Chinese and no artifact will be produced. If that task later becomes an edit or a Chinese reply, activate before producing it.
 
 ## Before editing
 

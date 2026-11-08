@@ -32,27 +32,47 @@
     "should_trigger": true
   },
   {
+    "query": "帮我把按钮文字改成提交。",
+    "should_trigger": true
+  },
+  {
+    "query": "修一下这个拼写。",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the typo in this label.",
+    "should_trigger": true
+  },
+  {
+    "query": "写一下这次的 commit message。",
+    "should_trigger": true
+  },
+  {
     "query": "这个函数是干什么的？先别改代码。",
-    "should_trigger": false
+    "should_trigger": true
   },
   {
     "query": "解释一下 git rebase 和 merge 的区别。",
-    "should_trigger": false
+    "should_trigger": true
+  },
+  {
+    "query": "Mac 上怎么打开活动监视器？",
+    "should_trigger": true
+  },
+  {
+    "query": "只看这个 diff，告诉我它改了哪几个文件，先别提修改方案。",
+    "should_trigger": true
   },
   {
     "query": "What does DOMAIN-SUFFIX mean in a proxy rule?",
     "should_trigger": false
   },
   {
-    "query": "只看这个 diff，告诉我它改了哪几个文件，先别提修改方案。",
-    "should_trigger": false
-  },
-  {
-    "query": "Mac 上怎么打开活动监视器？",
-    "should_trigger": false
-  },
-  {
     "query": "Compare two pricing ideas conceptually. Don't write copy or code yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "Show git status only. Do not edit anything and answer in English.",
     "should_trigger": false
   }
 ]

@@ -1,7 +1,7 @@
 interface:
   display_name: "Delivery Discipline"
-  short_description: "Search, sync layers, and ship the final state"
-  default_prompt: "Apply delivery-discipline. Search the repo and list hits before edits. Sync API, validation, auth, models, migrations, enums, copy, tests, scripts, and docs. Change only the named task. Write user-facing Chinese in everyday speech. Report unrelated real bugs after the requested work, and do not fix them unless asked. User-visible copy describes only the final state. Follow the confirmed API contract and report missing fields instead of filling them from cache, mocks, or defaults."
+  short_description: "Default companion for edits, Chinese, and delivery"
+  default_prompt: "Always apply delivery-discipline before an edit, a Chinese reply, UI copy, a doc, a commit, a PR, or backend work. Do not wait to be named. A Chinese answer with no edit uses the prose rules only. A change searches the repo first, syncs every affected layer, and closes with the checklist."
 
 policy:
   allow_implicit_invocation: true

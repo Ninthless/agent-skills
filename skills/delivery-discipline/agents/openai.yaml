@@ -1,7 +1,7 @@
 interface:
   display_name: "Delivery Discipline"
-  short_description: "Search, sync layers, and ship the final state"
-  default_prompt: "Use $delivery-discipline for code, copy, docs, commits, and backend work. Search first, sync every affected layer, keep the change to the named task, write everyday Chinese, report unrelated defects without fixing them, describe only the final state, and follow the confirmed API contract."
+  short_description: "Default companion for edits, Chinese, and delivery"
+  default_prompt: "Use $delivery-discipline by default before edits, Chinese replies, copy, docs, commits, PRs, and backend work. Do not wait for me to name it. Small requests still count. Skip it only for an English-only question with no artifact."
 
 policy:
   allow_implicit_invocation: true
