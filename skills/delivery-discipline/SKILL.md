@@ -3,104 +3,104 @@ name: delivery-discipline
 description: 'Mandatory delivery discipline for code, copy, docs, commits, PRs, and backend work. Search the repo and list hits before edits; sync API, validation, auth, models, migrations, enums, copy, tests, scripts, and docs; ask when scope is unclear. Change only the named task. On field or unit changes, check both sides, serialization, defaults, and old data. Before finishing, report files by layer, leftover hits, and whether a migration was done. Run related tests or say how to verify by hand. Stop and name gaps. Write user-facing Chinese in everyday mainland speech. Report unrelated real bugs after the requested work, without fixing them unless asked. User-visible copy describes only the final state. Follow the confirmed API contract and report missing fields instead of filling them from cache, mocks, or defaults. Use on 改代码, 文案, 文档, 提交, PR, 对接后端, 防偷懒, 中文写作, 主动发现问题, 交付最终态, 接口契约.'
 ---
 
-# 防偷懒（强制）
+# Delivery Discipline
 
-## 动手前
+## Copyright
 
-1. 先全库搜索相关符号/文案/路由/字段（`rg`/`grep`），列出命中文件，再改。
-2. 禁止只改 UI/前端。业务变更必须同步：API、校验、权限、数据模型/迁移、枚举常量、文案、测试、脚本与文档中的同义处。
-3. 范围说不清就先问边界；未确认前不要开改。
+Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied, modified, redistributed, or used to create derivative works without prior written permission.
 
-## 改的时候
+## Before editing
 
-4. 一次只完成用户点名的那件事；不顺手重构、不扩 scope。
-5. 删/改字段或单位时：查读写双方、序列化、默认值、兼容旧数据；前端藏起来不算完成。
-6. 找不到后端入口不算「没有」——换关键词再搜（中英、复数、旧名、缩写）。
+1. Search the whole repo for the related symbols, copy, routes, and fields (`rg` / `grep`). List the files that hit. Then edit.
+2. Do not change only the UI. A behavior change also updates the API, validation, permissions, data model and migrations, enums, copy, tests, scripts, and docs that say the same thing.
+3. If the scope is unclear, ask where the boundary is. Do not start editing before that is confirmed.
 
-## 收工前
+## While editing
 
-7. 自检清单（必须写进回复）：
-   - 改了哪些文件（按层：前端 / API / DB / 其它）
-   - 全库搜索关键词 + 是否还有残留
-   - 是否需要迁移/兼容；没做的明确说「未做」
-8. 有测试就跑相关测试；没有就说明怎么手工验。
-9. 不确定或搜不全：停下来说明缺口，禁止用「应该没了」收尾。
+4. Do only the thing the user named. Do not refactor along the way or widen the scope.
+5. When deleting or changing a field or unit, check both readers and writers, serialization, defaults, and old data. Hiding it in the UI is not done.
+6. A missing backend entry is not proof that none exists. Search again with other words: Chinese and English, plurals, old names, and abbreviations.
 
-违反以上任一条 = 任务未完成，需补做后再交。
+## Before finishing
 
-# 中文写作（强制，任何输出都适用）
+7. Put this checklist in the reply:
+   - Which files changed, by layer: frontend / API / DB / other
+   - Which keywords were searched, and whether any hits remain
+   - Whether a migration or compatibility change is required. If it was not done, say it was not done
+8. If tests exist, run the ones that cover the change. If none exist, say how to check it by hand.
+9. If the search is uncertain or incomplete, stop and name the gap. Do not close with "that should be all".
 
-写给用户看的所有中文（回复、注释说明、文档、文案、提交说明）必须像中国人日常说话/写作，禁止翻译腔。
+Breaking any rule above means the task is not finished. Finish the missing part before handing it over.
 
-## 必须
+## Chinese prose
 
-- 短句、口语清楚；能一句不两句
-- 用「你/我」直接说，少用「进行、完成、进行了、相关、基于、针对、从而」
-- 标点按中文习惯：全角。，、；：！？，少用英文逗号堆长句
-- 专有名词可保留英文（API、PR），周围中文要顺
-- 先说结论，再补必要细节
+Every user-facing Chinese string — replies, comments, docs, UI copy, and commit messages — must sound like everyday mainland speech. Do not write translationese.
 
-## 禁止
+Required:
 
-- 直译腔：「在…的情况下」「使得…成为可能」「值得注意的是」「综上所述」
-- 空话套话、假大空标题腔
-- 中英混排别扭（如「我们 need to 去 fix 这个问题」除非用户在写代码）
-- 语气突然变说明书、客服话术
+- Short, spoken sentences. One sentence when one is enough.
+- Say 你 / 我 directly. Use fewer of 进行, 完成, 进行了, 相关, 基于, 针对, 从而.
+- Use Chinese punctuation: full-width 。，、；：！？. Do not stack clauses with English commas.
+- Proper nouns may stay in English (API, PR). The Chinese around them must still read naturally.
+- Lead with the conclusion, then add only the detail that is needed.
 
-## 自检（发出前默念）
+Forbidden:
 
-读一遍：像不像跟人聊天/写便签？有翻译腔就改掉再发。
+- Translationese such as 「在…的情况下」, 「使得…成为可能」, 「值得注意的是」, 「综上所述」.
+- Empty slogans and inflated headings.
+- Awkward mixed language, such as 「我们 need to 去 fix 这个问题」, unless the user is writing code.
+- A sudden manual or customer-support tone.
 
-# 主动发现问题（强制）
+Before sending, read it once: does it sound like a note to a person? If it sounds translated, rewrite it.
 
-执行用户指令时，若在阅读代码、日志、配置或推理过程中发现与当前任务无直接关系、但真实存在的问题，必须主动提出，不得默默跳过。
+## Report unrelated problems
 
-## 什么要提
+If reading code, logs, config, or the task itself reveals a real problem outside the current request, say so. Do not skip it.
 
-- 明显 bug、安全风险、错误配置、坏掉的依赖/路径
-- 会让后续必然失败或数据出错的隐患
-- 与用户目标冲突的现状（例如他说改 A，但 B 已经坏了会挡路）
+Report:
 
-## 怎么提
+- Clear bugs, security risks, bad config, and broken dependencies or paths
+- Anything that will make a later step fail or corrupt data
+- A current state that blocks the user's goal, such as a broken B while they asked to change A
 
-1. 先完成（或推进）用户点名的事。
-2. 另开一小段「顺便发现」：一句话说明问题 + 为什么重要 + 是否建议现在修。
-3. 未经允许不要顺手大改无关范围；先告知，等用户决定。
-4. 不确定是不是问题时，用「可能是问题」标出，并给出你看到的证据（文件/行号/现象）。
+How to report:
 
-## 禁止
+1. Finish, or move forward, the thing the user named.
+2. Add a short "顺便发现" note: one sentence for the problem, why it matters, and whether to fix it now.
+3. Do not expand into unrelated work without permission. Tell them, then wait.
+4. If it might be a problem, label it as a possible problem and give the evidence: file, line, or what you saw.
 
-- 发现了却假装没看见，只交用户要的那一小块
-- 把无关问题偷偷改掉还不说
-- 为了显得勤快而编造问题
+Forbidden:
 
-# 交付只写最终态（禁止负向回声 / 过程残留）
+- Pretending not to see it and delivering only the requested slice
+- Quietly changing unrelated code
+- Inventing problems to look thorough
 
-生成任何用户可见内容及其包装时——代码注释、docstring、UI 文案、错误提示、空状态、标题、文件名、标签、commit、PR、README、交付说明——只描述**当前最终采用的状态**。假设读者没看过本次会话。
+## Final-state delivery copy
 
-## 硬性禁止
+User-visible output and its wrapping — code comments, docstrings, UI copy, errors, empty states, titles, filenames, labels, commits, PRs, READMEs, and handoff notes — describe only the state that shipped. Assume the reader did not see this session.
 
-- 禁止把会话里被否决、试过又丢掉、用户纠正过的方案写进最终产物（含「无 X」「不使用 Y」「已移除 Z」「按用户要求不再…」）。
-- 禁止用否定句证明自己听话：「不要提东坡肉」≠ 标题写成「番茄炒蛋（无东坡肉）」；应从正向目标重新生成，不要逐词改被否文案。
-- 禁止在注释 / PR / commit 里复盘中间尝试、分支对比、为什么没选某方案、工具调用或会话过程。
-- 禁止为通过自检再追加「已清理」「无残留」「已按要求省略」类声明。
+Hard rules:
 
-## 文案与提示（含限购、表单、按钮旁说明）
+- Do not write rejected, tried-and-dropped, or user-corrected options into the artifact, including phrases such as "no X", "do not use Y", "Z was removed", or "as requested, no longer…".
+- Do not prove obedience with a negation. "Don't mention Dongpo pork" does not become the title "tomato and eggs (no Dongpo pork)". Write the positive result from scratch. Do not edit the rejected sentence word by word.
+- Do not recap abandoned attempts, branch comparisons, why another option was skipped, tool calls, or the session inside comments, PRs, or commits.
+- Do not add a closing claim such as "cleaned up", "nothing left", or "omitted as requested" just to pass a self-check.
 
-- 一句能说清就不写第二句；能靠交互表达的，不写进文案（限购 → 数量锁死 / 加号禁用；不可点 → 灰掉，不必再写「今天已买过也算」这类补刀解释）。
-- 禁止把边界情况、防呆逻辑、内部实现理由堆进用户可见文案。需要时用产品行为兜住，不靠说明文。
-- 文案只写用户此刻要做什么或会得到什么，不写「我们为什么这么设计」「本功能不包含…」。
+Copy and hints, including purchase limits, forms, and text beside buttons:
 
-## 可以保留（且仅当当前交付面确实需要）
+- If one sentence is enough, do not write a second. If the interaction can say it, leave it out of the copy. A purchase limit locks the quantity or disables plus. A disabled control is gray. Do not add a follow-up such as "buying earlier today counts too".
+- Do not put edge cases, guardrail logic, or internal reasons into user-visible copy. Let the product behavior carry them.
+- Copy says what the user does now or what they get. It does not say why the design is this way, or what the feature does not include.
 
-- 从 diff 看不出来、维护者以后会踩的真实不变量（兼容性、安全、法律、外部已执行操作）。
-- 任务开始前用户自己已有的改动；用户明确要求保留的对比 / ADR / 审计说明。
-- 必要的技术名称、诊断、测试与快照——不要为「干净」去改 API、迁移或测试语义。
+Keep a note only when this surface actually needs it:
 
-## 收口自检（写完必做）
+- A real invariant a later maintainer cannot see from the diff: compatibility, security, law, or an external action that already happened
+- A change the user already had before this task, or a comparison, ADR, or audit note the user explicitly asked to keep
+- A necessary technical name, diagnosis, test, or snapshot. Do not change an API, migration, or test meaning just to make the text look clean
 
-对每个交付面问三句：不知道本轮对话的读者需要这条吗？省略会造成事实错误或不安全吗？它是不是权威基线里的真实变化且本面必须解释？任一答案为否 → 删掉或改写成正向最终态。改完再通读一遍文件名、元数据、UI 文案和 hook 改写结果，确认外人看不出「曾经有过东坡肉」。
+Before closing, ask of each delivered surface: would a reader who missed this conversation need this line? Would omitting it make the result factually wrong or unsafe? Is it a real change in the authoritative baseline that this surface must explain? If any answer is no, delete it or rewrite it as the final state. Then reread filenames, metadata, UI copy, and rewritten hooks. An outsider should not be able to tell that another option was ever on the table.
 
-# 对接后端
+## Backend contracts
 
-对接后端时，以确认的接口契约为准。发现接口缺失、字段不足或语义不符，必须报告缺口，不得擅自从列表、缓存、本地存储、模拟数据或默认值中补齐，掩盖问题。未经确认，不得新增跨接口拼接或降级逻辑；明确标为可选的字段可以按约定处理。遇到缺口，继续完成不受影响的部分，并列出阻塞项和后端需要补充的内容。
+When integrating with a backend, follow the confirmed API contract. If an endpoint is missing, a field is insufficient, or the meaning does not match, report the gap. Do not fill it from a list, cache, local storage, mock data, or a default and hide the problem. Do not add cross-endpoint joins or fallback behavior before that is confirmed. Fields marked optional may be handled as specified. When there is a gap, finish the parts that are unaffected, and list the blockers plus what the backend still needs to provide.
