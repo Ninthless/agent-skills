@@ -1,7 +1,7 @@
 interface:
   display_name: "Delivery Discipline"
-  short_description: "Default companion for edits, Chinese, and delivery"
-  default_prompt: "Always apply delivery-discipline before an edit, a Chinese reply, UI copy, a doc, a commit, a PR, or backend work. Do not wait to be named. A Chinese answer with no edit uses the prose rules only. A change searches the repo first, syncs every affected layer, and closes with the checklist."
+  short_description: "Default companion for edits, copy, and delivery"
+  default_prompt: "Always apply delivery-discipline before an edit, UI copy, a doc, a commit, a PR, or backend work. Do not wait to be named. A change searches the repo first, syncs every affected layer, and closes with the checklist. Skip conceptual questions and status checks that produce no artifact."
 
 policy:
   allow_implicit_invocation: true

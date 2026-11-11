@@ -1,6 +1,6 @@
 ---
 name: delivery-discipline
-description: 'Mandatory delivery companion. Always trigger before any write, edit, implement, fix, refactor, scaffold, doc, commit, PR, UI copy, or backend integration, including trivial, one-line, chat-only, and ordinary requests such as 帮我写, 改一下, 修一下, 写文案, 提交, 对接接口. Also trigger whenever the reply, commit, doc, or UI text is Chinese. Do not wait to be named. Use only the sections the task needs: prose rules for a Chinese answer, and the search plus closing checklist when something changes. Do not trigger for English-only conceptual questions or status checks when no Chinese prose and no artifact will be produced.'
+description: 'Mandatory delivery companion. Always trigger before any write, edit, implement, fix, refactor, scaffold, doc, commit, PR, UI copy, or backend integration, including trivial, one-line, and ordinary requests such as 帮我写, 改一下, 修一下, 写文案, 提交, 对接接口. Do not wait to be named. Use only the sections the task needs: search and the closing checklist when something changes; Chinese prose for Chinese UI copy, docs, and commit messages. Do not trigger for a conceptual question or status check when no artifact will be produced.'
 ---
 
 # Delivery Discipline
@@ -11,20 +11,20 @@ Copyright (c) 2026 Ninthless. All rights reserved. This skill may not be copied,
 
 ## Mandatory companion
 
-Activate this skill before the first edit, user-facing Chinese sentence, UI string, doc, commit, PR, or backend integration. Do not wait for the user to name it. Trivial and one-line requests still activate it.
+Activate this skill before the first edit, UI string, doc, commit, PR, or backend integration. Do not wait for the user to name it. Trivial and one-line requests still activate it.
 
 Ordinary requests count, including `帮我写`, `改一下`, `修一下`, `写文案`, `提交`, and `对接接口`.
 
 Apply only the sections the task needs:
 
-- A Chinese answer with no edit uses the Chinese prose rules.
 - A change uses the search, sync, scope, and closing checklist.
 - Backend work also uses the contract rules.
 - User-visible artifacts also use the final-state rules.
+- Chinese UI copy, docs, and commit messages also use the Chinese prose rules.
 
 Do not run the edit checklist on a question that changes nothing. Do not skip the skill because the change looks small.
 
-Do not activate for an English-only conceptual question or status check when the reply will not be Chinese and no artifact will be produced. If that task later becomes an edit or a Chinese reply, activate before producing it.
+Do not activate for a conceptual question or status check when no artifact will be produced. If that task later becomes an edit, activate before producing it.
 
 ## Before editing
 
@@ -51,7 +51,7 @@ Breaking any rule above means the task is not finished. Finish the missing part 
 
 ## Chinese prose
 
-Every user-facing Chinese string — replies, comments, docs, UI copy, and commit messages — must sound like everyday mainland speech. Do not write translationese.
+Chinese comments, docs, UI copy, and commit messages must sound like everyday mainland speech. Do not write translationese.
 
 Required:
 

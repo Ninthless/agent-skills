@@ -49,19 +49,19 @@
   },
   {
     "query": "这个函数是干什么的？先别改代码。",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "解释一下 git rebase 和 merge 的区别。",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "Mac 上怎么打开活动监视器？",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "只看这个 diff，告诉我它改了哪几个文件，先别提修改方案。",
-    "should_trigger": true
+    "should_trigger": false
   },
   {
     "query": "What does DOMAIN-SUFFIX mean in a proxy rule?",
